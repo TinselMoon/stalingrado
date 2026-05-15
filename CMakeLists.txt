@@ -8,7 +8,13 @@ set(CMAKE_CXX_STANDARD 98)
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
 # 2. Add your main executable
-add_executable(stalingrad main.cpp)
+add_executable(
+        stalingrad
+        main.cpp
+        principal.cpp
+        principal.hpp
+        jogador.hpp
+        jogador.cpp)
 
 # 3. THIS IS THE MAGIC LINE TO FIX YOUR ERROR:
 # It links the SFML libraries to the 'stalingrad' executable
