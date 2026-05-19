@@ -4,6 +4,7 @@ project(stalingrad)
 # Setting C++03 compatibility as we discussed
 set(CMAKE_CXX_STANDARD 98)
 
+set(SFML_DIR "${CMAKE_SOURCE_DIR}/libs/SFML-2.5/lib/cmake/SFML")
 # 1. Find the SFML package on your Ubuntu system
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 

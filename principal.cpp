@@ -1,4 +1,4 @@
-#include "/home/x/Desktop/stalingrad/principal.hpp"
+#include "principal.hpp"
 
 Stalingrado::Principal::Principal() :
     window(sf::VideoMode(1920.0f, 1080.0f),"Stalingrado", sf::Style::Fullscreen)

@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "/home/x/Desktop/stalingrad/jogador.hpp"
+#include "jogador.hpp"
 
 namespace Stalingrado {
 

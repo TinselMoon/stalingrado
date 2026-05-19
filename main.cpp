@@ -1,4 +1,4 @@
-#include "/home/x/Desktop/stalingrad/principal.hpp"
+#include "principal.hpp"
 
 int main () {
 

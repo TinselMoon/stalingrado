@@ -1,4 +1,4 @@
-#include "/home/x/Desktop/stalingrad/jogador.hpp"
+#include "jogador.hpp"
 
 #include <SFML/Window/Keyboard.hpp>
 
