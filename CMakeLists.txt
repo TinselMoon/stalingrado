@@ -1,22 +1,19 @@
 cmake_minimum_required(VERSION 3.22)
-project(stalingrad)
+project(stalingrado)
 
-# Setting C++03 compatibility as we discussed
 set(CMAKE_CXX_STANDARD 98)
 
 set(SFML_DIR "${CMAKE_SOURCE_DIR}/libs/SFML-2.5/lib/cmake/SFML")
-# 1. Find the SFML package on your Ubuntu system
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
-# 2. Add your main executable
-add_executable(
-        stalingrad
-        main.cpp
-        principal.cpp
-        principal.hpp
-        jogador.hpp
-        jogador.cpp)
+add_executable(stalingrado
+        jogo.cpp
+        Gerenciadores/Gerenciador_Grafico.cpp
+        Gerenciadores/Gerenciador_Grafico.hpp
+        Ente.cpp
+        Ente.hpp
+)
 
-# 3. THIS IS THE MAGIC LINE TO FIX YOUR ERROR:
-# It links the SFML libraries to the 'stalingrad' executable
-target_link_libraries(stalingrad sfml-graphics sfml-window sfml-system)
+target_include_directories(stalingrado PRIVATE Gerenciadores)
+
+target_link_libraries(stalingrado sfml-graphics sfml-window sfml-system)
