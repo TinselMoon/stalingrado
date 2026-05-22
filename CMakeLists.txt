@@ -3,6 +3,8 @@ project(stalingrado)
 
 set(CMAKE_CXX_STANDARD 98)
 
+set(SFML_DIR "${CMAKE_SOURCE_DIR}/libs/SFML-2.5/lib/cmake/SFML")
+
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
 add_executable(stalingrado
