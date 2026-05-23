@@ -63,11 +63,11 @@ CMAKE_BINARY_DIR = /home/tinsel/utfpr/tec_prog/stalingrad/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/stalingrad.dir/all
+all: CMakeFiles/stalingrado.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/stalingrad.dir/codegen
+codegen: CMakeFiles/stalingrado.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -75,40 +75,40 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/stalingrad.dir/clean
+clean: CMakeFiles/stalingrado.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/stalingrad.dir
+# Target rules for target CMakeFiles/stalingrado.dir
 
 # All Build rule for target.
-CMakeFiles/stalingrad.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tinsel/utfpr/tec_prog/stalingrad/build/CMakeFiles --progress-num=1,2,3,4 "Built target stalingrad"
-.PHONY : CMakeFiles/stalingrad.dir/all
+CMakeFiles/stalingrado.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tinsel/utfpr/tec_prog/stalingrad/build/CMakeFiles --progress-num=1,2,3,4 "Built target stalingrado"
+.PHONY : CMakeFiles/stalingrado.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/stalingrad.dir/rule: cmake_check_build_system
+CMakeFiles/stalingrado.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tinsel/utfpr/tec_prog/stalingrad/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/stalingrad.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/stalingrado.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tinsel/utfpr/tec_prog/stalingrad/build/CMakeFiles 0
-.PHONY : CMakeFiles/stalingrad.dir/rule
+.PHONY : CMakeFiles/stalingrado.dir/rule
 
 # Convenience name for target.
-stalingrad: CMakeFiles/stalingrad.dir/rule
-.PHONY : stalingrad
+stalingrado: CMakeFiles/stalingrado.dir/rule
+.PHONY : stalingrado
 
 # codegen rule for target.
-CMakeFiles/stalingrad.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tinsel/utfpr/tec_prog/stalingrad/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target stalingrad"
-.PHONY : CMakeFiles/stalingrad.dir/codegen
+CMakeFiles/stalingrado.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tinsel/utfpr/tec_prog/stalingrad/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target stalingrado"
+.PHONY : CMakeFiles/stalingrado.dir/codegen
 
 # clean rule for target.
-CMakeFiles/stalingrad.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/clean
-.PHONY : CMakeFiles/stalingrad.dir/clean
+CMakeFiles/stalingrado.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/clean
+.PHONY : CMakeFiles/stalingrado.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

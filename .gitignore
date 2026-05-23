@@ -1,0 +1,17 @@
+# Build
+build/
+
+# compile_commands symlink não precisa ser ignorado, mas o json gerado sim
+compile_commands.json
+
+# CLion
+.idea/
+
+# Binário gerado
+stalingrado
+
+# Arquivos de objeto e temporários
+*.o
+*.d
+*.a
+*.so
