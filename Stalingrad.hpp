@@ -1,6 +1,6 @@
 #pragma once
 #include "Gerenciadores/Gerenciadores.hpp"
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "Fases/fase.hpp"
 using namespace Gerenciadores;
 using namespace Fases;

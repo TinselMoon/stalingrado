@@ -117,48 +117,72 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named stalingrad
+# Target rules for targets named stalingrado
 
 # Build rule for target.
-stalingrad: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 stalingrad
-.PHONY : stalingrad
+stalingrado: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 stalingrado
+.PHONY : stalingrado
 
 # fast build rule for target.
-stalingrad/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/build
-.PHONY : stalingrad/fast
+stalingrado/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/build
+.PHONY : stalingrado/fast
 
-jogador.o: jogador.cpp.o
-.PHONY : jogador.o
+Gerenciadores/Gerenciadores.o: Gerenciadores/Gerenciadores.cpp.o
+.PHONY : Gerenciadores/Gerenciadores.o
 
 # target to build an object file
-jogador.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/jogador.cpp.o
-.PHONY : jogador.cpp.o
+Gerenciadores/Gerenciadores.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/Gerenciadores/Gerenciadores.cpp.o
+.PHONY : Gerenciadores/Gerenciadores.cpp.o
 
-jogador.i: jogador.cpp.i
-.PHONY : jogador.i
+Gerenciadores/Gerenciadores.i: Gerenciadores/Gerenciadores.cpp.i
+.PHONY : Gerenciadores/Gerenciadores.i
 
 # target to preprocess a source file
-jogador.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/jogador.cpp.i
-.PHONY : jogador.cpp.i
+Gerenciadores/Gerenciadores.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/Gerenciadores/Gerenciadores.cpp.i
+.PHONY : Gerenciadores/Gerenciadores.cpp.i
 
-jogador.s: jogador.cpp.s
-.PHONY : jogador.s
+Gerenciadores/Gerenciadores.s: Gerenciadores/Gerenciadores.cpp.s
+.PHONY : Gerenciadores/Gerenciadores.s
 
 # target to generate assembly for a file
-jogador.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/jogador.cpp.s
-.PHONY : jogador.cpp.s
+Gerenciadores/Gerenciadores.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/Gerenciadores/Gerenciadores.cpp.s
+.PHONY : Gerenciadores/Gerenciadores.cpp.s
+
+Stalingrad.o: Stalingrad.cpp.o
+.PHONY : Stalingrad.o
+
+# target to build an object file
+Stalingrad.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/Stalingrad.cpp.o
+.PHONY : Stalingrad.cpp.o
+
+Stalingrad.i: Stalingrad.cpp.i
+.PHONY : Stalingrad.i
+
+# target to preprocess a source file
+Stalingrad.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/Stalingrad.cpp.i
+.PHONY : Stalingrad.cpp.i
+
+Stalingrad.s: Stalingrad.cpp.s
+.PHONY : Stalingrad.s
+
+# target to generate assembly for a file
+Stalingrad.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/Stalingrad.cpp.s
+.PHONY : Stalingrad.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -166,7 +190,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -174,32 +198,8 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrado.dir/build.make CMakeFiles/stalingrado.dir/main.cpp.s
 .PHONY : main.cpp.s
-
-principal.o: principal.cpp.o
-.PHONY : principal.o
-
-# target to build an object file
-principal.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/principal.cpp.o
-.PHONY : principal.cpp.o
-
-principal.i: principal.cpp.i
-.PHONY : principal.i
-
-# target to preprocess a source file
-principal.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/principal.cpp.i
-.PHONY : principal.cpp.i
-
-principal.s: principal.cpp.s
-.PHONY : principal.s
-
-# target to generate assembly for a file
-principal.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/stalingrad.dir/build.make CMakeFiles/stalingrad.dir/principal.cpp.s
-.PHONY : principal.cpp.s
 
 # Help Target
 help:
@@ -209,16 +209,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... stalingrad"
-	@echo "... jogador.o"
-	@echo "... jogador.i"
-	@echo "... jogador.s"
+	@echo "... stalingrado"
+	@echo "... Gerenciadores/Gerenciadores.o"
+	@echo "... Gerenciadores/Gerenciadores.i"
+	@echo "... Gerenciadores/Gerenciadores.s"
+	@echo "... Stalingrad.o"
+	@echo "... Stalingrad.i"
+	@echo "... Stalingrad.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... principal.o"
-	@echo "... principal.i"
-	@echo "... principal.s"
 .PHONY : help
 
 
