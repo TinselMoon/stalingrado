@@ -4,6 +4,9 @@
 #include "../Gerenciadores/Gerenciador_colisoes.hpp"
 #include "../Listas/listas.hpp"
 
+#define MAXINIMMED 5
+#define MAXCHEFOES 3
+
 //NAMEPSACE COM TODAS AS FASES
 namespace Fases{
 class Fase : public Stalingrado::Ente{
@@ -11,9 +14,8 @@ protected:
     Listas::ListaEntidades lista_ents;
     Gerenciadores::Gerenciador_Colisoes GC;
 public:
-    Fase() : Ente(){
-
-    }
+    Fase();
+    ~Fase();
 
 };
 
@@ -23,6 +25,7 @@ private:
     const int maxInimMedios; //IMPLEMENTAR VALOR MAXIMO
 public:
     Fase_prim();
+    ~Fase_prim();
 };
 
 //CLASSE FASE SEGUNDA
