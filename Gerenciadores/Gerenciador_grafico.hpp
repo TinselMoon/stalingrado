@@ -1,7 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../Stalingrad.hpp"
+
+//Pré declaração do namespace aqui para usar os ponteiros e etc
+namespace Stalingrado {
+    class Ente;
+}
 
 namespace Gerenciadores {
 class Gerenciador_Grafico {
