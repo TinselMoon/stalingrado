@@ -1,8 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "../Stalingrad.hpp"
 
-class Ente;
 namespace Gerenciadores {
 class Gerenciador_Grafico {
 private:
@@ -11,17 +11,8 @@ private:
 public:
     Gerenciador_Grafico();
     ~Gerenciador_Grafico();
-    void desenharEnte (Ente *pE);
+    void desenharEnte (Stalingrado::Ente *pE);
     void executar(); //interpretacao Gustavo
-};
-
-
-//CLASSE GERENCIADOR DE COLISOES, IMPLEMENTAR
-class Gerenciador_Colisoes{
-private:
-
-public:
-
 };
 
 }

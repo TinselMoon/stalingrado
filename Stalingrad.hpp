@@ -1,17 +1,14 @@
 #pragma once
-#include "Gerenciadores/Gerenciadores.hpp"
+#include "Gerenciadores/Gerenciador_grafico.hpp"
 #include <SFML/Graphics.hpp>
-#include "Fases/fase.hpp"
-using namespace Gerenciadores;
-using namespace Fases;
 
-namespace Stalingrado {
+namespace Stalingrado{
 
 class Ente {
 protected:
     int id;
     static int contId; //adicao do Gustavo, interpretacao
-    static Gerenciador_Grafico* pGG;
+    static Gerenciadores::Gerenciador_Grafico* pGG;
     sf::RectangleShape* pFig; //interpretacao do Gustavo sobre o UML
 
 public:
@@ -19,13 +16,13 @@ public:
     virtual ~Ente();
     virtual void executar() = 0;
     void desenhar();
-    static void setGG(Gerenciador_Grafico* pGG);
+    static void setGG(Gerenciadores::Gerenciador_Grafico* pGG);
 };
 
 //IMPLEMENTAR CLASSE JOGO
 class Jogo{
 private:
-    Gerenciador_Grafico GG;
+    Gerenciadores::Gerenciador_Grafico GG;
 public:
     Jogo();
     ~Jogo();
