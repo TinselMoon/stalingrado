@@ -53,6 +53,8 @@ void Jogo::executar(){
                 GG.getJanela()->close();
             }
         }
+        GG.getJanela()->clear(sf::Color::Black);
+        GG.getJanela()->display();
     }   //IMPLEMENTAR
 }
 //FIM JOGO
