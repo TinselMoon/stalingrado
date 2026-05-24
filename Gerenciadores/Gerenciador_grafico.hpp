@@ -10,7 +10,7 @@ namespace Stalingrado {
 namespace Gerenciadores {
 class Gerenciador_Grafico {
 private:
-    sf::RenderWindow* janela;
+    sf::RenderWindow janela;
 
 public:
     Gerenciador_Grafico();

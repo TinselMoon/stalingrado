@@ -6,8 +6,9 @@
 
 ### Build
 ```bash
-mkdir build && cd build
-cmake .. -DSFML_DIR="../libs/SFML-2.5/lib/cmake/SFML" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+mkdir build
+cd build
+cmake ..
 make
 ```
 
