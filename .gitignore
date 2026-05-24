@@ -1,5 +1,5 @@
 # Build
-build/
+build
 
 # compile_commands symlink não precisa ser ignorado, mas o json gerado sim
 compile_commands.json
