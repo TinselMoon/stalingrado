@@ -12,8 +12,9 @@ protected:
     static int contId; //adicao do Gustavo, interpretacao
     static Gerenciadores::Gerenciador_Grafico* pGG;
     //A classe Sprite possui a posição do sprite também
-    sf::Sprite personagem; //Melhorar o nome para englobar 
-    sf::RectangleShape* pFig; //interpretacao do Gustavo sobre o UML
+    sf::Sprite personagem; //Melhorar o nome para englobar
+    sf::RectangleShape actual_shape;
+    sf::Texture* pFig; //ponteiro para a classe com o sprite
 
 public:
     Ente(const sf::Texture &texture);
