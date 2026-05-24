@@ -4,20 +4,17 @@ using namespace Stalingrado;
 using namespace Gerenciadores;
 
 //INICIO ENTE 
-Ente::Ente(const sf::Texture &texture) : id(contId++), pFig(NULL), personagem(texture),
-actual_shape()
+Ente::Ente(const sf::Texture &texture) : id(contId++), pFig(NULL)//, personagem(texture),
+//actual_shape()
 {
 
 
 }
 
-Ente::Ente() : id(contId++), pFig(NULL), personagem(){
+Ente::Ente() : id(contId++), pFig(NULL)//, personagem()
+{
 
 }
-
-Gerenciador_Grafico* Ente::pGG(NULL);
-int Ente::contId(0);
-
 
 Ente::~Ente() {
 

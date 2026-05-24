@@ -1,5 +1,3 @@
-#pragma once
-
 #include "fase.hpp"
 using namespace Fases;
 

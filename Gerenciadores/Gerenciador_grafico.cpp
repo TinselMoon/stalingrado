@@ -8,8 +8,8 @@ Gerenciador_Grafico::Gerenciador_Grafico(){
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico(){
-    janela->clear();
     delete janela;
+    janela = NULL;
 }
 
 void Gerenciador_Grafico::desenhar(sf::RectangleShape* forma){
