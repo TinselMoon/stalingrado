@@ -47,7 +47,14 @@ Jogo::~Jogo(){
 }
 
 void Jogo::executar(){
-    //IMPLEMENTAR
+    while (GG.getJanela()->isOpen()) { //loop 'infinito' para so fechar janela qnd apertar esc ou clicar no x
+        sf::Event evento;
+        while (GG.getJanela()->pollEvent(evento)) {
+            if ((evento.type == sf::Event::Closed) || (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))) {
+                GG.getJanela()->close();
+            }
+        }
+    }   //IMPLEMENTAR
 }
 //FIM JOGO
 

@@ -10,12 +10,14 @@ namespace Stalingrado {
 namespace Gerenciadores {
 class Gerenciador_Grafico {
 private:
-    sf::RenderWindow Obj; //interpretacao do Gustavo sobre o atributo da classe no UML
+    sf::RenderWindow* janela;
 
 public:
     Gerenciador_Grafico();
     ~Gerenciador_Grafico();
     void desenharEnte (Stalingrado::Ente *pE);
+    void desenhar(sf::RectangleShape* forma);
+    sf::RenderWindow* getJanela();   
     void executar(); //interpretacao Gustavo
 };
 

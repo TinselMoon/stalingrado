@@ -11,8 +11,10 @@ find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
 add_executable(stalingrado
         main.cpp
-        Gerenciadores/Gerenciadores.cpp
-        Gerenciadores/Gerenciadores.hpp
+        Gerenciadores/Gerenciador_colisoes.cpp
+        Gerenciadores/Gerenciador_colisoes.hpp
+        Gerenciadores/Gerenciador_grafico.hpp
+        Gerenciadores/Gerenciador_grafico.cpp
         Stalingrad.hpp
         Stalingrad.cpp
 )
