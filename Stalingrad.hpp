@@ -1,43 +1,50 @@
 #pragma once
-#include "Gerenciadores/Gerenciadores.hpp"
+#include "Gerenciadores/Gerenciador_grafico.hpp"
 #include <SFML/Graphics.hpp>
-#include "Fases/fase.hpp"
-using namespace Gerenciadores;
-using namespace Fases;
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/Texture.hpp>
 
-namespace Stalingrado {
+namespace Stalingrado{
 
 class Ente {
 protected:
     int id;
     static int contId; //adicao do Gustavo, interpretacao
-    static Gerenciador_Grafico* pGG;
+    static Gerenciadores::Gerenciador_Grafico* pGG;
+    //A classe Sprite possui a posição do sprite também
+    sf::Sprite personagem; //Melhorar o nome para englobar 
     sf::RectangleShape* pFig; //interpretacao do Gustavo sobre o UML
 
 public:
+    Ente(const sf::Texture &texture);
     Ente();
     virtual ~Ente();
     virtual void executar() = 0;
     void desenhar();
-    static void setGG(Gerenciador_Grafico* pGG);
+    static void setGG(Gerenciadores::Gerenciador_Grafico* pG);
 };
+
+
+class Jogo;
+//IMPLEMENTAR CLASSE MENU
+class Menu : public Ente{
+private:
+    const Jogo* pJog;
+public:
+    Menu(const Jogo *pJ = NULL);
+    ~Menu();
+    void executar();
+};
+
 
 //IMPLEMENTAR CLASSE JOGO
 class Jogo{
 private:
-    Gerenciador_Grafico GG;
+    Gerenciadores::Gerenciador_Grafico GG;
+    Menu mJogo;
 public:
     Jogo();
     ~Jogo();
+    void executar();
 };
-
-//IMPLEMENTAR CLASSE MENU
-class Menu : public Ente{
-private:
-    Jogo* pJog;
-public:
-    Menu() : Ente() {}
-    ~Menu();
-};
-
 }
