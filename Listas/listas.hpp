@@ -47,8 +47,8 @@ public:
             Ultimo = paux;
             return;
         }
-        paux->setProx(Primeiro);
-        Primeiro = paux;
+        Ultimo->setProx(paux);
+        Ultimo = paux;
     }
     void remover(TIPO *p){
         Elemento* paux = Primeiro;
