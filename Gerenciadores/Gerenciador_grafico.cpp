@@ -4,6 +4,7 @@
 using namespace Gerenciadores;
 
 Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(800, 600), "Stalingrado"){
+    janela.setFramerateLimit(60);
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico(){

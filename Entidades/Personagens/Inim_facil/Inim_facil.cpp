@@ -10,7 +10,7 @@ Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, malda
     corpo.setSize(sf::Vector2f(100.f, 100.f));
     corpo.setPosition((float)x, (float)y);
 
-    if (!textura.loadFromFile("inimigo_facil.png")) {
+    if (!textura.loadFromFile("../assets/inimigo_facil.png")) {
         corpo.setFillColor(sf::Color::Red);
     } else {
         corpo.setTexture(&textura);

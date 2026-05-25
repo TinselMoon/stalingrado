@@ -10,7 +10,7 @@ Jogador::Jogador(int vida) : Personagem(vida){
     corpo.setSize(sf::Vector2f(100.f, 100.f));
     corpo.setPosition((float)x, (float)y);
 
-    if (!textura.loadFromFile("soldado.png")) {
+    if (!textura.loadFromFile("../assets/soldado.png")) {
         corpo.setFillColor(sf::Color::Red);
     } else {
         corpo.setTexture(&textura);
@@ -33,10 +33,10 @@ void Jogador::salvar(){
 }
 
 void Jogador::mover(){
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) y -= 1;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) y += 1;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) x -= 1;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) x += 1;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) y -= 5;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) y += 5;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) x -= 5;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) x += 5;
     corpo.setPosition((float)x, (float)y);
 }
 
