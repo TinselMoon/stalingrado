@@ -24,6 +24,9 @@ Ente::~Ente() {
 
 }
 
+void Ente::desenhar(){
+
+}
 void Ente::setGG (Gerenciador_Grafico* pG) {
     pGG = pG;
 }
@@ -60,9 +63,6 @@ Menu::Menu(const Jogo *pJ) : Ente(), pJog(pJ){
 }
 
 Menu::~Menu(){
-
-}
-void Menu::desenhar(){
 
 }
 

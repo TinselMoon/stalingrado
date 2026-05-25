@@ -1,18 +1,16 @@
 #pragma once
 #include "Gerenciadores/Gerenciador_grafico.hpp"
-#include "Entidades/Personagens/Jogador/Jogador.hpp"
-#include "Entidades/Personagens/Inim_facil/Inim_facil.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Texture.hpp>
-/*
+
 namespace Entidades{
     namespace Personagens{
         class Jogador;
         class Inim_facil;
     }
 }
-*/
+
 namespace Stalingrado{
 
 class Ente {
@@ -30,7 +28,7 @@ public:
     Ente();
     virtual ~Ente();
     virtual void executar() = 0;
-    virtual void desenhar() = 0;
+    virtual void desenhar();
     static void setGG(Gerenciadores::Gerenciador_Grafico* pG);
 };
 
