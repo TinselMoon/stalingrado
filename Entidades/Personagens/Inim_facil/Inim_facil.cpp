@@ -1,5 +1,7 @@
 #include "Inim_facil.hpp"
-using namespace Personagens;
+
+namespace Entidades {
+namespace Personagens {
 
 Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, maldade){
 
@@ -26,3 +28,6 @@ void Inim_facil::salvar(){
 void Inim_facil::mover(){
 
 }
+
+}
+} // Fim dos namespaces

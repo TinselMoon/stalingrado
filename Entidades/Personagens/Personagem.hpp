@@ -1,7 +1,8 @@
 #pragma once
 #include "../Entidade.hpp"
 
-namespace Personagens{
+namespace Entidades {
+namespace Personagens {
 class Personagem : public Entidades::Entidade {
 protected:
     int num_vidas;
@@ -15,3 +16,5 @@ public:
     virtual void mover() = 0;
 };
 }
+
+} // Fim do namespace Entidades

@@ -1,7 +1,8 @@
 #pragma once
 #include "../Obstaculo.hpp"
 
-namespace Obstaculos{
+namespace Entidades {
+namespace Obstaculos {
 class Explosivo : public Obstaculos::Obstaculo{
 private:
     //COLOCAR ALGO AQUI SLA
@@ -15,3 +16,5 @@ public:
     void obstaculizar(Personagens::Jogador* pJ);
 };
 }
+
+} // Fim do namespace Entidades

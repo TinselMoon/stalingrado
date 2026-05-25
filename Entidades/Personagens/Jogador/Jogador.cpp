@@ -1,5 +1,8 @@
 #include "Jogador.hpp"
 
+namespace Entidades {
+namespace Personagens {
+
 Personagens::Jogador::Jogador(int vida) : Personagens::Personagem(vida){
     pontos = 0;
 }
@@ -23,3 +26,6 @@ void Personagens::Jogador::mover(){
 //TEM Q MUDAR A POSIÇÃO DO SPRITE, DEFINIDO NA CLASSE ENTE
 }
 
+
+}
+} // Fim dos namespaces

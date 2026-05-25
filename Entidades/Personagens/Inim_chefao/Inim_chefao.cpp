@@ -1,5 +1,7 @@
 #include "Inim_chefao.hpp"
-using namespace Personagens;
+
+namespace Entidades {
+namespace Personagens {
 
 Inim_chefao::Inim_chefao(int vida, int maldade) : Personagens::Inimigo(vida, maldade){
 
@@ -26,3 +28,6 @@ void Inim_chefao::salvar(){
 void Inim_chefao::mover(){
 
 }
+
+}
+} // Fim dos namespaces

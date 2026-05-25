@@ -1,11 +1,14 @@
 #pragma once
 #include "../Entidade.hpp"
 
-namespace Personagens{
-    class Jogador;
+namespace Entidades{
+    namespace Personagens{
+        class Jogador;
+    }
 }
 
-namespace Obstaculos{
+namespace Entidades {
+namespace Obstaculos {
 class Obstaculo : public Entidades::Entidade{
 protected:
     bool danoso;
@@ -20,3 +23,5 @@ public:
     virtual void obstaculizar(Personagens::Jogador* pJ) = 0;
 };
 }
+
+} // Fim do namespace Entidades

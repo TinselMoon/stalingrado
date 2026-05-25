@@ -1,5 +1,7 @@
 #include "Inimigo.hpp"
-using namespace Personagens;
+
+namespace Entidades {
+namespace Personagens {
 
 Inimigo::Inimigo(int vida, int maldade) : Personagens::Personagem(vida){
     nivel_maldade = maldade;
@@ -16,3 +18,6 @@ void Inimigo::salvarDataBuffer(){
 
 }
 
+
+}
+} // Fim dos namespaces

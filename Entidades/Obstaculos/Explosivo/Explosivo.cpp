@@ -1,5 +1,7 @@
 #include "Explosivo.hpp"
-using namespace Obstaculos;
+
+namespace Entidades {
+namespace Obstaculos {
 
 Explosivo::Explosivo() : Obstaculo(true, false){
 }
@@ -21,3 +23,6 @@ void Explosivo::salvar(){
 void Explosivo::obstaculizar(Personagens::Jogador* pJ){
 
 }
+
+}
+} // Fim dos namespaces

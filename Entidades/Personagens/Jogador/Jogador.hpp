@@ -2,7 +2,8 @@
 #include "../Personagem.hpp"
 
 
-namespace Personagens{
+namespace Entidades {
+namespace Personagens {
 class Inimigo;
 class Jogador : public Personagens::Personagem{
 protected:
@@ -16,3 +17,5 @@ public:
     void mover();
 };
 }
+
+} // Fim do namespace Entidades

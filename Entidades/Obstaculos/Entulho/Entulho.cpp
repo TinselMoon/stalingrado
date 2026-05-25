@@ -1,5 +1,7 @@
 #include "Entulho.hpp"
-using namespace Obstaculos;
+
+namespace Entidades {
+namespace Obstaculos {
 
 Entulho::Entulho() : Obstaculo(false, false){
 }
@@ -17,3 +19,6 @@ void Entulho::salvar(){
 void Entulho::obstaculizar(Personagens::Jogador* pJ){
 
 }
+
+}
+} // Fim dos namespaces

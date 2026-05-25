@@ -1,5 +1,7 @@
 #include "Obstaculo.hpp"
-using namespace Obstaculos;
+
+namespace Entidades {
+namespace Obstaculos {
 
 Obstaculo::Obstaculo() : Entidades::Entidade(){
     danoso = false;
@@ -19,3 +21,6 @@ Obstaculo::~Obstaculo(){
 void Obstaculo::salvarDataBuffer(){
 
 }
+
+}
+} // Fim dos namespaces

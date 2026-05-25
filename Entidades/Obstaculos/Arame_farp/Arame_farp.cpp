@@ -1,5 +1,7 @@
 #include "Arame_farp.hpp"
-using namespace Obstaculos;
+
+namespace Entidades {
+namespace Obstaculos {
 
 Arame_farp::Arame_farp() : Obstaculo(false, true){
 }
@@ -17,3 +19,6 @@ void Arame_farp::salvar(){
 void Arame_farp::obstaculizar(Personagens::Jogador* pJ){
 
 }
+
+}
+} // Fim dos namespaces

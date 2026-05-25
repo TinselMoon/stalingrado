@@ -1,6 +1,7 @@
 #pragma once
 #include "../Inimigo.hpp"
 
+namespace Entidades {
 namespace Personagens {
 class Inim_facil : public Personagens::Inimigo{
 private:
@@ -15,3 +16,5 @@ public:
 };
 
 }
+
+} // Fim do namespace Entidades
