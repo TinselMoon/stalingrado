@@ -1,9 +1,18 @@
 #pragma once
 #include "Gerenciadores/Gerenciador_grafico.hpp"
+#include "Entidades/Personagens/Jogador/Jogador.hpp"
+#include "Entidades/Personagens/Inim_facil/Inim_facil.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Texture.hpp>
-
+/*
+namespace Entidades{
+    namespace Personagens{
+        class Jogador;
+        class Inim_facil;
+    }
+}
+*/
 namespace Stalingrado{
 
 class Ente {
@@ -21,7 +30,7 @@ public:
     Ente();
     virtual ~Ente();
     virtual void executar() = 0;
-    void desenhar();
+    virtual void desenhar() = 0;
     static void setGG(Gerenciadores::Gerenciador_Grafico* pG);
 };
 
@@ -34,6 +43,7 @@ private:
 public:
     Menu(const Jogo *pJ = NULL);
     ~Menu();
+    void desenhar();
     void executar();
 };
 
@@ -43,6 +53,8 @@ class Jogo{
 private:
     Gerenciadores::Gerenciador_Grafico GG;
     Menu mJogo;
+    Entidades::Personagens::Jogador* pJog1;
+    Entidades::Personagens::Inim_facil* pInim1; //Implementação do Gustavo
 public:
     Jogo();
     ~Jogo();

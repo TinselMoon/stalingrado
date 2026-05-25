@@ -1,5 +1,6 @@
 #include "Stalingrad.hpp"
 #include <SFML/Graphics.hpp>
+#include <cstdlib>
 using namespace Stalingrado;
 using namespace Gerenciadores;
 
@@ -23,12 +24,6 @@ Ente::~Ente() {
 
 }
 
-void Ente::desenhar () {
-
-
-
-}
-
 void Ente::setGG (Gerenciador_Grafico* pG) {
     pGG = pG;
 }
@@ -37,8 +32,9 @@ void Ente::setGG (Gerenciador_Grafico* pG) {
 
 //INICIO JOGO
 //AQUI NA CONSTRUTORA EU FAÇO O SET DA INSTANCIA DO GERENCIADOR GRAFICO PARA TODOS OS ENTES
-Jogo::Jogo() : GG(), mJogo(this){
+Jogo::Jogo() : GG(), mJogo(this), pJog1(NULL), pInim1(NULL){
     Ente::setGG(&GG);
+    pJog1 = new Entidades::Personagens::Jogador(5);
 }
 
 Jogo::~Jogo(){
@@ -64,6 +60,9 @@ Menu::Menu(const Jogo *pJ) : Ente(), pJog(pJ){
 }
 
 Menu::~Menu(){
+
+}
+void Menu::desenhar(){
 
 }
 
