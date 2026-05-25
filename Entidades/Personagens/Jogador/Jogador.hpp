@@ -1,5 +1,6 @@
 #pragma once
 #include "../Personagem.hpp"
+#include <SFML/Graphics.hpp>
 
 
 namespace Entidades {
@@ -8,6 +9,8 @@ class Inimigo;
 class Jogador : public Personagens::Personagem{
 protected:
     int pontos;
+    sf::RectangleShape corpo;
+    sf::Texture textura;
 public:
     Jogador(int vida);
     ~Jogador();
@@ -15,6 +18,7 @@ public:
     void executar();
     void salvar();
     void mover();
+    void desenhar();
 };
 }
 

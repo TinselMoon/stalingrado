@@ -1,4 +1,6 @@
 #include "Stalingrad.hpp"
+#include "Entidades/Personagens/Jogador/Jogador.hpp"
+#include "Entidades/Personagens/Inim_facil/Inim_facil.hpp"
 #include <SFML/Graphics.hpp>
 #include <cstdlib>
 using namespace Stalingrado;
@@ -38,10 +40,12 @@ void Ente::setGG (Gerenciador_Grafico* pG) {
 Jogo::Jogo() : GG(), mJogo(this), pJog1(NULL), pInim1(NULL){
     Ente::setGG(&GG);
     pJog1 = new Entidades::Personagens::Jogador(5);
+    pInim1 = new Entidades::Personagens::Inim_facil(5, 1);
 }
 
 Jogo::~Jogo(){
-
+    if (pInim1 != NULL) delete pInim1;
+    if (pJog1 != NULL) delete pJog1;
 }
 
 void Jogo::executar(){
@@ -52,7 +56,14 @@ void Jogo::executar(){
                 GG.getJanela()->close();
             }
         }
-        GG.getJanela()->clear(sf::Color::Black);
+        pJog1->executar();
+        pInim1->executar();
+
+        GG.getJanela()->clear();
+
+        pJog1->desenhar();
+        pInim1->desenhar();
+
         GG.getJanela()->display();
     }   //IMPLEMENTAR
 }
@@ -67,6 +78,10 @@ Menu::~Menu(){
 }
 
 void Menu::executar(){
+
+}
+
+void Menu::desenhar(){
 
 }
 //FIM MENU
