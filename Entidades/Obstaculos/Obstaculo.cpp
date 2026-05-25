@@ -3,7 +3,7 @@
 namespace Entidades {
 namespace Obstaculos {
 
-Obstaculo::Obstaculo() : Entidades::Entidade(){
+Obstaculo::Obstaculo() : Entidade(){
     danoso = false;
     lentidao = false;
 }

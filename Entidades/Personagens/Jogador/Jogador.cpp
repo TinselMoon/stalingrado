@@ -3,26 +3,26 @@
 namespace Entidades {
 namespace Personagens {
 
-Personagens::Jogador::Jogador(int vida) : Personagens::Personagem(vida){
+Jogador::Jogador(int vida) : Personagem(vida){
     pontos = 0;
 }
-Personagens::Jogador::~Jogador(){
+Jogador::~Jogador(){
     pontos = -1;
 }
 
-void Personagens::Jogador::colidir(Inimigo* pIn){
+void Jogador::colidir(Inimigo* pIn){
 
 }
 
-void Personagens::Jogador::executar(){
+void Jogador::executar(){
 
 }
 
-void Personagens::Jogador::salvar(){
+void Jogador::salvar(){
 
 }
 
-void Personagens::Jogador::mover(){
+void Jogador::mover(){
 //TEM Q MUDAR A POSIÇÃO DO SPRITE, DEFINIDO NA CLASSE ENTE
 }
 

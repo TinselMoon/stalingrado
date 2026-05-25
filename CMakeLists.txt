@@ -7,15 +7,15 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
 
-add_executable(stalingrado
-        main.cpp
-        Gerenciadores/Gerenciador_colisoes.cpp
-        Gerenciadores/Gerenciador_colisoes.hpp
-        Gerenciadores/Gerenciador_grafico.hpp
-        Gerenciadores/Gerenciador_grafico.cpp
-        Stalingrad.hpp
-        Stalingrad.cpp
+file(GLOB_RECURSE SOURCES
+    "Entidades/*.cpp"
+    "Fases/*.cpp"
+    "Gerenciadores/*.cpp"
+    "main.cpp"
+    "Stalingrad.cpp"
 )
+
+add_executable(stalingrado ${SOURCES})
 
 target_include_directories(stalingrado PRIVATE
   Gerenciadores
