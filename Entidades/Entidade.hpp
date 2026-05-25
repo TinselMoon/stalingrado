@@ -8,7 +8,7 @@ protected:
     int x;
     int y;
     //std::ostream buffer; Ainda não entendi para que serve
-    void salvarDataBuffer();
+    virtual void salvarDataBuffer();
 
 public:
     Entidade();
