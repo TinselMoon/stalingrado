@@ -1,6 +1,9 @@
 #pragma once
-#include "../Entidades/Entidade.hpp"
 #include "listas.hpp"
+
+namespace Entidades{
+    class Entidade;
+}
 
 namespace Listas {
 class ListaEntidades{
