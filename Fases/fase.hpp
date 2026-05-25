@@ -2,7 +2,7 @@
 #include "../Stalingrad.hpp"
 #include "../Gerenciadores/Gerenciador_grafico.hpp"
 #include "../Gerenciadores/Gerenciador_colisoes.hpp"
-#include "../Listas/listas.hpp"
+#include "../Listas/Lista_entidades.hpp"
 
 #define MAXINIMMED 5
 #define MAXCHEFOES 3
