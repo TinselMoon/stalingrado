@@ -72,9 +72,4 @@ public:
     }
 };
 
-//IMPLEMENTAR
-class ListaEntidades{
-};
-
-
 }
