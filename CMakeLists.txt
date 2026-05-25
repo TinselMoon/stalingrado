@@ -3,8 +3,6 @@ project(stalingrado)
 
 set(CMAKE_CXX_STANDARD 98)
 
-set(SFML_DIR "${CMAKE_SOURCE_DIR}/libs/SFML-2.5/lib/cmake/SFML")
-
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
