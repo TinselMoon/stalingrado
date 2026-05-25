@@ -12,7 +12,7 @@ Inimigo::~Inimigo(){
     nivel_maldade = -1;
 }
 
-void salvarDataBuffer(){
+void Inimigo::salvarDataBuffer(){
 
 }
 

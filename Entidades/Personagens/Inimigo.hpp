@@ -1,8 +1,9 @@
+#pragma once
 #include "Personagem.hpp"
 
-class Jogador;
 
 namespace Personagens{
+class Jogador;
 class Inimigo : public Personagens::Personagem{
 protected:
     int nivel_maldade;

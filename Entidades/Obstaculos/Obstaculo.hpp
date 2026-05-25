@@ -1,7 +1,9 @@
 #pragma once
 #include "../Entidade.hpp"
 
-class Jogador;
+namespace Personagens{
+    class Jogador;
+}
 
 namespace Obstaculos{
 class Obstaculo : public Entidades::Entidade{
@@ -15,6 +17,6 @@ public:
     void salvarDataBuffer();
     virtual void executar() = 0;
     virtual void salvar() = 0;
-    virtual void obstaculizar(Jogador* pJ) = 0;
+    virtual void obstaculizar(Personagens::Jogador* pJ) = 0;
 };
 }

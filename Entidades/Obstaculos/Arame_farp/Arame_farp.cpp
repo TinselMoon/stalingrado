@@ -14,6 +14,6 @@ void Arame_farp::executar(){
 void Arame_farp::salvar(){
 }
 
-void Arame_farp::obstaculizar(Jogador* pJ){
+void Arame_farp::obstaculizar(Personagens::Jogador* pJ){
 
 }

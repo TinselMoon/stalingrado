@@ -1,8 +1,9 @@
+#pragma once
 #include "../Personagem.hpp"
 
-class Inimigo;
 
 namespace Personagens{
+class Inimigo;
 class Jogador : public Personagens::Personagem{
 protected:
     int pontos;

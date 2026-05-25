@@ -18,6 +18,6 @@ void Explosivo::executar(){
 void Explosivo::salvar(){
 }
 
-void Explosivo::obstaculizar(Jogador* pJ){
+void Explosivo::obstaculizar(Personagens::Jogador* pJ){
 
 }

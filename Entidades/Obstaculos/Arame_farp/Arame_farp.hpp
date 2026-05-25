@@ -1,3 +1,4 @@
+#pragma once
 #include "../Obstaculo.hpp"
 
 namespace Obstaculos{
@@ -9,6 +10,6 @@ public:
     ~Arame_farp();
     void executar();
     void salvar();
-    void obstaculizar(Jogador* pJ);
+    void obstaculizar(Personagens::Jogador* pJ);
 };
 }

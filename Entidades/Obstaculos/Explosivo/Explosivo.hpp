@@ -1,3 +1,4 @@
+#pragma once
 #include "../Obstaculo.hpp"
 
 namespace Obstaculos{
@@ -11,6 +12,6 @@ public:
     ~Explosivo();
     void executar();
     void salvar();
-    void obstaculizar(Jogador* pJ);
+    void obstaculizar(Personagens::Jogador* pJ);
 };
 }
