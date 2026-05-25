@@ -7,7 +7,7 @@ Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, malda
     x = 600;
     y = 300;
     raio = 25.0f;
-    corpo.setSize(sf::Vector2f(100.f, 100.f));
+    corpo.setSize(sf::Vector2f(150.f, 150.f));
     corpo.setPosition((float)x, (float)y);
 
     if (!textura.loadFromFile("../assets/inimigo_facil.png")) {
