@@ -11,8 +11,8 @@ namespace Entidades{
     }
     namespace Personagens{
         class Inimigo;
+        class Jogador;
     }
-    class Jogador;
 }
 
 namespace Gerenciadores{
@@ -23,8 +23,8 @@ private:
     vector<Entidades::Personagens::Inimigo*>LIs;
     list<Entidades::Obstaculos::Obstaculo*>LOs;
     set<Entidades::Projetil*>LPs;
-    Entidades::Jogador* pJog1;
-    Entidades::Jogador* pJog2;
+    Entidades::Personagens::Jogador* pJog1;
+    Entidades::Personagens::Jogador* pJog2;
 public:
     
 };

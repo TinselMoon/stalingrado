@@ -11,6 +11,7 @@ file(GLOB_RECURSE SOURCES
     "Entidades/*.cpp"
     "Fases/*.cpp"
     "Gerenciadores/*.cpp"
+    "Listas/*.cpp"
     "main.cpp"
     "Stalingrad.cpp"
 )
