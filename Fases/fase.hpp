@@ -22,10 +22,10 @@ class Fase : public Stalingrado::Ente{
 protected:
     Listas::ListaEntidades lista_ents;
     Gerenciadores::Gerenciador_Colisoes GC;
-    void criarInimFaceis();
-    void criarPlataformas(); // As plataformas são os entulhos
     virtual void criarInimigos() = 0;
     virtual void criarObstaculos() = 0;
+    void criarInimFaceis();
+    void criarPlataformas(); // As plataformas são os entulhos
     void criarCenario();
 public:
     Fase();
