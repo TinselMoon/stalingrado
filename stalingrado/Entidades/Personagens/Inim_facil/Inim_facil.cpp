@@ -1,5 +1,7 @@
 #include "Inim_facil.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Personagens {
 
@@ -47,3 +49,5 @@ void Inim_facil::desenhar(){
 
 }
 } // Fim dos namespaces
+
+} // Fim do namespace Stalingrado

@@ -1,5 +1,7 @@
 #include "Jogador.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Personagens {
 
@@ -48,3 +50,5 @@ void Jogador::desenhar(){
 
 }
 } // Fim dos namespaces
+
+} // Fim do namespace Stalingrado

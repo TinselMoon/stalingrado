@@ -1,6 +1,8 @@
 #pragma once
 #include "../Inimigo.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Personagens {
 class Inim_medio : public Personagens::Inimigo{
@@ -18,3 +20,5 @@ public:
 }
 
 } // Fim do namespace Entidades
+
+} // Fim do namespace Stalingrado

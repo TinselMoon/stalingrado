@@ -1,5 +1,7 @@
 #include "Projetil.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades{
 
 Projetil::Projetil() : Entidade(), ativo(false){
@@ -17,3 +19,5 @@ void Projetil::salvar(){
 
 }
 }//Fim namespace 
+
+} // Fim do namespace Stalingrado

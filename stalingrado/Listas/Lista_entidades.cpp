@@ -1,5 +1,7 @@
 #include "Lista_entidades.hpp"
 
+namespace Stalingrado {
+
 namespace Listas{
 ListaEntidades::ListaEntidades() : LEs(){
 
@@ -23,3 +25,5 @@ void ListaEntidades::remover(Entidades::Entidade *pE){
 }
 
 }
+
+} // Fim do namespace Stalingrado

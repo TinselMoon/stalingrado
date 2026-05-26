@@ -1,5 +1,7 @@
 #include "Explosivo.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Obstaculos {
 
@@ -26,3 +28,5 @@ void Explosivo::obstaculizar(Personagens::Jogador* pJ){
 
 }
 } // Fim dos namespaces
+
+} // Fim do namespace Stalingrado

@@ -1,6 +1,8 @@
 #pragma once
 #include "../Obstaculo.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Obstaculos {
 class Explosivo : public Obstaculos::Obstaculo{
@@ -18,3 +20,5 @@ public:
 }
 
 } // Fim do namespace Entidades
+
+} // Fim do namespace Stalingrado

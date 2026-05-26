@@ -1,5 +1,7 @@
 #pragma once
 #include <cstdlib>
+
+namespace Stalingrado {
 namespace Listas {
 
 //A SEGUIR IMPLEMENTAÇÃO DA CLASSE LISTA
@@ -73,3 +75,5 @@ public:
 };
 
 }
+
+} // Fim do namespace Stalingrado

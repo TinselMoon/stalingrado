@@ -4,14 +4,15 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-namespace Entidades{
-    namespace Personagens{
-        class Jogador;
-        class Inim_facil;
-    }
-}
 
 namespace Stalingrado{
+
+    namespace Entidades{
+        namespace Personagens{
+            class Jogador;
+            class Inim_facil;
+        }
+    }
 
 class Ente {
 protected:

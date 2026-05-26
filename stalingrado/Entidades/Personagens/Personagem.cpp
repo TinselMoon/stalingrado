@@ -1,5 +1,7 @@
 #include "Personagem.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Personagens {
 
@@ -20,3 +22,5 @@ void Personagem::salvarDataBuffer(){
 
 }
 } // Fim dos namespaces
+
+} // Fim do namespace Stalingrado

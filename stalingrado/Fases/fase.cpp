@@ -1,4 +1,6 @@
 #include "fase.hpp"
+
+namespace Stalingrado {
 using namespace Fases;
 
 namespace Fases{
@@ -84,3 +86,5 @@ void Fase_seg::criarObstaculos(){
 
 //FIM FASE SEG
 }
+
+} // Fim do namespace Stalingrado

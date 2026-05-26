@@ -1,5 +1,7 @@
 #include "Inim_medio.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Personagens {
 
@@ -31,3 +33,5 @@ void Inim_medio::mover(){
 
 }
 } // Fim dos namespaces
+
+} // Fim do namespace Stalingrado

@@ -1,6 +1,8 @@
 #pragma once
 #include "../Entidade.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades{
     namespace Personagens{
         class Jogador;
@@ -25,3 +27,5 @@ public:
 }
 
 } // Fim do namespace Entidades
+
+} // Fim do namespace Stalingrado

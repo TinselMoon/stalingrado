@@ -2,6 +2,8 @@
 #include "../Personagem.hpp"
 #include <SFML/Graphics.hpp>
 
+namespace Stalingrado {
+
 
 namespace Entidades {
 namespace Personagens {
@@ -23,3 +25,5 @@ public:
 }
 
 } // Fim do namespace Entidades
+
+} // Fim do namespace Stalingrado

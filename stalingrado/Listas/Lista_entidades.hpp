@@ -2,6 +2,8 @@
 #include "listas.hpp"
 #include "../Entidades/Entidade.hpp"
 
+namespace Stalingrado {
+
 
 namespace Listas {
 class ListaEntidades{
@@ -19,3 +21,5 @@ public:
 }
 
 
+
+} // Fim do namespace Stalingrado

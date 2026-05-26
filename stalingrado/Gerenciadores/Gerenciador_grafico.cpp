@@ -1,6 +1,8 @@
 #include "Gerenciador_grafico.hpp"
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+
+namespace Stalingrado {
 using namespace Gerenciadores;
 
 Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(800, 600), "Stalingrado"){
@@ -19,3 +21,5 @@ void Gerenciador_Grafico::desenhar(sf::RectangleShape* forma){
 sf::RenderWindow* Gerenciador_Grafico::getJanela(){
     return &janela;
 }
+
+} // Fim do namespace Stalingrado

@@ -1,6 +1,8 @@
 #pragma once
 #include "../Entidade.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades{
 class Projetil : public Entidade{
 protected:
@@ -12,3 +14,5 @@ public:
     void salvar();
 };
 }
+
+} // Fim do namespace Stalingrado

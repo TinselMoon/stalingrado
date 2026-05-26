@@ -1,5 +1,7 @@
 #include "Inim_chefao.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Personagens {
 
@@ -31,3 +33,5 @@ void Inim_chefao::mover(){
 
 }
 } // Fim dos namespaces
+
+} // Fim do namespace Stalingrado

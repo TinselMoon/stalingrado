@@ -7,6 +7,8 @@
 #define MAXINIMMED 5
 #define MAXCHEFOES 3
 
+namespace Stalingrado {
+
 
 //AQUI VAMOS FAZER UMA PRÉ DEFINIÇÃO DAS CLASSES USADAS NAS FASES
 namespace Entidades{
@@ -64,3 +66,5 @@ public:
 };
 
 }
+
+} // Fim do namespace Stalingrado

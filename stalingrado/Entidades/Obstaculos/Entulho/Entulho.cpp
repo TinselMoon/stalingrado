@@ -1,5 +1,7 @@
 #include "Entulho.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Obstaculos {
 
@@ -22,3 +24,5 @@ void Entulho::obstaculizar(Personagens::Jogador* pJ){
 
 }
 } // Fim dos namespaces
+
+} // Fim do namespace Stalingrado

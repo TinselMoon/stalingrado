@@ -1,5 +1,7 @@
 #include "Obstaculo.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Obstaculos {
 
@@ -24,3 +26,5 @@ void Obstaculo::salvarDataBuffer(){
 
 }
 } // Fim dos namespaces
+
+} // Fim do namespace Stalingrado

@@ -2,6 +2,8 @@
 #include <vector>
 #include <list>
 #include <set>
+
+namespace Stalingrado {
 using namespace std;
 
 namespace Entidades{
@@ -30,3 +32,5 @@ public:
 };
 
 }
+
+} // Fim do namespace Stalingrado

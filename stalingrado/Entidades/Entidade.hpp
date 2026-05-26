@@ -2,6 +2,8 @@
 #include "../Stalingrad.hpp"
 #include <ostream>
 
+namespace Stalingrado {
+
 namespace Entidades{
 class Entidade : public Stalingrado::Ente{
 protected:
@@ -19,3 +21,5 @@ public:
 
 
 }
+
+} // Fim do namespace Stalingrado

@@ -1,5 +1,7 @@
 #include "Arame_farp.hpp"
 
+namespace Stalingrado {
+
 namespace Entidades {
 namespace Obstaculos {
 
@@ -22,3 +24,5 @@ void Arame_farp::obstaculizar(Personagens::Jogador* pJ){
 
 }
 } // Fim dos namespaces
+
+} // Fim do namespace Stalingrado
