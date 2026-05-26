@@ -2,7 +2,7 @@
 
 ### Dependências
 - CMake 3.x+
-- g++ ou clang++
+- G++ ou clang++
 - SFLM 2.6.2
 
 ### Build
