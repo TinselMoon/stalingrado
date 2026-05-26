@@ -1,5 +1,5 @@
 #pragma once
-#include "../Stalingrad.hpp"
+#include "../Ente.hpp"
 #include "../Gerenciadores/Gerenciador_grafico.hpp"
 #include "../Gerenciadores/Gerenciador_colisoes.hpp"
 #include "../Listas/Lista_entidades.hpp"

@@ -1,4 +1,4 @@
-#include "stalingrado/Stalingrad.hpp"
+#include "stalingrado/Jogo.hpp"
 using namespace Stalingrado;
 
 int main(void){
