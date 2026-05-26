@@ -1,11 +1,11 @@
 #pragma once
-#include "../Stalingrad.hpp"
+#include "../Ente.hpp"
 #include <ostream>
 
 namespace Stalingrado {
 
 namespace Entidades{
-class Entidade : public Stalingrado::Ente{
+class Entidade : public Ente{
 protected:
     int x;
     int y;

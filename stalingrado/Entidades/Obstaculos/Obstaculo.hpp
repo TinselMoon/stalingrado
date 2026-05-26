@@ -3,13 +3,10 @@
 
 namespace Stalingrado {
 
-namespace Entidades{
-    namespace Personagens{
-        class Jogador;
-    }
-}
-
 namespace Entidades {
+namespace Personagens{
+class Jogador;
+}
 namespace Obstaculos {
 class Obstaculo : public Entidades::Entidade{
 protected:
