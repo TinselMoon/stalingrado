@@ -8,12 +8,21 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
 
 file(GLOB_RECURSE SOURCES
-    "Entidades/*.cpp"
-    "Fases/*.cpp"
-    "Gerenciadores/*.cpp"
-    "Listas/*.cpp"
+    "stalingrado/Entidades/*.cpp"
+    "stalingrado/Entidades/Obstaculos/*.cpp"
+    "stalingrado/Entidades/Obstaculos/Arame_farp/*.cpp"
+    "stalingrado/Entidades/Obstaculos/Entulho/*.cpp"
+    "stalingrado/Entidades/Obstaculos/Explosivo/*.cpp"
+    "stalingrado/Entidades/Personagens/*.cpp"
+    "stalingrado/Entidades/Personagens/Inim_chefao/*.cpp"
+    "stalingrado/Entidades/Personagens/Inim_facil/*.cpp"
+    "stalingrado/Entidades/Personagens/Inim_medio/*.cpp"
+    "stalingrado/Entidades/Personagens/Jogador/*.cpp"
+    "stalingrado/Fases/*.cpp"
+    "stalingrado/Gerenciadores/*.cpp"
+    "stalingrado/Listas/*.cpp"
     "main.cpp"
-    "Stalingrad.cpp"
+    "stalingrado/Stalingrad.cpp"
 )
 
 add_executable(stalingrado ${SOURCES})
