@@ -15,7 +15,7 @@ namespace Fases{
 //CLASSE FASE PRIMEIRA
 class Fase_prim : public Fase{
 private:
-    const int maxInimMedios; //IMPLEMENTAR VALOR MAXIMO
+    const int maxInimFaceis; //IMPLEMENTAR VALOR MAXIMO
 protected:
     void criarInimFaceis();
     void criarArame_farp();

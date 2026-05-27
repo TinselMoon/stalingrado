@@ -5,25 +5,25 @@ namespace Stalingrado {
 namespace Listas {
 
 //A SEGUIR IMPLEMENTAÇÃO DA CLASSE LISTA
-template <class TIPO>
+template <class TL>
 class Lista{
 private:
     class Elemento{
     private:
         Elemento* pProx;
-        TIPO *pInfo;
+        TL *pInfo;
     public:
         Elemento() : pProx(NULL), pInfo(NULL){}
         ~Elemento(){pProx = NULL;
         //Talvez liberar a memoria do pInfo
-            delete pInfo;
-            pInfo = NULL;
+            //delete pInfo;
+            //pInfo = NULL;
         }
-        void incluir(TIPO *pI){pInfo = pI;}
+        void incluir(TL *pI){pInfo = pI;}
         void setProx(Elemento* pElem){pProx = pElem;}
 
         Elemento* getProx() const {return pProx;}
-        TIPO* getInfo() const {return pInfo;}
+        TL* getInfo() const {return pInfo;}
     };
     Elemento* Primeiro;
     Elemento* Ultimo;
@@ -40,7 +40,20 @@ public:
         }
         t = NULL;
     }
-    void incluir(TIPO* p){
+
+    void limpar(){
+        Ultimo = NULL;
+
+        Elemento *t;
+        while(Primeiro != NULL){
+            t = Primeiro;
+            Primeiro = Primeiro->getProx();
+            delete t;
+        }
+        t = NULL;
+    }
+
+    void incluir(TL* p){
         Elemento* paux = NULL;
         paux = new Elemento;
         paux->incluir(p);
@@ -52,7 +65,7 @@ public:
         Ultimo->setProx(paux);
         Ultimo = paux;
     }
-    void remover(TIPO *p){
+    void remover(TL *p){
         Elemento* paux = Primeiro;
         if(paux == NULL) return;
         if(paux->getInfo() == p){

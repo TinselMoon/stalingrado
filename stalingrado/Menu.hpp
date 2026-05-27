@@ -10,7 +10,7 @@ namespace Stalingrado{
     private:
         const Jogo* pJog;
     public:
-        Menu(const Jogo *pJ = NULL);
+        Menu(const Jogo *pJ);
         ~Menu();
         void desenhar();
         void executar();

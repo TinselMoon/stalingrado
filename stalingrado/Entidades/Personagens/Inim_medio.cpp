@@ -9,10 +9,6 @@ Inim_medio::Inim_medio(int vida, int maldade) : Personagens::Inimigo(vida, malda
 
 }
 
-Inim_medio::Inim_medio() : Personagens::Inimigo(){
-
-}
-
 Inim_medio::~Inim_medio(){
 
 }

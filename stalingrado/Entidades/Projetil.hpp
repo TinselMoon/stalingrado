@@ -1,5 +1,5 @@
 #pragma once
-#include "../Entidade.hpp"
+#include "Entidade.hpp"
 
 namespace Stalingrado {
 

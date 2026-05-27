@@ -1,5 +1,5 @@
 #pragma once
-#include "../Inimigo.hpp"
+#include "Inimigo.hpp"
 
 namespace Stalingrado {
 
@@ -9,7 +9,6 @@ class Inim_chefao : public Personagens::Inimigo{
 private:
 public:
     Inim_chefao(int vida, int maldade);
-    Inim_chefao();
     ~Inim_chefao();
     void danificar(Jogador *pJ);
     void executar();

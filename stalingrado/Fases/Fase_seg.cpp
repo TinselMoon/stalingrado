@@ -4,7 +4,7 @@ namespace Stalingrado{
 
 namespace Fases{
 
-Fase_seg::Fase_seg() : Fase(), maxChefoes(MAXCHEFOES){
+Fase_seg::Fase_seg() : Fase(), maxChefoes(0){
 
 }
 
@@ -29,6 +29,14 @@ void Fase_seg::criarObstaculos(){
 
 }
 
+void Fase_seg::criarCenario(){
+
+}
+
+void Fase_seg::executar(){
+
+
+}
 
 }
 

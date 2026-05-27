@@ -1,5 +1,5 @@
 #pragma once
-#include "../Personagem.hpp"
+#include "Personagem.hpp"
 #include <SFML/Graphics.hpp>
 
 namespace Stalingrado {
@@ -12,7 +12,7 @@ class Jogador : public Personagens::Personagem{
 protected:
     int pontos;
 public:
-    Jogador(int vida);
+    Jogador(int vida = 0);
     ~Jogador();
     void colidir(Inimigo* pIn);
     void executar();

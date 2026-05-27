@@ -7,8 +7,6 @@ namespace Stalingrado {
 namespace Entidades{
 class Entidade : public Ente{
 protected:
-    int x;
-    int y;
     //std::ostream buffer;// Ainda não entendi para que serve
     virtual void salvarDataBuffer();
 

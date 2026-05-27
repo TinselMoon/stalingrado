@@ -4,9 +4,6 @@
 #include "../Gerenciadores/Gerenciador_colisoes.hpp"
 #include "../Listas/Lista_entidades.hpp"
 
-#define MAXINIMMED 5
-#define MAXCHEFOES 3
-
 namespace Stalingrado {
 
 
@@ -22,14 +19,15 @@ namespace Entidades{
 namespace Fases{
 class Fase : public Stalingrado::Ente{
 protected:
+    const int maxInimMedios;
     Listas::ListaEntidades lista_ents;
     Gerenciadores::Gerenciador_Colisoes GC;
     sf::RectangleShape chao;
     virtual void criarInimigos() = 0;
     virtual void criarObstaculos() = 0;
+    virtual void criarCenario() = 0;
     void criarInimMedios();
     void criarPlataformas(); // As plataformas são os entulhos
-    virtual void criarCenario() = 0;
 public:
     Fase();
     ~Fase();

@@ -27,6 +27,8 @@ public:
     ~Fase_seg();
     void criarInimigos();
     void criarObstaculos();
+    void criarCenario();
+    void executar();
 };
 
 

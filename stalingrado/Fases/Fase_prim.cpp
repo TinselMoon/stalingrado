@@ -4,7 +4,7 @@ namespace Stalingrado{
 
 namespace Fases{
 
-Fase_prim::Fase_prim() : Fase(), maxInimMedios(MAXINIMMED){
+Fase_prim::Fase_prim() : Fase(), maxInimFaceis(0){
 
 }
 
@@ -36,7 +36,7 @@ void Fase_prim::criarCenario(){
 }
 
 void Fase_prim::executar(){
-    pGG->
+    //pGG->
 }
 
 }

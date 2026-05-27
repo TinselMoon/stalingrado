@@ -1,5 +1,6 @@
 #pragma once
 #include "Fases/Fase_prim.hpp"
+#include "Fases/Fase_seg.hpp"
 #include "Menu.hpp"
 
 namespace Stalingrado{
@@ -17,7 +18,9 @@ namespace Stalingrado{
     private:
         Gerenciadores::Gerenciador_Grafico GG;
         Menu mJogo;
-        Fases::Fase_prim fase_um;
+        Entidades::Personagens::Jogador *pJog1;
+        Fases::Fase_prim fase_um; //Será que criar ponteiro e só alocar memória quando for jogar?
+        Fases::Fase_seg fase_dois; 
     public:
         Jogo();
         ~Jogo();

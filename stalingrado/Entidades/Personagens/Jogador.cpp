@@ -25,10 +25,13 @@ void Jogador::salvar(){
 }
 
 void Jogador::mover(){
+    //MUDAR AGORA QUE USAMOS SPRITE
+    /*
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) y -= 5;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) y += 5;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) x -= 5;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) x += 5;
+    */
 }
 
 void Jogador::desenhar(){

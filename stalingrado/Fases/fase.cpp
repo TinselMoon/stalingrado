@@ -5,7 +5,7 @@ namespace Stalingrado {
 namespace Fases{
 
 //INICIO CLASSE ABSTRATA FASE
-Fase::Fase() : Ente(), GC(), lista_ents(), chao(){
+Fase::Fase() : Ente(), GC(), lista_ents(), chao(), maxInimMedios(5){
 
 }
 
