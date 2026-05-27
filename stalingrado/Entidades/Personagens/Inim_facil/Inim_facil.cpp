@@ -6,17 +6,6 @@ namespace Entidades {
 namespace Personagens {
 
 Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, maldade){
-    x = 600;
-    y = 300;
-    raio = 25.0f;
-    corpo.setSize(sf::Vector2f(150.f, 150.f));
-    corpo.setPosition((float)x, (float)y);
-
-    if (!textura.loadFromFile("../stalingrado/assets/inimigo_facil.png")) {
-        corpo.setFillColor(sf::Color::Red);
-    } else {
-        corpo.setTexture(&textura);
-    }
 }
 
 Inim_facil::Inim_facil() : Personagens::Inimigo(){
@@ -42,9 +31,6 @@ void Inim_facil::mover(){
 }
 
 void Inim_facil::desenhar(){
-    if (pGG != NULL) {
-        pGG->desenhar(&corpo);
-    }
 }
 
 }

@@ -1,11 +1,12 @@
 #include "Gerenciador_grafico.hpp"
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/WindowStyle.hpp>
 
 namespace Stalingrado {
 using namespace Gerenciadores;
 
-Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(800, 600), "Stalingrado"){
+Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "Stalingrado", sf::Style::Fullscreen){
     janela.setFramerateLimit(60);
 }
 

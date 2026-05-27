@@ -24,45 +24,17 @@ class Fase : public Stalingrado::Ente{
 protected:
     Listas::ListaEntidades lista_ents;
     Gerenciadores::Gerenciador_Colisoes GC;
+    sf::RectangleShape chao;
     virtual void criarInimigos() = 0;
     virtual void criarObstaculos() = 0;
-    void criarInimFaceis();
+    void criarInimMedios();
     void criarPlataformas(); // As plataformas são os entulhos
-    void criarCenario();
+    virtual void criarCenario() = 0;
 public:
     Fase();
     ~Fase();
-    virtual void executar();
+    virtual void executar() = 0;
 
-};
-
-//CLASSE FASE PRIMEIRA
-class Fase_prim : public Fase{
-private:
-    const int maxInimMedios; //IMPLEMENTAR VALOR MAXIMO
-protected:
-    void criarInimMedios();
-    void criarArame_farp();
-public:
-    Fase_prim();
-    ~Fase_prim();
-    void criarInimigos();
-    void criarObstaculos();
-};
-
-//CLASSE FASE SEGUNDA
-class Fase_seg : public Fase{
-private:
-    const int maxChefoes; //IMPLEMENTAR VALOR MAXIMO
-protected:
-    void criarChefoes();
-    void criarExplosivos();
-    void criarProjeteis();
-public:
-    Fase_seg();
-    ~Fase_seg();
-    void criarInimigos();
-    void criarObstaculos();
 };
 
 }

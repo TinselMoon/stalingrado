@@ -1,4 +1,5 @@
 #pragma once
+#include "Fases/Fase_prim.hpp"
 #include "Menu.hpp"
 
 namespace Stalingrado{
@@ -16,8 +17,7 @@ namespace Stalingrado{
     private:
         Gerenciadores::Gerenciador_Grafico GG;
         Menu mJogo;
-        Entidades::Personagens::Jogador* pJog1;
-        Entidades::Personagens::Inim_facil* pInim1; //Implementação do Gustavo
+        Fases::Fase_prim fase_um;
     public:
         Jogo();
         ~Jogo();

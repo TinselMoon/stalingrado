@@ -11,8 +11,6 @@ class Inimigo;
 class Jogador : public Personagens::Personagem{
 protected:
     int pontos;
-    sf::RectangleShape corpo;
-    sf::Texture textura;
 public:
     Jogador(int vida);
     ~Jogador();

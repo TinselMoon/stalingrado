@@ -5011,13 +5011,13 @@
 											},
 											"lineColor": "#800000",
 											"fillColor": "#FFFFB9",
-											"font": "Arial;11;0",
+											"font": "Arial;11;2",
 											"parentStyle": true,
 											"left": 73,
 											"top": 838,
 											"width": 166,
 											"height": 11,
-											"text": "#criarCenario(): void",
+											"text": "#criarCenario(): virtual void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -19323,10 +19323,11 @@
 									"_parent": {
 										"$ref": "lrgon6A/5EWzMx0ZwKR/AwAA"
 									},
-									"type": "void",
+									"type": "virtual void",
 									"direction": "return"
 								}
-							]
+							],
+							"isAbstract": true
 						}
 					],
 					"isAbstract": true
