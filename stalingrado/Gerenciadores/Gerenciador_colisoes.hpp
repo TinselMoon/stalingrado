@@ -2,6 +2,7 @@
 #include <vector>
 #include <list>
 #include <set>
+#include <cstdlib>
 using namespace std;
 
 namespace Stalingrado {
@@ -29,6 +30,8 @@ private:
     Entidades::Personagens::Jogador* pJog1;
     Entidades::Personagens::Jogador* pJog2;
 public:
+    Gerenciador_Colisoes(Entidades::Personagens::Jogador *pJ1 = NULL, Entidades::Personagens::Jogador *pJ2 = NULL);
+    ~Gerenciador_Colisoes();
     const bool verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2) const;
     void tratarColisoesJogsObstaculos();
     void tratarColisoesJogsInimigos();
