@@ -4,6 +4,7 @@
 #include "../Entidades/Obstaculos/Obstaculo.hpp"
 #include "../Entidades/Projetil.hpp"
 #include <cstdio>
+using namespace std;
 using namespace Stalingrado;
 using namespace Entidades;
 using namespace Personagens;
@@ -164,6 +165,7 @@ void Gerenciador_Colisoes::executar(){
 }
 
 
-}
+} //Fim namespace Gerenciadores
 
 } // Fim do namespace Stalingrado
+
