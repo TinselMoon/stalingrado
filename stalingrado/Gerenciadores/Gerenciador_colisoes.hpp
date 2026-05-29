@@ -3,7 +3,6 @@
 #include <list>
 #include <set>
 #include <cstdlib>
-using namespace std;
 
 namespace Stalingrado {
 
@@ -24,9 +23,9 @@ namespace Gerenciadores{
 //CLASSE GERENCIADOR DE COLISOES, IMPLEMENTAR
 class Gerenciador_Colisoes{
 private:
-    vector<Entidades::Personagens::Inimigo*>LIs;
-    list<Entidades::Obstaculos::Obstaculo*>LOs;
-    set<Entidades::Projetil*>LPs;
+    std::vector<Entidades::Personagens::Inimigo*>LIs;
+    std::list<Entidades::Obstaculos::Obstaculo*>LOs;
+    std::set<Entidades::Projetil*>LPs;
     Entidades::Personagens::Jogador* pJog1;
     Entidades::Personagens::Jogador* pJog2;
     
