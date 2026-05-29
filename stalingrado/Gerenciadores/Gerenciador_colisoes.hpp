@@ -30,14 +30,14 @@ private:
     Entidades::Personagens::Jogador* pJog2;
     
     void resolverColisaoCinematica(Entidades::Personagens::Jogador *pJ, Entidades::Entidade *pE);
-
-public:
-    Gerenciador_Colisoes(Entidades::Personagens::Jogador *pJ1 = NULL, Entidades::Personagens::Jogador *pJ2 = NULL);
-    ~Gerenciador_Colisoes();
     const bool verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2) const;
     void tratarColisoesJogsObstaculos();
     void tratarColisoesJogsInimigos();
     void tratarColisoesJogsProjeteis();
+
+public:
+    Gerenciador_Colisoes(Entidades::Personagens::Jogador *pJ1 = NULL, Entidades::Personagens::Jogador *pJ2 = NULL);
+    ~Gerenciador_Colisoes();
     void incluirInimigo(Entidades::Personagens::Inimigo *pi);
     void incluirObstaculo(Entidades::Obstaculos::Obstaculo *po);
     void incluirProjetil(Entidades::Projetil *pj);
