@@ -29,6 +29,9 @@ private:
     set<Entidades::Projetil*>LPs;
     Entidades::Personagens::Jogador* pJog1;
     Entidades::Personagens::Jogador* pJog2;
+    
+    void resolverColisaoCinematica(Entidades::Personagens::Jogador *pJ, Entidades::Entidade *pE);
+
 public:
     Gerenciador_Colisoes(Entidades::Personagens::Jogador *pJ1 = NULL, Entidades::Personagens::Jogador *pJ2 = NULL);
     ~Gerenciador_Colisoes();

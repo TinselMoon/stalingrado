@@ -19,5 +19,6 @@ namespace Stalingrado{
         virtual void executar() = 0;
         virtual void desenhar();
         static void setGG(Gerenciadores::Gerenciador_Grafico* pG);
+        sf::FloatRect getRectangle();
     };
 }
