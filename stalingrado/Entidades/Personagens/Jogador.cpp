@@ -5,7 +5,7 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 
-Jogador::Jogador(int vida) : Personagem(vida, "Jogador"){
+Jogador::Jogador(int vida) : Personagem(vida, "Soldado"){
     pontos = 0;
 }
 Jogador::~Jogador(){
@@ -29,10 +29,10 @@ void Jogador::mover(){
     sf::Vector2f posi = personagem.getPosition();
     personagem.setPosition(posi.x +1, posi.y + 1);
 }
-
+/*
 void Jogador::desenhar(){
 }
-
+*/
 }
 } // Fim dos namespaces
 

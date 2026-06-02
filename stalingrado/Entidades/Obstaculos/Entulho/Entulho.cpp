@@ -9,6 +9,10 @@ Entulho::Entulho() : Obstaculo(false, false, "Entulho"){
 
 }
 
+Entulho::~Entulho(){
+
+}
+
 void Entulho::executar(){
 
 }

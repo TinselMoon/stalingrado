@@ -14,7 +14,7 @@ public:
     void executar();
     void salvar();
     void mover();
-    void desenhar();
+    //void desenhar();
 };
 
 }
