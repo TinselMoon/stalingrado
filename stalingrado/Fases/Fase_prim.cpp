@@ -45,6 +45,8 @@ void Fase_prim::criarCenario(){
 
 void Fase_prim::executar(){
     lista_ents.percorrer();
+    GC.executar();
+    lista_ents.desenhar();
 }
 
 }

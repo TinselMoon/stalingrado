@@ -17,7 +17,39 @@ void ListaEntidades::incluir(Entidades::Entidade *pE){
 }
 
 void ListaEntidades::percorrer(){
-    
+    Lista<Entidades::Entidade>::Elemento* pAux = LEs.getPrimeiro();
+
+    // 2. Loop para navegar nó por nó até o fim da lista
+    while(pAux != NULL){
+        // 3. Pega a entidade que está guardada dentro do nó
+        Entidades::Entidade* pEntidade = pAux->getInfo();
+
+        // 4. Se o ponteiro for válido, executa
+        if(pEntidade != NULL){
+            pEntidade->executar();
+        }
+
+        // 5. Passa para o próximo nó
+        pAux = pAux->getProx();
+    }   
+}
+
+void ListaEntidades::desenhar(){
+    Lista<Entidades::Entidade>::Elemento* pAux = LEs.getPrimeiro();
+
+    // 2. Loop para navegar nó por nó até o fim da lista
+    while(pAux != NULL){
+        // 3. Pega a entidade que está guardada dentro do nó
+        Entidades::Entidade* pEntidade = pAux->getInfo();
+
+        // 4. Se o ponteiro for válido, executa
+        if(pEntidade != NULL){
+            pEntidade->desenhar();
+        }
+
+        // 5. Passa para o próximo nó
+        pAux = pAux->getProx();
+    }   
 }
 
 void ListaEntidades::remover(Entidades::Entidade *pE){

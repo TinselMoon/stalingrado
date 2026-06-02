@@ -7,7 +7,7 @@ namespace Listas {
 //A SEGUIR IMPLEMENTAÇÃO DA CLASSE LISTA
 template <class TL>
 class Lista{
-private:
+public:
     class Elemento{
     private:
         Elemento* pProx;
@@ -25,6 +25,7 @@ private:
         Elemento* getProx() const {return pProx;}
         TL* getInfo() const {return pInfo;}
     };
+private:
     Elemento* Primeiro;
     Elemento* Ultimo;
 public:
@@ -40,7 +41,7 @@ public:
         }
         t = NULL;
     }
-
+    Elemento* getPrimeiro() const { return Primeiro; }
     void limpar(){
         Ultimo = NULL;
 

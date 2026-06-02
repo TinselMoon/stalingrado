@@ -26,7 +26,8 @@ void Jogador::salvar(){
 
 void Jogador::mover(){
     //MUDAR AGORA QUE USAMOS SPRITE
-
+    sf::Vector2f posi = personagem.getPosition();
+    personagem.setPosition(posi.x +1, posi.y + 1);
 }
 
 void Jogador::desenhar(){

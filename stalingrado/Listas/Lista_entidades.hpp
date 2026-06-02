@@ -14,6 +14,7 @@ public:
     ~ListaEntidades();
     void incluir(Entidades::Entidade* pE);
     void percorrer();
+    void desenhar();
     void remover(Entidades::Entidade *pE);
     void limpar();
     //Adicionar mais funções conforme necessário
