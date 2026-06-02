@@ -13,8 +13,7 @@ protected:
     bool danoso;
     bool lentidao;
 public:
-    Obstaculo();
-    Obstaculo(bool dano, bool lento);
+    Obstaculo(bool dano, bool lento, const std::string& nomeTextura);
     ~Obstaculo();
     void salvarDataBuffer();
     virtual void executar() = 0;

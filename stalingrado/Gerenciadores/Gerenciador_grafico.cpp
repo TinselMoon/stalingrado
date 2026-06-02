@@ -9,6 +9,7 @@ using namespace Gerenciadores;
 
 Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "Stalingrado", sf::Style::Fullscreen){
     janela.setFramerateLimit(60);
+
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico(){
@@ -17,7 +18,6 @@ Gerenciador_Grafico::~Gerenciador_Grafico(){
 void Gerenciador_Grafico::carregarTextura(const std::string& nome, const std::string& caminhoArquivo) {
     sf::Texture textura;
     if (textura.loadFromFile(caminhoArquivo)) {
-        // Se carregou com sucesso, salva no mapa com o nome escolhido
         mapa_texturas[nome] = textura; 
     } 
 }

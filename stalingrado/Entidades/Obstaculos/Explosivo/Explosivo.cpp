@@ -5,10 +5,7 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Obstaculos {
 
-Explosivo::Explosivo() : Obstaculo(true, false){
-}
-
-Explosivo::Explosivo(int dano) : Obstaculo(true, false){
+Explosivo::Explosivo(int dano) : Obstaculo(true, false, "Explosivo"){
     danosidade = dano;
 }
 

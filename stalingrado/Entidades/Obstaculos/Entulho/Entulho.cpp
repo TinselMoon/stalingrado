@@ -5,10 +5,8 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Obstaculos {
 
-Entulho::Entulho() : Obstaculo(false, false){
-}
+Entulho::Entulho() : Obstaculo(false, false, "Entulho"){
 
-Entulho::~Entulho(){
 }
 
 void Entulho::executar(){

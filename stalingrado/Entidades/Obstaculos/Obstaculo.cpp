@@ -5,13 +5,8 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Obstaculos {
 
-Obstaculo::Obstaculo() : Entidade(){
-    danoso = false;
-    lentidao = false;
-}
 
-
-Obstaculo::Obstaculo(bool dano, bool lento) : Entidades::Entidade(){
+Obstaculo::Obstaculo(bool dano, bool lento, const std::string& nomeTextura) : Entidade(nomeTextura){
     danoso = dano;
     lentidao = lento;
 }
