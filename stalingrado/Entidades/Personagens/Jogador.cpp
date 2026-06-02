@@ -5,7 +5,7 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 
-Jogador::Jogador(int vida) : Personagem(vida){
+Jogador::Jogador(int vida) : Personagem(vida, "Jogador"){
     pontos = 0;
 }
 Jogador::~Jogador(){

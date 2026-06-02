@@ -4,7 +4,7 @@ namespace Stalingrado {
 
 namespace Entidades{
 
-Projetil::Projetil() : Entidade(), ativo(false){
+Projetil::Projetil() : Entidade("Projetil"), ativo(false){
 
 }
 

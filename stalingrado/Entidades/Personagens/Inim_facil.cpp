@@ -5,7 +5,7 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 
-Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, maldade){
+Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inim_facil"){
 }
 
 Inim_facil::~Inim_facil(){

@@ -9677,7 +9677,7 @@
 											"parentStyle": true,
 											"left": 1005,
 											"top": 661,
-											"width": 256.2666015625,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "«Entidade - Abstrata»"
 										},
@@ -9693,7 +9693,7 @@
 											"parentStyle": true,
 											"left": 1005,
 											"top": 674,
-											"width": 256.2666015625,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "Personagem"
 										},
@@ -9736,7 +9736,7 @@
 									"parentStyle": true,
 									"left": 1000,
 									"top": 656,
-									"width": 266.2666015625,
+									"width": 307.23193359375,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "1uymcqx1k0et1/n+OD7JwgAA"
@@ -9776,7 +9776,7 @@
 											"parentStyle": true,
 											"left": 1005,
 											"top": 695,
-											"width": 256.2666015625,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "#num_vidas: int",
 											"horizontalAlignment": 0
@@ -9817,7 +9817,7 @@
 											"parentStyle": true,
 											"left": 1005,
 											"top": 708,
-											"width": 256.2666015625,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "#vel_x: float",
 											"horizontalAlignment": 0
@@ -9837,7 +9837,7 @@
 											"parentStyle": true,
 											"left": 1005,
 											"top": 721,
-											"width": 256.2666015625,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "#vel_y: float",
 											"horizontalAlignment": 0
@@ -9849,7 +9849,7 @@
 									"parentStyle": true,
 									"left": 1000,
 									"top": 690,
-									"width": 266.2666015625,
+									"width": 307.23193359375,
 									"height": 47
 								},
 								{
@@ -9877,9 +9877,9 @@
 											"parentStyle": true,
 											"left": 1005,
 											"top": 742,
-											"width": 256.2666015625,
+											"width": 297.23193359375,
 											"height": 11,
-											"text": "«create»+Personagem(tnomeTextura: const &string)",
+											"text": "«create»+Personagem(vida: int, nomeTextura: const &string)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9891,6 +9891,7 @@
 											"model": {
 												"$ref": "AAAAAAGeXH8Ol/XpmrM="
 											},
+											"visible": false,
 											"lineColor": "#800000",
 											"fillColor": "#FFFFB9",
 											"font": "Arial;11;0",
@@ -9916,8 +9917,8 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1005,
-											"top": 768,
-											"width": 256.2666015625,
+											"top": 755,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "«destroy»+Personagem()",
 											"horizontalAlignment": 0
@@ -9936,8 +9937,8 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1005,
-											"top": 781,
-											"width": 256.2666015625,
+											"top": 768,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "+salvarDataBuffer(): void",
 											"horizontalAlignment": 0
@@ -9956,8 +9957,8 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1005,
-											"top": 794,
-											"width": 256.2666015625,
+											"top": 781,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "+setNewPos(x: float, y: float): void",
 											"horizontalAlignment": 0
@@ -9976,8 +9977,8 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1005,
-											"top": 807,
-											"width": 256.2666015625,
+											"top": 794,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "+setVelocidadeX(vx: float): void",
 											"horizontalAlignment": 0
@@ -9996,8 +9997,8 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1005,
-											"top": 820,
-											"width": 256.2666015625,
+											"top": 807,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "+setVelocidadeY(vy: float): void",
 											"horizontalAlignment": 0
@@ -10016,8 +10017,8 @@
 											"font": "Arial;11;2",
 											"parentStyle": true,
 											"left": 1005,
-											"top": 833,
-											"width": 256.2666015625,
+											"top": 820,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "+executar(): virtual void",
 											"horizontalAlignment": 0
@@ -10036,8 +10037,8 @@
 											"font": "Arial;11;2",
 											"parentStyle": true,
 											"left": 1005,
-											"top": 846,
-											"width": 256.2666015625,
+											"top": 833,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "+salvar(): virtual void",
 											"horizontalAlignment": 0
@@ -10056,8 +10057,8 @@
 											"font": "Arial;11;2",
 											"parentStyle": true,
 											"left": 1005,
-											"top": 859,
-											"width": 256.2666015625,
+											"top": 846,
+											"width": 297.23193359375,
 											"height": 11,
 											"text": "+mover(): virtual void",
 											"horizontalAlignment": 0
@@ -10090,8 +10091,8 @@
 									"parentStyle": true,
 									"left": 1000,
 									"top": 737,
-									"width": 266.2666015625,
-									"height": 138
+									"width": 307.23193359375,
+									"height": 125
 								},
 								{
 									"_type": "UMLTemplateParameterCompartmentView",
@@ -10119,7 +10120,7 @@
 							"parentStyle": false,
 							"left": 1000,
 							"top": 656,
-							"width": 265.2666015625,
+							"width": 306.23193359375,
 							"height": 219,
 							"showProperty": false,
 							"nameCompartment": {
@@ -10161,7 +10162,7 @@
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
 									"parentStyle": false,
-									"left": 1258,
+									"left": 1279,
 									"top": 731,
 									"height": 11,
 									"alpha": 15707963267949,
@@ -10181,7 +10182,7 @@
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
 									"parentStyle": false,
-									"left": 1273,
+									"left": 1294,
 									"top": 731,
 									"height": 11,
 									"alpha": 15707963267949,
@@ -10201,7 +10202,7 @@
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
 									"parentStyle": false,
-									"left": 1273,
+									"left": 1294,
 									"top": 730,
 									"height": 11,
 									"alpha": -15707963267949,
@@ -10219,7 +10220,7 @@
 							"tail": {
 								"$ref": "+sk7CpvBPUqdgZSuwoXOwgAA"
 							},
-							"points": "1312:736;1265:736",
+							"points": "1312:736;1306:736",
 							"showProperty": false,
 							"nameLabel": {
 								"$ref": "GXDwKoPdA0ely174o/tLEwAA"
@@ -11362,7 +11363,7 @@
 											"top": 1090,
 											"width": 255,
 											"height": 11,
-											"text": "Inim_Facil"
+											"text": "Inim_facil"
 										},
 										{
 											"_type": "LabelView",
@@ -19022,7 +19023,7 @@
 											"top": 1074,
 											"width": 255.67041015625,
 											"height": 11,
-											"text": "Inim_Medio"
+											"text": "Inim_medio"
 										},
 										{
 											"_type": "LabelView",
@@ -23254,7 +23255,16 @@
 											"_parent": {
 												"$ref": "2YJ28zfOnEi+lreFnb+QrwAA"
 											},
-											"name": "tnomeTextura",
+											"name": "vida",
+											"type": "int"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGeiLNlNodz2fM=",
+											"_parent": {
+												"$ref": "2YJ28zfOnEi+lreFnb+QrwAA"
+											},
+											"name": "nomeTextura",
 											"type": "const &string"
 										}
 									]
@@ -23982,7 +23992,7 @@
 							"_parent": {
 								"$ref": "WmMPnOmkFUaEn4CHmyLHQAAA"
 							},
-							"name": "Inim_Facil",
+							"name": "Inim_facil",
 							"stereotype": "Inimigo 1 - Fácil",
 							"attributes": [
 								{
@@ -24522,7 +24532,7 @@
 					"_parent": {
 						"$ref": "IoH8RzmxEE6xOc9zvj2jawAA"
 					},
-					"name": "Inim_Medio",
+					"name": "Inim_medio",
 					"stereotype": "Inimigo 2 - Médio",
 					"attributes": [
 						{

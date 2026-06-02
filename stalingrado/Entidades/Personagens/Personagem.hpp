@@ -11,8 +11,7 @@ protected:
     float vel_x;
     float vel_y;
 public:
-    Personagem();
-    Personagem(int vida);
+    Personagem(int vida, const std::string& nomeTextura);
     ~Personagem();
     void salvarDataBuffer();
     void setNewPos(float x, float y);

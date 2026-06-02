@@ -5,11 +5,7 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 
-Personagem::Personagem() : Entidades::Entidade(){
-    num_vidas = 0;
-}
-
-Personagem::Personagem(int vida) : Entidades::Entidade(){
+Personagem::Personagem(int vida, const std::string& nomeTextura) : Entidades::Entidade(nomeTextura){
     num_vidas = vida;
 }
 

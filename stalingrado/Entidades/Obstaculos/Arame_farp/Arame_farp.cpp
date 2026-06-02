@@ -5,7 +5,7 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Obstaculos {
 
-Arame_farp::Arame_farp() : Obstaculo(false, true){
+Arame_farp::Arame_farp() : Obstaculo(false, true, "Arame_farp"){
 }
 
 Arame_farp::~Arame_farp(){

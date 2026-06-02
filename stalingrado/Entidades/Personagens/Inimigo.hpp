@@ -12,7 +12,7 @@ protected:
     int nivel_maldade;
 
 public:
-    Inimigo(int vida, int maldade);
+    Inimigo(int vida, int maldade, const std::string& nomeTextura);
     ~Inimigo();
     void salvarDataBuffer();
     virtual void executar() = 0;
