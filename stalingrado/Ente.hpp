@@ -20,6 +20,6 @@ namespace Stalingrado{
         void desenhar();
         static void setGG(Gerenciadores::Gerenciador_Grafico* pG);
         sf::FloatRect getRectangle();
-        const sf::Sprite getSprite();
+        const sf::Sprite& getSprite();
     };
 }

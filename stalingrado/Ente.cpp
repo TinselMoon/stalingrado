@@ -10,7 +10,18 @@ Gerenciador_Grafico* Ente::pGG(NULL);
 Ente::Ente(const std::string& nomeTextura) : id(contId++), pFig(NULL), personagem(pGG->getTextura(nomeTextura)), actual_shape()
 {
     sf::Vector2f size = pGG->getTamanhoTextura(nomeTextura);
-    personagem.setScale(size.x, size.y);
+
+    sf::Vector2u tamanhoOriginal = personagem.getTexture()->getSize();
+
+    if (tamanhoOriginal.x != 0 && tamanhoOriginal.y != 0) {
+        
+        // 4. Calcula a escala necessária para o eixo X e Y
+        float escalaX = size.x / tamanhoOriginal.x;
+        float escalaY = size.y / tamanhoOriginal.y;
+        
+        // 5. Aplica a escala no Sprite
+        personagem.setScale(escalaX, escalaY);
+    }
 
 }
 
@@ -37,7 +48,7 @@ void Ente::setGG (Gerenciador_Grafico* pG) {
     pGG = pG;
 }
 
-const sf::Sprite Ente::getSprite(){
+const sf::Sprite& Ente::getSprite(){
     return personagem;
 }
 
