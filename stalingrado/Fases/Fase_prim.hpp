@@ -22,7 +22,7 @@ protected:
     void criarInimigos();
     void criarObstaculos();
 public:
-    Fase_prim();
+    Fase_prim(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL);
     ~Fase_prim();
     void criarCenario();
     void executar();

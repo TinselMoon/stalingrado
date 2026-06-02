@@ -7,10 +7,10 @@ using namespace Gerenciadores;
 int Ente::contId(0);
 Gerenciador_Grafico* Ente::pGG(NULL);
 //INICIO ENTE 
-Ente::Ente(const std::string& nomeTextura) : id(contId++), pFig(NULL), personagem(pGG->getTextura(nomeTextura)),
-    actual_shape()
+Ente::Ente(const std::string& nomeTextura) : id(contId++), pFig(NULL), personagem(pGG->getTextura(nomeTextura)), actual_shape()
 {
-
+    sf::Vector2f size = pGG->getTamanhoTextura(nomeTextura);
+    personagem.setScale(size.x, size.y);
 
 }
 

@@ -17,11 +17,15 @@ void ListaEntidades::incluir(Entidades::Entidade *pE){
 }
 
 void ListaEntidades::percorrer(){
-
+    
 }
 
 void ListaEntidades::remover(Entidades::Entidade *pE){
     LEs.remover(pE);
+}
+
+void ListaEntidades::limpar(){
+    LEs.limpar();
 }
 
 }

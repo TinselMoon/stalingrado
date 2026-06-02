@@ -15,6 +15,7 @@ public:
     void incluir(Entidades::Entidade* pE);
     void percorrer();
     void remover(Entidades::Entidade *pE);
+    void limpar();
     //Adicionar mais funções conforme necessário
 };
 

@@ -11,6 +11,10 @@ using namespace Gerenciadores;
 Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "Stalingrado", sf::Style::Fullscreen){
     janela.setFramerateLimit(60);
     //Carregar texturas para o hashmap aqui
+    carregarTextura("Inimigo_facil", "../assets/solado.png", sf::Vector2f(100.0f, 100.0f));
+    carregarTextura("Soldado", "../assets/sov.png", sf::Vector2f(100.0f, 100.0f));
+    carregarTextura("Cachorro", "../assets/sov.png", sf::Vector2f(100.0f, 100.0f));
+    carregarTextura("Inim_chefao", "../assets/tanque.png", sf::Vector2f(100.0f, 100.0f));
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico(){
@@ -25,7 +29,11 @@ void Gerenciador_Grafico::carregarTextura(const std::string& nome, const std::st
 }
 
 const sf::Texture& Gerenciador_Grafico::getTextura(const std::string& nome) {
-    return mapa_texturas[nome];
+    return mapa_texturas[nome].first;
+}
+
+const sf::Vector2f Gerenciador_Grafico::getTamanhoTextura(const std::string& nome) {
+    return mapa_texturas[nome].second; // Retorna o Vector2f salvo no pair
 }
 
 void Gerenciador_Grafico::desenharEnte(Ente *pE){

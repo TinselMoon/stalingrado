@@ -19,8 +19,7 @@ namespace Stalingrado{
         Gerenciadores::Gerenciador_Grafico GG;
         Menu mJogo;
         Entidades::Personagens::Jogador *pJog1;
-        Fases::Fase_prim fase_um; //Será que criar ponteiro e só alocar memória quando for jogar?
-        Fases::Fase_seg fase_dois; 
+        Fases::Fase_prim *fase_um; //Será que criar ponteiro e só alocar memória quando for jogar?
     public:
         Jogo();
         ~Jogo();

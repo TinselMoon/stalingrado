@@ -29,7 +29,7 @@ protected:
     void criarInimMedios();
     void criarPlataformas(); // As plataformas são os entulhos
 public:
-    Fase();
+    Fase(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL);
     ~Fase();
     virtual void executar() = 0;
 

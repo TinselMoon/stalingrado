@@ -1,15 +1,23 @@
 #include "Fase_prim.hpp"
+#include "../Entidades/Entidade.hpp"
+#include "../Entidades/Personagens/Inim_facil.hpp"
+#include "../Entidades/Personagens/Jogador.hpp"
 
 namespace Stalingrado{
 
 namespace Fases{
 
-Fase_prim::Fase_prim() : Fase(), maxInimFaceis(0){
-
+Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) : Fase(pJogador1, pJogador2), maxInimFaceis(3){
+    for(int i = 0; i < maxInimFaceis; i++){
+        Entidades::Entidade *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);
+        lista_ents.incluir(pEntidade);
+    }
+    lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
+    pJogador1->setNewPos(300.0f, 500.0f);
 }
 
 Fase_prim::~Fase_prim(){
-
+    lista_ents.limpar();
 }
 
 void Fase_prim::criarInimFaceis(){
@@ -36,7 +44,7 @@ void Fase_prim::criarCenario(){
 }
 
 void Fase_prim::executar(){
-    //pGG->
+    lista_ents.percorrer();
 }
 
 }
