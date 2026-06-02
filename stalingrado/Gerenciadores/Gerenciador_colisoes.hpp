@@ -6,6 +6,8 @@
 
 namespace Stalingrado {
 
+    class Fase;
+
 namespace Entidades{
     class Projetil;
     class Entidade;
@@ -28,6 +30,7 @@ private:
     std::set<Entidades::Projetil*>LPs;
     Entidades::Personagens::Jogador* pJog1;
     Entidades::Personagens::Jogador* pJog2;
+    Fase *pFase;
     
     void resolverColisaoCinematica(Entidades::Personagens::Jogador *pJ, Entidades::Entidade *pE);
     const bool verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2) const;
@@ -38,6 +41,7 @@ private:
 public:
     Gerenciador_Colisoes(Entidades::Personagens::Jogador *pJ1 = NULL, Entidades::Personagens::Jogador *pJ2 = NULL);
     ~Gerenciador_Colisoes();
+    void setFase(Fase *pF);
     void incluirInimigo(Entidades::Personagens::Inimigo *pi);
     void incluirObstaculo(Entidades::Obstaculos::Obstaculo *po);
     void incluirProjetil(Entidades::Projetil *pj);

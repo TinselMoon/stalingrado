@@ -11,7 +11,7 @@ protected:
     virtual void salvarDataBuffer();
 
 public:
-    Entidade();
+    Entidade(const std::string& nomeTextura);
     virtual ~Entidade();
     virtual void executar() = 0;
     virtual void salvar() = 0;

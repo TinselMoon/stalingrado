@@ -13,12 +13,13 @@ namespace Stalingrado{
         sf::Texture* pFig; //ponteiro para a classe com o sprite
 
     public:
-        Ente(const sf::Texture &texture);
+        Ente(const std::string& nomeTextura);
         Ente();
         virtual ~Ente();
         virtual void executar() = 0;
-        virtual void desenhar();
+        void desenhar();
         static void setGG(Gerenciadores::Gerenciador_Grafico* pG);
         sf::FloatRect getRectangle();
+        const sf::Sprite getSprite();
     };
 }

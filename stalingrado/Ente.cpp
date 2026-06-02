@@ -7,7 +7,7 @@ using namespace Gerenciadores;
 int Ente::contId(0);
 Gerenciador_Grafico* Ente::pGG(NULL);
 //INICIO ENTE 
-Ente::Ente(const sf::Texture &texture) : id(contId++), pFig(NULL), personagem(texture),
+Ente::Ente(const std::string& nomeTextura) : id(contId++), pFig(NULL), personagem(pGG->getTextura(nomeTextura)),
     actual_shape()
 {
 
@@ -30,8 +30,16 @@ Ente::~Ente() {
 
 void Ente::desenhar(){
 
+    pGG->desenharEnte(static_cast<Ente*>(this));
+
 }
 void Ente::setGG (Gerenciador_Grafico* pG) {
     pGG = pG;
 }
+
+const sf::Sprite Ente::getSprite(){
+    return personagem;
+}
+
+
 }

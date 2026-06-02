@@ -2,7 +2,7 @@
 
 namespace Stalingrado {
 
-Entidades::Entidade::Entidade() : Ente(){
+Entidades::Entidade::Entidade(const std::string& nomeTextura) : Ente(nomeTextura){
 }
 
 Entidades::Entidade::~Entidade(){

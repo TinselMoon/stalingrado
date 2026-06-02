@@ -3,6 +3,7 @@
 #include "../Entidades/Personagens/Jogador.hpp"
 #include "../Entidades/Obstaculos/Obstaculo.hpp"
 #include "../Entidades/Projetil.hpp"
+#include "../Fases/fase.hpp"
 #include <cstdio>
 using namespace std;
 using namespace Stalingrado;
@@ -27,6 +28,10 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes(){
     LIs.clear();
     LOs.clear();
     LPs.clear();
+}
+
+void Gerenciador_Colisoes::setFase(Fase* pF){
+    pFase = pF;
 }
 
 const bool Gerenciador_Colisoes::verificarColisao(Entidade *pe1, Entidade *pe2) const {
