@@ -4,7 +4,7 @@ namespace Stalingrado{
 namespace Entidades{
 
 Chao::Chao() : Entidade("Chao_fase_um"){
-    personagem.setPosition(0.f, 600.f);
+    personagem.setPosition(0.f, 750.f);
 }
 
 Chao::~Chao(){

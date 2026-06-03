@@ -81,6 +81,7 @@ void Gerenciador_Colisoes::resolverColisaoCinematica(Jogador *pJ, Entidade *pE){
             if (distY > 0) {
                 // empurra para baixo
                 pJ->setNewPos(0.0f, overlapY); 
+                pJ->setVelocidadeY(0.0f); 
             } else {
                 //empurra para cima
                 pJ->setNewPos(0.0f, -overlapY); 

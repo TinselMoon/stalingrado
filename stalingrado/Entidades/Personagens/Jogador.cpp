@@ -19,14 +19,23 @@ void Jogador::colidir(Inimigo* pIn){
 
 void Jogador::verificarTeclas(){
     if(getVelY() == 0){
+        bool A = false;
+        bool D = false;
         setVelocidadeX(0.f);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             setVelocidadeX(-200.f);
+            A = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             setVelocidadeX(200.f);
+            D = true;
+        }
+        if(A && D){
+            setVelocidadeX(0.f);
+            A = false;
+            D = false;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !WisPressed)
         {
