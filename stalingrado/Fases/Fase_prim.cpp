@@ -8,10 +8,12 @@ namespace Stalingrado{
 
 namespace Fases{
 
-Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) : Fase(pJogador1, pJogador2), maxInimFaceis(3), chao(NULL){
+Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) : Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(3), chao(NULL){
     //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
     chao = new Entidades::Chao();
+    chao->setPosicao(0.f, 750.f);
     GC.setChao(chao);
+    personagem.setPosition(0.f, 0.f);
     lista_ents.incluir(static_cast<Entidades::Entidade*>(chao));
     for(int i = 0; i < maxInimFaceis; i++){
         Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);
@@ -54,6 +56,7 @@ void Fase_prim::criarCenario(){
 void Fase_prim::executar(){
     lista_ents.percorrer();
     GC.executar();
+    desenhar();
     lista_ents.desenhar();
 }
 

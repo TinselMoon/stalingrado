@@ -1,5 +1,6 @@
 #include "Jogador.hpp"
 #include "../../Jogo.hpp"
+#include <SFML/Graphics/Rect.hpp>
 
 namespace Stalingrado {
 
@@ -17,19 +18,21 @@ void Jogador::colidir(Inimigo* pIn){
 
 }
 
-void Jogador::verificarTeclas(){
+void Jogador::lerMovimentacao(){
     if(getVelY() == 0){
         bool A = false;
         bool D = false;
+        float velAntiga = getVelX();
+        float velAtual = 0;
         setVelocidadeX(0.f);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            setVelocidadeX(-200.f);
+            setVelocidadeX(-400.f);
             A = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            setVelocidadeX(200.f);
+            setVelocidadeX(400.f);
             D = true;
         }
         if(A && D){
@@ -46,14 +49,26 @@ void Jogador::verificarTeclas(){
         else{
             WisPressed = false;
         }
+        velAtual = getVelX();
+        if(velAntiga != velAtual){
+            //Atualizar lado que o personagem esta olhando
+            int larguraTextura = personagem.getTexture()->getSize().x;
+            int alturaTextura = personagem.getTexture()->getSize().y;
+            if(velAtual > 0){
+                personagem.setTextureRect(sf::IntRect(0, 0, larguraTextura, alturaTextura));
+            }
+            if(velAtual < 0){
+                personagem.setTextureRect(sf::IntRect(larguraTextura, 0,-larguraTextura, alturaTextura));
+            }
+        }
     }
 }
 void Jogador::mover(){
     //MUDAR AGORA QUE USAMOS SPRITE
-    verificarTeclas();
+    lerMovimentacao();
     float dx = 0, dy = 0, dt = 0;
     dt = Jogo::getDt();
-    setVelocidadeY(getVelY() + 980.f*dt);
+    setVelocidadeY(getVelY() + 1200.f*dt);
     dx = getVelX()*dt;
     dy = getVelY()*dt;
 

@@ -30,7 +30,7 @@ protected:
     void criarInimMedios();
     void criarPlataformas(); // As plataformas são os entulhos
 public:
-    Fase(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL);
+    Fase(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL, const std::string& nomeTextura = NULL);
     ~Fase();
     virtual void executar() = 0;
 

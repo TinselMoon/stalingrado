@@ -11,11 +11,12 @@ using namespace Gerenciadores;
 Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "Stalingrado", sf::Style::Fullscreen){
     janela.setFramerateLimit(60);
     //Carregar texturas para o hashmap aqui
-    carregarTextura("Inimigo_facil", "../stalingrado/assets/solado.png", sf::Vector2f(100.0f, 100.0f));
-    carregarTextura("Soldado", "../stalingrado/assets/sov.png", sf::Vector2f(100.0f, 100.0f));
+    carregarTextura("Inimigo_facil", "../stalingrado/assets/soldado.png", sf::Vector2f(100.f, 174.0f));
+    carregarTextura("Soldado", "../stalingrado/assets/sov.png", sf::Vector2f(100.0f, 150.0f));
     carregarTextura("Cachorro", "../stalingrado/assets/cachorro.png", sf::Vector2f(100.0f, 100.0f));
     carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(100.0f, 100.0f));
     carregarTextura("Chao_fase_um", "../stalingrado/assets/chao_fase_um.png", sf::Vector2f(1920.f, 900.f));
+    carregarTextura("Cenario_fase_um", "../stalingrado/assets/fundo_fase_um.png", sf::Vector2f(2172.f, 750.f));
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico(){

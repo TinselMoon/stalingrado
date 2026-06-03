@@ -17,7 +17,7 @@ public:
     Jogador(int vida = 0);
     ~Jogador();
     void colidir(Inimigo* pIn);
-    void verificarTeclas();
+    void lerMovimentacao();
     void executar();
     void salvar();
     void mover();
