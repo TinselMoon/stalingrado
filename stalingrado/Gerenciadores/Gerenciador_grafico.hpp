@@ -7,6 +7,8 @@
 #include <map>
 #include <string>
 
+//Criar singleton
+
 namespace Stalingrado {
 //Pré declaração do namespace aqui para usar os ponteiros e etc
     class Ente;
