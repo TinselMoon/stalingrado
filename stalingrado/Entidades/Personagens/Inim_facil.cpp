@@ -23,9 +23,6 @@ void Inim_facil::salvar(){
 
 }
 void Inim_facil::mover(){
-    sf::Vector2f posi = personagem.getPosition();
-    personagem.setPosition(posi.x +1, posi.y + 1);
-
 }
 /*
 void Inim_facil::desenhar(){

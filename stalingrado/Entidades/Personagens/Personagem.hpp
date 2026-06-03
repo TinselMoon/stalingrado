@@ -17,6 +17,8 @@ public:
     void setNewPos(float x, float y);
     void setVelocidadeX(float vx);
     void setVelocidadeY(float vy);
+    float getVelX();
+    float getVelY();
     virtual void executar() = 0;
     virtual void salvar() = 0;
     virtual void mover() = 0;

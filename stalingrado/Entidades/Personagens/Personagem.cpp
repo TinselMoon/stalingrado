@@ -16,6 +16,14 @@ void Personagem::salvarDataBuffer(){
 
 }
 
+float Personagem::getVelX(){
+    return vel_x;
+}
+float Personagem::getVelY(){
+    return vel_y;
+}
+
+
 void Personagem::setNewPos(float x, float y){
     personagem.move(x, y);
 }

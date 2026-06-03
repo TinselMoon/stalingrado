@@ -9,12 +9,15 @@ namespace Entidades {
 namespace Personagens {
 class Inimigo;
 class Jogador : public Personagens::Personagem{
+private:
+    bool WisPressed;
 protected:
     int pontos;
 public:
     Jogador(int vida = 0);
     ~Jogador();
     void colidir(Inimigo* pIn);
+    void verificarTeclas();
     void executar();
     void salvar();
     void mover();

@@ -3,19 +3,26 @@
 #include "Entidades/Personagens/Jogador.hpp"
 
 namespace Stalingrado{
-Jogo::Jogo() : GG(), mJogo(this), fase_um(NULL){
+Jogo::Jogo() : GG(), mJogo(this), fase_um(NULL), clock(), tempoDecorrido(){
     //AQUI NA CONSTRUTORA EU FAÇO O SET DA INSTANCIA DO GERENCIADOR GRAFICO PARA TODOS OS ENTES
     Ente::setGG(&GG);
     pJog1 = new Entidades::Personagens::Jogador(10);
     fase_um = new Fases::Fase_prim(pJog1);
 }
 
+float Jogo::dt(0);
+
 Jogo::~Jogo(){
     delete pJog1;
     delete fase_um;
 }
 
+float Jogo::getDt(){
+    return dt;
+}
+
 void Jogo::executar(){
+    clock.restart();
     while (GG.getJanela()->isOpen()) { //loop 'infinito' para so fechar janela qnd apertar esc ou clicar no x
         sf::Event evento;
         while (GG.getJanela()->pollEvent(evento)) {
@@ -23,6 +30,8 @@ void Jogo::executar(){
                 GG.getJanela()->close();
             }
         }
+        tempoDecorrido = clock.restart();
+        dt = tempoDecorrido.asSeconds();
 
         GG.getJanela()->clear();
 
