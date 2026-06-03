@@ -22,7 +22,8 @@ protected:
     const int maxInimMedios;
     Listas::ListaEntidades lista_ents;
     Gerenciadores::Gerenciador_Colisoes GC;
-    sf::RectangleShape chao;
+    Entidades::Personagens::Jogador *pJog1;
+    Entidades::Personagens::Jogador *pJog2;
     virtual void criarInimigos() = 0;
     virtual void criarObstaculos() = 0;
     virtual void criarCenario() = 0;

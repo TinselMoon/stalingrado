@@ -3,7 +3,7 @@
 #include "../Entidades/Personagens/Jogador.hpp"
 #include "../Entidades/Obstaculos/Obstaculo.hpp"
 #include "../Entidades/Projetil.hpp"
-#include "../Fases/fase.hpp"
+#include "../Entidades/Chao.hpp"
 #include <cstdio>
 using namespace std;
 using namespace Stalingrado;
@@ -30,8 +30,8 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes(){
     LPs.clear();
 }
 
-void Gerenciador_Colisoes::setFase(Fase* pF){
-    pFase = pF;
+void Gerenciador_Colisoes::setChao(Entidades::Chao* pC){
+    chao = pC;
 }
 
 const bool Gerenciador_Colisoes::verificarColisao(Entidade *pe1, Entidade *pe2) const {
@@ -117,12 +117,17 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
 
 void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
     //Chama a verificarColisao, se for true arruma a pos
+    colisoesChao(static_cast<Personagem*>(pJog1));
+    if(pJog2){
+        colisoesChao(static_cast<Personagem*>(pJog2));
+    }
     for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); it++){
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
             //Arrumar colisao
             resolverColisaoCinematica(pJog1, *it);
             //executar Inimigo
         }
+        colisoesChao(static_cast<Personagem*>(*it));
         if(pJog2){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
                 //Arrumar colisao
@@ -146,6 +151,30 @@ void Gerenciador_Colisoes::tratarColisoesJogsProjeteis(){
                 resolverColisaoCinematica(pJog2, *it);
                 //Precisa executar o projetil, dar dano ao jogador e destruir o projetil
             }
+        }
+    }
+}
+
+void Gerenciador_Colisoes::colisoesChao(Personagem *pe){
+    //Inimigos primeiro
+    Entidades::Entidade *pEntidade = static_cast<Entidades::Entidade*>(chao);
+    if(verificarColisao(static_cast<Entidades::Entidade*>(pe), pEntidade)){
+
+        sf::FloatRect caixaEnt = pe->getRectangle();
+        sf::FloatRect caixaChao = pEntidade->getRectangle();
+
+        float centroEntY = caixaEnt.top + caixaEnt.height / 2.0f;
+
+        float centroChaoY = caixaChao.top + caixaChao.height / 2.0f;
+        
+        float distY = centroEntY - centroChaoY;
+
+        float minY = (caixaEnt.height / 2.0f) + (caixaChao.height / 2.0f);
+
+        float overlapY = minY - std::abs(distY);
+        if(overlapY > 0){
+            pe->setNewPos(0.0f, -overlapY);
+            pe->setVelocidadeY(0.0f);
         }
     }
 }

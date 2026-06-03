@@ -13,8 +13,8 @@ Jogo::Jogo() : GG(), mJogo(this), fase_um(NULL), clock(), tempoDecorrido(){
 float Jogo::dt(0);
 
 Jogo::~Jogo(){
-    delete pJog1;
     delete fase_um;
+    delete pJog1;
 }
 
 float Jogo::getDt(){

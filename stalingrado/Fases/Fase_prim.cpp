@@ -2,13 +2,17 @@
 #include "../Entidades/Entidade.hpp"
 #include "../Entidades/Personagens/Inim_facil.hpp"
 #include "../Entidades/Personagens/Jogador.hpp"
+#include "../Entidades/Chao.hpp"
 
 namespace Stalingrado{
 
 namespace Fases{
 
-Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) : Fase(pJogador1, pJogador2), maxInimFaceis(3){
+Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) : Fase(pJogador1, pJogador2), maxInimFaceis(3), chao(NULL){
     //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
+    chao = new Entidades::Chao();
+    GC.setChao(chao);
+    lista_ents.incluir(static_cast<Entidades::Entidade*>(chao));
     for(int i = 0; i < maxInimFaceis; i++){
         Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);
         GC.incluirInimigo(pEntidade);
@@ -20,7 +24,12 @@ Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Pers
 }
 
 Fase_prim::~Fase_prim(){
-    lista_ents.limpar();
+    if (pJog1 != NULL) {
+        lista_ents.remover(static_cast<Entidades::Entidade*>(pJog1));
+    }
+    if (pJog2 != NULL) {
+        lista_ents.remover(static_cast<Entidades::Entidade*>(pJog2));
+    }
 }
 
 void Fase_prim::criarInimFaceis(){
@@ -39,11 +48,7 @@ void Fase_prim::criarObstaculos(){
 }
 
 void Fase_prim::criarCenario(){
-    chao.setPosition(0, 200);
-    chao.setSize(sf::Vector2f(1000.f, 600.f));
-    chao.setFillColor(sf::Color::White);
-
-    //criarInimigos();
+    //criar o chao aqui e os inimigos e o fundo e os krlh
 }
 
 void Fase_prim::executar(){

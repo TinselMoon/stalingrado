@@ -16,6 +16,7 @@ public:
     void percorrer();
     void desenhar();
     void remover(Entidades::Entidade *pE);
+    void destruirEntidades();
     void limpar();
     //Adicionar mais funções conforme necessário
 };

@@ -6,15 +6,15 @@
 
 namespace Stalingrado {
 
-    class Fase;
-
 namespace Entidades{
     class Projetil;
     class Entidade;
+    class Chao;
     namespace Obstaculos{
         class Obstaculo;
     }
     namespace Personagens{
+        class Personagem;
         class Inimigo;
         class Jogador;
     }
@@ -30,18 +30,19 @@ private:
     std::set<Entidades::Projetil*>LPs;
     Entidades::Personagens::Jogador* pJog1;
     Entidades::Personagens::Jogador* pJog2;
-    Fase *pFase;
+    Entidades::Chao *chao;
     
     void resolverColisaoCinematica(Entidades::Personagens::Jogador *pJ, Entidades::Entidade *pE);
     const bool verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2) const;
     void tratarColisoesJogsObstaculos();
     void tratarColisoesJogsInimigos();
     void tratarColisoesJogsProjeteis();
+    void colisoesChao(Entidades::Personagens::Personagem *pe); //Precisa verificar se o jogador e inimigo estão sobre o chão
 
 public:
     Gerenciador_Colisoes(Entidades::Personagens::Jogador *pJ1 = NULL, Entidades::Personagens::Jogador *pJ2 = NULL);
     ~Gerenciador_Colisoes();
-    void setFase(Fase *pF);
+    void setChao(Entidades::Chao *pC);
     void incluirInimigo(Entidades::Personagens::Inimigo *pi);
     void incluirObstaculo(Entidades::Obstaculos::Obstaculo *po);
     void incluirProjetil(Entidades::Projetil *pj);

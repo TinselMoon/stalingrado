@@ -49,13 +49,6 @@ void Jogador::mover(){
     dy = getVelY()*dt;
 
     personagem.move(dx, dy);
-
-    sf::Vector2f posi = personagem.getPosition();
-    if(posi.y >= 600.f) {
-        posi.y = 600.f;
-        personagem.setPosition(posi);
-        setVelocidadeY(0.f); // Zerar a velocidade Y ao tocar no chão é o que permite pular de novo!
-    }
 }
 
 void Jogador::executar(){

@@ -9,7 +9,7 @@ ListaEntidades::ListaEntidades() : LEs(){
 
 ListaEntidades::~ListaEntidades(){
     //IMPLEMENTAR O QUE FOR NECESSÁRIO
-    //ao apagar a lista_entidades, automaticamente apaga a Lista e todas as entidades que estiverem nela
+    destruirEntidades();
 }
 
 void ListaEntidades::incluir(Entidades::Entidade *pE){
@@ -50,6 +50,21 @@ void ListaEntidades::desenhar(){
         // 5. Passa para o próximo nó
         pAux = pAux->getProx();
     }   
+}
+
+void ListaEntidades::destruirEntidades() {
+    Lista<Entidades::Entidade>::Elemento* pAux = LEs.getPrimeiro();
+
+    while(pAux != NULL){
+        Entidades::Entidade* pEntidade = pAux->getInfo();
+
+        if(pEntidade != NULL){
+            delete pEntidade;
+        }
+
+        pAux = pAux->getProx();
+    }
+    limpar();
 }
 
 void ListaEntidades::remover(Entidades::Entidade *pE){
