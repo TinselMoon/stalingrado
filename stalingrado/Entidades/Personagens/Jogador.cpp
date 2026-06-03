@@ -22,16 +22,16 @@ void Jogador::verificarTeclas(){
         setVelocidadeX(0.f);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            setVelocidadeX(-150.f);
+            setVelocidadeX(-200.f);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            setVelocidadeX(150.f);
+            setVelocidadeX(200.f);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !WisPressed)
         {
             //Negativo pq as coordenadas Y são invertidas
-            setVelocidadeY(-500.f);
+            setVelocidadeY(-600.f);
             WisPressed = true;
         }
         else{

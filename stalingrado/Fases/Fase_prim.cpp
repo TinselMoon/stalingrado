@@ -40,7 +40,7 @@ void Fase_prim::criarObstaculos(){
 
 void Fase_prim::criarCenario(){
     chao.setPosition(0, 200);
-    chao.setSize(sf::Vector2f(1000.f, 200.f));
+    chao.setSize(sf::Vector2f(1000.f, 600.f));
     chao.setFillColor(sf::Color::White);
 
     //criarInimigos();
