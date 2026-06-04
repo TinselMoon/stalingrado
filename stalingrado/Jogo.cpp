@@ -8,6 +8,8 @@ Jogo::Jogo() : GG(), mJogo(this), fase_um(NULL), clock(), tempoDecorrido(){
     Ente::setGG(&GG);
     pJog1 = new Entidades::Personagens::Jogador(10);
     fase_um = new Fases::Fase_prim(pJog1);
+
+    GG.setAlvoCamera(static_cast<Stalingrado::Ente*>(pJog1));
 }
 
 float Jogo::dt(0);
@@ -36,7 +38,7 @@ void Jogo::executar(){
         GG.getJanela()->clear();
 
         fase_um->executar();
-
+        GG.atualizarCamera();
         GG.getJanela()->display();
     }   //IMPLEMENTAR
 }

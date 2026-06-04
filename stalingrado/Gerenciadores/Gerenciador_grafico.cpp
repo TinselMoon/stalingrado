@@ -10,13 +10,15 @@ using namespace Gerenciadores;
 
 Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "Stalingrado", sf::Style::Fullscreen){
     janela.setFramerateLimit(60);
+    camera.setSize(sf::Vector2f(1920.f, 1080.f)); 
+    janela.setView(camera);
     //Carregar texturas para o hashmap aqui
     carregarTextura("Inimigo_facil", "../stalingrado/assets/soldado.png", sf::Vector2f(100.f, 174.0f));
     carregarTextura("Soldado", "../stalingrado/assets/sov.png", sf::Vector2f(100.0f, 150.0f));
     carregarTextura("Cachorro", "../stalingrado/assets/cachorro.png", sf::Vector2f(100.0f, 100.0f));
     carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(100.0f, 100.0f));
     carregarTextura("Chao_fase_um", "../stalingrado/assets/chao_fase_um.png", sf::Vector2f(1920.f, 900.f));
-    carregarTextura("Cenario_fase_um", "../stalingrado/assets/fundo_fase_um.png", sf::Vector2f(2172.f, 750.f));
+    carregarTextura("Cenario_fase_um", "../stalingrado/assets/cenario.png", sf::Vector2f(2172.f, 750.f));
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico(){
@@ -25,9 +27,34 @@ Gerenciador_Grafico::~Gerenciador_Grafico(){
 void Gerenciador_Grafico::carregarTextura(const std::string& nome, const std::string& caminhoArquivo, const sf::Vector2f tamanho) {
     sf::Texture textura;
     if (textura.loadFromFile(caminhoArquivo)) {
-        mapa_texturas[nome].first = textura; 
+        mapa_texturas[nome].first = textura;
+        if(nome == "Chao_fase_um" || nome == "Cenario_fase_um"){
+            mapa_texturas[nome].first.setRepeated(true);
+        }
         mapa_texturas[nome].second = tamanho;
     } 
+}
+
+void Gerenciador_Grafico::setAlvoCamera(Stalingrado::Ente* pAlvo) {
+    alvoCamera = pAlvo;
+}
+
+void Gerenciador_Grafico::atualizarCamera() {
+    if (alvoCamera != NULL) {
+        sf::Vector2f posAlvo = alvoCamera->getSprite().getPosition();
+        
+        if(posAlvo.x < 1920.f/2){
+            camera.setCenter(1920.f/2, 540.f);
+        }
+        else if(posAlvo.x > (10000 - 1920.f/2)){
+            camera.setCenter(10000 - 1920.f/2, 540.f);
+        }
+        else{
+            camera.setCenter(posAlvo.x, 540.f);
+        }
+        
+        janela.setView(camera);
+    }
 }
 
 const sf::Texture& Gerenciador_Grafico::getTextura(const std::string& nome) {

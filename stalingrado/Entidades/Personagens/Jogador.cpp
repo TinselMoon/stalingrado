@@ -43,7 +43,7 @@ void Jogador::lerMovimentacao(){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !WisPressed)
         {
             //Negativo pq as coordenadas Y são invertidas
-            setVelocidadeY(-600.f);
+            setVelocidadeY(-800.f);
             WisPressed = true;
         }
         else{

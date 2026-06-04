@@ -4,6 +4,7 @@
 #include "../Entidades/Obstaculos/Obstaculo.hpp"
 #include "../Entidades/Projetil.hpp"
 #include "../Entidades/Chao.hpp"
+#include <SFML/System/Vector2.hpp>
 #include <cstdio>
 using namespace std;
 using namespace Stalingrado;
@@ -136,6 +137,9 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
             }
         }
     }
+}
+
+void Gerenciador_Colisoes::colisaoBorda(Personagem *pP){
 }
 
 void Gerenciador_Colisoes::tratarColisoesJogsProjeteis(){

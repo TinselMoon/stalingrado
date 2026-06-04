@@ -4,6 +4,9 @@
 namespace Stalingrado{
 namespace Entidades{
 class Chao : public Entidade{
+private:
+    float comprimento;
+    float altura;
 public:
     Chao();
     ~Chao();

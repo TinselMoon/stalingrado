@@ -7,6 +7,8 @@ namespace Personagens {
 
 Personagem::Personagem(int vida, const std::string& nomeTextura) : Entidades::Entidade(nomeTextura){
     num_vidas = vida;
+    sf::FloatRect rectangle = personagem.getLocalBounds();
+    personagem.setOrigin(rectangle.width/2.f, rectangle.height/2.f);
 }
 
 Personagem::~Personagem(){

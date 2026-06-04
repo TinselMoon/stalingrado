@@ -14,6 +14,7 @@ Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Pers
     chao->setPosicao(0.f, 750.f);
     GC.setChao(chao);
     personagem.setPosition(0.f, 0.f);
+    personagem.setTextureRect(sf::IntRect(0, 0, 10000, 750));
     lista_ents.incluir(static_cast<Entidades::Entidade*>(chao));
     for(int i = 0; i < maxInimFaceis; i++){
         Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);

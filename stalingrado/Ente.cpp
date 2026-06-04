@@ -14,11 +14,11 @@ Ente::Ente(const std::string& nomeTextura) : id(contId++), pFig(NULL), personage
     sf::Vector2u tamanhoOriginal = personagem.getTexture()->getSize();
 
     if (tamanhoOriginal.x != 0 && tamanhoOriginal.y != 0) {
-        
+
         // 4. Calcula a escala necessária para o eixo X e Y
         float escalaX = size.x / tamanhoOriginal.x;
         float escalaY = size.y / tamanhoOriginal.y;
-        
+
         // 5. Aplica a escala no Sprite
         personagem.setScale(escalaX, escalaY);
     }

@@ -38,6 +38,7 @@ private:
     void tratarColisoesJogsInimigos();
     void tratarColisoesJogsProjeteis();
     void colisoesChao(Entidades::Personagens::Personagem *pe); //Precisa verificar se o jogador e inimigo estão sobre o chão
+    void colisaoBorda(Entidades::Personagens::Personagem *pP);
 
 public:
     Gerenciador_Colisoes(Entidades::Personagens::Jogador *pJ1 = NULL, Entidades::Personagens::Jogador *pJ2 = NULL);
