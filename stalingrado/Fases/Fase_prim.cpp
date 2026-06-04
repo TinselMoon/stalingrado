@@ -3,24 +3,16 @@
 #include "../Entidades/Personagens/Inim_facil.hpp"
 #include "../Entidades/Personagens/Jogador.hpp"
 #include "../Entidades/Chao.hpp"
-#include "../Entidades/Parede.hpp"
 
 namespace Stalingrado{
 
 namespace Fases{
 
-Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) : Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(3), chao(NULL),
-pEsquerda(NULL), pDireita(NULL)
+Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) : Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(3), chao(NULL)
 {
     //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
     chao = new Entidades::Chao();
     chao->setPosicao(0.f, 750.f);
-    pEsquerda = new Entidades::Parede();
-    pEsquerda->setPosicao(-10.f, 0.f);
-    pDireita = new Entidades::Parede();
-    pDireita->setPosicao(10000.f, 0.f);
-    lista_ents.incluir(static_cast<Entidades::Entidade*>(pEsquerda));
-    lista_ents.incluir(static_cast<Entidades::Entidade*>(pDireita));
     GC.setChao(chao);
     personagem.setPosition(0.f, 0.f);
     personagem.setTextureRect(sf::IntRect(0, 0, 10000, 750));
