@@ -20,11 +20,11 @@ Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Pers
     for(int i = 0; i < maxInimFaceis; i++){
         Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);
         GC.incluirInimigo(pEntidade);
-        pEntidade->setNewPos(100 + i*350, 600);
+        pEntidade->movePos(100 + i*350, 600);
         lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
     }
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
-    pJogador1->setNewPos(300.0f, 500.0f);
+    pJogador1->movePos(300.0f, 500.0f);
 }
 
 Fase_prim::~Fase_prim(){

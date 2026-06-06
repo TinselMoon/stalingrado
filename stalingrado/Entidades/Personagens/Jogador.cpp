@@ -19,7 +19,7 @@ void Jogador::colidir(Inimigo* pIn){
 }
 
 void Jogador::lerMovimentacao(){
-    if(getVelY() == 0){
+    //if(getVelY() == 0){
         bool A = false;
         bool D = false;
         float velAntiga = getVelX();
@@ -40,14 +40,16 @@ void Jogador::lerMovimentacao(){
             A = false;
             D = false;
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !WisPressed)
-        {
-            //Negativo pq as coordenadas Y são invertidas
-            setVelocidadeY(-800.f);
-            WisPressed = true;
-        }
-        else{
-            WisPressed = false;
+        if(getVelY() == 0){
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !WisPressed)
+            {
+                //Negativo pq as coordenadas Y são invertidas
+                setVelocidadeY(-800.f);
+                WisPressed = true;
+            }
+            else{
+                WisPressed = false;
+            }
         }
         velAtual = getVelX();
         if(velAntiga != velAtual){
@@ -61,7 +63,7 @@ void Jogador::lerMovimentacao(){
                 personagem.setTextureRect(sf::IntRect(larguraTextura, 0,-larguraTextura, alturaTextura));
             }
         }
-    }
+    //}
 }
 void Jogador::mover(){
     //MUDAR AGORA QUE USAMOS SPRITE

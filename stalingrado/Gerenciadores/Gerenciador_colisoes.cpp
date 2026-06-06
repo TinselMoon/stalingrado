@@ -72,20 +72,20 @@ void Gerenciador_Colisoes::resolverColisaoCinematica(Jogador *pJ, Entidade *pE){
             // Colisão Horizontal
             if (distX > 0) {
                 // empurra para a direita
-                pJ->setNewPos(overlapX, 0.0f); 
+                pJ->movePos(overlapX, 0.0f); 
             } else {
                 //empurra para a esquerda
-                pJ->setNewPos(-overlapX, 0.0f); 
+                pJ->movePos(-overlapX, 0.0f); 
             }
         } else {
             // Colisão Vertical
             if (distY > 0) {
                 // empurra para baixo
-                pJ->setNewPos(0.0f, overlapY); 
+                pJ->movePos(0.0f, overlapY); 
                 pJ->setVelocidadeY(0.0f); 
             } else {
                 //empurra para cima
-                pJ->setNewPos(0.0f, -overlapY); 
+                pJ->movePos(0.0f, -overlapY); 
 
                 //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
                 pJ->setVelocidadeY(0.0f); 
@@ -146,15 +146,17 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
 }
 
 void Gerenciador_Colisoes::colisaoBorda(Personagem *pP){
-    sf::Vector2f posi = pP->getSprite()->getPosition();
+    sf::Vector2f posi = pP->getPos();
     float dist_centro = pP->getSprite()->getGlobalBounds().width / 2.f;
     if(posi.x - dist_centro < 0){
-        pP->setNewPos(0 + dist_centro, posi.y);
+        float correcaoX = dist_centro - posi.x;
+        pP->movePos(correcaoX, 0.f);
         pP->setVelocidadeX(0.f);
     }
     else if(posi.x + dist_centro > 10000 /* Largura do mapa */){
-        pP->setNewPos(10000 - dist_centro, posi.y);
-        pP->setVelocidadeY(0.f);
+        float correcaoX = 10000 - dist_centro - posi.x;
+        pP->movePos(correcaoX, 0.f);
+        pP->setVelocidadeX(0.f);
     }
 }
 
@@ -194,7 +196,7 @@ void Gerenciador_Colisoes::colisoesChao(Personagem *pe){
 
         float overlapY = minY - std::abs(distY);
         if(overlapY > 0){
-            pe->setNewPos(0.0f, -overlapY);
+            pe->movePos(0.0f, -overlapY);
             pe->setVelocidadeY(0.0f);
         }
     }

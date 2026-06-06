@@ -25,8 +25,11 @@ float Personagem::getVelY(){
     return vel_y;
 }
 
+sf::Vector2f Personagem::getPos(){
+    return personagem.getPosition();
+}
 
-void Personagem::setNewPos(float x, float y){
+void Personagem::movePos(float x, float y){
     personagem.move(x, y);
 }
 
