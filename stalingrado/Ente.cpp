@@ -48,8 +48,8 @@ void Ente::setGG (Gerenciador_Grafico* pG) {
     pGG = pG;
 }
 
-const sf::Sprite& Ente::getSprite(){
-    return personagem;
+const sf::Sprite* Ente::getSprite(){
+    return &personagem;
 }
 
 

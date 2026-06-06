@@ -119,9 +119,13 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
 
 void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
     //Chama a verificarColisao, se for true arruma a pos
-    colisoesChao(static_cast<Personagem*>(pJog1));
+    Personagem *jog1 = static_cast<Personagem*>(pJog1);
+    Personagem *jog2 = static_cast<Personagem*>(pJog2);
+    colisoesChao(jog1);
+    colisaoBorda(jog1);
     if(pJog2){
-        colisoesChao(static_cast<Personagem*>(pJog2));
+        colisoesChao(jog2);
+        colisaoBorda(jog2);
     }
     for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); it++){
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
@@ -129,7 +133,9 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
             resolverColisaoCinematica(pJog1, *it);
             //executar Inimigo
         }
-        colisoesChao(static_cast<Personagem*>(*it));
+        Personagem *inim = static_cast<Personagem*>(*it);
+        colisoesChao(inim);
+        colisaoBorda(inim);
         if(pJog2){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
                 //Arrumar colisao
@@ -140,6 +146,16 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
 }
 
 void Gerenciador_Colisoes::colisaoBorda(Personagem *pP){
+    sf::Vector2f posi = pP->getSprite()->getPosition();
+    float dist_centro = pP->getSprite()->getGlobalBounds().width / 2.f;
+    if(posi.x - dist_centro < 0){
+        pP->setNewPos(0 + dist_centro, posi.y);
+        pP->setVelocidadeX(0.f);
+    }
+    else if(posi.x + dist_centro > 10000 /* Largura do mapa */){
+        pP->setNewPos(10000 - dist_centro, posi.y);
+        pP->setVelocidadeY(0.f);
+    }
 }
 
 void Gerenciador_Colisoes::tratarColisoesJogsProjeteis(){

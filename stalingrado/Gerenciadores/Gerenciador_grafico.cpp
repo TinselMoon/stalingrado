@@ -41,7 +41,7 @@ void Gerenciador_Grafico::setAlvoCamera(Stalingrado::Ente* pAlvo) {
 
 void Gerenciador_Grafico::atualizarCamera() {
     if (alvoCamera != NULL) {
-        sf::Vector2f posAlvo = alvoCamera->getSprite().getPosition();
+            sf::Vector2f posAlvo = alvoCamera->getSprite()->getPosition();
         
         if(posAlvo.x < 1920.f/2){
             camera.setCenter(1920.f/2, 540.f);
@@ -67,7 +67,7 @@ const sf::Vector2f Gerenciador_Grafico::getTamanhoTextura(const std::string& nom
 
 void Gerenciador_Grafico::desenharEnte(Ente *pE){
     if(pE != NULL)
-        janela.draw(pE->getSprite());
+        janela.draw(*(pE->getSprite()));
 }
 
 
