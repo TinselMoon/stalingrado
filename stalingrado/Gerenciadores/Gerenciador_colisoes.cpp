@@ -176,8 +176,8 @@ void Gerenciador_Colisoes::colisaoBorda(Personagem *pP){
         pP->movePos(correcaoX, 0.f);
         pP->setVelocidadeX(0.f);
     }
-    else if(posi.x + dist_centro > 10000 /* Largura do mapa */){
-        float correcaoX = 10000 - dist_centro - posi.x;
+    else if(posi.x + dist_centro > chao->getComprimento() /* Largura do mapa */){
+        float correcaoX = chao->getComprimento() - dist_centro - posi.x;
         pP->movePos(correcaoX, 0.f);
         pP->setVelocidadeX(0.f);
     }

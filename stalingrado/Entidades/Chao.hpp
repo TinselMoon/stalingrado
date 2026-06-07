@@ -5,12 +5,13 @@ namespace Stalingrado{
 namespace Entidades{
 class Chao : public Entidade{
 private:
-    float comprimento;
+    const int comprimento;
     float altura;
 public:
-    Chao();
+    Chao(const int comp);
     ~Chao();
     void setPosicao(float x, float y);
+    const int getComprimento() const;
     void executar();
     void salvar();
 };

@@ -20,6 +20,7 @@ namespace Fases{
 class Fase : public Stalingrado::Ente{
 protected:
     const int maxInimMedios;
+    int comprimentoFase;
     Listas::ListaEntidades lista_ents;
     Gerenciadores::Gerenciador_Colisoes GC;
     Entidades::Personagens::Jogador *pJog1;

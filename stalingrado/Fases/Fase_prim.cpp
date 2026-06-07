@@ -12,11 +12,12 @@ namespace Fases{
 Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) : Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(3), chao(NULL)
 {
     //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
-    chao = new Entidades::Chao();
+    comprimentoFase = 10000;
+    chao = new Entidades::Chao(comprimentoFase);
     chao->setPosicao(0.f, 750.f);
     GC.setChao(chao);
     personagem.setPosition(0.f, 0.f);
-    personagem.setTextureRect(sf::IntRect(0, 0, 10000, 750));
+    personagem.setTextureRect(sf::IntRect(0, 0, comprimentoFase, 750));
     lista_ents.incluir(static_cast<Entidades::Entidade*>(chao));
     for(int i = 0; i < maxInimFaceis; i++){
         Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);
