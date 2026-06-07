@@ -3,6 +3,7 @@
 #include "../Entidades/Personagens/Inim_facil.hpp"
 #include "../Entidades/Personagens/Jogador.hpp"
 #include "../Entidades/Chao.hpp"
+#include <sstream>
 
 namespace Stalingrado{
 
@@ -60,6 +61,10 @@ void Fase_prim::executar(){
     GC.executar();
     desenhar();
     lista_ents.desenhar();
+    pGG->desenharTextoCoordAbs("Fase 1", 50, 100.f, 100.f);
+    std::stringstream vida;
+    vida << "Vida Jogador 1: " << pJog1->getVida();
+    pGG->desenharTextoCamera(vida.str(), 20, 50.f, 50.f);
 }
 
 }

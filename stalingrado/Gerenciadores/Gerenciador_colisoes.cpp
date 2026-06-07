@@ -102,7 +102,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
             //Se colidir, arruma a posição do persongem e executa o obstáculo
             resolverColisaoCinematica(pJog1, *it);
             //
-            //AQUI CHAMAR A FUNÇÃO EXECUTAR PRESENTE NO OBSTACULO
+            //AQUI CHAMAR A FUNÇÃO DANIFICAR PRESENTE NO OBSTACULO
             //
         }
         if(pJog2){
@@ -132,6 +132,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
             //Arrumar colisao
             resolverColisaoCinematica(pJog1, *it);
             //executar Inimigo
+            (*it)->danificar(pJog1);
         }
         Personagem *inim = static_cast<Personagem*>(*it);
         colisoesChao(inim);
@@ -140,6 +141,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
                 //Arrumar colisao
                 resolverColisaoCinematica(pJog2, *it);
+                (*it)->danificar(pJog2);
             }
         }
     }

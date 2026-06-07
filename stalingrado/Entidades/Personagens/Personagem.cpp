@@ -27,8 +27,16 @@ float Personagem::getVelY(){
     return vel_y;
 }
 
+int Personagem::getVida(){
+    return num_vidas;
+}
+
 sf::Vector2f Personagem::getPos(){
     return personagem.getPosition();
+}
+
+void Personagem::tomarDano(int dano){
+    num_vidas -= dano;
 }
 
 void Personagem::movePos(float x, float y){

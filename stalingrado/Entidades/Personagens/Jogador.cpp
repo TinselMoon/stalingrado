@@ -69,13 +69,6 @@ void Jogador::mover(){
     //MUDAR AGORA QUE USAMOS SPRITE
     lerMovimentacao();
     Personagem::mover();
-    /*
-    float dx = 0, dy = 0, dt = 0;
-    dt = Jogo::getDt();
-    setVelocidadeY(getVelY() + 1200.f*dt);
-    dx = getVelX()*dt;
-    dy = getVelY()*dt;
-    */
 }
 
 void Jogador::executar(){
@@ -85,11 +78,6 @@ void Jogador::executar(){
 void Jogador::salvar(){
 
 }
-
-/*
-void Jogador::desenhar(){
-}
-*/
 }
 } // Fim dos namespaces
 

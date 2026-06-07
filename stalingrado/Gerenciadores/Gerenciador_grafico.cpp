@@ -3,6 +3,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/WindowStyle.hpp>
+#include <iostream>
 #include "../Ente.hpp"
 
 namespace Stalingrado {
@@ -19,6 +20,9 @@ Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "S
     carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(100.0f, 100.0f));
     carregarTextura("Chao_fase_um", "../stalingrado/assets/chao_fase_um.png", sf::Vector2f(1920.f, 900.f));
     carregarTextura("Cenario_fase_um", "../stalingrado/assets/cenario.png", sf::Vector2f(2172.f, 750.f));
+    if (!font.loadFromFile("../stalingrado/assets/font.ttf")) {
+        std::cerr << "Erro ao carregar a fonte!" << std::endl;
+    }
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico(){
@@ -55,6 +59,32 @@ void Gerenciador_Grafico::atualizarCamera() {
         
         janela.setView(camera);
     }
+}
+
+void Gerenciador_Grafico::desenharTextoCoordAbs(const std::string& texto, int tam, float x, float y){
+    sf::Text text;
+    text.setFont(font);
+    text.setString(texto);
+    text.setCharacterSize(tam);
+    text.setPosition(x, y);
+    text.setFillColor(sf::Color::White);
+    text.setOutlineColor(sf::Color::Black);
+    text.setOutlineThickness(3.f);
+    janela.draw(text);
+}
+
+void Gerenciador_Grafico::desenharTextoCamera(const std::string& texto, int tam, float x, float y){
+    sf::Text text;
+    text.setFont(font);
+    text.setString(texto);
+    text.setCharacterSize(tam);
+    text.setPosition(x, y);
+    text.setFillColor(sf::Color::White);
+    text.setOutlineColor(sf::Color::Black);
+    text.setOutlineThickness(3.f);
+    janela.setView(janela.getDefaultView());
+    janela.draw(text);
+    janela.setView(camera);
 }
 
 const sf::Texture& Gerenciador_Grafico::getTextura(const std::string& nome) {

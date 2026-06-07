@@ -10,6 +10,7 @@ Jogo::Jogo() : GG(), mJogo(this), fase_um(NULL), clock(), tempoDecorrido(){
     fase_um = new Fases::Fase_prim(pJog1);
 
     GG.setAlvoCamera(static_cast<Stalingrado::Ente*>(pJog1));
+    srand(time(NULL));
 }
 
 float Jogo::dt(0);

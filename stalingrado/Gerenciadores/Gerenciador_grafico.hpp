@@ -18,6 +18,7 @@ class Gerenciador_Grafico {
 private:
     sf::RenderWindow janela;
     sf::View camera;
+    sf::Font font;
     Stalingrado::Ente *alvoCamera;
     std::map<std::string, std::pair<sf::Texture, sf::Vector2f> > mapa_texturas; // basta buscar pelo nome para usar a textura
 public:
@@ -29,6 +30,8 @@ public:
     const sf::Vector2f getTamanhoTextura(const std::string& nome);
 
     void desenharEnte (Stalingrado::Ente *pE);
+    void desenharTextoCoordAbs(const std::string& texto, int tam, float x, float y);
+    void desenharTextoCamera(const std::string& texto, int tam, float x, float y);
     sf::RenderWindow* getJanela();   
     void executar(); //interpretacao Gustavo
     void setAlvoCamera(Stalingrado::Ente* pAlvo);

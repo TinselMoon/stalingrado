@@ -20,6 +20,8 @@ public:
     float getVelX();
     float getVelY();
     sf::Vector2f getPos();
+    int getVida();
+    void tomarDano(int dano);
     virtual void executar() = 0;
     virtual void salvar() = 0;
     virtual void mover();
