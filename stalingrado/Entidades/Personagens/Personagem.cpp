@@ -1,4 +1,5 @@
 #include "Personagem.hpp"
+#include "../../Jogo.hpp"
 
 namespace Stalingrado {
 
@@ -9,6 +10,7 @@ Personagem::Personagem(int vida, const std::string& nomeTextura) : Entidades::En
     num_vidas = vida;
     sf::FloatRect rectangle = personagem.getLocalBounds();
     personagem.setOrigin(rectangle.width/2.f, rectangle.height/2.f);
+    vel_x = vel_y = 0.f;
 }
 
 Personagem::~Personagem(){
@@ -40,6 +42,14 @@ void Personagem::setVelocidadeY(float vy){
     vel_y = vy;
 }
 
+void Personagem::mover(){
+    float dx = 0, dy = 0, dt = 0;
+    dt = Jogo::getDt();
+    setVelocidadeY(getVelY() + 1200.f*dt);
+    dx = getVelX()*dt;
+    dy = getVelY()*dt;
+    personagem.move(dx, dy);
+}
 
 }
 } // Fim dos namespaces

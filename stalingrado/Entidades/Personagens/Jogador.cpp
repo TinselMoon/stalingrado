@@ -68,13 +68,14 @@ void Jogador::lerMovimentacao(){
 void Jogador::mover(){
     //MUDAR AGORA QUE USAMOS SPRITE
     lerMovimentacao();
+    Personagem::mover();
+    /*
     float dx = 0, dy = 0, dt = 0;
     dt = Jogo::getDt();
     setVelocidadeY(getVelY() + 1200.f*dt);
     dx = getVelX()*dt;
     dy = getVelY()*dt;
-
-    personagem.move(dx, dy);
+    */
 }
 
 void Jogador::executar(){

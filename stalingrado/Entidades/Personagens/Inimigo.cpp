@@ -21,6 +21,11 @@ void Inimigo::salvar(){
 
 }
 
+void Inimigo::mover(){
+
+}
+
+
 }
 } // Fim dos namespaces
 

@@ -23,6 +23,7 @@ void Inim_facil::salvar(){
 
 }
 void Inim_facil::mover(){
+    Personagem::mover();
 }
 /*
 void Inim_facil::desenhar(){
