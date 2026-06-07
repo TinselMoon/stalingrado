@@ -25,7 +25,7 @@ public:
     Gerenciador_Grafico();
     ~Gerenciador_Grafico();
 
-    void carregarTextura(const std::string& nome, const std::string& caminhoArquivo, const sf::Vector2f tamanho);
+    void carregarTextura(const std::string& nome, const std::string& caminhoArquivo, const sf::Vector2f tamanho, const bool isRepeated = false);
     const sf::Texture& getTextura(const std::string& nome);
     const sf::Vector2f getTamanhoTextura(const std::string& nome);
 

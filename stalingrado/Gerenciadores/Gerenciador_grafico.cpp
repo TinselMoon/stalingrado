@@ -14,12 +14,13 @@ Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "S
     camera.setSize(sf::Vector2f(1920.f, 1080.f)); 
     janela.setView(camera);
     //Carregar texturas para o hashmap aqui
+    //o true no final é para indicar que a textura se repete pelo sprite
     carregarTextura("Inimigo_facil", "../stalingrado/assets/soldado.png", sf::Vector2f(100.f, 174.0f));
     carregarTextura("Soldado", "../stalingrado/assets/sov.png", sf::Vector2f(100.0f, 150.0f));
     carregarTextura("Cachorro", "../stalingrado/assets/cachorro.png", sf::Vector2f(100.0f, 100.0f));
     carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(100.0f, 100.0f));
-    carregarTextura("Chao_fase_um", "../stalingrado/assets/chao_fase_um.png", sf::Vector2f(1920.f, 900.f));
-    carregarTextura("Cenario_fase_um", "../stalingrado/assets/cenario.png", sf::Vector2f(2172.f, 750.f));
+    carregarTextura("Chao_fase_um", "../stalingrado/assets/chao_fase_um.png", sf::Vector2f(1920.f, 900.f), true);
+    carregarTextura("Cenario_fase_um", "../stalingrado/assets/cenario.png", sf::Vector2f(2172.f, 750.f), true);
     if (!font.loadFromFile("../stalingrado/assets/font.ttf")) {
         std::cerr << "Erro ao carregar a fonte!" << std::endl;
     }
@@ -28,13 +29,11 @@ Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "S
 Gerenciador_Grafico::~Gerenciador_Grafico(){
 }
 
-void Gerenciador_Grafico::carregarTextura(const std::string& nome, const std::string& caminhoArquivo, const sf::Vector2f tamanho) {
+void Gerenciador_Grafico::carregarTextura(const std::string& nome, const std::string& caminhoArquivo, const sf::Vector2f tamanho, const bool isRepeated) {
     sf::Texture textura;
     if (textura.loadFromFile(caminhoArquivo)) {
         mapa_texturas[nome].first = textura;
-        if(nome == "Chao_fase_um" || nome == "Cenario_fase_um"){
-            mapa_texturas[nome].first.setRepeated(true);
-        }
+        mapa_texturas[nome].first.setRepeated(isRepeated);
         mapa_texturas[nome].second = tamanho;
     } 
 }
