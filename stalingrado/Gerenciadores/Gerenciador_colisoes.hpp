@@ -34,6 +34,7 @@ private:
     
     void resolverColisaoCinematica(Entidades::Personagens::Jogador *pJ, Entidades::Entidade *pE);
     const bool verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2) const;
+    const bool verificarColisaoDano(Entidades::Entidade *pe1, Entidades::Entidade *pe2, float margemExtra) const;
     void tratarColisoesJogsObstaculos();
     void tratarColisoesJogsInimigos();
     void tratarColisoesJogsProjeteis();

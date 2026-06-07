@@ -22,7 +22,7 @@ Inim_facil::~Inim_facil(){
 void Inim_facil::danificar(Jogador *pJ){
     dt_dano += Jogo::getDt();
     if(dt_dano > 0.5f){
-        pJ->tomarDano(1);
+        pJ->tomarDano(dano);
         dt_dano = 0;
     }
 }

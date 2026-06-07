@@ -42,6 +42,25 @@ const bool Gerenciador_Colisoes::verificarColisao(Entidade *pe1, Entidade *pe2) 
     return pe1->getRectangle().intersects(pe2->getRectangle());
 }
 
+const bool Gerenciador_Colisoes::verificarColisaoDano(Entidades::Entidade *pe1, Entidades::Entidade *pe2, float margemExtra) const{
+    if (pe1 == NULL || pe2 == NULL) {
+        return false;
+    }
+    
+    sf::FloatRect caixa1 = pe1->getRectangle();
+    sf::FloatRect caixa2 = pe2->getRectangle();
+    
+    //expande a caixa do Inimigo p todos os lados usando a margemExtra
+    //Tive que aplicar isso pq se usasse colisao padrao, o inimigo só daria dano se 
+    //as caixas ficassem sobrepostas, e não encostadas
+    caixa2.left -= margemExtra;
+    caixa2.top -= margemExtra;
+    caixa2.width += margemExtra * 2.0f;
+    caixa2.height += margemExtra * 2.0f;
+    
+    return caixa1.intersects(caixa2);
+}
+
 void Gerenciador_Colisoes::resolverColisaoCinematica(Jogador *pJ, Entidade *pE){
 
     sf::FloatRect caixaJog = pJ->getRectangle();
@@ -131,7 +150,9 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
             //Arrumar colisao
             resolverColisaoCinematica(pJog1, *it);
-            //executar Inimigo
+        }
+        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
+            //Dano do inimigo
             (*it)->danificar(pJog1);
         }
         Personagem *inim = static_cast<Personagem*>(*it);
