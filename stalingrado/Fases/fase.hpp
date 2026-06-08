@@ -25,10 +25,11 @@ protected:
     Gerenciadores::Gerenciador_Colisoes GC;
     Entidades::Personagens::Jogador *pJog1;
     Entidades::Personagens::Jogador *pJog2;
+    //void carregarFase(const char* caminhoArquivo);
     virtual void criarInimigos() = 0;
     virtual void criarObstaculos() = 0;
     virtual void criarCenario() = 0;
-    void criarInimMedios();
+    void criarInimMedios(float x, float y);
     void criarPlataformas(); // As plataformas são os entulhos
 public:
     Fase(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL, const std::string& nomeTextura = NULL);

@@ -19,7 +19,7 @@ private:
     const int maxInimFaceis; //IMPLEMENTAR VALOR MAXIMO
     Entidades::Chao *chao;
 protected:
-    void criarInimFaceis();
+    void criarInimFaceis(float x, float y);
     void criarArame_farp();
     void criarInimigos();
     void criarObstaculos();
