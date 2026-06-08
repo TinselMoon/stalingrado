@@ -61,7 +61,27 @@ const bool Gerenciador_Colisoes::verificarColisaoDano(Entidades::Entidade *pe1, 
     return caixa1.intersects(caixa2);
 }
 
-void Gerenciador_Colisoes::resolverColisaoCinematica(Jogador *pJ, Entidade *pE){
+void Gerenciador_Colisoes::tratarColisoesObsObs(){
+    //Executar duas vezes para corrigir possíveis sobreposições entre obstáculos
+    for(list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); it++){
+        colisoesChao(*it);
+        for(list<Obstaculo*>::iterator it_j = it; it_j != LOs.end(); it_j++){
+            if(verificarColisao(static_cast<Entidade*>(*it_j), static_cast<Entidade*>(*it))){
+                resolverColisaoCinematica(*it_j, *it);
+            }
+        }
+    }
+    for(list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); it++){
+        for(list<Obstaculo*>::iterator it_j = it; it_j != LOs.end(); it_j++){
+            if(verificarColisao(static_cast<Entidade*>(*it_j), static_cast<Entidade*>(*it))){
+                resolverColisaoCinematica(*it_j, *it);
+            }
+        }
+    }
+
+}
+
+void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE){
 
     sf::FloatRect caixaJog = pJ->getRectangle();
     sf::FloatRect caixaObs = pE->getRectangle();
@@ -123,6 +143,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
             //
             //AQUI CHAMAR A FUNÇÃO DANIFICAR PRESENTE NO OBSTACULO
             //
+        
         }
         if(pJog2){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
@@ -201,7 +222,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsProjeteis(){
     }
 }
 
-void Gerenciador_Colisoes::colisoesChao(Personagem *pe){
+void Gerenciador_Colisoes::colisoesChao(Entidade *pe){
     //Inimigos primeiro
     Entidades::Entidade *pEntidade = static_cast<Entidades::Entidade*>(chao);
     if(verificarColisao(static_cast<Entidades::Entidade*>(pe), pEntidade)){

@@ -1,5 +1,6 @@
 #include "fase.hpp"
 #include "../Entidades/Personagens/Inim_medio.hpp"
+#include "../Entidades/Obstaculos/Entulho.hpp"
 #include <string>
 using namespace std;
 namespace Stalingrado {
@@ -16,50 +17,21 @@ Ente(nomeTextura), GC(pJogador1, pJogador2), lista_ents(), maxInimMedios(5), com
 Fase::~Fase(){
 
 }
-/*
-void Fase::carregarFase(const char* caminhoArquivo) {
-    try{
-        std::ifstream arquivo(caminhoArquivo);
-        
-        if(!arquivo.is_open()){
-            string erro = "Não foi possível abrir o arquivo ";
-            erro.append(caminhoArquivo);
-            throw runtime_error(erro);
-        }
 
-        std::string tipo;
-        float x;
-        float y;
-
-        // Personagem, pos x, pos y
-        while (arquivo >> tipo >> x >> y) {
-            if (tipo == "INIM_FACIL") {
-                
-            }
-            else if (tipo == "INIM_MEDIO") {
-
-            }
-            else if (tipo == "OBS_ARAME") {
-
-            }
-        }
-
-        arquivo.close();
-    }
-    catch(const std::exception& e){
-        std::cerr << "Erro: " << e.what() << std::endl;
-    }
-}
-*/
 void Fase::criarInimMedios(float x, float y){
     Entidades::Personagens::Inim_medio *pEntidade = new Entidades::Personagens::Inim_medio(10, 2);
     GC.incluirInimigo(pEntidade);
-    pEntidade->movePos(x, y);
+    float pos_aleatoria = (rand() % (comprimentoFase - (int)x)) + x;
+    pEntidade->movePos(pos_aleatoria, y);
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 }
 
-void Fase::criarPlataformas(){
-
+void Fase::criarPlataformas(float x1, float x2){
+    Entidades::Obstaculos::Entulho *pEntidade = new Entidades::Obstaculos::Entulho();
+    GC.incluirObstaculo(pEntidade);
+    float pos_aleatoria = (rand() % ((int)x2 - (int)x1)) + x1;
+    pEntidade->movePos(pos_aleatoria, 900.f);
+    lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 }
 
 }

@@ -13,12 +13,20 @@ Obstaculo::Obstaculo(bool dano, bool lento, const std::string& nomeTextura) : En
 
 Obstaculo::~Obstaculo(){
     danoso = false;
+    lentidao = false;
 }
 
 void Obstaculo::salvarDataBuffer(){
 
 }
 
+void Obstaculo::movePos(float x, float y){
+    personagem.move(x, y);
+}
+
+void Obstaculo::setVelocidadeY(float vy){
+    //não faz nada pq obstaculos nao sofrem aceleração gravitacional, pois estao estáticos no chao
+}
 }
 } // Fim dos namespaces
 

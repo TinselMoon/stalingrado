@@ -13,7 +13,7 @@ namespace Stalingrado{
 namespace Fases{
 
 Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
-Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(8), chao(NULL)
+Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(8), chao(NULL), maxEntulhos(20), maxArames(5)
 {
     //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
     comprimentoFase = 10000;
@@ -40,7 +40,7 @@ void Fase_prim::criarInimFaceis(float x, float y){
     pEntidade->movePos(pos_aleatoria, y);
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 }
-void Fase_prim::criarArame_farp(){
+void Fase_prim::criarArame_farp(float x1, float x2){
 
 }
 
@@ -89,6 +89,48 @@ void Fase_prim::criarInimigos(){
     }
 }
 void Fase_prim::criarObstaculos(){
+    const char* caminhoArquivo = "../stalingrado/assets/fase1/Obstaculos.txt";
+    try{
+        std::ifstream arquivo(caminhoArquivo);
+        
+        if(!arquivo.is_open()){
+            string erro = "Não foi possível abrir o arquivo ";
+            erro.append(caminhoArquivo);
+            throw runtime_error(erro);
+        }
+        int cont_entulhos = 0;
+        int cont_arame = 0;
+        std::string tipo;
+        float x1;
+        float x2;
+
+        // Obstaculo, pos x min, pos x maxima
+        // As posições x min e x maxima delimitam o espaço em que será gerado aleatoriamente o entulho
+        while (arquivo >> tipo >> x1 >> x2) {
+            if (tipo == "ENTULHO") {
+                if(cont_entulhos == maxEntulhos){
+                    cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
+                }
+                else{
+                    criarPlataformas(x1, x2);
+                    cont_entulhos++;
+                }
+            }
+            else if (tipo == "ARAME_FARP") {
+                if(cont_arame == maxArames){
+                    cout << "Máximo de arames farpados atingido, ignorando os próximos" << endl;
+                }
+                else{
+                    criarArame_farp(x1, x2);
+                    cont_arame++;
+                }
+            }
+        }
+        arquivo.close();
+    }
+    catch(const std::exception& erro){
+        std::cerr << "Erro: " << erro.what() << std::endl;
+    }
 
 }
 
@@ -102,7 +144,8 @@ void Fase_prim::criarCenario(){
     //aqui configura o fundo
     personagem.setPosition(0.f, 0.f);
     personagem.setTextureRect(sf::IntRect(0, 0, comprimentoFase, 750));
-
+    criarObstaculos();
+    GC.tratarColisoesObsObs();
 }
 
 void Fase_prim::executar(){

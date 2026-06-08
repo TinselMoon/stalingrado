@@ -1,5 +1,5 @@
 #pragma once
-#include "../Obstaculo.hpp"
+#include "Obstaculo.hpp"
 
 namespace Stalingrado {
 

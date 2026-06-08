@@ -32,13 +32,13 @@ private:
     Entidades::Personagens::Jogador* pJog2;
     Entidades::Chao *chao;
     
-    void resolverColisaoCinematica(Entidades::Personagens::Jogador *pJ, Entidades::Entidade *pE);
+    void resolverColisaoCinematica(Entidades::Entidade *pJ, Entidades::Entidade *pE);
     const bool verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2) const;
     const bool verificarColisaoDano(Entidades::Entidade *pe1, Entidades::Entidade *pe2, float margemExtra) const;
     void tratarColisoesJogsObstaculos();
     void tratarColisoesJogsInimigos();
     void tratarColisoesJogsProjeteis();
-    void colisoesChao(Entidades::Personagens::Personagem *pe); //Precisa verificar se o jogador e inimigo estão sobre o chão
+    void colisoesChao(Entidades::Entidade *pe); //Precisa verificar se o jogador e inimigo estão sobre o chão
     void colisaoBorda(Entidades::Personagens::Personagem *pP);
 
 public:
@@ -48,6 +48,7 @@ public:
     void incluirInimigo(Entidades::Personagens::Inimigo *pi);
     void incluirObstaculo(Entidades::Obstaculos::Obstaculo *po);
     void incluirProjetil(Entidades::Projetil *pj);
+    void tratarColisoesObsObs();
     void executar();
 };
 

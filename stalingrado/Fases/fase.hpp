@@ -30,7 +30,7 @@ protected:
     virtual void criarObstaculos() = 0;
     virtual void criarCenario() = 0;
     void criarInimMedios(float x, float y);
-    void criarPlataformas(); // As plataformas são os entulhos
+    void criarPlataformas(float x1, float x2); // As plataformas são os entulhos
 public:
     Fase(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL, const std::string& nomeTextura = NULL);
     ~Fase();
