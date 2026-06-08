@@ -12,22 +12,16 @@ namespace Stalingrado{
 
 namespace Fases{
 
-Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) : Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(8), chao(NULL)
+Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
+Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(8), chao(NULL)
 {
     //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
     comprimentoFase = 10000;
-    chao = new Entidades::Chao(comprimentoFase);
-    chao->setPosicao(0.f, 750.f);
-    GC.setChao(chao);
-    lista_ents.incluir(static_cast<Entidades::Entidade*>(chao));
-
-    //Apesar de usar o sprite com nome personagem, aqui eu defino a textura e a posição da imagem do fundo
-    personagem.setPosition(0.f, 0.f);
-    personagem.setTextureRect(sf::IntRect(0, 0, comprimentoFase, 750));
-
+    criarCenario();
+    criarInimigos();
+    //Inclui o jogador na fase
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
     pJogador1->movePos(300.0f, 500.0f);
-    criarInimigos();
 }
 
 Fase_prim::~Fase_prim(){
@@ -99,7 +93,16 @@ void Fase_prim::criarObstaculos(){
 }
 
 void Fase_prim::criarCenario(){
-    //criar o chao aqui e os inimigos e o fundo e os krlh
+    //aqui cria o chao e posiciona ele
+    chao = new Entidades::Chao(comprimentoFase);
+    chao->setPosicao(0.f, 750.f);
+    GC.setChao(chao);
+    lista_ents.incluir(static_cast<Entidades::Entidade*>(chao));
+
+    //aqui configura o fundo
+    personagem.setPosition(0.f, 0.f);
+    personagem.setTextureRect(sf::IntRect(0, 0, comprimentoFase, 750));
+
 }
 
 void Fase_prim::executar(){
