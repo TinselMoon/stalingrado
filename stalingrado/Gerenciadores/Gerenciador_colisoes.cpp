@@ -66,6 +66,8 @@ void Gerenciador_Colisoes::tratarColisoesObsObs(){
     for(list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); it++){
         colisoesChao(*it);
         for(list<Obstaculo*>::iterator it_j = it; it_j != LOs.end(); it_j++){
+            if (*it == *it_j) continue;
+
             if(verificarColisao(static_cast<Entidade*>(*it_j), static_cast<Entidade*>(*it))){
                 resolverColisaoCinematica(*it_j, *it);
             }
@@ -73,6 +75,7 @@ void Gerenciador_Colisoes::tratarColisoesObsObs(){
     }
     for(list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); it++){
         for(list<Obstaculo*>::iterator it_j = it; it_j != LOs.end(); it_j++){
+            if (*it == *it_j) continue;
             if(verificarColisao(static_cast<Entidade*>(*it_j), static_cast<Entidade*>(*it))){
                 resolverColisaoCinematica(*it_j, *it);
             }
