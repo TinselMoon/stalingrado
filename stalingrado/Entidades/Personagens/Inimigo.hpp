@@ -10,6 +10,7 @@ class Jogador;
 class Inimigo : public Personagens::Personagem{
 protected:
     int nivel_maldade;
+    float max_speed;
     float dt_movimento;
     float dt_dano;
 public:

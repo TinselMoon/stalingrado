@@ -10,8 +10,8 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 
-Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inimigo_facil"), max_speed(300.f){
-
+Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inimigo_facil"){
+    max_speed = 250.f;
 }
 
 Inim_facil::~Inim_facil(){
@@ -37,7 +37,7 @@ void Inim_facil::mover(){
     dt_movimento += Jogo::getDt();
     if(dt_movimento > 1){
         int new_direction = (rand() % 3) - 1;
-        setVelocidadeX(250.f*new_direction);
+        setVelocidadeX(max_speed*new_direction);
         if(rand() % 100 < 10 && getVelY() == 0)
             setVelocidadeY(-800.f);
         dt_movimento = 0;
