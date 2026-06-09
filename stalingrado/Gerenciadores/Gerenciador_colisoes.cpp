@@ -86,48 +86,27 @@ void Gerenciador_Colisoes::tratarColisoesObsObs(){
 
 void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE){
 
-    sf::FloatRect caixaJog = pJ->getRectangle();
-    sf::FloatRect caixaObs = pE->getRectangle();
+    sobreposicao sob = calcularSobreposicao(pJ, pE);
 
-    //Calcula os centros de cada caixa
-    // Utilizando o caixaJog.top pq o eixo y é invertido
-    float centroJogX = caixaJog.left + caixaJog.width / 2.0f;
-    float centroJogY = caixaJog.top + caixaJog.height / 2.0f;
-
-    float centroObsX = caixaObs.left + caixaObs.width / 2.0f;
-    float centroObsY = caixaObs.top + caixaObs.height / 2.0f;
-
-    // Calcula as distâncias entre os centros
-    float distX = centroJogX - centroObsX;
-    float distY = centroJogY - centroObsY;
-
-    //Calcula a distância mínima para não haver colisão
-    float minX = (caixaJog.width / 2.0f) + (caixaObs.width / 2.0f);
-    float minY = (caixaJog.height / 2.0f) + (caixaObs.height / 2.0f);
-
-    //Calcula a sobreposição em cada eixo
-    float overlapX = minX - std::abs(distX);
-    float overlapY = minY - std::abs(distY);
-
-    if (overlapX > 0.0f && overlapY > 0.0f) {
-        if (overlapX < overlapY) {
+    if (sob.overlapX > 0.0f && sob.overlapY > 0.0f) {
+        if (sob.overlapX < sob.overlapY) {
             // Colisão Horizontal
-            if (distX > 0) {
+            if (sob.distX > 0) {
                 // empurra para a direita
-                pJ->movePos(overlapX, 0.0f); 
+                pJ->movePos(sob.overlapX, 0.0f); 
             } else {
                 //empurra para a esquerda
-                pJ->movePos(-overlapX, 0.0f); 
+                pJ->movePos(-sob.overlapX, 0.0f); 
             }
         } else {
             // Colisão Vertical
-            if (distY > 0) {
+            if (sob.distY > 0) {
                 // empurra para baixo
-                pJ->movePos(0.0f, overlapY); 
+                pJ->movePos(0.0f, sob.overlapY); 
                 pJ->setVelocidadeY(0.0f); 
             } else {
                 //empurra para cima
-                pJ->movePos(0.0f, -overlapY); 
+                pJ->movePos(0.0f, -sob.overlapY); 
 
                 //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
                 pJ->setVelocidadeY(0.0f); 
@@ -136,7 +115,8 @@ void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE)
     }
 }
 
-void Gerenciador_Colisoes::resolverColisaoJogInim(Entidade *pJ, Entidade *pE){
+Gerenciador_Colisoes::sobreposicao Gerenciador_Colisoes::calcularSobreposicao(Entidade *pJ, Entidade *pE){
+    Gerenciador_Colisoes::sobreposicao sob;
 
     sf::FloatRect caixaJog = pJ->getRectangle();
     sf::FloatRect caixaObs = pE->getRectangle();
@@ -150,42 +130,48 @@ void Gerenciador_Colisoes::resolverColisaoJogInim(Entidade *pJ, Entidade *pE){
     float centroObsY = caixaObs.top + caixaObs.height / 2.0f;
 
     // Calcula as distâncias entre os centros
-    float distX = centroJogX - centroObsX;
-    float distY = centroJogY - centroObsY;
+    sob.distX = centroJogX - centroObsX;
+    sob.distY = centroJogY - centroObsY;
 
     //Calcula a distância mínima para não haver colisão
     float minX = (caixaJog.width / 2.0f) + (caixaObs.width / 2.0f);
     float minY = (caixaJog.height / 2.0f) + (caixaObs.height / 2.0f);
 
     //Calcula a sobreposição em cada eixo
-    float overlapX = minX - std::abs(distX);
-    float overlapY = minY - std::abs(distY);
+    sob.overlapX = minX - std::abs(sob.distX);
+    sob.overlapY = minY - std::abs(sob.distY);
 
-    if (overlapX > 0.0f && overlapY > 0.0f) {
-        if (overlapX < overlapY) {
+    return sob;
+}
+
+void Gerenciador_Colisoes::resolverColisaoJogInim(Entidade *pJ, Entidade *pE){
+    
+    sobreposicao sob = calcularSobreposicao(pJ, pE);
+    if (sob.overlapX > 0.0f && sob.overlapY > 0.0f) {
+        if (sob.overlapX < sob.overlapY) {
             // Colisão Horizontal
-            if (distX > 0) {
+            if (sob.distX > 0) {
                 // empurra para a direita
-                pJ->movePos(overlapX/2.f, 0.0f); 
-                pE->movePos(-overlapX/2.f, 0.0f); 
+                pJ->movePos(sob.overlapX/2.f, 0.0f); 
+                pE->movePos(-sob.overlapX/2.f, 0.0f); 
             } else {
                 //empurra para a esquerda
-                pJ->movePos(-overlapX/2.f, 0.0f); 
-                pE->movePos(overlapX/2.f, 0.0f); 
+                pJ->movePos(-sob.overlapX/2.f, 0.0f); 
+                pE->movePos(sob.overlapX/2.f, 0.0f); 
             }
         } else {
             // Colisão Vertical
-            if (distY > 0) {
+            if (sob.distY > 0) {
                 // empurra para baixo
-                pJ->movePos(0.0f, overlapY/2.f); 
+                pJ->movePos(0.0f, sob.overlapY/2.f); 
                 pJ->setVelocidadeY(0.0f); 
-                pE->movePos(0.0f, -overlapY/2.f); 
+                pE->movePos(0.0f, -sob.overlapY/2.f); 
                 pE->setVelocidadeY(0.0f); 
             } else {
                 //empurra para cima
-                pJ->movePos(0.0f, -overlapY/2.f); 
+                pJ->movePos(0.0f, -sob.overlapY/2.f); 
 
-                pE->movePos(0.0f, overlapY/2.f); 
+                pE->movePos(0.0f, sob.overlapY/2.f); 
                 //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
                 pJ->setVelocidadeY(0.0f); 
                 pE->setVelocidadeY(0.0f); 

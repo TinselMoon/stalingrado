@@ -31,8 +31,15 @@ private:
     Entidades::Personagens::Jogador* pJog1;
     Entidades::Personagens::Jogador* pJog2;
     Entidades::Chao *chao;
+    struct sobreposicao{
+        float distX;
+        float distY;
+        float overlapX;
+        float overlapY;
+    };
     
     void resolverColisaoCinematica(Entidades::Entidade *pJ, Entidades::Entidade *pE);
+    struct sobreposicao calcularSobreposicao(Entidades::Entidade *pJ, Entidades::Entidade *pE);
     void resolverColisaoJogInim(Entidades::Entidade *pJ, Entidades::Entidade *pE);
     const bool verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2) const;
     const bool verificarColisaoDano(Entidades::Entidade *pe1, Entidades::Entidade *pe2, float margemExtra) const;
