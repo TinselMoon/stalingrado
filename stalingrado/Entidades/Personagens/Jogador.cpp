@@ -23,29 +23,34 @@ void Jogador::colidir(Inimigo* pIn){
 }
 
 void Jogador::lerMovimentacao(){
+
+    sf::Keyboard::Key esquerda [2] = {sf::Keyboard::A , sf::Keyboard::Left};
+    sf::Keyboard::Key pular [2] = {sf::Keyboard::W , sf::Keyboard::Up};
+    sf::Keyboard::Key direita [2] = {sf::Keyboard::D , sf::Keyboard::Right};
+
     //if(getVelY() == 0){
-        bool A = false;
-        bool D = false;
+        bool left = false;
+        bool right = false;
         float velAntiga = getVelX();
         float velAtual = 0;
         setVelocidadeX(0.f);
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (sf::Keyboard::isKeyPressed(esquerda[id_Jog-1]))
         {
             setVelocidadeX(-400.f);
-            A = true;
+            left = true;
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        if (sf::Keyboard::isKeyPressed(direita[id_Jog-1]))
         {
             setVelocidadeX(400.f);
-            D = true;
+            right = true;
         }
-        if(A && D){
+        if(left && right){
             setVelocidadeX(0.f);
-            A = false;
-            D = false;
+            left = false;
+            right = false;
         }
         if(getVelY() == 0){
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !WisPressed)
+            if (sf::Keyboard::isKeyPressed(pular[id_Jog-1]) && !WisPressed)
             {
                 //Negativo pq as coordenadas Y são invertidas
                 setVelocidadeY(-800.f);
