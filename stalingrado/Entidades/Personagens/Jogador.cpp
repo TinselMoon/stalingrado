@@ -7,11 +7,12 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 
-int Jogador::id_Jog(1);
+int Jogador::cont_jog(1);
 
-Jogador::Jogador(int vida) : Personagem(vida, id_Jog==1 ? "Soldado" : "Cachorro"), WisPressed(false){
+Jogador::Jogador(int vida) : Personagem(vida, cont_jog==1 ? "Soldado" : "Cachorro"), WisPressed(false){
     pontos = 0;
-    id_Jog++;
+    id_jog = cont_jog;
+    cont_jog++;
 }
 
 Jogador::~Jogador(){
@@ -24,22 +25,23 @@ void Jogador::colidir(Inimigo* pIn){
 
 void Jogador::lerMovimentacao(){
 
-    sf::Keyboard::Key esquerda [2] = {sf::Keyboard::A , sf::Keyboard::Left};
-    sf::Keyboard::Key pular [2] = {sf::Keyboard::W , sf::Keyboard::Up};
-    sf::Keyboard::Key direita [2] = {sf::Keyboard::D , sf::Keyboard::Right};
+    sf::Keyboard::Key esquerda[2] = {sf::Keyboard::A , sf::Keyboard::Left};
+    sf::Keyboard::Key pular[2] = {sf::Keyboard::W , sf::Keyboard::Up};
+    sf::Keyboard::Key direita[2] = {sf::Keyboard::D , sf::Keyboard::Right};
 
     //if(getVelY() == 0){
         bool left = false;
         bool right = false;
         float velAntiga = getVelX();
         float velAtual = 0;
+        bool WisPressed = false;
         setVelocidadeX(0.f);
-        if (sf::Keyboard::isKeyPressed(esquerda[id_Jog-1]))
+        if (sf::Keyboard::isKeyPressed(esquerda[id_jog-1]))
         {
             setVelocidadeX(-400.f);
             left = true;
         }
-        if (sf::Keyboard::isKeyPressed(direita[id_Jog-1]))
+        if (sf::Keyboard::isKeyPressed(direita[id_jog-1]))
         {
             setVelocidadeX(400.f);
             right = true;
@@ -50,7 +52,7 @@ void Jogador::lerMovimentacao(){
             right = false;
         }
         if(getVelY() == 0){
-            if (sf::Keyboard::isKeyPressed(pular[id_Jog-1]) && !WisPressed)
+            if (sf::Keyboard::isKeyPressed(pular[id_jog-1]) && !WisPressed)
             {
                 //Negativo pq as coordenadas Y são invertidas
                 setVelocidadeY(-800.f);
