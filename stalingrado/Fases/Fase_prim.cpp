@@ -158,9 +158,11 @@ void Fase_prim::executar(){
     pGG->desenharTextoCoordAbs("Fase 1:\t Nos\t Escombros\t de\t Stalingrado", 50, 100.f, 100.f);
     std::stringstream vida1, vida2;
     vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida();
-    vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida();
-    pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 50.f);
-    pGG->desenharTextoCamera(vida2.str(), 20, 50.f, 10.f);
+    pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 10.f);
+    if(pJog2 != NULL){
+        vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida();
+        pGG->desenharTextoCamera(vida2.str(), 20, 50.f, 50.f);
+    }
 }
 
 }

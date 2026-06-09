@@ -34,7 +34,6 @@ void Jogador::lerMovimentacao(){
         bool right = false;
         float velAntiga = getVelX();
         float velAtual = 0;
-        bool WisPressed = false;
         setVelocidadeX(0.f);
         if (sf::Keyboard::isKeyPressed(esquerda[id_jog-1]))
         {
@@ -48,8 +47,6 @@ void Jogador::lerMovimentacao(){
         }
         if(left && right){
             setVelocidadeX(0.f);
-            left = false;
-            right = false;
         }
         if(getVelY() == 0){
             if (sf::Keyboard::isKeyPressed(pular[id_jog-1]) && !WisPressed)

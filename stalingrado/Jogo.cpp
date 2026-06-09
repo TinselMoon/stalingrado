@@ -11,7 +11,6 @@ Jogo::Jogo() : GG(), mJogo(this), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_
     fase_um = new Fases::Fase_prim(pJog1, pJog2);
 
     GG.setAlvoCamera(static_cast<Stalingrado::Ente*>(pJog1));
-    GG.setAlvoCamera(static_cast<Stalingrado::Ente*>(pJog2));
 }
 
 float Jogo::dt(0);
