@@ -136,6 +136,64 @@ void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE)
     }
 }
 
+void Gerenciador_Colisoes::resolverColisaoJogInim(Entidade *pJ, Entidade *pE){
+
+    sf::FloatRect caixaJog = pJ->getRectangle();
+    sf::FloatRect caixaObs = pE->getRectangle();
+
+    //Calcula os centros de cada caixa
+    // Utilizando o caixaJog.top pq o eixo y é invertido
+    float centroJogX = caixaJog.left + caixaJog.width / 2.0f;
+    float centroJogY = caixaJog.top + caixaJog.height / 2.0f;
+
+    float centroObsX = caixaObs.left + caixaObs.width / 2.0f;
+    float centroObsY = caixaObs.top + caixaObs.height / 2.0f;
+
+    // Calcula as distâncias entre os centros
+    float distX = centroJogX - centroObsX;
+    float distY = centroJogY - centroObsY;
+
+    //Calcula a distância mínima para não haver colisão
+    float minX = (caixaJog.width / 2.0f) + (caixaObs.width / 2.0f);
+    float minY = (caixaJog.height / 2.0f) + (caixaObs.height / 2.0f);
+
+    //Calcula a sobreposição em cada eixo
+    float overlapX = minX - std::abs(distX);
+    float overlapY = minY - std::abs(distY);
+
+    if (overlapX > 0.0f && overlapY > 0.0f) {
+        if (overlapX < overlapY) {
+            // Colisão Horizontal
+            if (distX > 0) {
+                // empurra para a direita
+                pJ->movePos(overlapX/2.f, 0.0f); 
+                pE->movePos(-overlapX/2.f, 0.0f); 
+            } else {
+                //empurra para a esquerda
+                pJ->movePos(-overlapX/2.f, 0.0f); 
+                pE->movePos(overlapX/2.f, 0.0f); 
+            }
+        } else {
+            // Colisão Vertical
+            if (distY > 0) {
+                // empurra para baixo
+                pJ->movePos(0.0f, overlapY/2.f); 
+                pJ->setVelocidadeY(0.0f); 
+                pE->movePos(0.0f, -overlapY/2.f); 
+                pE->setVelocidadeY(0.0f); 
+            } else {
+                //empurra para cima
+                pJ->movePos(0.0f, -overlapY/2.f); 
+
+                pE->movePos(0.0f, overlapY/2.f); 
+                //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
+                pJ->setVelocidadeY(0.0f); 
+                pE->setVelocidadeY(0.0f); 
+            }
+        }
+    }
+}
+
 
 void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     //Chama a verificarColisao, se for true arruma a pos
@@ -173,7 +231,8 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
     for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); it++){
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
             //Arrumar colisao
-            resolverColisaoCinematica(pJog1, *it);
+            //resolverColisaoCinematica(pJog1, *it);
+            resolverColisaoJogInim(pJog1, *it);
         }
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
             //Dano do inimigo
@@ -185,7 +244,11 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
         if(pJog2){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
                 //Arrumar colisao
-                resolverColisaoCinematica(pJog2, *it);
+                //resolverColisaoCinematica(pJog2, *it);
+                resolverColisaoJogInim(pJog2, *it);
+            }
+            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 15.0f)){
+                //Dano do inimigo
                 (*it)->danificar(pJog2);
             }
         }
