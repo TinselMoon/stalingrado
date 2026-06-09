@@ -7,9 +7,13 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 
-Jogador::Jogador(int vida) : Personagem(vida, "Soldado"), WisPressed(false){
+int Jogador::id_Jog(1);
+
+Jogador::Jogador(int vida) : Personagem(vida, id_Jog==1 ? "Soldado" : "Cachorro"), WisPressed(false){
     pontos = 0;
+    id_Jog++;
 }
+
 Jogador::~Jogador(){
     pontos = -1;
 }

@@ -4,6 +4,7 @@
 using namespace Stalingrado;
 
 int main(void){
+
     std::srand(static_cast<unsigned int>(std::time(0)));
     Jogo jogo;
     jogo.executar();

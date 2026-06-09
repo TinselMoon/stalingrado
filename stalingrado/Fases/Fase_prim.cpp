@@ -19,9 +19,11 @@ Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(8), chao(NULL), max
     comprimentoFase = 10000;
     criarCenario();
     criarInimigos();
-    //Inclui o jogador na fase
+    //Inclui os jogadores na fase
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
+    lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador2));
     pJogador1->movePos(300.0f, 500.0f);
+    pJogador2->movePos(350.0f, 500.0f);
 }
 
 Fase_prim::~Fase_prim(){
@@ -153,10 +155,12 @@ void Fase_prim::executar(){
     GC.executar();
     desenhar();
     lista_ents.desenhar();
-    pGG->desenharTextoCoordAbs("Fase 1", 50, 100.f, 100.f);
-    std::stringstream vida;
-    vida << "Vida Jogador 1: " << pJog1->getVida();
-    pGG->desenharTextoCamera(vida.str(), 20, 50.f, 50.f);
+    pGG->desenharTextoCoordAbs("Fase 1:\t Nos\t Escombros\t de\t Stalingrado", 50, 100.f, 100.f);
+    std::stringstream vida1, vida2;
+    vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida();
+    vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida();
+    pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 50.f);
+    pGG->desenharTextoCamera(vida2.str(), 20, 50.f, 10.f);
 }
 
 }

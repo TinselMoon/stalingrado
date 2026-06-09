@@ -11,6 +11,7 @@ class Inimigo;
 class Jogador : public Personagens::Personagem{
 private:
     bool WisPressed;
+    static int id_Jog;
 protected:
     int pontos;
 public:

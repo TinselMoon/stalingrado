@@ -1,7 +1,7 @@
 #include "Menu.hpp"
 
 namespace Stalingrado{
-    Menu::Menu(const Jogo *pJ) : Ente(), pJog(pJ){
+    Menu::Menu(const Jogo *pJ) : Ente(), pJogo(pJ){
     }
 
     Menu::~Menu(){

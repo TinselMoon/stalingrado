@@ -3,13 +3,15 @@
 #include "Entidades/Personagens/Jogador.hpp"
 
 namespace Stalingrado{
-Jogo::Jogo() : GG(), mJogo(this), fase_um(NULL), clock(), tempoDecorrido(){
+Jogo::Jogo() : GG(), mJogo(this), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_seg(NULL), clock(), tempoDecorrido(){
     //AQUI NA CONSTRUTORA EU FAÇO O SET DA INSTANCIA DO GERENCIADOR GRAFICO PARA TODOS OS ENTES
     Ente::setGG(&GG);
     pJog1 = new Entidades::Personagens::Jogador(10);
-    fase_um = new Fases::Fase_prim(pJog1);
+    pJog2 = new Entidades::Personagens::Jogador(3);
+    fase_um = new Fases::Fase_prim(pJog1, pJog2);
 
     GG.setAlvoCamera(static_cast<Stalingrado::Ente*>(pJog1));
+    GG.setAlvoCamera(static_cast<Stalingrado::Ente*>(pJog2));
 }
 
 float Jogo::dt(0);
@@ -17,6 +19,7 @@ float Jogo::dt(0);
 Jogo::~Jogo(){
     delete fase_um;
     delete pJog1;
+    delete pJog2;
 }
 
 float Jogo::getDt(){
