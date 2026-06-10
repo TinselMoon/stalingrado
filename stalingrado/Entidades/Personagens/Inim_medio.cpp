@@ -17,10 +17,13 @@ Inim_medio::~Inim_medio(){
 
 
 void Inim_medio::danificar(Jogador *pJ){
-    dt_dano += Jogo::getDt();
-    if(dt_dano > 0.5f){
-        pJ->tomarDano(nivel_maldade);
-        dt_dano = 0;
+
+    if (pJ->getVida()) {
+        dt_dano += Jogo::getDt();
+        if(dt_dano > 0.5f){
+            pJ->tomarDano(nivel_maldade);
+            dt_dano = 0;
+        }
     }
 }
 void Inim_medio::executar(){
