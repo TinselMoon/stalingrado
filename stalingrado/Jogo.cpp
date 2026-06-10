@@ -1,9 +1,12 @@
 #include "Jogo.hpp"
 #include "Fases/Fase_prim.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
+#include <cstdlib>
+#include <ctime>
 
 namespace Stalingrado{
 Jogo::Jogo() : GG(), mJogo(this), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_seg(NULL), clock(), tempoDecorrido(){
+    std::srand(static_cast<unsigned int>(std::time(0)));
     //AQUI NA CONSTRUTORA EU FAÇO O SET DA INSTANCIA DO GERENCIADOR GRAFICO PARA TODOS OS ENTES
     Ente::setGG(&GG);
     pJog1 = new Entidades::Personagens::Jogador(10);
