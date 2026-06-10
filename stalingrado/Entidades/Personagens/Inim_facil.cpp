@@ -20,7 +20,7 @@ Inim_facil::~Inim_facil(){
 
 
 void Inim_facil::danificar(Jogador *pJ){
-    if (pJ->getVida()) {
+    if (pJ->getVida()>=1) {
         dt_dano += Jogo::getDt();
         if(dt_dano > 0.5f){
             pJ->tomarDano(nivel_maldade);

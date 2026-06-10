@@ -18,7 +18,7 @@ Inim_medio::~Inim_medio(){
 
 void Inim_medio::danificar(Jogador *pJ){
 
-    if (pJ->getVida()) {
+    if (pJ->getVida()>=2) {
         dt_dano += Jogo::getDt();
         if(dt_dano > 0.5f){
             pJ->tomarDano(nivel_maldade);
