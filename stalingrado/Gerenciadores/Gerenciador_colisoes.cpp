@@ -180,6 +180,41 @@ void Gerenciador_Colisoes::resolverColisaoJogInim(Entidade *pJ, Entidade *pE){
     }
 }
 
+void Gerenciador_Colisoes::resolverColisaoJogJog(Entidades::Entidade *pJ, Entidades::Entidade *pE) {
+
+    sobreposicao sob = calcularSobreposicao(pJ, pE);
+    if (sob.overlapX > 0.0f && sob.overlapY > 0.0f) {
+        if (sob.overlapX < sob.overlapY) {
+            // Colisão Horizontal
+            if (sob.distX > 0) {
+                // empurra para a direita
+                pJ->movePos(sob.overlapX/2.f, 0.0f);
+                pE->movePos(-sob.overlapX/2.f, 0.0f);
+            } else {
+                //empurra para a esquerda
+                pJ->movePos(-sob.overlapX/2.f, 0.0f);
+                pE->movePos(sob.overlapX/2.f, 0.0f);
+            }
+        } else {
+            // Colisão Vertical
+            if (sob.distY > 0) {
+                // empurra para baixo
+                pJ->movePos(0.0f, sob.overlapY/2.f);
+                pJ->setVelocidadeY(0.0f);
+                pE->movePos(0.0f, -sob.overlapY/2.f);
+                pE->setVelocidadeY(0.0f);
+            } else {
+                //empurra para cima
+                pJ->movePos(0.0f, -sob.overlapY/2.f);
+
+                pE->movePos(0.0f, sob.overlapY/2.f);
+                //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
+                pJ->setVelocidadeY(0.0f);
+                pE->setVelocidadeY(0.0f);
+            }
+        }
+    }
+}
 
 void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     //Chama a verificarColisao, se for true arruma a pos
@@ -220,6 +255,23 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     }
 }
 
+void Gerenciador_Colisoes::tratarColisoesJogsJogs() {
+    if (pJog2 == NULL) return;
+
+    //Chama a verificarColisao, se for true arruma a pos
+    Personagem *jog1 = static_cast<Personagem*>(pJog1);
+    Personagem *jog2 = static_cast<Personagem*>(pJog2);
+    colisoesChao(jog1);
+    colisaoBorda(jog1);
+    colisoesChao(jog2);
+    colisaoBorda(jog2);
+
+    if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(pJog2))){
+        //Arrumar colisao
+        resolverColisaoJogJog(pJog1, pJog2);
+    }
+}
+
 void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
     //Chama a verificarColisao, se for true arruma a pos
     Personagem *jog1 = static_cast<Personagem*>(pJog1);
@@ -230,7 +282,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
         colisoesChao(jog2);
         colisaoBorda(jog2);
     }
-    for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); it++){
+    for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it){
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
             //Arrumar colisao
             //resolverColisaoCinematica(pJog1, *it);
@@ -290,11 +342,6 @@ void Gerenciador_Colisoes::tratarColisoesJogsProjeteis(){
     }
 }
 
-void tratarColisoesJogsJogs() {
-
-
-}
-
 void Gerenciador_Colisoes::colisoesChao(Entidade *pe){
     //Inimigos primeiro
     Entidades::Entidade *pEntidade = static_cast<Entidades::Entidade*>(chao);
@@ -333,6 +380,7 @@ void Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil *pj){
 
 void Gerenciador_Colisoes::executar(){
     //Chama todas as funções de tratarcolisoes
+    tratarColisoesJogsJogs();
     tratarColisoesJogsInimigos();
     tratarColisoesJogsProjeteis();
     tratarColisoesJogsObstaculos();

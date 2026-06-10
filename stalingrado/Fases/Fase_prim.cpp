@@ -26,8 +26,8 @@ Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(8), chao(NULL), max
     //Inclui os jogadores na fase
     if (pJogador1!=NULL) {lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));}
     if (pJogador2!=NULL) {lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador2));}
-    pJogador1->movePos(300.0f, 500.0f);
-    pJogador2->movePos(350.0f, 500.0f);
+    if (pJogador1!=NULL) pJogador1->movePos(300.0f, 500.0f);
+    if (pJogador2!=NULL) pJogador2->movePos(350.0f, 500.0f);
 }
 
 Fase_prim::~Fase_prim(){
@@ -189,7 +189,7 @@ void Fase_prim::executar(){
     GC.executar();
     desenhar();
     lista_ents.desenhar();
-    pGG->desenharTextoCoordAbs("Fase 1:\t Nos\t Escombros\t de\t Stalingrado", 50, 100.f, 100.f);
+    pGG->desenharTextoCoordAbs("Fase \t1:\t Nos\t Escombros\t de\t Stalingrado", 50, 100.f, 100.f);
     std::stringstream vida1, vida2;
     vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida();
     pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 10.f);
