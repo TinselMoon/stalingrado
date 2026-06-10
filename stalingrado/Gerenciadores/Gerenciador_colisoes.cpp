@@ -213,6 +213,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                 (*it)->obstaculizar(pJog1);
             }
             else if((*it)->getDanoso()){
+                resolverColisaoJogInim(pJog1, *it);
                 (*it)->obstaculizar(pJog1);
             }
             else{
@@ -230,6 +231,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                     (*it)->obstaculizar(pJog2);
                 }
                 else if((*it)->getDanoso()){
+                    resolverColisaoJogInim(pJog2, *it);
                     (*it)->obstaculizar(pJog2);
                 }
                 else{
