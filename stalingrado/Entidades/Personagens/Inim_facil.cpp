@@ -3,6 +3,8 @@
 #include "Jogador.hpp"
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
+
 using namespace std;
 
 namespace Stalingrado {
@@ -19,15 +21,6 @@ Inim_facil::~Inim_facil(){
 }
 
 
-void Inim_facil::danificar(Jogador *pJ){
-    if (pJ->getVida()>=1) {
-        dt_dano += Jogo::getDt();
-        if(dt_dano > 0.5f){
-            pJ->tomarDano(nivel_maldade);
-            dt_dano = 0;
-        }
-    }
-}
 
 void Inim_facil::executar(){
     mover();
@@ -46,6 +39,22 @@ void Inim_facil::mover(){
     }
     Personagem::mover();
 }
+
+void Inim_facil::danificar(Jogador *pJ) {
+
+    if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);}
+
+    if (pJ->getVida() - nivel_maldade >=0) {
+
+        dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
+        if (dt_dano > 0.25f) {
+            pJ->tomarDano(nivel_maldade);
+            dt_dano = 0;
+        }
+
+    }
+}
+
 }
 }
 } // Fim do namespace Stalingrado

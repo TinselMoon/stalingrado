@@ -1,6 +1,7 @@
 #include "Fase_prim.hpp"
 #include "../Entidades/Entidade.hpp"
 #include "../Entidades/Personagens/Inim_facil.hpp"
+#include "../Entidades/Personagens/Inim_medio.hpp"
 #include "../Entidades/Personagens/Jogador.hpp"
 #include "../Entidades/Chao.hpp"
 #include "../Entidades/Obstaculos/Arame_farp.hpp"

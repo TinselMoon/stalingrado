@@ -1,6 +1,11 @@
 #include "Inim_medio.hpp"
 #include "../../Jogo.hpp"
 #include "Jogador.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+
+using namespace std;
 
 namespace Stalingrado {
 
@@ -8,7 +13,7 @@ namespace Entidades {
 namespace Personagens {
 
 Inim_medio::Inim_medio(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inimigo_medio"){
-    max_speed = 500.f;
+    max_speed = 350.f;
 }
 
 Inim_medio::~Inim_medio(){
@@ -16,16 +21,7 @@ Inim_medio::~Inim_medio(){
 }
 
 
-void Inim_medio::danificar(Jogador *pJ){
 
-    if (pJ->getVida()>=2) {
-        dt_dano += Jogo::getDt();
-        if(dt_dano > 0.5f){
-            pJ->tomarDano(nivel_maldade);
-            dt_dano = 0;
-        }
-    }
-}
 void Inim_medio::executar(){
     mover();
 }
@@ -43,6 +39,22 @@ void Inim_medio::mover(){
     }
     Personagem::mover();
 }
+
+void Inim_medio::danificar(Jogador *pJ) {
+
+    if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);}
+
+    if (pJ->getVida() - nivel_maldade >=0) {
+
+        dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
+        if (dt_dano > 0.25f) {
+            pJ->tomarDano(nivel_maldade);
+            dt_dano = 0;
+        }
+
+    }
+}
+
 
 }
 } // Fim dos namespaces

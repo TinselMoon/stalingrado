@@ -14,9 +14,6 @@ Inim_chefao::~Inim_chefao(){
 }
 
 
-void Inim_chefao::danificar(Jogador *pJ){
-
-}
 void Inim_chefao::executar(){
 
 }

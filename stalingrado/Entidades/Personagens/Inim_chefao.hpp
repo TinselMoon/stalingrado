@@ -10,7 +10,7 @@ private:
 public:
     Inim_chefao(int vida, int maldade);
     ~Inim_chefao();
-    void danificar(Jogador *pJ);
+    //void danificar(Jogador *pJ);
     void executar();
     void salvar();
     void mover();

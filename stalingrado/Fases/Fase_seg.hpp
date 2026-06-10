@@ -1,5 +1,6 @@
 #pragma once
 #include "fase.hpp"
+#include <SFML/Graphics/RectangleShape.hpp>
 
 namespace Stalingrado{
 
