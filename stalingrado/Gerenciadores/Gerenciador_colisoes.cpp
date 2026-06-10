@@ -180,7 +180,7 @@ void Gerenciador_Colisoes::resolverColisaoJogInim(Entidade *pJ, Entidade *pE){
     }
 }
 
-void Gerenciador_Colisoes::resolverColisaoJogJog(Entidades::Entidade *pJ, Entidades::Entidade *pE) {
+/*void Gerenciador_Colisoes::resolverColisaoJogJog(Entidades::Entidade *pJ, Entidades::Entidade *pE) {
 
     sobreposicao sob = calcularSobreposicao(pJ, pE);
     if (sob.overlapX > 0.0f && sob.overlapY > 0.0f) {
@@ -199,7 +199,7 @@ void Gerenciador_Colisoes::resolverColisaoJogJog(Entidades::Entidade *pJ, Entida
 
         }
     }
-}
+}*/
 
 void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     //Chama a verificarColisao, se for true arruma a pos
@@ -238,11 +238,14 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                     resolverColisaoCinematica(pJog2, *it);
                 }
             }
+            if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(pJog2))){
+                resolverColisaoJogInim(pJog1, pJog2);
+            }
         }
     }
 }
 
-void Gerenciador_Colisoes::tratarColisoesJogsJogs() {
+/*void Gerenciador_Colisoes::tratarColisoesJogsJogs() {
     if (pJog2 == NULL) return;
 
     //Chama a verificarColisao, se for true arruma a pos
@@ -257,7 +260,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsJogs() {
         //Arrumar colisao
         resolverColisaoJogJog(pJog1, pJog2);
     }
-}
+}*/
 
 void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
     //Chama a verificarColisao, se for true arruma a pos
@@ -367,7 +370,7 @@ void Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil *pj){
 
 void Gerenciador_Colisoes::executar(){
     //Chama todas as funções de tratarcolisoes
-    tratarColisoesJogsJogs();
+    //tratarColisoesJogsJogs();
     tratarColisoesJogsInimigos();
     tratarColisoesJogsProjeteis();
     tratarColisoesJogsObstaculos();
