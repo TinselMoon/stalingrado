@@ -9,7 +9,7 @@ namespace Personagens {
 
 int Jogador::cont_jog(1);
 
-Jogador::Jogador(int vida) : Personagem(vida, cont_jog==1 ? "Soldado" : "Cachorro"), WisPressed(false){
+Jogador::Jogador(int vida) : Personagem(vida, cont_jog==1 ? "Soldado" : "Cachorro"), WisPressed(false), multiplicador_vel(1.0f){
     pontos = 0;
     id_jog = cont_jog;
     cont_jog++;
@@ -21,6 +21,10 @@ Jogador::~Jogador(){
 
 void Jogador::colidir(Inimigo* pIn){
 
+}
+
+void Jogador::setMultiplicadorVel(float mult) {
+    multiplicador_vel = mult;
 }
 
 void Jogador::lerMovimentacao(){
@@ -37,12 +41,12 @@ void Jogador::lerMovimentacao(){
         setVelocidadeX(0.f);
         if (sf::Keyboard::isKeyPressed(esquerda[id_jog-1]))
         {
-            setVelocidadeX(-400.f);
+            setVelocidadeX(-400.f*multiplicador_vel);
             left = true;
         }
         if (sf::Keyboard::isKeyPressed(direita[id_jog-1]))
         {
-            setVelocidadeX(400.f);
+            setVelocidadeX(400.f*multiplicador_vel);
             right = true;
         }
         if(left && right){
@@ -71,7 +75,7 @@ void Jogador::lerMovimentacao(){
                 personagem.setTextureRect(sf::IntRect(larguraTextura, 0,-larguraTextura, alturaTextura));
             }
         }
-    //}
+    multiplicador_vel = 1.0f;
 }
 void Jogador::mover(){
     //MUDAR AGORA QUE USAMOS SPRITE

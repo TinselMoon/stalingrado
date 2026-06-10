@@ -13,6 +13,7 @@ private:
     bool WisPressed;
     static int cont_jog;
     int id_jog;
+    float multiplicador_vel;
 protected:
     int pontos;
 public:
@@ -23,6 +24,7 @@ public:
     void executar();
     void salvar();
     void mover();
+    void setMultiplicadorVel(float mult);
     //void desenhar();
 };
 }
