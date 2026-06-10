@@ -21,6 +21,8 @@ public:
     virtual void obstaculizar(Personagens::Jogador* pJ) = 0;
     void movePos(float x, float y);
     void setVelocidadeY(float vy);
+    bool getLentidao();
+    bool getDanoso();
 };
 }
 

@@ -20,6 +20,14 @@ void Obstaculo::salvarDataBuffer(){
 
 }
 
+bool Obstaculo::getLentidao(){
+    return lentidao;
+}
+
+bool Obstaculo::getDanoso(){
+    return danoso;
+}
+
 void Obstaculo::movePos(float x, float y){
     personagem.move(x, y);
 }

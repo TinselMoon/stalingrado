@@ -186,19 +186,35 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     for(list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); it++){
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
             //Se colidir, arruma a posição do persongem e executa o obstáculo
-            resolverColisaoCinematica(pJog1, *it);
             //
             //AQUI CHAMAR A FUNÇÃO DANIFICAR PRESENTE NO OBSTACULO
             //
+            if((*it)->getLentidao()){
+                (*it)->obstaculizar(pJog1);
+            }
+            else if((*it)->getDanoso()){
+                (*it)->obstaculizar(pJog1);
+            }
+            else{
+                resolverColisaoCinematica(pJog1, *it);
+            }
         
         }
         if(pJog2){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
                 //Se colidir, arruma a posição do persongem e executa o obstáculo
-                resolverColisaoCinematica(pJog2, *it);
                 //
                 //AQUI CHAMAR A FUNÇÃO EXECUTAR PRESENTE NO OBSTACULO
                 //
+                if((*it)->getLentidao()){
+                    (*it)->obstaculizar(pJog2);
+                }
+                else if((*it)->getDanoso()){
+                    (*it)->obstaculizar(pJog2);
+                }
+                else{
+                    resolverColisaoCinematica(pJog2, *it);
+                }
             }
         }
     }

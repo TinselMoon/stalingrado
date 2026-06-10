@@ -8,6 +8,7 @@ namespace Obstaculos {
 class Arame_farp : public Obstaculos::Obstaculo{
 private:
     //COLOCAR ALGO AQUI SLA
+    const float fator_lentidao;
 public:
     Arame_farp();
     ~Arame_farp();

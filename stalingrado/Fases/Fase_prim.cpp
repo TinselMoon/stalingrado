@@ -3,6 +3,7 @@
 #include "../Entidades/Personagens/Inim_facil.hpp"
 #include "../Entidades/Personagens/Jogador.hpp"
 #include "../Entidades/Chao.hpp"
+#include "../Entidades/Obstaculos/Arame_farp.hpp"
 #include <sstream>
 #include <fstream>
 #include <iostream>
@@ -43,6 +44,11 @@ void Fase_prim::criarInimFaceis(float x, float y){
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 }
 void Fase_prim::criarArame_farp(float x1, float x2){
+    Entidades::Obstaculos::Arame_farp *pEntidade = new Entidades::Obstaculos::Arame_farp();
+    GC.incluirObstaculo(pEntidade);
+    float pos_aleatoria = (rand() % ((int)x2 - (int)x1)) + x1;
+    pEntidade->movePos(pos_aleatoria, 900.f);
+    lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 
 }
 
