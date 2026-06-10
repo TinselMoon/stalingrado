@@ -196,22 +196,7 @@ void Gerenciador_Colisoes::resolverColisaoJogJog(Entidades::Entidade *pJ, Entida
                 pE->movePos(sob.overlapX/2.f, 0.0f);
             }
         } else {
-            // Colisão Vertical
-            if (sob.distY > 0) {
-                // empurra para baixo
-                pJ->movePos(0.0f, sob.overlapY/2.f);
-                pJ->setVelocidadeY(0.0f);
-                pE->movePos(0.0f, -sob.overlapY/2.f);
-                pE->setVelocidadeY(0.0f);
-            } else {
-                //empurra para cima
-                pJ->movePos(0.0f, -sob.overlapY/2.f);
 
-                pE->movePos(0.0f, sob.overlapY/2.f);
-                //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
-                pJ->setVelocidadeY(0.0f);
-                pE->setVelocidadeY(0.0f);
-            }
         }
     }
 }
