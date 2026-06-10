@@ -9,7 +9,7 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Obstaculos {
 
-Arame_farp::Arame_farp() : Obstaculo(false, true, "Arame_farp"), fator_lentidao(0.4){
+Arame_farp::Arame_farp() : Obstaculo(false, true, "Arame_farp"), fator_lentidao(0.5){
 
 }
 
@@ -25,10 +25,10 @@ void Arame_farp::salvar(){
 
 void Arame_farp::obstaculizar(Personagens::Jogador* pJ){
 
-    /*if (pJ == NULL) {
+    if (pJ == NULL) {
         std::cerr << "Ponteiro do jogador nulo" << std::endl;
         exit(1);
-    }*/
+    }
 
     pJ->setMultiplicadorVel(fator_lentidao);
     if(pJ->getVelY() > 0)

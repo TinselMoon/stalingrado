@@ -25,11 +25,10 @@ void Explosivo::salvar(){
 
 void Explosivo::obstaculizar(Personagens::Jogador* pJ){
 
-    /*if (pJ == NULL) {
+    if (pJ == NULL) {
         std::cerr << "Ponteiro do jogador nulo" << std::endl;
         exit(1);
-    }*/
-
+    }
     pJ->tomarDano(danosidade ? danosidade : pJ->getVida());
 }
 

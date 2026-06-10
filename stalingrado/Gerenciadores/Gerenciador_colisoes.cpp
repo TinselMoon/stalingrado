@@ -203,7 +203,7 @@ void Gerenciador_Colisoes::resolverColisaoJogJog(Entidades::Entidade *pJ, Entida
 
 void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     //Chama a verificarColisao, se for true arruma a pos
-    for(list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); it++){
+    for(list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); ++it){
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
             //Se colidir, arruma a posição do persongem e executa o obstáculo
             //
