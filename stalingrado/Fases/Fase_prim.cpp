@@ -24,8 +24,8 @@ Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(8), chao(NULL), max
     criarCenario();
     criarInimigos();
     //Inclui os jogadores na fase
-    lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
-    lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador2));
+    if (pJogador1!=NULL) {lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));}
+    if (pJogador2!=NULL) {lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador2));}
     pJogador1->movePos(300.0f, 500.0f);
     pJogador2->movePos(350.0f, 500.0f);
 }

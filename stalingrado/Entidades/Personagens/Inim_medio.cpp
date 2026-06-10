@@ -42,7 +42,7 @@ void Inim_medio::mover(){
 
 void Inim_medio::danificar(Jogador *pJ) {
 
-    if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);}
+    //if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);} //erro se so tiver o Jog1?
 
     if (pJ->getVida() - nivel_maldade >=0) {
 

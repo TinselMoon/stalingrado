@@ -4,14 +4,19 @@
 #include <cstdlib>
 #include <ctime>
 
+#define VIDA_JOG1 10
+#define VIDA_JOG2 5
+
 namespace Stalingrado{
 Jogo::Jogo() : GG(), mJogo(this), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_seg(NULL), clock(), tempoDecorrido(){
+
     std::srand(static_cast<unsigned int>(std::time(0)));
     //AQUI NA CONSTRUTORA EU FAÇO O SET DA INSTANCIA DO GERENCIADOR GRAFICO PARA TODOS OS ENTES
     Ente::setGG(&GG);
-    pJog1 = new Entidades::Personagens::Jogador(10);
-    pJog2 = new Entidades::Personagens::Jogador(3);
+    pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
+    pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
     fase_um = new Fases::Fase_prim(pJog1, pJog2);
+    // if (FASE 2 ACIONADA) fase_dois = new Fases::Fase_prim(pJog1, pJog2);
 
     GG.setAlvoCamera(static_cast<Stalingrado::Ente*>(pJog1));
 }
@@ -19,9 +24,9 @@ Jogo::Jogo() : GG(), mJogo(this), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_
 float Jogo::dt(0);
 
 Jogo::~Jogo(){
-    delete fase_um;
-    delete pJog1;
-    delete pJog2;
+    if (fase_um!=NULL) delete fase_um;
+    if (pJog1!=NULL) delete pJog1;
+    if (pJog2!=NULL) delete pJog2;
 }
 
 float Jogo::getDt(){

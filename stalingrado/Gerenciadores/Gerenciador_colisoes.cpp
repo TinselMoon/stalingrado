@@ -290,6 +290,11 @@ void Gerenciador_Colisoes::tratarColisoesJogsProjeteis(){
     }
 }
 
+void tratarColisoesJogsJogs() {
+
+
+}
+
 void Gerenciador_Colisoes::colisoesChao(Entidade *pe){
     //Inimigos primeiro
     Entidades::Entidade *pEntidade = static_cast<Entidades::Entidade*>(chao);

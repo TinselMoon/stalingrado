@@ -42,7 +42,7 @@ void Inim_facil::mover(){
 
 void Inim_facil::danificar(Jogador *pJ) {
 
-    if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);}
+    //if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);}
 
     if (pJ->getVida() - nivel_maldade >=0) {
 
