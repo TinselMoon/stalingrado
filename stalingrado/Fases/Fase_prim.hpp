@@ -19,10 +19,12 @@ private:
     const int maxInimFaceis; //IMPLEMENTAR VALOR MAXIMO
     const int maxEntulhos;
     const int maxArames;
+    const int maxExplosivos; //temporario pra testar, tirar depois
     Entidades::Chao *chao;
 protected:
     void criarInimFaceis(float x, float y);
     void criarArame_farp(float x1, float x2);
+    void criarExplosivos(float x1, float x2);
     void criarInimigos();
     void criarObstaculos();
 public:

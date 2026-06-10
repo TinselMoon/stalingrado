@@ -17,7 +17,8 @@ namespace Fases{
 //CLASSE FASE SEGUNDA
 class Fase_seg : public Fase{
 private:
-    const int maxChefoes; //IMPLEMENTAR VALOR MAXIMO
+    const int maxChefoes;
+    const int maxExplosivos; //IMPLEMENTAR VALOR MAXIMO
 protected:
     void criarChefoes();
     void criarExplosivos();

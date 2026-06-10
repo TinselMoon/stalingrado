@@ -4,9 +4,11 @@
 #include "../Entidades/Personagens/Jogador.hpp"
 #include "../Entidades/Chao.hpp"
 #include "../Entidades/Obstaculos/Arame_farp.hpp"
+#include "../Entidades/Obstaculos/Explosivo.hpp"
 #include <sstream>
 #include <fstream>
 #include <iostream>
+
 using namespace std;
 
 namespace Stalingrado{
@@ -14,7 +16,7 @@ namespace Stalingrado{
 namespace Fases{
 
 Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
-Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(8), chao(NULL), maxEntulhos(20), maxArames(10)
+Fase(pJogador1, pJogador2, "Cenario_fase_um"), maxInimFaceis(8), chao(NULL), maxEntulhos(20), maxArames(10), maxExplosivos(10)
 {
     //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
     comprimentoFase = 10000;
@@ -37,6 +39,7 @@ Fase_prim::~Fase_prim(){
 }
 
 void Fase_prim::criarInimFaceis(float x, float y){
+
     Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);
     GC.incluirInimigo(pEntidade);
     float pos_aleatoria = (rand() % (comprimentoFase - (int)x)) + x;
@@ -44,6 +47,7 @@ void Fase_prim::criarInimFaceis(float x, float y){
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 }
 void Fase_prim::criarArame_farp(float x1, float x2){
+
     Entidades::Obstaculos::Arame_farp *pEntidade = new Entidades::Obstaculos::Arame_farp();
     GC.incluirObstaculo(pEntidade);
     float pos_aleatoria = (rand() % ((int)x2 - (int)x1)) + x1;
@@ -51,6 +55,17 @@ void Fase_prim::criarArame_farp(float x1, float x2){
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 
 }
+
+void Fase_prim::criarExplosivos(float x1, float x2){
+
+    Entidades::Obstaculos::Explosivo *pEntidade = new Entidades::Obstaculos::Explosivo();
+    GC.incluirObstaculo(pEntidade);
+    float pos_aleatoria = (rand() % ((int)x2 - (int)x1)) + x1;
+    pEntidade->movePos(pos_aleatoria, 900.f);
+    lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
+}
+
+
 
 void Fase_prim::criarInimigos(){
     const char* caminhoArquivo = "../stalingrado/assets/fase1/Inimigos.txt";
@@ -108,6 +123,7 @@ void Fase_prim::criarObstaculos(){
         }
         int cont_entulhos = 0;
         int cont_arame = 0;
+        int cont_explosivos = 0;
         std::string tipo;
         float x1;
         float x2;
@@ -133,6 +149,17 @@ void Fase_prim::criarObstaculos(){
                     cont_arame++;
                 }
             }
+            else if (tipo == "EXPLOSIVO") {
+
+                if (cont_explosivos == maxExplosivos)
+                    cout << "Maximo de explosivos atingido, ignorando os proximos" << endl;
+                else {
+                    criarExplosivos(x1, x2);
+                    cont_explosivos++;
+                }
+
+            }
+
         }
         arquivo.close();
     }

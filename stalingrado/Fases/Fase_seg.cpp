@@ -4,7 +4,7 @@ namespace Stalingrado{
 
 namespace Fases{
 
-Fase_seg::Fase_seg() : Fase(), maxChefoes(0){
+Fase_seg::Fase_seg() : Fase(), maxChefoes(0), maxExplosivos(0) {
 
 }
 

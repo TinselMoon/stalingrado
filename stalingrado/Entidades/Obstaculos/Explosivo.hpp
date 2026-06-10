@@ -10,7 +10,7 @@ private:
     //COLOCAR ALGO AQUI SLA
     int danosidade;
 public:
-    Explosivo(int dano = 0);
+    Explosivo();
     ~Explosivo();
     void executar();
     void salvar();
