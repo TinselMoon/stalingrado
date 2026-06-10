@@ -81,7 +81,14 @@ void Gerenciador_Colisoes::tratarColisoesObsObs(){
             }
         }
     }
-
+    for(list<Obstaculo*>::reverse_iterator it = LOs.rbegin(); it != LOs.rend(); it++){
+        for(list<Obstaculo*>::reverse_iterator it_j = it; it_j != LOs.rend(); it_j++){
+            if (*it == *it_j) continue;
+            if(verificarColisao(static_cast<Entidade*>(*it_j), static_cast<Entidade*>(*it))){
+                resolverColisaoCinematica(*it_j, *it);
+            }
+        }
+    }
 }
 
 void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE){
@@ -180,26 +187,45 @@ void Gerenciador_Colisoes::resolverColisaoJogInim(Entidade *pJ, Entidade *pE){
     }
 }
 
-/*void Gerenciador_Colisoes::resolverColisaoJogJog(Entidades::Entidade *pJ, Entidades::Entidade *pE) {
-
+void Gerenciador_Colisoes::resolverColisaoJogJog(Entidades::Entidade *pJ, Entidades::Entidade *pE) {
     sobreposicao sob = calcularSobreposicao(pJ, pE);
+
     if (sob.overlapX > 0.0f && sob.overlapY > 0.0f) {
         if (sob.overlapX < sob.overlapY) {
-            // Colisão Horizontal
+            // Colisão Horizontal (Nenhum perde velocidade Y)
             if (sob.distX > 0) {
-                // empurra para a direita
                 pJ->movePos(sob.overlapX/2.f, 0.0f);
                 pE->movePos(-sob.overlapX/2.f, 0.0f);
             } else {
-                //empurra para a esquerda
                 pJ->movePos(-sob.overlapX/2.f, 0.0f);
                 pE->movePos(sob.overlapX/2.f, 0.0f);
             }
         } else {
+            // Colisão Vertical
+            // Converter para Personagem para conseguirmos aceder ao getVelY()
+            Personagens::Personagem* p1 = static_cast<Personagens::Personagem*>(pJ);
+            Personagens::Personagem* p2 = static_cast<Personagens::Personagem*>(pE);
 
+            if (sob.distY > 0) {
+                // pJ está por baixo, pE está por cima
+                // 1. Movemos APENAS o de cima (pE) para cima com o overlap total.
+                // Isto evita empurrar o pJ contra o chão da fase.
+                pE->movePos(0.0f, -sob.overlapY);
+
+                // 2. O Segredo: pE herda a velocidade de pJ!
+                pE->setVelocidadeY(p1->getVelY()); 
+            } else {
+                // pE está por baixo, pJ está por cima
+                // 1. Movemos APENAS o de cima (pJ) para cima
+                pJ->movePos(0.0f, -sob.overlapY);
+
+                // 2. pJ herda a velocidade de pE
+                pJ->setVelocidadeY(p2->getVelY()); 
+            }
         }
     }
-}*/
+}
+
 
 void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     //Chama a verificarColisao, se for true arruma a pos
@@ -237,9 +263,6 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                 else{
                     resolverColisaoCinematica(pJog2, *it);
                 }
-            }
-            if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(pJog2))){
-                resolverColisaoJogInim(pJog1, pJog2);
             }
         }
     }
@@ -371,6 +394,9 @@ void Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil *pj){
 void Gerenciador_Colisoes::executar(){
     //Chama todas as funções de tratarcolisoes
     //tratarColisoesJogsJogs();
+    if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(pJog2))){
+        resolverColisaoJogJog(pJog1, pJog2);
+    }
     tratarColisoesJogsInimigos();
     tratarColisoesJogsProjeteis();
     tratarColisoesJogsObstaculos();
