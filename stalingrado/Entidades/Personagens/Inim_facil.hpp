@@ -6,7 +6,7 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 class Inim_facil : public Personagens::Inimigo{
-private:
+//
 public:
     Inim_facil(int vida, int maldade);
     ~Inim_facil();

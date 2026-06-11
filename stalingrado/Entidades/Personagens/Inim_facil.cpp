@@ -2,7 +2,6 @@
 #include "../../Jogo.hpp"
 #include "Jogador.hpp"
 #include <cstdlib>
-#include <ctime>
 #include <iostream>
 
 using namespace std;
@@ -32,7 +31,7 @@ void Inim_facil::mover(){
         int new_direction = (rand() % 3) - 1;
         setVelocidadeX(max_speed*new_direction);
         if(rand() % 100 < 10 && getVelY() == 0)
-            setVelocidadeY(-800.f);
+            setVelocidadeY(-400.f);
         dt_movimento = 0;
     }
     Personagem::mover();
@@ -40,12 +39,12 @@ void Inim_facil::mover(){
 
 void Inim_facil::danificar(Jogador *pJ) {
 
-    //if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);}
+    if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);}
 
     if (pJ->getVida() - nivel_maldade >=0) {
 
         dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
-        if (dt_dano > 0.425f) {
+        if (dt_dano > 0.35f) {
             pJ->operator-=(nivel_maldade);
             dt_dano = 0;
         }
