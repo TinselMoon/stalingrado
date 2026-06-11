@@ -187,24 +187,6 @@ void Gerenciador_Colisoes::resolverColisaoJogInim(Entidade *pJ, Entidade *pE){
     }
 }
 
-void Gerenciador_Colisoes::resolverColisaoJogJog(Entidades::Entidade *pJ, Entidades::Entidade *pE) {
-    sobreposicao sob = calcularSobreposicao(pJ, pE);
-
-    if (sob.overlapX > 0.0f && sob.overlapY > 0.0f) {
-        if (sob.overlapX < sob.overlapY) {
-            // Colisão Horizontal (Nenhum perde velocidade Y)
-            if (sob.distX > 0) {
-                pJ->movePos(sob.overlapX/2.f, 0.0f);
-                pE->movePos(-sob.overlapX/2.f, 0.0f);
-            } else {
-                pJ->movePos(-sob.overlapX/2.f, 0.0f);
-                pE->movePos(sob.overlapX/2.f, 0.0f);
-            }
-        }
-    }
-}
-
-
 void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     //Chama a verificarColisao, se for true arruma a pos
     for(list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); ++it){
@@ -245,23 +227,6 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
         }
     }
 }
-
-/*void Gerenciador_Colisoes::tratarColisoesJogsJogs() {
-    if (pJog2 == NULL) return;
-
-    //Chama a verificarColisao, se for true arruma a pos
-    Personagem *jog1 = static_cast<Personagem*>(pJog1);
-    Personagem *jog2 = static_cast<Personagem*>(pJog2);
-    colisoesChao(jog1);
-    colisaoBorda(jog1);
-    colisoesChao(jog2);
-    colisaoBorda(jog2);
-
-    if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(pJog2))){
-        //Arrumar colisao
-        resolverColisaoJogJog(pJog1, pJog2);
-    }
-}*/
 
 void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
     //Chama a verificarColisao, se for true arruma a pos
@@ -371,10 +336,6 @@ void Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil *pj){
 
 void Gerenciador_Colisoes::executar(){
     //Chama todas as funções de tratarcolisoes
-    //tratarColisoesJogsJogs();
-    if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(pJog2))){
-        resolverColisaoJogJog(pJog1, pJog2);
-    }
     tratarColisoesJogsInimigos();
     tratarColisoesJogsProjeteis();
     tratarColisoesJogsObstaculos();
