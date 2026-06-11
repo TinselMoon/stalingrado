@@ -21,7 +21,8 @@ Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "S
     carregarTextura("Cachorro", "../stalingrado/assets/cachorro.png", sf::Vector2f(100.0f, 100.0f));
     carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(100.0f, 100.0f));
     carregarTextura("Chao_fase_um", "../stalingrado/assets/chao_fase_um.png", sf::Vector2f(1920.f, 900.f), true);
-    carregarTextura("Cenario_fase_um", "../stalingrado/assets/cenario.png", sf::Vector2f(2172.f, 750.f), true);
+    carregarTextura("Cenario_fase_um", "../stalingrado/assets/cenario_fase_um.png", sf::Vector2f(2172.f, 750.f), true);
+    carregarTextura("Cenario_fase_dois", "../stalingrado/assets/cenario_fase_dois.png", sf::Vector2f(2172.f, 750.f), true);
     carregarTextura("Entulho", "../stalingrado/assets/entulho.png", sf::Vector2f(125.f, 100.f));
     carregarTextura("Arame_farp", "../stalingrado/assets/Arame_farp.png", sf::Vector2f(125.f, 100.f));
     carregarTextura("Explosivo", "../stalingrado/assets/explosivo.png", sf::Vector2f(125.f, 100.f));

@@ -25,6 +25,7 @@ protected:
     Gerenciadores::Gerenciador_Colisoes GC;
     Entidades::Personagens::Jogador *pJog1;
     Entidades::Personagens::Jogador *pJog2;
+
     //void carregarFase(const char* caminhoArquivo);
     virtual void criarInimigos() = 0;
     virtual void criarObstaculos() = 0;

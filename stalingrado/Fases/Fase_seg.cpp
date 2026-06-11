@@ -16,7 +16,7 @@ namespace Stalingrado {
     namespace Fases {
 
         Fase_seg::Fase_seg(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
-        Fase(pJogador1, pJogador2, "Cenario_fase_dois"), maxInimFaceis(8), chao(NULL), maxEntulhos(20), maxArames(10), maxExplosivos(10)
+        Fase(pJogador1, pJogador2, "Cenario_fase_dois"), maxInimChefoes(10), chao(NULL), maxEntulhos(20), maxExplosivos(10)
         {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;
@@ -38,24 +38,6 @@ namespace Stalingrado {
             }
         }
 
-        void Fase_seg::criarInimFaceis(float x, float y){
-
-            Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);
-            GC.incluirInimigo(pEntidade);
-            float pos_aleatoria = (rand() % (comprimentoFase - (int)x)) + x;
-            pEntidade->movePos(pos_aleatoria, y);
-            lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
-        }
-        void Fase_seg::criarArame_farp(float x1, float x2){
-
-            Entidades::Obstaculos::Arame_farp *pEntidade = new Entidades::Obstaculos::Arame_farp();
-            GC.incluirObstaculo(pEntidade);
-            float pos_aleatoria = (rand() % ((int)x2 - (int)x1)) + x1;
-            pEntidade->movePos(pos_aleatoria, 900.f);
-            lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
-
-        }
-
         void Fase_seg::criarExplosivos(float x1, float x2){
 
             Entidades::Obstaculos::Explosivo *pEntidade = new Entidades::Obstaculos::Explosivo();
@@ -65,7 +47,11 @@ namespace Stalingrado {
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
         }
 
+        void Fase_seg::criarChefoes(float x, float y) {
 
+            
+
+        }
 
         void Fase_seg::criarInimigos(){
             const char* caminhoArquivo = "../stalingrado/assets/fase1/Inimigos.txt";
@@ -77,8 +63,8 @@ namespace Stalingrado {
                     erro.append(caminhoArquivo);
                     throw runtime_error(erro);
                 }
-                int cont_inim_faceis = 0;
                 int cont_inim_medios = 0;
+                int cont_inim_chefoes = 0;
                 std::string tipo;
                 float x;
                 float y;
@@ -86,22 +72,20 @@ namespace Stalingrado {
                 // Personagem, pos x, pos y
                 // A posição x que será passada será a borda esquerda limite para geração de posição aleatoria do personagem
                 while (arquivo >> tipo >> x >> y) {
-                    if (tipo == "INIM_FACIL") {
-                        if(cont_inim_faceis == maxInimFaceis){
-                            cout << "Máximo de inimigos fáceis atingido, ignorando os próximos" << endl;
-                        }
-                        else{
-                            criarInimFaceis(x, y);
-                            cont_inim_faceis++;
-                        }
-                    }
-                    else if (tipo == "INIM_MEDIO") {
-                        if(cont_inim_medios == maxInimMedios){
+                    if (tipo == "INIM_MEDIO") {
+                        if(cont_inim_medios == maxInimMedios)
                             cout << "Máximo de inimigos médios atingido, ignorando os próximos" << endl;
-                        }
-                        else{
+                        else {
                             criarInimMedios(x, y);
                             cont_inim_medios++;
+                        }
+                    }
+                    else if (tipo == "INIM_CHEFAO") {
+                        if (cont_inim_chefoes == maxInimChefoes)
+                            cout << "Máximo de inimigos do tipo chefão atingido, ignorando os próximos" << endl;
+                        else {
+                            criarChefoes(x, y);
+                            cont_inim_chefoes++;
                         }
                     }
                 }
@@ -122,7 +106,6 @@ namespace Stalingrado {
                     throw runtime_error(erro);
                 }
                 int cont_entulhos = 0;
-                int cont_arame = 0;
                 int cont_explosivos = 0;
                 std::string tipo;
                 float x1;
@@ -140,15 +123,6 @@ namespace Stalingrado {
                             cont_entulhos++;
                         }
                     }
-                    else if (tipo == "ARAME_FARP") {
-                        if(cont_arame == maxArames){
-                            cout << "Máximo de arames farpados atingido, ignorando os próximos" << endl;
-                        }
-                        else{
-                            criarArame_farp(x1, x2);
-                            cont_arame++;
-                        }
-                    }
                     else if (tipo == "EXPLOSIVO") {
 
                         if (cont_explosivos == maxExplosivos)
@@ -157,9 +131,7 @@ namespace Stalingrado {
                             criarExplosivos(x1, x2);
                             cont_explosivos++;
                         }
-
                     }
-
                 }
                 arquivo.close();
             }
@@ -188,7 +160,7 @@ namespace Stalingrado {
             GC.executar();
             desenhar();
             lista_ents.desenhar();
-            pGG->desenharTextoCoordAbs("Fase 1:\t Nos\t Escombros\t de\t Stalingrado", 50, 100.f, 100.f);
+            pGG->desenharTextoCoordAbs("Fase 2:\t Casa\t Pavlov\t", 50, 100.f, 100.f);
             std::stringstream vida1, vida2;
             vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida();
             pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 10.f);

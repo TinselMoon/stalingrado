@@ -18,17 +18,19 @@ namespace Fases{
 //CLASSE FASE SEGUNDA
 class Fase_seg : public Fase{
 private:
-    const int maxChefoes;
-    const int maxExplosivos; //IMPLEMENTAR VALOR MAXIMO
+    const int maxInimChefoes;
+    const int maxExplosivos;
+    const int maxEntulhos;
+    Entidades::Chao* chao;
 protected:
-    void criarChefoes();
-    void criarExplosivos();
-    void criarProjeteis();
-public:
-    Fase_seg();
-    ~Fase_seg();
+    void criarChefoes(float x, float y);
+    void criarExplosivos(float x1, float x2);
+    //void criarProjeteis(); implementar depois
     void criarInimigos();
     void criarObstaculos();
+public:
+    Fase_seg(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL);
+    ~Fase_seg();
     void criarCenario();
     void executar();
 };
