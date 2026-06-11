@@ -48,7 +48,7 @@ void Inim_medio::danificar(Jogador *pJ) {
 
         dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
         if (dt_dano > 0.25f) {
-            pJ->tomarDano(nivel_maldade);
+            pJ->operator-=(nivel_maldade);
             dt_dano = 0;
         }
 

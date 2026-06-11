@@ -20,8 +20,6 @@ Inim_facil::~Inim_facil(){
 
 }
 
-
-
 void Inim_facil::executar(){
     mover();
 }
@@ -47,8 +45,8 @@ void Inim_facil::danificar(Jogador *pJ) {
     if (pJ->getVida() - nivel_maldade >=0) {
 
         dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
-        if (dt_dano > 0.25f) {
-            pJ->tomarDano(nivel_maldade);
+        if (dt_dano > 0.35f) {
+            pJ->operator-=(nivel_maldade);
             dt_dano = 0;
         }
 

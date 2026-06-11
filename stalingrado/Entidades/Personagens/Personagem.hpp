@@ -14,6 +14,7 @@ public:
     Personagem(int vida, const std::string& nomeTextura);
     ~Personagem();
     void salvarDataBuffer();
+    void operator-=(int dano); //sobrecarga de operador para tirar vida do jogador (tomar dano).
     void movePos(float x, float y);
     void setVelocidadeX(float vx);
     void setVelocidadeY(float vy);
@@ -21,7 +22,7 @@ public:
     float getVelY();
     sf::Vector2f getPos();
     int getVida();
-    void tomarDano(int dano);
+    //void tomarDano(int dano);
     virtual void executar() = 0;
     virtual void salvar() = 0;
     virtual void mover();

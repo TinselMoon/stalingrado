@@ -29,7 +29,7 @@ void Explosivo::obstaculizar(Personagens::Jogador* pJ){
         std::cerr << "Ponteiro do jogador nulo" << std::endl;
         exit(1);
     }
-    pJ->tomarDano(danosidade ? danosidade : pJ->getVida());
+    pJ->operator-=(danosidade ? danosidade : pJ->getVida());
 }
 
 }

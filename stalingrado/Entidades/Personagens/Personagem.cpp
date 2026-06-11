@@ -20,6 +20,10 @@ void Personagem::salvarDataBuffer(){
 
 }
 
+void Personagem::operator-=(int dano) {
+    num_vidas-=dano;
+}
+
 float Personagem::getVelX(){
     return vel_x;
 }
@@ -35,9 +39,9 @@ sf::Vector2f Personagem::getPos(){
     return personagem.getPosition();
 }
 
-void Personagem::tomarDano(int dano){
+/*void Personagem::tomarDano(int dano){
     num_vidas -= dano;
-}
+}*/
 
 void Personagem::movePos(float x, float y){
     personagem.move(x, y);
