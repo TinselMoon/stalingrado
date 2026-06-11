@@ -14,8 +14,9 @@ Jogo::Jogo() : GG(), mJogo(this), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_
     //AQUI NA CONSTRUTORA EU FAÇO O SET DA INSTANCIA DO GERENCIADOR GRAFICO PARA TODOS OS ENTES
     Ente::setGG(&GG);
     pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
-    //pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-    fase_um = new Fases::Fase_prim(pJog1, pJog2);
+    pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
+    fase_seg = new Fases::Fase_seg(pJog1, pJog2);
+    //fase_um = new Fases::Fase_prim(pJog1, pJog2);
     // if (FASE 2 ACIONADA) fase_dois = new Fases::Fase_prim(pJog1, pJog2);
 
     GG.setAlvoCamera(static_cast<Stalingrado::Ente*>(pJog1));
@@ -47,7 +48,8 @@ void Jogo::executar(){
 
         GG.getJanela()->clear();
 
-        fase_um->executar();
+        //fase_um->executar();
+        fase_seg->executar();
         GG.atualizarCamera();
         GG.getJanela()->display();
     }   //IMPLEMENTAR

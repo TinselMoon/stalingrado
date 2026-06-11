@@ -25,8 +25,8 @@ namespace Stalingrado {
             //Inclui os jogadores na fase
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador2));
-            pJogador1->movePos(300.0f, 500.0f);
-            pJogador2->movePos(350.0f, 500.0f);
+            if (pJogador1) pJogador1->movePos(300.0f, 500.0f);
+            if (pJogador2) pJogador2->movePos(350.0f, 500.0f);
         }
 
         Fase_seg::~Fase_seg(){
@@ -49,17 +49,20 @@ namespace Stalingrado {
 
         void Fase_seg::criarChefoes(float x, float y) {
 
-            
-
+            Entidades::Personagens::Inim_chefao *pEntidade = new Entidades::Personagens::Inim_chefao(15, 5);
+            GC.incluirInimigo(pEntidade);
+            float pos_aleatoria = (rand() % (comprimentoFase - (int)x)) + x;
+            pEntidade->movePos(pos_aleatoria, y);
+            lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
         }
 
         void Fase_seg::criarInimigos(){
-            const char* caminhoArquivo = "../stalingrado/assets/fase1/Inimigos.txt";
+            const char* caminhoArquivo = "../stalingrado/assets/fase2/Inimigos.txt";
             try{
                 std::ifstream arquivo(caminhoArquivo);
 
                 if(!arquivo.is_open()){
-                    string erro = "Não foi possível abrir o arquivo ";
+                    string erro = "Não foi possível abrir o arquivo";
                     erro.append(caminhoArquivo);
                     throw runtime_error(erro);
                 }

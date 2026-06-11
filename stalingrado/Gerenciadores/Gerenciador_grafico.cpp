@@ -19,7 +19,7 @@ Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "S
     carregarTextura("Inimigo_medio", "../stalingrado/assets/soldado_medio.png", sf::Vector2f(100.f, 174.0f));
     carregarTextura("Soldado", "../stalingrado/assets/sov.png", sf::Vector2f(100.0f, 150.0f));
     carregarTextura("Cachorro", "../stalingrado/assets/cachorro.png", sf::Vector2f(100.0f, 100.0f));
-    carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(100.0f, 100.0f));
+    carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(500.0f, 500.0f));
     carregarTextura("Chao_fase_um", "../stalingrado/assets/chao_fase_um.png", sf::Vector2f(1920.f, 900.f), true);
     carregarTextura("Cenario_fase_um", "../stalingrado/assets/cenario_fase_um.png", sf::Vector2f(2172.f, 750.f), true);
     carregarTextura("Cenario_fase_dois", "../stalingrado/assets/cenario_fase_dois.png", sf::Vector2f(2172.f, 750.f), true);
