@@ -8,11 +8,12 @@
 #define VIDA_JOG2 5
 
 namespace Stalingrado{
-Jogo::Jogo() : GG(), mJogo(this), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_seg(NULL), clock(), tempoDecorrido(){
+Jogo::Jogo() : GG(), mJogo(NULL), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_seg(NULL), clock(), tempoDecorrido(){
 
     std::srand(static_cast<unsigned int>(std::time(0)));
     //AQUI NA CONSTRUTORA EU FAÇO O SET DA INSTANCIA DO GERENCIADOR GRAFICO PARA TODOS OS ENTES
     Ente::setGG(&GG);
+    mJogo = Menu::getInstancia(this);
     pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
     pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
     fase_seg = new Fases::Fase_seg(pJog1, pJog2);

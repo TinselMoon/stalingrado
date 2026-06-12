@@ -15,12 +15,13 @@ Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "S
     janela.setView(camera);
     //Carregar texturas para o hashmap aqui
     //o true no final é para indicar que a textura se repete pelo sprite
-    carregarTextura("Inimigo_facil", "../stalingrado/assets/soldado_facil.png", sf::Vector2f(100.f, 174.0f));
-    carregarTextura("Inimigo_medio", "../stalingrado/assets/soldado_medio.png", sf::Vector2f(100.f, 174.0f));
+    carregarTextura("Inimigo_facil", "../stalingrado/assets/soldado.png", sf::Vector2f(150.f, 188.0f));
+    carregarTextura("Inimigo_medio", "../stalingrado/assets/capitao.png", sf::Vector2f(92.0f, 177.0f));
     carregarTextura("Soldado", "../stalingrado/assets/sov.png", sf::Vector2f(100.0f, 150.0f));
     carregarTextura("Cachorro", "../stalingrado/assets/cachorro.png", sf::Vector2f(100.0f, 100.0f));
-    carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(500.0f, 500.0f));
+    carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(1450.0f, 550.0f));
     carregarTextura("Chao_fase_um", "../stalingrado/assets/chao_fase_um.png", sf::Vector2f(1920.f, 900.f), true);
+    carregarTextura("Chao_fase_dois", "../stalingrado/assets/chao_fase_dois.png", sf::Vector2f(1920.f, 900.f), true);
     carregarTextura("Cenario_fase_um", "../stalingrado/assets/cenario_fase_um.png", sf::Vector2f(2172.f, 750.f), true);
     carregarTextura("Cenario_fase_dois", "../stalingrado/assets/cenario_fase_dois.png", sf::Vector2f(2172.f, 750.f), true);
     carregarTextura("Entulho", "../stalingrado/assets/entulho.png", sf::Vector2f(125.f, 100.f));
