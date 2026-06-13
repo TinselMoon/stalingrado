@@ -10,7 +10,6 @@ namespace Stalingrado {
     public:
         Menu(const Jogo *pJ);
         ~Menu();
-        void desenhar();
         void executar();
     };
 }

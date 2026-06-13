@@ -11,10 +11,7 @@ namespace Stalingrado{
     }
 
     void Menu::executar(){
-
+        desenhar();
     }
 
-    void Menu::desenhar(){
-
-    }
 }
