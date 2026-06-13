@@ -19,7 +19,7 @@ private:
     sf::Clock clock;
     sf::Time tempoDecorrido;
     static float dt;
-    Menu* mJogo;
+    Menu* pMenu;
     Entidades::Personagens::Jogador *pJog1;
     Entidades::Personagens::Jogador *pJog2;
     Fases::Fase_prim *fase_um; //Será que criar ponteiro e só alocar memória quando for jogar?

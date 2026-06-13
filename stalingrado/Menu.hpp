@@ -7,12 +7,9 @@ namespace Stalingrado {
     class Menu : public Ente {
     private:
         const Jogo* pJogo;
-        static Menu* instancia;
-        
-        Menu(const Jogo *pJ);
     public:
+        Menu(const Jogo *pJ);
         ~Menu();
-        static Menu* getInstancia(const Jogo *pJ);
         void desenhar();
         void executar();
     };
