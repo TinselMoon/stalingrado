@@ -17,10 +17,8 @@ namespace Stalingrado {
             camera.setSize(sf::Vector2f(1920.f, 1080.f));
             janela.setView(camera);
             lerTexturas("../stalingrado/assets/texturas.txt");
-
             if (!font.loadFromFile("../stalingrado/assets/font.ttf"))
             std::cerr << "Erro ao carregar a fonte!" << std::endl;
-
     }
 
     Gerenciador_Grafico::~Gerenciador_Grafico(){

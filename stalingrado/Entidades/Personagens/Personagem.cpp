@@ -21,7 +21,7 @@ void Personagem::salvarDataBuffer(){
 }
 
 void Personagem::operator-=(int dano) {
-    num_vidas-=dano;
+    num_vidas - dano >= 0 ? num_vidas-=dano : num_vidas=0;
 }
 
 float Personagem::getVelX(){

@@ -39,12 +39,10 @@ namespace Stalingrado {
             void Inim_chefao::danificar(Jogador *pJ) {
                 if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);} //erro se so tiver o Jog1?
 
-                if (pJ->getVida() - nivel_maldade >=0) {
-                    dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
-                    if (dt_dano > 0.25f) {
-                        pJ->operator-=(nivel_maldade);
-                        dt_dano = 0;
-                    }
+                dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
+                if (dt_dano > 0.2f) {
+                    pJ->operator-=(nivel_maldade);
+                    dt_dano = 0;
                 }
             }
         }
