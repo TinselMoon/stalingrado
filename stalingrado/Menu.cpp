@@ -2,7 +2,7 @@
 
 namespace Stalingrado{
     
-    Menu::Menu(const Jogo *pJ) : Ente(), pJogo(pJ) {
+    Menu::Menu(const Jogo *pJ) : Ente("Menu"), pJogo(pJ) {
 
     }
 
@@ -12,6 +12,8 @@ namespace Stalingrado{
 
     void Menu::executar(){
         desenhar();
+
+        
     }
 
 }
