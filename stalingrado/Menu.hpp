@@ -8,7 +8,7 @@ namespace Stalingrado {
     private:
         const Jogo* pJogo;
         static Menu* instancia;
-
+        
         Menu(const Jogo *pJ);
     public:
         ~Menu();

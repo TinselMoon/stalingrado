@@ -20,12 +20,14 @@ private:
     sf::View camera;
     sf::Font font;
     Stalingrado::Ente *alvoCamera;
-    std::map<std::string, std::pair<sf::Texture, sf::Vector2f> > mapa_texturas; // basta buscar pelo nome para usar a textura
+    std::map <std::string, std::pair<sf::Texture, sf::Vector2f> > mapa_texturas; // basta buscar pelo nome para usar a textura
 public:
     Gerenciador_Grafico();
     ~Gerenciador_Grafico();
 
-    void carregarTextura(const std::string& nome, const std::string& caminhoArquivo, const sf::Vector2f tamanho, const bool isRepeated = false);
+    void carregarTextura(const std::string& nome, const std::string& caminhoTextura, const sf::Vector2f tamanho, const bool isRepeated);
+    void lerTexturas(const std::string& caminhoArquivo);
+
     const sf::Texture& getTextura(const std::string& nome);
     const sf::Vector2f getTamanhoTextura(const std::string& nome);
 

@@ -1,4 +1,6 @@
 #include "Gerenciador_grafico.hpp"
+
+#include <fstream>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Vector2.hpp>
@@ -7,107 +9,114 @@
 #include "../Ente.hpp"
 
 namespace Stalingrado {
-using namespace Gerenciadores;
 
-Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "Stalingrado", sf::Style::Fullscreen){
-    janela.setFramerateLimit(60);
-    camera.setSize(sf::Vector2f(1920.f, 1080.f)); 
-    janela.setView(camera);
-    //Carregar texturas para o hashmap aqui
-    //o true no final é para indicar que a textura se repete pelo sprite
-    carregarTextura("Inimigo_facil", "../stalingrado/assets/soldado.png", sf::Vector2f(150.f, 188.0f));
-    carregarTextura("Inimigo_medio", "../stalingrado/assets/capitao.png", sf::Vector2f(92.0f, 177.0f));
-    carregarTextura("Soldado", "../stalingrado/assets/sov.png", sf::Vector2f(100.0f, 150.0f));
-    carregarTextura("Cachorro", "../stalingrado/assets/cachorro.png", sf::Vector2f(100.0f, 100.0f));
-    carregarTextura("Inim_chefao", "../stalingrado/assets/tanque.png", sf::Vector2f(1450.0f, 550.0f));
-    carregarTextura("Chao_fase_um", "../stalingrado/assets/chao_fase_um.png", sf::Vector2f(1920.f, 900.f), true);
-    carregarTextura("Chao_fase_dois", "../stalingrado/assets/chao_fase_dois.png", sf::Vector2f(1920.f, 900.f), true);
-    carregarTextura("Cenario_fase_um", "../stalingrado/assets/cenario_fase_um.png", sf::Vector2f(2172.f, 750.f), true);
-    carregarTextura("Cenario_fase_dois", "../stalingrado/assets/cenario_fase_dois.png", sf::Vector2f(2172.f, 750.f), true);
-    carregarTextura("Entulho", "../stalingrado/assets/entulho.png", sf::Vector2f(125.f, 100.f));
-    carregarTextura("Arame_farp", "../stalingrado/assets/Arame_farp.png", sf::Vector2f(125.f, 100.f));
-    carregarTextura("Explosivo", "../stalingrado/assets/explosivo.png", sf::Vector2f(125.f, 100.f));
-    if (!font.loadFromFile("../stalingrado/assets/font.ttf")) {
-        std::cerr << "Erro ao carregar a fonte!" << std::endl;
+    using namespace Gerenciadores;
+
+    Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "Stalingrado", sf::Style::Fullscreen) {
+            janela.setFramerateLimit(60);
+            camera.setSize(sf::Vector2f(1920.f, 1080.f));
+            janela.setView(camera);
+            lerTexturas("../stalingrado/assets/texturas.txt");
+
+            if (!font.loadFromFile("../stalingrado/assets/font.ttf"))
+            std::cerr << "Erro ao carregar a fonte!" << std::endl;
+
     }
-}
 
-Gerenciador_Grafico::~Gerenciador_Grafico(){
-}
+    Gerenciador_Grafico::~Gerenciador_Grafico(){
+    }
 
-void Gerenciador_Grafico::carregarTextura(const std::string& nome, const std::string& caminhoArquivo, const sf::Vector2f tamanho, const bool isRepeated) {
-    sf::Texture textura;
-    if (textura.loadFromFile(caminhoArquivo)) {
-        mapa_texturas[nome].first = textura;
-        mapa_texturas[nome].first.setRepeated(isRepeated);
-        mapa_texturas[nome].second = tamanho;
-    } 
-}
+    void Gerenciador_Grafico::carregarTextura(const std::string& nome, const std::string& caminhoTextura, const sf::Vector2f tamanho, const bool isRepeated) {
 
-void Gerenciador_Grafico::setAlvoCamera(Stalingrado::Ente* pAlvo) {
-    alvoCamera = pAlvo;
-}
-
-void Gerenciador_Grafico::atualizarCamera() {
-    if (alvoCamera != NULL) {
-            sf::Vector2f posAlvo = alvoCamera->getSprite()->getPosition();
-        
-        if(posAlvo.x < 1920.f/2){
-            camera.setCenter(1920.f/2, 540.f);
+        if (mapa_texturas[nome].first.loadFromFile(caminhoTextura)) {
+            mapa_texturas[nome].first.setRepeated(isRepeated);
+            mapa_texturas[nome].second = tamanho;
         }
-        else if(posAlvo.x > (10000 - 1920.f/2)){
-            camera.setCenter(10000 - 1920.f/2, 540.f);
+
+        else
+            std::cerr << "Nao foi possivel carregar: " << caminhoTextura << std::endl;
+
+    }
+    void Gerenciador_Grafico::lerTexturas(const std::string& caminhoArquivo) {
+
+        std::ifstream arquivo (caminhoArquivo.c_str());
+
+        if (!arquivo.is_open()) {std::cerr << "Nao foi possivel abrir arquivos das texturas" << std::endl; exit(1);}
+
+        std::string nome;
+        std::string caminhoTextura;
+        float x;
+        float y;
+        bool isRepeated;
+
+        while (arquivo >> nome >> caminhoTextura >> x >> y >> isRepeated)
+            Gerenciador_Grafico::carregarTextura(nome, caminhoTextura, sf::Vector2f(x,y), isRepeated);
+
+        arquivo.close();
+    }
+
+    void Gerenciador_Grafico::setAlvoCamera(Stalingrado::Ente* pAlvo) {
+        alvoCamera = pAlvo;
+    }
+
+    void Gerenciador_Grafico::atualizarCamera() {
+        if (alvoCamera != NULL) {
+                sf::Vector2f posAlvo = alvoCamera->getSprite()->getPosition();
+
+            if(posAlvo.x < 1920.f/2){
+                camera.setCenter(1920.f/2, 540.f);
+            }
+            else if(posAlvo.x > (10000 - 1920.f/2)){
+                camera.setCenter(10000 - 1920.f/2, 540.f);
+            }
+            else{
+                camera.setCenter(posAlvo.x, 540.f);
+            }
+
+            janela.setView(camera);
         }
-        else{
-            camera.setCenter(posAlvo.x, 540.f);
-        }
-        
+    }
+
+    void Gerenciador_Grafico::desenharTextoCoordAbs(const std::string& texto, int tam, float x, float y){
+        sf::Text text;
+        text.setFont(font);
+        text.setString(texto);
+        text.setCharacterSize(tam);
+        text.setPosition(x, y);
+        text.setFillColor(sf::Color::White);
+        text.setOutlineColor(sf::Color::Black);
+        text.setOutlineThickness(3.f);
+        janela.draw(text);
+    }
+
+    void Gerenciador_Grafico::desenharTextoCamera(const std::string& texto, int tam, float x, float y){
+        sf::Text text;
+        text.setFont(font);
+        text.setString(texto);
+        text.setCharacterSize(tam);
+        text.setPosition(x, y);
+        text.setFillColor(sf::Color::White);
+        text.setOutlineColor(sf::Color::Black);
+        text.setOutlineThickness(3.f);
+        janela.setView(janela.getDefaultView());
+        janela.draw(text);
         janela.setView(camera);
     }
-}
 
-void Gerenciador_Grafico::desenharTextoCoordAbs(const std::string& texto, int tam, float x, float y){
-    sf::Text text;
-    text.setFont(font);
-    text.setString(texto);
-    text.setCharacterSize(tam);
-    text.setPosition(x, y);
-    text.setFillColor(sf::Color::White);
-    text.setOutlineColor(sf::Color::Black);
-    text.setOutlineThickness(3.f);
-    janela.draw(text);
-}
+    const sf::Texture& Gerenciador_Grafico::getTextura(const std::string& nome) {
+        return mapa_texturas[nome].first;
+    }
 
-void Gerenciador_Grafico::desenharTextoCamera(const std::string& texto, int tam, float x, float y){
-    sf::Text text;
-    text.setFont(font);
-    text.setString(texto);
-    text.setCharacterSize(tam);
-    text.setPosition(x, y);
-    text.setFillColor(sf::Color::White);
-    text.setOutlineColor(sf::Color::Black);
-    text.setOutlineThickness(3.f);
-    janela.setView(janela.getDefaultView());
-    janela.draw(text);
-    janela.setView(camera);
-}
+    const sf::Vector2f Gerenciador_Grafico::getTamanhoTextura(const std::string& nome) {
+        return mapa_texturas[nome].second; // Retorna o Vector2f salvo no pair
+    }
 
-const sf::Texture& Gerenciador_Grafico::getTextura(const std::string& nome) {
-    return mapa_texturas[nome].first;
-}
+    void Gerenciador_Grafico::desenharEnte(Ente *pE){
+        if(pE != NULL)
+            janela.draw(*(pE->getSprite()));
+    }
 
-const sf::Vector2f Gerenciador_Grafico::getTamanhoTextura(const std::string& nome) {
-    return mapa_texturas[nome].second; // Retorna o Vector2f salvo no pair
-}
-
-void Gerenciador_Grafico::desenharEnte(Ente *pE){
-    if(pE != NULL)
-        janela.draw(*(pE->getSprite()));
-}
-
-
-sf::RenderWindow* Gerenciador_Grafico::getJanela(){
-    return &janela;
-}
-
+    sf::RenderWindow* Gerenciador_Grafico::getJanela(){
+        return &janela;
+    }
 } // Fim do namespace Stalingrado
