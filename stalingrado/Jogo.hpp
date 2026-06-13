@@ -15,6 +15,7 @@ class Inim_facil;
     }
 class Jogo{
 private:
+    static Jogo* instanciaJogo;
     Gerenciadores::Gerenciador_Grafico GG;
     sf::Clock clock;
     sf::Time tempoDecorrido;
@@ -24,9 +25,11 @@ private:
     Entidades::Personagens::Jogador *pJog2;
     Fases::Fase_prim *fase_um; //Será que criar ponteiro e só alocar memória quando for jogar?
     Fases::Fase_seg *fase_seg;
-public:
+
     Jogo();
+public:
     ~Jogo();
+    static Jogo* getInstanciaJogo();
     void executar();
     static float getDt();
 };
