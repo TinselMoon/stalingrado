@@ -3,6 +3,7 @@
 #include "../Gerenciadores/Gerenciador_grafico.hpp"
 #include "../Gerenciadores/Gerenciador_colisoes.hpp"
 #include "../Listas/Lista_entidades.hpp"
+#include "../Entidades/Chao.hpp"
 
 namespace Stalingrado {
 
@@ -21,6 +22,8 @@ class Fase : public Stalingrado::Ente{
 protected:
     const int maxInimMedios;
     int comprimentoFase;
+
+    Entidades::Chao* pChao;
     Listas::ListaEntidades lista_ents;
     Gerenciadores::Gerenciador_Colisoes GC;
     Entidades::Personagens::Jogador *pJog1;
@@ -33,7 +36,7 @@ protected:
     void criarInimMedios(float x, float y);
     void criarPlataformas(float x1, float x2); // As plataformas são os entulhos
 public:
-    Fase(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL, const std::string& nomeTextura = NULL);
+    Fase(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL, const std::string& texturaFundo = NULL, const std::string& texturaChao = NULL);
     ~Fase();
     virtual void executar() = 0;
 
