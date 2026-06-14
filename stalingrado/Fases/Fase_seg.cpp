@@ -99,7 +99,7 @@ namespace Stalingrado {
             }
         }
         void Fase_seg::criarObstaculos(){
-            const char* caminhoArquivo = "../stalingrado/assets/fase1/Obstaculos.txt";
+            const char* caminhoArquivo = "../stalingrado/assets/fase2/Obstaculos.txt";
             try{
                 std::ifstream arquivo(caminhoArquivo);
 
