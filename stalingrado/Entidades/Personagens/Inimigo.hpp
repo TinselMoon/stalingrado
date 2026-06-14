@@ -9,9 +9,7 @@ namespace Personagens {
 class Jogador;
 class Inimigo : public Personagens::Personagem{
 protected:
-    float max_speed;
-    float dt_movimento;
-    float dt_dano;
+    Jogador* pJogador;
 public:
     Inimigo(int vida, int maldade, const std::string& nomeTextura);
     ~Inimigo();

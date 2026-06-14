@@ -1,4 +1,7 @@
 #include "Jogador.hpp"
+
+#include <iostream>
+
 #include "../../Jogo.hpp"
 #include <SFML/Graphics/Rect.hpp>
 
@@ -9,6 +12,7 @@
 namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
+            using namespace std;
 
             int Jogador::cont_jog(1);
 
@@ -106,7 +110,13 @@ namespace Stalingrado {
 
             void Jogador::danificar(Personagem *pPers) {
 
-                pPers->operator-=(nivel_maldade);
+                if (pPers==NULL) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; exit(1);}
+
+                dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
+                if (dt_dano > 0.25f) {
+                    pPers->operator-=(nivel_maldade);
+                    dt_dano = 0;
+                }
 
             }
         }

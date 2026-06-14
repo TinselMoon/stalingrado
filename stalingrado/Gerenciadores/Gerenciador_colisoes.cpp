@@ -228,30 +228,31 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     }
 }
 
-void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
+void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
+
     //Chama a verificarColisao, se for true arruma a pos
     Personagem *jog1 = static_cast<Personagem*>(pJog1);
     Personagem *jog2 = static_cast<Personagem*>(pJog2);
     colisoesChao(jog1);
     colisaoBorda(jog1);
-    if(pJog2){
+    if(pJog2) {
         colisoesChao(jog2);
         colisaoBorda(jog2);
     }
-    for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it){
-        if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
+    for (vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it) {
+        if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))) {
             //Arrumar colisao
             //resolverColisaoCinematica(pJog1, *it);
             resolverColisaoJogInim(pJog1, *it);
         }
 
-        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f) && pJog1->getBelicoso()) {
-            //Dano
-
+        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 45.0f)){
+            //Dano do Jogador ao inimigo
+            pJog1->danificar(*it);
         }
 
-        else if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
-            //Dano do inimigo
+        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
+            //Dano do Inimigo ao Jogador
             (*it)->danificar(pJog1);
         }
         Personagem *inim = static_cast<Personagem*>(*it);

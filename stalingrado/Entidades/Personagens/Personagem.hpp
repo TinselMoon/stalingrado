@@ -11,8 +11,12 @@ protected:
     float vel_x;
     float vel_y;
     int nivel_maldade;
+    float max_speed;
+    float dt_movimento;
+    float dt_dano;
+
 public:
-    Personagem(int vida, int nMaldade, const std::string& nomeTextura);
+    Personagem(int vida, int nMaldade, float mSpeed, float dtMov, float dtDn, const std::string& nomeTextura);
     ~Personagem();
     void salvarDataBuffer();
     void operator-=(int dano); //sobrecarga de operador para tirar vida do personagem (perder vida).

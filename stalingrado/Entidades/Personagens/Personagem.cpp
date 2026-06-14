@@ -7,7 +7,7 @@ namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
 
-            Personagem::Personagem(int vida, int nMaldade, const std::string& nomeTextura) :
+            Personagem::Personagem(int vida, int nMaldade, float mSpeed, float dtMov, float dtDn, const std::string& nomeTextura) :
             num_vidas(vida), nivel_maldade (nMaldade), Entidades::Entidade(nomeTextura)
             {
                 sf::FloatRect rectangle = personagem.getLocalBounds();
