@@ -16,7 +16,7 @@ namespace Stalingrado {
 
             int Jogador::cont_jog(1);
 
-            Jogador::Jogador(int vida) : Personagem(vida,cont_jog==1 ? PODER_JOG1 : PODER_JOG2, cont_jog==1 ? "Soldado" : "Cachorro"),
+            Jogador::Jogador(int vida) : Personagem(vida,cont_jog==1 ? PODER_JOG1 : PODER_JOG2, 0, 0, 0, cont_jog==1 ? "Soldado" : "Cachorro"),
             WisPressed(false), multiplicador_vel(VEL_JOG), belicoso(false) {
                 pontos = 0;
                 id_jog = cont_jog;
@@ -116,6 +116,7 @@ namespace Stalingrado {
                 if (dt_dano > 0.25f) {
                     pPers->operator-=(nivel_maldade);
                     dt_dano = 0;
+                    belicoso=false;
                 }
 
             }

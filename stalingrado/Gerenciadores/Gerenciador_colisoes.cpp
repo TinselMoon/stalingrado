@@ -6,6 +6,7 @@
 #include "../Entidades/Chao.hpp"
 #include <SFML/System/Vector2.hpp>
 #include <cstdio>
+#include <iostream>
 using namespace std;
 using namespace Stalingrado;
 using namespace Entidades;
@@ -240,32 +241,42 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
         colisaoBorda(jog2);
     }
     for (vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it) {
+
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))) {
-            //Arrumar colisao
-            //resolverColisaoCinematica(pJog1, *it);
+
             resolverColisaoJogInim(pJog1, *it);
         }
 
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 45.0f)){
             //Dano do Jogador ao inimigo
             pJog1->danificar(*it);
+            cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inimigos
         }
 
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
             //Dano do Inimigo ao Jogador
             (*it)->danificar(pJog1);
         }
+
         Personagem *inim = static_cast<Personagem*>(*it);
         colisoesChao(inim);
         colisaoBorda(inim);
+
         if(pJog2){
-            if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
-                //Arrumar colisao
-                //resolverColisaoCinematica(pJog2, *it);
+
+            if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))) {
+
                 resolverColisaoJogInim(pJog2, *it);
             }
+
+            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 45.0f)){
+                //Dano do Jogador ao inimigo
+                pJog2->danificar(*it);
+                cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inim
+            }
+
             if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 15.0f)){
-                //Dano do inimigo
+                //Dano do Inimigo ao Jogador
                 (*it)->danificar(pJog2);
             }
         }
