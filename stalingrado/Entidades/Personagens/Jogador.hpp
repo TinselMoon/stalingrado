@@ -10,6 +10,7 @@ namespace Stalingrado {
             class Jogador : public Personagem {
             private:
                 bool WisPressed;
+                bool belicoso;
                 static int cont_jog;
                 int id_jog;
                 float multiplicador_vel;
@@ -18,10 +19,11 @@ namespace Stalingrado {
             public:
                 Jogador(int vida = 0);
                 ~Jogador();
-                void colidir(Inimigo* pIn);
                 void lerMovimentacao();
                 void executar();
                 void salvar();
+                bool getBelicoso() const;
+                void setBelicoso(bool belico);
                 void mover();
                 void danificar (Personagem* pPers);
                 void setMultiplicadorVel(float mult);

@@ -2,13 +2,18 @@
 #include "../../Jogo.hpp"
 #include <SFML/Graphics/Rect.hpp>
 
+#define VEL_JOG 1.0f //Velocidade do Jogador
+#define PODER_JOG1 4 //Quantidade de dano que o Jogador 1 pode infligir nos inimigos
+#define PODER_JOG2 1 //Quantidade de dano que o Jogador 2 pode infligir nos inimigos
+
 namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
 
             int Jogador::cont_jog(1);
 
-            Jogador::Jogador(int vida) : Personagem(vida, cont_jog==1 ? "Soldado" : "Cachorro"), WisPressed(false), multiplicador_vel(1.0f){
+            Jogador::Jogador(int vida) : Personagem(vida,cont_jog==1 ? PODER_JOG1 : PODER_JOG2, cont_jog==1 ? "Soldado" : "Cachorro"),
+            WisPressed(false), multiplicador_vel(VEL_JOG), belicoso(false) {
                 pontos = 0;
                 id_jog = cont_jog;
                 cont_jog++;
@@ -18,12 +23,16 @@ namespace Stalingrado {
                 pontos = -1;
             }
 
-            void Jogador::colidir(Inimigo* pIn){
-
-            }
-
             void Jogador::setMultiplicadorVel(float mult) {
                 multiplicador_vel = mult;
+            }
+
+            bool Jogador::getBelicoso() const {
+                return belicoso;
+            }
+
+            void Jogador::setBelicoso(bool belico) {
+                belicoso = belico;
             }
 
             void Jogador::lerMovimentacao(){
@@ -31,13 +40,17 @@ namespace Stalingrado {
                 sf::Keyboard::Key esquerda[2] = {sf::Keyboard::A , sf::Keyboard::Left};
                 sf::Keyboard::Key pular[2] = {sf::Keyboard::W , sf::Keyboard::Up};
                 sf::Keyboard::Key direita[2] = {sf::Keyboard::D , sf::Keyboard::Right};
+                sf::Keyboard::Key atacar[2] = {sf::Keyboard::LShift , sf::Keyboard::RShift};
 
-                //if(getVelY() == 0){
                     bool left = false;
                     bool right = false;
                     float velAntiga = getVelX();
                     float velAtual = 0;
                     setVelocidadeX(0.f);
+
+                    if (sf::Keyboard::isKeyPressed(atacar[id_jog-1]))
+                        belicoso = true;
+
                     if (sf::Keyboard::isKeyPressed(esquerda[id_jog-1]))
                     {
                         setVelocidadeX(-400.f*multiplicador_vel);
@@ -54,7 +67,7 @@ namespace Stalingrado {
                     if(getVelY() == 0){
                         if (sf::Keyboard::isKeyPressed(pular[id_jog-1]) && !WisPressed)
                         {
-                            //Negativo pq as coordenadas Y são invertidas
+                            //Negativo pq as coordenadas Y são invertidas na SFML
                             setVelocidadeY(-800.f);
                             WisPressed = true;
                         }
@@ -92,6 +105,8 @@ namespace Stalingrado {
             }
 
             void Jogador::danificar(Personagem *pPers) {
+
+                pPers->operator-=(nivel_maldade);
 
             }
         }

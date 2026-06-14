@@ -244,7 +244,13 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
             //resolverColisaoCinematica(pJog1, *it);
             resolverColisaoJogInim(pJog1, *it);
         }
-        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
+
+        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f) && pJog1->getBelicoso()) {
+            //Dano
+
+        }
+
+        else if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
             //Dano do inimigo
             (*it)->danificar(pJog1);
         }
