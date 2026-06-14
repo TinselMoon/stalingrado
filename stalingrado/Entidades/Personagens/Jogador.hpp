@@ -23,6 +23,7 @@ namespace Stalingrado {
                 void executar();
                 void salvar();
                 void mover();
+                void danificar (Personagem* pPers);
                 void setMultiplicadorVel(float mult);
             };
         }

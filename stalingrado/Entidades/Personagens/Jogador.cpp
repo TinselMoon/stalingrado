@@ -91,6 +91,9 @@ namespace Stalingrado {
 
             }
 
+            void Jogador::danificar(Personagem *pPers) {
+
+            }
         }
     }
 }

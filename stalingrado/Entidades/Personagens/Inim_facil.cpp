@@ -37,13 +37,13 @@ void Inim_facil::mover(){
     Personagem::mover();
 }
 
-void Inim_facil::danificar(Jogador *pJ) {
+void Inim_facil::danificar(Personagem* pPers) {
 
-    if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);}
+    if (pPers==NULL) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; exit(1);}
 
     dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
     if (dt_dano > 0.25f) {
-        pJ->operator-=(nivel_maldade);
+        pPers->operator-=(nivel_maldade);
         dt_dano = 0;
     }
 }

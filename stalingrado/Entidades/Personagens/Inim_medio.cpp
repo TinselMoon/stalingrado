@@ -37,13 +37,13 @@ void Inim_medio::mover(){
     Personagem::mover();
 }
 
-void Inim_medio::danificar(Jogador *pJ) {
+void Inim_medio::danificar(Personagem* pPers) {
 
-    if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);} //erro se so tiver o Jog1?
+    if (pPers==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);} //erro se so tiver o Jog1?
 
     dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
     if (dt_dano > 0.35f) {
-        pJ->operator-=(nivel_maldade);
+        pPers->operator-=(nivel_maldade);
         dt_dano = 0;
     }
 }

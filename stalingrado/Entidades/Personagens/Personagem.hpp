@@ -23,7 +23,7 @@ public:
     float getVelY();
     sf::Vector2f getPos();
     int getVida();
-    virtual void danificar(Entidade* pJ) = 0;
+    virtual void danificar(Personagem* pPers) = 0;
     virtual void executar() = 0;
     virtual void salvar() = 0;
     virtual void mover();
