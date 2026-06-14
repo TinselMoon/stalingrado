@@ -2,14 +2,17 @@
 #include "Ente.hpp"
 
 namespace Stalingrado {
-    //Forward declaration para usar ponteiro
     class Jogo;
+
     class Menu : public Ente {
     private:
-        const Jogo* pJogo;
+        Jogo* pJogo;
+        bool inMenu;
     public:
-        Menu(const Jogo *pJ);
+        Menu(Jogo* pJ);
         ~Menu();
         void executar();
+        void set_inMenu(bool noMenu);
+        void processarEvento(const sf::Event& e);
     };
 }

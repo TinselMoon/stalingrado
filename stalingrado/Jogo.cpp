@@ -7,65 +7,97 @@
 #define VIDA_JOG1 10
 #define VIDA_JOG2 5
 
-namespace Stalingrado{
+namespace Stalingrado {
 
     Jogo* Jogo::instanciaJogo = NULL;
+    float Jogo::dt = 0.0f;
 
-    Jogo::Jogo() : GG(), pMenu(NULL), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_seg(NULL), clock(), tempoDecorrido(){
-
+    Jogo::Jogo() : GG(), pMenu(NULL), pJog1(NULL), pJog2(NULL), fase_um(NULL), fase_seg(NULL),
+    clock(), tempoDecorrido(), executando(true), faseAtual(0)
+    {
         std::srand(static_cast<unsigned int>(std::time(0)));
-        Ente::setGG(&GG); //AQUI NA CONSTRUTORA EU FAÇO O SET DA INSTANCIA DO GERENCIADOR GRAFICO PARA TODOS OS ENTES
+        Ente::setGG(&GG); //set do gerenciador grafico para entes
         pMenu = new Menu(this);
     }
 
-    float Jogo::dt(0);
+    Jogo::~Jogo() {
 
-    Jogo *Jogo::getInstanciaJogo() {
+        if (fase_um)    delete fase_um;
+        if (fase_seg)   delete fase_seg;
+        if (pJog1)      delete pJog1;
+        if (pJog2)      delete pJog2;
+        if (pMenu)      delete pMenu;
+    }
 
-        if (instanciaJogo == NULL)
+    Jogo* Jogo::getInstanciaJogo() {
+        if (!instanciaJogo)
             instanciaJogo = new Jogo();
-
         return instanciaJogo;
     }
 
-    Jogo::~Jogo(){
-        if (fase_um!=NULL) delete fase_um;
-        if (pJog1!=NULL) delete pJog1;
-        if (pJog2!=NULL) delete pJog2;
-    }
-
-    float Jogo::getDt(){
+    float Jogo::getDt() {
         return dt;
     }
 
-    void Jogo::executar(){
+    void Jogo::executar() {
         clock.restart();
-        while (GG.getJanela()->isOpen()) { //loop 'infinito' para so fechar janela qnd apertar esc ou clicar no x
+
+        while (GG.getJanela()->isOpen() && executando) {
             sf::Event evento;
             while (GG.getJanela()->pollEvent(evento)) {
-                if ((evento.type == sf::Event::Closed) || (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))) {
-                    GG.getJanela()->close();
-                }
+                if (evento.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                    executando = false;
+
+                if (faseAtual == 0)
+                    pMenu->processarEvento(evento);
             }
+
             tempoDecorrido = clock.restart();
             dt = tempoDecorrido.asSeconds();
 
             GG.getJanela()->clear();
 
-            GG.setAlvoCamera(pMenu);
-            pMenu->executar();
-            
-            //fase_um->executar();
-            //fase_seg->executar();
-            pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
-            pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-            fase_seg = new Fases::Fase_seg(pJog1, pJog2);
-            fase_um = new Fases::Fase_prim(pJog1, pJog2);
-            GG.setAlvoCamera(static_cast<Stalingrado::Ente*>(pJog1));
+            if (faseAtual == 0) {
+                GG.setAlvoCamera(pMenu);
+                pMenu->executar();
+                GG.atualizarCamera();
+            }
+            else if (faseAtual == 1 && fase_um) {
+                pMenu->set_inMenu(false);
+                GG.setAlvoCamera(static_cast<Ente*>(pJog1));
+                fase_um->executar();
+                GG.atualizarCamera();
+            }
+            else if (faseAtual == 2 && fase_seg) {
+                pMenu->set_inMenu(false);
+                GG.setAlvoCamera(static_cast<Ente*>(pJog1));
+                fase_seg->executar();
+                GG.atualizarCamera();
+            }
 
-            GG.atualizarCamera();
             GG.getJanela()->display();
-        }   //IMPLEMENTAR
+        }
+    }
+
+    void Jogo::iniciarFase1() {
+
+        if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
+        if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
+        if (!fase_um) fase_um = new Fases::Fase_prim(pJog1, pJog2);
+
+        faseAtual = 1;
+    }
+
+    void Jogo::iniciarFase2() {
+        if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
+        if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
+        if (!fase_seg) fase_seg = new Fases::Fase_seg(pJog1, pJog2);
+
+        faseAtual = 2;
+    }
+
+    void Jogo::fecharJogo() {
+        executando = false;
     }
 
 }
