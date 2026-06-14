@@ -81,14 +81,6 @@ void Gerenciador_Colisoes::tratarColisoesObsObs(){
             }
         }
     }
-    /*for(list<Obstaculo*>::reverse_iterator it = LOs.rbegin(); it != LOs.rend(); it++){
-        for(list<Obstaculo*>::reverse_iterator it_j = it; it_j != LOs.rend(); it_j++){
-            if (*it == *it_j) continue;
-            if(verificarColisao(static_cast<Entidade*>(*it_j), static_cast<Entidade*>(*it))){
-                resolverColisaoCinematica(*it_j, *it);
-            }
-        }
-    }*/
 }
 
 void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE){
@@ -232,6 +224,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
     //Chama a verificarColisao, se for true arruma a pos
     Personagem *jog1 = static_cast<Personagem*>(pJog1);
     Personagem *jog2 = static_cast<Personagem*>(pJog2);
+    float rangeDano[2] = {15.f, 1000.f}; // primeiro valor p inimigo comum, segundo p chefao (range para atirar projetil)
     colisoesChao(jog1);
     colisaoBorda(jog1);
     if(pJog2){
@@ -239,27 +232,27 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
         colisaoBorda(jog2);
     }
     for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it){
-        if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
-            //Arrumar colisao
-            //resolverColisaoCinematica(pJog1, *it);
-            resolverColisaoJogInim(pJog1, *it);
-        }
-        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
+        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
             //Dano do inimigo
             (*it)->danificar(pJog1);
+            if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
+                //Arrumar colisao
+                //resolverColisaoCinematica(pJog1, *it);
+                resolverColisaoJogInim(pJog1, *it);
+            }
         }
         Personagem *inim = static_cast<Personagem*>(*it);
         colisoesChao(inim);
         colisaoBorda(inim);
         if(pJog2){
-            if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
-                //Arrumar colisao
-                //resolverColisaoCinematica(pJog2, *it);
-                resolverColisaoJogInim(pJog2, *it);
-            }
-            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 15.0f)){
+            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
                 //Dano do inimigo
                 (*it)->danificar(pJog2);
+                if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
+                    //Arrumar colisao
+                    //resolverColisaoCinematica(pJog2, *it);
+                    resolverColisaoJogInim(pJog2, *it);
+                }
             }
         }
     }
@@ -332,6 +325,12 @@ void Gerenciador_Colisoes::incluirObstaculo(Entidades::Obstaculos::Obstaculo *po
 
 void Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil *pj){
     LPs.insert(pj);
+}
+
+Projetil* Gerenciador_Colisoes::getProjetil(int id_chefao) const{
+    set<Projetil*>::iterator it = LPs.begin();
+    std::advance(it, id_chefao);
+    return (*it);
 }
 
 void Gerenciador_Colisoes::executar(){

@@ -5,6 +5,7 @@
 namespace Stalingrado {
 
 namespace Entidades{
+class Projetil;
 class Entidade : public Ente{
 protected:
     //std::ostream buffer;// Ainda não entendi para que serve

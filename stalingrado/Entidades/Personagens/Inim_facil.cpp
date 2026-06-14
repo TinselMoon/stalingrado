@@ -13,6 +13,7 @@ namespace Personagens {
 
 Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inimigo_facil"){
     max_speed = 250.f;
+    isChefao = 0;
 }
 
 Inim_facil::~Inim_facil(){

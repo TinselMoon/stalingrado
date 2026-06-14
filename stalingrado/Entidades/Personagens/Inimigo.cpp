@@ -17,6 +17,10 @@ namespace Stalingrado {
             Inimigo::~Inimigo(){
                 nivel_maldade = -1;
             }
+            
+            const bool Inimigo::getChefao() const{
+                return isChefao;
+            }
 
             void Inimigo::salvarDataBuffer(){
 

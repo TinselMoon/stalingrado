@@ -13,6 +13,7 @@ namespace Personagens {
 
 Inim_medio::Inim_medio(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inimigo_medio"){
     max_speed = 350.f;
+    isChefao = 0;
 }
 
 Inim_medio::~Inim_medio(){

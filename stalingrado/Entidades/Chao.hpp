@@ -14,8 +14,8 @@ public:
     const int getComprimento() const;
     void executar();
     void salvar();
-    virtual void movePos(float x, float y){}
-    virtual void setVelocidadeY(float vy){}
+    void movePos(float x, float y){}
+    void setVelocidadeY(float vy){}
 };
 }
 }

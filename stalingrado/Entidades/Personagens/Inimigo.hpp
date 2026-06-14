@@ -13,6 +13,7 @@ protected:
     float max_speed;
     float dt_movimento;
     float dt_dano;
+    bool isChefao;
 public:
     Inimigo(int vida, int maldade, const std::string& nomeTextura);
     ~Inimigo();
@@ -21,6 +22,7 @@ public:
     virtual void danificar(Jogador* pJ) = 0;
     virtual void mover();
     virtual void salvar();
+    const bool getChefao() const;
 };
 }
 
