@@ -248,13 +248,13 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
         }
 
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 45.0f)){
-            //Dano do Jogador ao inimigo
+            //Jogador ataca Inimigo
             pJog1->danificar(*it);
             cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inimigos
         }
 
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
-            //Dano do Inimigo ao Jogador
+            //Inimigo ataca Jogador
             (*it)->danificar(pJog1);
         }
 
@@ -264,10 +264,9 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
 
         if(pJog2){
 
-            if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))) {
-
+            if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it)))
                 resolverColisaoJogInim(pJog2, *it);
-            }
+
 
             if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 45.0f)){
                 //Dano do Jogador ao inimigo

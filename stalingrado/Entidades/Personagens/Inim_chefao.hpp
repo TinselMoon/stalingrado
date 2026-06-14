@@ -6,7 +6,7 @@ namespace Stalingrado {
         namespace Personagens {
 
             class Inim_chefao : public Personagens::Inimigo {
-                //
+                Jogador* pJog;
             public:
                 Inim_chefao(int vida, int maldade);
                 ~Inim_chefao();

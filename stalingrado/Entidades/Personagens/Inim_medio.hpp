@@ -5,8 +5,8 @@ namespace Stalingrado {
 
 namespace Entidades {
 namespace Personagens {
-class Inim_medio : public Personagens::Inimigo{
-//
+class Inim_medio : public Personagens::Inimigo {
+    Jogador* pJog;
 public:
     Inim_medio(int vida, int maldade);
     ~Inim_medio();
