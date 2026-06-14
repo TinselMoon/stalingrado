@@ -19,6 +19,7 @@ namespace Stalingrado {
     }
 
     void Menu::processarEvento(const sf::Event& e) {
+
         if (e.type != sf::Event::KeyPressed)
             return;
 
@@ -33,7 +34,8 @@ namespace Stalingrado {
                 pJogo->iniciarFase2();
                 break;
 
-            case sf::Keyboard::Escape:
+            case sf::Keyboard::Num4:
+            case sf::Keyboard::Numpad4:
                 pJogo->fecharJogo();
                 break;
 

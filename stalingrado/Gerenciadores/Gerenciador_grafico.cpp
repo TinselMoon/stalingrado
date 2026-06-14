@@ -13,7 +13,7 @@ namespace Stalingrado {
     using namespace Gerenciadores;
 
     Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "Stalingrado", sf::Style::Fullscreen) {
-            janela.setFramerateLimit(60);
+            janela.setFramerateLimit(144);
             camera.setSize(sf::Vector2f(1920.f, 1080.f));
             janela.setView(camera);
             lerTexturas("../stalingrado/assets/texturas.txt");

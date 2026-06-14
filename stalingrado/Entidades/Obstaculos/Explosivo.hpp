@@ -7,7 +7,6 @@ namespace Entidades {
 namespace Obstaculos {
 class Explosivo : public Obstaculos::Obstaculo{
 private:
-    //COLOCAR ALGO AQUI SLA
     int danosidade;
 public:
     Explosivo();
