@@ -163,7 +163,7 @@ namespace Stalingrado {
             GC.executar();
             desenhar();
             lista_ents.desenhar();
-            pGG->desenharTextoCoordAbs("Fase 2:\t Casa\t Pavlov\t", 50, 100.f, 100.f);
+            pGG->desenharTextoCoordAbs("Fase 2:\t Rattenkrieg\t", 50, 100.f, 100.f);
             std::stringstream vida1, vida2;
             vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida();
             pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 10.f);
