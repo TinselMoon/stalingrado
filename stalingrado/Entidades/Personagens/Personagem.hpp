@@ -5,7 +5,7 @@ namespace Stalingrado {
 
 namespace Entidades {
 namespace Personagens {
-class Personagem : public Entidades::Entidade {
+class Personagem : public Entidade {
 protected:
     int num_vidas;
     float vel_x;
