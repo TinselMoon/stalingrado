@@ -234,7 +234,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
         colisaoBorda(jog2);
     }
     for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it){
-        if((*it)->getVivo() == false) continue;
+        if((*it)->isAtivo() == false) continue;
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 45.0f)){
             //Dano do Jogador ao inimigo
             pJog1->danificar(*it);

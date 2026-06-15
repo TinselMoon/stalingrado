@@ -6,8 +6,8 @@ namespace Stalingrado {
 
 namespace Entidades{
 
-Projetil::Projetil() : Entidade("Projetil"), ativo(false), vel_x(0), vel_y(0), vel_projetil(500.f), dt_exist(0){
-
+Projetil::Projetil() : Entidade("Projetil"), vel_x(0), vel_y(0), vel_projetil(500.f), dt_exist(0){
+    ativo = false;
 }
 
 Projetil::~Projetil(){
@@ -50,9 +50,6 @@ void Projetil::executar(){
 }
 void Projetil::salvar(){
 
-}
-const bool Projetil::isAtivo() const{
-    return ativo;
 }
 void Projetil::movePos(float x, float y){
     personagem.move(x, y);

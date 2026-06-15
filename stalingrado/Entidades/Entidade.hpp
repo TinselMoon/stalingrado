@@ -10,7 +10,7 @@ class Entidade : public Ente{
 protected:
     //std::ostream buffer;// Ainda não entendi para que serve
     virtual void salvarDataBuffer();
-
+    bool ativo;
 public:
     Entidade(const std::string& nomeTextura);
     virtual ~Entidade();
@@ -18,7 +18,7 @@ public:
     virtual void salvar() = 0;
     virtual void movePos(float x, float y) = 0;
     virtual void setVelocidadeY(float vy) = 0;
-    virtual const bool getVivo() const = 0;
+    const bool isAtivo() const;
 };
 
 

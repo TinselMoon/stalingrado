@@ -26,7 +26,7 @@ void ListaEntidades::percorrer(){
         
         // 4. Se o ponteiro for válido, executa
         if(pEntidade != NULL){
-            if(pEntidade->getVivo()) pEntidade->executar();
+            if(pEntidade->isAtivo()) pEntidade->executar();
         }
 
         // 5. Passa para o próximo nó

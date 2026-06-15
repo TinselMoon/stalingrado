@@ -9,7 +9,6 @@ class Jogador;
 }
 class Projetil : public Entidade{
 protected:
-    bool ativo;
     float vel_x;
     float vel_y;
     const float vel_projetil;
@@ -23,11 +22,9 @@ public:
     void movePos(float x, float y);
     void setDir(float x,float y);
     void setPosition(float x, float y);
-    const bool isAtivo() const;
     void ativar();
     void destruir();
     void setVelocidadeY(float vy){}
-    const bool getVivo() const{return false;}
 };
 }
 

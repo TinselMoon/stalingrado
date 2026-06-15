@@ -7,7 +7,6 @@ namespace Entidades {
 namespace Personagens {
 class Personagem : public Entidades::Entidade {
 protected:
-    bool vivo;
     int num_vidas;
     float vel_x;
     float vel_y;
@@ -31,7 +30,6 @@ public:
     int getVida();
     virtual const int getPontos() const = 0;
     void eliminar();
-    const bool getVivo() const;
     void setMorto();
     virtual void danificar(Personagem* pPers) = 0;
     virtual void executar() = 0;
