@@ -15,7 +15,7 @@ Projetil::~Projetil(){
 }
 
 void Projetil::danificar(Personagens::Jogador *pJ){
-    pJ->operator-=(5.f);
+    *pJ -= 5;
     if(pJ->getVida() == 0){
         pJ->eliminar();
     }

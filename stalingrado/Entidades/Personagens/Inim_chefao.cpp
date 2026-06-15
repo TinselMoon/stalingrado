@@ -12,7 +12,7 @@ using namespace std;
 namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
-            Inim_chefao::Inim_chefao(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inim_chefao"), id_chef(cont_chef++){
+            Inim_chefao::Inim_chefao(int vida, int maldade) : Inimigo(vida, maldade, "Inim_chefao"), id_chef(cont_chef++), proj_chefao(NULL){
                 max_speed = 050.f;
                 isChefao = 1;
             }

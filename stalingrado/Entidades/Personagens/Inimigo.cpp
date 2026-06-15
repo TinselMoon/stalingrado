@@ -10,7 +10,7 @@ namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
 
-            Inimigo::Inimigo(int vida, int maldade, const std::string& nomeTextura) : Personagens::Personagem(vida, maldade, 0, 0, 0, nomeTextura),
+            Inimigo::Inimigo(int vida, int maldade, const std::string& nomeTextura) : Personagem(vida, maldade, 0, 0, 0, nomeTextura),
             pontos_por_kill(10*maldade)
             {
                 nivel_maldade = maldade;

@@ -6,7 +6,7 @@ namespace Stalingrado {
     class Projetil;
         namespace Personagens {
 
-            class Inim_chefao : public Personagens::Inimigo {
+            class Inim_chefao : public Inimigo {
             private: 
                 //
                 static int cont_chef;

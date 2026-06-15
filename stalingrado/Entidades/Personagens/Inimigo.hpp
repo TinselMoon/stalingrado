@@ -7,7 +7,7 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 class Jogador;
-class Inimigo : public Personagens::Personagem{
+class Inimigo : public Personagem{
 protected:
     int nivel_maldade;
     float max_speed;
