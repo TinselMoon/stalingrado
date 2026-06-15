@@ -227,9 +227,11 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
     Personagem *jog1 = static_cast<Personagem*>(pJog1);
     Personagem *jog2 = static_cast<Personagem*>(pJog2);
     float rangeDano[2] = {15.f, 1500.f}; // primeiro valor p inimigo comum, segundo p chefao (range para atirar projetil)
-    colisoesChao(jog1);
-    colisaoBorda(jog1);
-    if(pJog2) {
+    if(jog1->isAtivo()){
+        colisoesChao(jog1);
+        colisaoBorda(jog1);
+    }
+    if(jog2->isAtivo()) {
         colisoesChao(jog2);
         colisaoBorda(jog2);
     }
@@ -237,7 +239,9 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
         if((*it)->isAtivo() == false) continue;
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 45.0f)){
             //Dano do Jogador ao inimigo
-            pJog1->danificar(*it);
+            if(pJog1->getBelicoso()){
+                pJog1->danificar(*it);
+            }
             cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inimigos
         }
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
@@ -256,7 +260,9 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
         if(pJog2){
             if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 45.0f)){
                 //Dano do Jogador ao inimigo
-                pJog2->danificar(*it);
+                if(pJog2->getBelicoso()){
+                    pJog2->danificar(*it);
+                }
                 cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inim
             }
             if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){

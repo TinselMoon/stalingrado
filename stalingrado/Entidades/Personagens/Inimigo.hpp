@@ -10,9 +10,9 @@ class Jogador;
 class Inimigo : public Personagem{
 protected:
     int nivel_maldade;
-    float max_speed;
-    float dt_movimento;
-    float dt_dano;
+    //float max_speed;
+    //float dt_movimento;
+    //float dt_dano;
     bool isChefao;
     const int pontos_por_kill;
 public:

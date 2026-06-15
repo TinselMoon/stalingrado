@@ -8,6 +8,7 @@ namespace Entidades{
 
 Projetil::Projetil() : Entidade("Projetil"), vel_x(0), vel_y(0), vel_projetil(500.f), dt_exist(0){
     ativo = false;
+    personagem.setPosition(-100.f, -100.f);
 }
 
 Projetil::~Projetil(){
@@ -32,7 +33,7 @@ void Projetil::ativar(){
 void Projetil::destruir(){
     ativo = false;
     dt_exist = 0;
-    personagem.setPosition(-100.f,0.f);
+    personagem.setPosition(-100.f,-100.f);
 }
 void Projetil::executar(){
     if(ativo){
