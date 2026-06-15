@@ -50,6 +50,8 @@ namespace Stalingrado {
                 if (dt_dano > 5.0f) {
                     if(!(proj_chefao->isAtivo())){
                         sf::Vector2f posi_ini = personagem.getPosition();
+                        posi_ini.x = posi_ini.x - 678.f;
+                        posi_ini.y = posi_ini.y - 150.f;
                         proj_chefao->setPosition(posi_ini.x, posi_ini.y);
                         sf::Vector2f posi_fin = pJ->getPos();
                         sf::Vector2f dist(posi_fin.x - posi_ini.x, posi_fin.y - posi_ini.y);

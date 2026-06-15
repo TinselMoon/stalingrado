@@ -224,7 +224,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
     //Chama a verificarColisao, se for true arruma a pos
     Personagem *jog1 = static_cast<Personagem*>(pJog1);
     Personagem *jog2 = static_cast<Personagem*>(pJog2);
-    float rangeDano[2] = {15.f, 1000.f}; // primeiro valor p inimigo comum, segundo p chefao (range para atirar projetil)
+    float rangeDano[2] = {15.f, 1500.f}; // primeiro valor p inimigo comum, segundo p chefao (range para atirar projetil)
     colisoesChao(jog1);
     colisaoBorda(jog1);
     if(pJog2){
@@ -276,16 +276,22 @@ void Gerenciador_Colisoes::colisaoBorda(Personagem *pP){
 void Gerenciador_Colisoes::tratarColisoesJogsProjeteis(){
     //Chama a verificarColisao, se for true arruma a pos
     for(set<Projetil*>::iterator it = LPs.begin(); it != LPs.end(); it++){
+        //verificar colisao com chao
+        if(verificarColisao(static_cast<Entidades::Entidade*>(*it), static_cast<Entidades::Entidade*>(chao))){
+            (*it)->destruir();
+        }
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
             //Se colidir, dá dano ao jogador e destroi o projetil
-            resolverColisaoCinematica(pJog1, *it);
+            //resolverColisaoCinematica(pJog1, *it);
             //Precisa executar o projetil, dar dano ao jogador e destruir o projetil
+            (*it)->danificar(pJog1);
         }
         if(pJog2){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
                 //Se colidir, dá dano ao jogador e destroi o projetil
-                resolverColisaoCinematica(pJog2, *it);
+                //resolverColisaoCinematica(pJog2, *it);
                 //Precisa executar o projetil, dar dano ao jogador e destruir o projetil
+                (*it)->danificar(pJog2);
             }
         }
     }

@@ -11,4 +11,4 @@ Cenario_fase_dois ../stalingrado/assets/cenario_fase_dois.png 1920.0 800.0 1
 Entulho ../stalingrado/assets/entulho.png 125.0 100.0 0
 Arame_farp ../stalingrado/assets/Arame_farp.png 125.0 100.0 0
 Explosivo ../stalingrado/assets/explosivo.png 125.0 100.0 0
-Projetil ../stalingrado/assets/projetil.png 50.0 15.0 0
+Projetil ../stalingrado/assets/projetil.png 75.0 22.0 0

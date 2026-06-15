@@ -4,15 +4,20 @@
 namespace Stalingrado {
 
 namespace Entidades{
+namespace Personagens{
+class Jogador;
+}
 class Projetil : public Entidade{
 protected:
     bool ativo;
     float vel_x;
     float vel_y;
     const float vel_projetil;
+    float dt_exist;
 public:
     Projetil();
     ~Projetil();
+    void danificar(Personagens::Jogador *pJ);
     void executar();
     void salvar();
     void movePos(float x, float y);
