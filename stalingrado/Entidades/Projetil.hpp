@@ -27,6 +27,7 @@ public:
     void ativar();
     void destruir();
     void setVelocidadeY(float vy){}
+    const bool getVivo() const{return false;}
 };
 }
 

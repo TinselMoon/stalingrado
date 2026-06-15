@@ -110,11 +110,15 @@ namespace Stalingrado {
 
             void Jogador::danificar(Personagem *pPers) {
 
-                if (pPers==NULL) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; exit(1);}
+                if (pPers==NULL) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; return;}
 
                 dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
                 if (dt_dano > 0.25f) {
                     pPers->operator-=(nivel_maldade);
+                    if(pPers->getVida() == 0){
+                        pontos += pPers->getPontos();
+                        pPers->eliminar();
+                    }
                     dt_dano = 0;
                     belicoso=false;
                 }

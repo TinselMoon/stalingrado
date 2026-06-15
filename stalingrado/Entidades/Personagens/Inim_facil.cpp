@@ -45,6 +45,9 @@ void Inim_facil::danificar(Personagem* pPers) {
     dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
     if (dt_dano > 0.25f) {
         pPers->operator-=(nivel_maldade);
+        if(pPers->getVida() == 0){
+            pPers->eliminar();
+        }
         dt_dano = 0;
     }
 }

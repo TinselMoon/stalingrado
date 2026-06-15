@@ -8,13 +8,20 @@ namespace Stalingrado {
         namespace Personagens {
 
             Personagem::Personagem(int vida, int nMaldade, float mSpeed, float dtMov, float dtDn, const std::string& nomeTextura) :
-            Entidades::Entidade(nomeTextura), num_vidas(vida), nivel_maldade (nMaldade), max_speed(mSpeed), dt_movimento(dtMov), dt_dano(dtDn)
+            Entidades::Entidade(nomeTextura), num_vidas(vida), nivel_maldade (nMaldade), max_speed(mSpeed),
+            vivo(true), dt_movimento(dtMov), dt_dano(dtDn)
             {
                 sf::FloatRect rectangle = personagem.getLocalBounds();
                 personagem.setOrigin(rectangle.width/2.f, rectangle.height/2.f);
                 vel_x = vel_y = 0.f;
             }
 
+            const bool Personagem::getVivo() const{
+                return vivo;
+            }
+            void Personagem::setMorto(){
+                vivo = false;
+            }
             Personagem::~Personagem(){
                 num_vidas = -1;
             }
@@ -56,6 +63,10 @@ namespace Stalingrado {
                 vel_y = vy;
             }
 
+            void Personagem::eliminar(){
+                vivo = false;
+                personagem.setPosition(-1000.f, -1000.f);
+            }
             void Personagem::mover(){
                 float dx = 0, dy = 0, dt = 0;
                 dt = Jogo::getDt();

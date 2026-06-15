@@ -30,6 +30,9 @@ void Explosivo::obstaculizar(Personagens::Jogador* pJ){
         exit(1);
     }
     pJ->operator-=(danosidade ? danosidade : pJ->getVida());
+    if(pJ->getVida() == 0){
+        pJ->eliminar();
+    }
 }
 
 }

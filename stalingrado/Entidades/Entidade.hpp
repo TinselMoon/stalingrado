@@ -18,6 +18,7 @@ public:
     virtual void salvar() = 0;
     virtual void movePos(float x, float y) = 0;
     virtual void setVelocidadeY(float vy) = 0;
+    virtual const bool getVivo() const = 0;
 };
 
 
