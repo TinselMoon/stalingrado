@@ -8,7 +8,7 @@ private:
     const int comprimento;
     float altura;
 public:
-    Chao(const int comp);
+    Chao(const int comp, const std::string& textura);
     ~Chao();
     void setPosicao(float x, float y);
     const int getComprimento() const;

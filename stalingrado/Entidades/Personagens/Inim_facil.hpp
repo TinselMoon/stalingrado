@@ -10,7 +10,7 @@ class Inim_facil : public Personagens::Inimigo{
 public:
     Inim_facil(int vida, int maldade);
     ~Inim_facil();
-    void danificar(Jogador *pJ);
+    void danificar(Personagem* pPers);
     void executar();
     void salvar();
     void mover();

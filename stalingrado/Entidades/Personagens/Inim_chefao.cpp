@@ -43,9 +43,8 @@ namespace Stalingrado {
             int Inim_chefao::getIdChef(){
                 return id_chef;
             }
-
-            void Inim_chefao::danificar(Jogador *pJ) {
-                if (pJ==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; return;} //erro se o ponteiro for nulo
+            void Inim_chefao::danificar(Personagem *pPers) {
+                if (pPers==NULL) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; return;} //erro se o ponteiro for nulo
                 dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
                 if (dt_dano > 5.0f) {
                     if(!(proj_chefao->isAtivo())){
@@ -53,7 +52,7 @@ namespace Stalingrado {
                         posi_ini.x = posi_ini.x - 678.f;
                         posi_ini.y = posi_ini.y - 150.f;
                         proj_chefao->setPosition(posi_ini.x, posi_ini.y);
-                        sf::Vector2f posi_fin = pJ->getPos();
+                        sf::Vector2f posi_fin = pPers->getPos();
                         sf::Vector2f dist(posi_fin.x - posi_ini.x, posi_fin.y - posi_ini.y);
                         float module = sqrtf(dist.x*dist.x + dist.y*dist.y);
                         dist.x = dist.x/module;

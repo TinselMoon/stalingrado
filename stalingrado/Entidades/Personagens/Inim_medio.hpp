@@ -10,7 +10,7 @@ class Inim_medio : public Personagens::Inimigo{
 public:
     Inim_medio(int vida, int maldade);
     ~Inim_medio();
-    void danificar(Jogador *pJ);
+    void danificar(Personagem* pPers);
     void executar();
     void salvar();
     void mover();

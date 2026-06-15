@@ -16,7 +16,7 @@ namespace Stalingrado {
     namespace Fases {
 
         Fase_seg::Fase_seg(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
-        Fase(pJogador1, pJogador2, "Cenario_fase_dois"), maxInimChefoes(5), chao(NULL), maxEntulhos(20), maxExplosivos(10)
+        Fase(pJogador1, pJogador2, "Cenario_fase_dois", "Chao_fase_dois"), maxInimChefoes(10), chao(NULL), maxEntulhos(20), maxExplosivos(10)
         {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;
@@ -156,7 +156,7 @@ namespace Stalingrado {
 
         void Fase_seg::criarCenario(){
             //aqui cria o chao e posiciona ele
-            chao = new Entidades::Chao(comprimentoFase);
+            chao = new Entidades::Chao(comprimentoFase, "Chao_fase_dois");
             chao->setPosicao(0.f, 750.f);
             GC.setChao(chao);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(chao));
@@ -173,7 +173,7 @@ namespace Stalingrado {
             GC.executar();
             desenhar();
             lista_ents.desenhar();
-            pGG->desenharTextoCoordAbs("Fase 2:\t Casa\t Pavlov\t", 50, 100.f, 100.f);
+            pGG->desenharTextoCoordAbs("Fase 2:\t Rattenkrieg\t", 50, 100.f, 100.f);
             std::stringstream vida1, vida2;
             vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida();
             pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 10.f);

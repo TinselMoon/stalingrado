@@ -14,12 +14,12 @@ protected:
     float dt_movimento;
     float dt_dano;
     bool isChefao;
+    Jogador* pJogador;
 public:
     Inimigo(int vida, int maldade, const std::string& nomeTextura);
     ~Inimigo();
     void salvarDataBuffer();
     virtual void executar() = 0;
-    virtual void danificar(Jogador* pJ) = 0;
     virtual void mover();
     virtual void salvar();
     const bool getChefao() const;

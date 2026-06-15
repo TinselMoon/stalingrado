@@ -6,6 +6,7 @@
 #include "../Entidades/Chao.hpp"
 #include <SFML/System/Vector2.hpp>
 #include <cstdio>
+#include <iostream>
 using namespace std;
 using namespace Stalingrado;
 using namespace Entidades;
@@ -220,20 +221,26 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     }
 }
 
-void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
+void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
+
     //Chama a verificarColisao, se for true arruma a pos
     Personagem *jog1 = static_cast<Personagem*>(pJog1);
     Personagem *jog2 = static_cast<Personagem*>(pJog2);
     float rangeDano[2] = {15.f, 1500.f}; // primeiro valor p inimigo comum, segundo p chefao (range para atirar projetil)
     colisoesChao(jog1);
     colisaoBorda(jog1);
-    if(pJog2){
+    if(pJog2) {
         colisoesChao(jog2);
         colisaoBorda(jog2);
     }
     for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it){
+        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 45.0f)){
+            //Dano do Jogador ao inimigo
+            pJog1->danificar(*it);
+            cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inimigos
+        }
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
-            //Dano do inimigo
+            //Dano do Inimigo ao Jogador
             (*it)->danificar(pJog1);
             if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
                 //Arrumar colisao
@@ -244,13 +251,19 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
         Personagem *inim = static_cast<Personagem*>(*it);
         colisoesChao(inim);
         colisaoBorda(inim);
+
         if(pJog2){
+            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 45.0f)){
+                //Dano do Jogador ao inimigo
+                pJog2->danificar(*it);
+                cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inim
+            }
             if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
                 //Dano do inimigo
                 (*it)->danificar(pJog2);
-                if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
-                    //Arrumar colisao
-                    //resolverColisaoCinematica(pJog2, *it);
+
+                if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))) {
+
                     resolverColisaoJogInim(pJog2, *it);
                 }
             }
