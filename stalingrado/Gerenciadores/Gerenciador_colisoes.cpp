@@ -14,6 +14,7 @@ using namespace Personagens;
 using namespace Obstaculos;
 using namespace Gerenciadores;
 
+#define MARGEM_ATAQUE 125.0f
 
 namespace Stalingrado {
     
@@ -237,12 +238,12 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
     }
     for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it){
         if((*it)->isAtivo() == false) continue;
-        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 45.0f)){
+        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), MARGEM_ATAQUE)){
             //Dano do Jogador ao inimigo
             if(pJog1->getBelicoso()){
                 pJog1->danificar(*it);
             }
-            cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inimigos
+            //cout << (*it)->getVida() << endl; debugger de pobre pra verificar se o jogador ta tirando vida dos inimigos
         }
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
             //Dano do Inimigo ao Jogador
@@ -258,12 +259,12 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
         colisaoBorda(inim);
 
         if(pJog2){
-            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 45.0f)){
+            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), MARGEM_ATAQUE)){
                 //Dano do Jogador ao inimigo
                 if(pJog2->getBelicoso()){
                     pJog2->danificar(*it);
                 }
-                cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inim
+                //cout << (*it)->getVida() << endl; debugger de pobre pra verificar se o jogador ta tirando vida dos inim
             }
             if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
                 //Dano do inimigo

@@ -7,7 +7,7 @@
 
 #define VEL_JOG 1.0f //Velocidade do Jogador
 #define PODER_JOG1 4 //Quantidade de dano que o Jogador 1 pode infligir nos inimigos
-#define PODER_JOG2 1 //Quantidade de dano que o Jogador 2 pode infligir nos inimigos
+#define PODER_JOG2 2 //Quantidade de dano que o Jogador 2 pode infligir nos inimigos
 
 namespace Stalingrado {
     namespace Entidades {

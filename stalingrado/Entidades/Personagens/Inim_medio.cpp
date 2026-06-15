@@ -4,12 +4,20 @@
 #include <cstdlib>
 #include <iostream>
 
+#define VIDA_INIM_MED 8
+#define MALDADE_INIM_MED 2
+
 using namespace std;
 
 namespace Stalingrado {
 
 namespace Entidades {
 namespace Personagens {
+
+Inim_medio::Inim_medio() : Inimigo(VIDA_INIM_MED, MALDADE_INIM_MED, "Inimigo_medio") {
+
+
+}
 
 Inim_medio::Inim_medio(int vida, int maldade) : Inimigo(vida, maldade, "Inimigo_medio"){
     max_speed = 350.f;

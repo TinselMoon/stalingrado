@@ -3,6 +3,7 @@
 #include "../Entidades/Obstaculos/Entulho.hpp"
 #include <string>
 using namespace std;
+
 namespace Stalingrado {
 
 namespace Fases{
@@ -18,7 +19,7 @@ Fase::~Fase(){
 }
 
 void Fase::criarInimMedios(float x, float y){
-    Entidades::Personagens::Inim_medio *pEntidade = new Entidades::Personagens::Inim_medio(10, 2);
+    Entidades::Personagens::Inim_medio *pEntidade = new Entidades::Personagens::Inim_medio();
     GC.incluirInimigo(pEntidade);
     float pos_aleatoria = (rand() % (comprimentoFase - (int)x)) + x;
     pEntidade->movePos(pos_aleatoria, y);

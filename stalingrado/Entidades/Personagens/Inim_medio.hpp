@@ -8,6 +8,7 @@ namespace Personagens {
 class Inim_medio : public Inimigo{
 //
 public:
+    Inim_medio();
     Inim_medio(int vida, int maldade);
     ~Inim_medio();
     void danificar(Personagem* pPers);
