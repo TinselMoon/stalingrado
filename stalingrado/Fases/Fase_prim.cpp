@@ -169,10 +169,10 @@ namespace Stalingrado {
             lista_ents.desenhar();
             pGG->desenharTextoCoordAbs("Fase \t1: \tMaskirovka", 50, 100.f, 100.f);
             std::stringstream vida1, vida2;
-            vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida();
+            vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida() << "\t PONTOS:\t" << pJog1->getPontos();
             pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 10.f);
             if(pJog2 != NULL){
-                vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida();
+                vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida() << "\t PONTOS:\t" << pJog2->getPontos();
                 pGG->desenharTextoCamera(vida2.str(), 20, 50.f, 50.f);
             }
         }

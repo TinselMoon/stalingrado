@@ -27,7 +27,7 @@ namespace Stalingrado {
                 void mover();
                 void danificar (Personagem* pPers);
                 void setMultiplicadorVel(float mult);
-                const int getPontos() const{return 0;}
+                const int getPontos() const{return pontos;}
             };
         }
     }

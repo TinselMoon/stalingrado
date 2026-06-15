@@ -21,7 +21,6 @@ namespace Stalingrado {
     }
 
     Jogo::~Jogo() {
-
         if (fase_um)    delete fase_um;
         if (fase_seg)   delete fase_seg;
         if (pJog1)      delete pJog1;
@@ -70,6 +69,7 @@ namespace Stalingrado {
                     GG.setAlvoCamera(static_cast<Ente*>(pJog2));
                 else
                     faseAtual = 0;
+                    pMenu->set_inMenu(true);
                 fase_um->executar();
                 GG.atualizarCamera();
             }
