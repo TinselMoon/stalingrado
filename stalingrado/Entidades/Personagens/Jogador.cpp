@@ -112,11 +112,11 @@ namespace Stalingrado {
 
                 if (pPers==NULL) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; exit(1);}
 
-                dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
+                dt_dano += Jogo::getDt(); //tempo de contato para dar dano
                 if (dt_dano > 0.25f) {
                     pPers->operator-=(nivel_maldade);
                     dt_dano = 0;
-                    belicoso=false;
+                    belicoso=false; //volta ao modo nao belicoso
                 }
 
             }
