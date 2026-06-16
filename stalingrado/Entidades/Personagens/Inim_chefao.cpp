@@ -39,6 +39,7 @@ namespace Stalingrado {
             }
             void Inim_chefao::setProjetil(Projetil* pP){
                 proj_chefao = pP;
+                pP->setChefao(this);
             }
             int Inim_chefao::getIdChef(){
                 return id_chef;

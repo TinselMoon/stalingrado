@@ -1,6 +1,7 @@
 #include "Projetil.hpp"
 #include "../Jogo.hpp"
 #include "Personagens/Jogador.hpp"
+#include "Personagens/Inim_chefao.hpp"
 
 namespace Stalingrado {
 
@@ -56,6 +57,9 @@ void Projetil::movePos(float x, float y){
     personagem.move(x, y);
 }
 
+void Projetil::setChefao(Personagens::Inim_chefao *pInim){
+    pChefao = pInim;
+}
 void Projetil::setDir(float x, float y){
     vel_x = vel_projetil*x;
     vel_y = vel_projetil*y;

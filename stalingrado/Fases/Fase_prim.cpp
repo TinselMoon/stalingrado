@@ -175,6 +175,11 @@ namespace Stalingrado {
                 vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida() << "\t PONTOS:\t" << pJog2->getPontos();
                 pGG->desenharTextoCamera(vida2.str(), 20, 50.f, 50.f);
             }
+            if(inimigosMortos()){
+                if(pJog1->getPos().x > 9750 || pJog2->getPos().x > 9750){
+                        fase_concluida = true;
+                }
+            }
         }
 
     }

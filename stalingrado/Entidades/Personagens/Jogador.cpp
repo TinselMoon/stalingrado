@@ -5,7 +5,6 @@
 #include "../../Jogo.hpp"
 #include <SFML/Graphics/Rect.hpp>
 
-#define VEL_JOG 1.0f //Velocidade do Jogador
 #define PODER_JOG1 4 //Quantidade de dano que o Jogador 1 pode infligir nos inimigos
 #define PODER_JOG2 2 //Quantidade de dano que o Jogador 2 pode infligir nos inimigos
 
@@ -16,8 +15,8 @@ namespace Stalingrado {
 
             int Jogador::cont_jog(1);
 
-            Jogador::Jogador(int vida) : Personagem(vida,cont_jog==1 ? PODER_JOG1 : PODER_JOG2, 0, 0, 0, cont_jog==1 ? "Soldado" : "Cachorro"),
-            WisPressed(false), multiplicador_vel(VEL_JOG), belicoso(false) {
+            Jogador::Jogador(int vida) : Personagem(vida, cont_jog == 1 ? 4 : 2, 250.f, cont_jog == 1 ? "Soldado" : "Cachorro"),
+            WisPressed(false), multiplicador_vel(1.f), belicoso(false) {
                 pontos = 0;
                 id_jog = cont_jog;
                 cont_jog++;

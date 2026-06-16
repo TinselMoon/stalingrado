@@ -6,6 +6,7 @@ namespace Stalingrado {
 namespace Entidades{
 namespace Personagens{
 class Jogador;
+class Inim_chefao;
 }
 class Projetil : public Entidade{
 protected:
@@ -13,6 +14,7 @@ protected:
     float vel_y;
     const float vel_projetil;
     float dt_exist;
+    Personagens::Inim_chefao *pChefao;
 public:
     Projetil();
     ~Projetil();
@@ -25,6 +27,7 @@ public:
     void ativar();
     void destruir();
     void setVelocidadeY(float vy){}
+    void setChefao(Personagens::Inim_chefao *pInim);
 };
 }
 

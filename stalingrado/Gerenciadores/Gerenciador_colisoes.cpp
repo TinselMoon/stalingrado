@@ -367,6 +367,9 @@ void Gerenciador_Colisoes::executar(){
     tratarColisoesJogsObstaculos();
 }
 
+const bool Gerenciador_Colisoes::inimigosMortos() const{
+    return LIs.empty();
+}
 
 } //Fim namespace Gerenciadores
 

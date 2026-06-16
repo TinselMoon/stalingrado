@@ -23,6 +23,7 @@ protected:
     const int maxInimMedios;
     int comprimentoFase;
 
+    bool fase_concluida;
     Entidades::Chao* chao;
     Listas::ListaEntidades lista_ents;
     Gerenciadores::Gerenciador_Colisoes GC;
@@ -39,7 +40,8 @@ public:
     Fase(Entidades::Personagens::Jogador *pJogador1 = NULL, Entidades::Personagens::Jogador *pJogador2 = NULL, const std::string& texturaFundo = NULL, const std::string& texturaChao = NULL);
     ~Fase();
     virtual void executar() = 0;
-
+    const bool inimigosMortos() const;
+    const bool faseConcluida() const;
 };
 
 }

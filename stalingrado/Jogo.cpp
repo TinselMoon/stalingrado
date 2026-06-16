@@ -4,9 +4,6 @@
 #include <cstdlib>
 #include <ctime>
 
-#define VIDA_JOG1 10
-#define VIDA_JOG2 5
-
 namespace Stalingrado {
 
     Jogo* Jogo::instanciaJogo = NULL;
@@ -18,6 +15,10 @@ namespace Stalingrado {
         std::srand(static_cast<unsigned int>(std::time(0)));
         Ente::setGG(&GG); //set do gerenciador grafico para entes
         pMenu = new Menu(this);
+        pJog1 = new Entidades::Personagens::Jogador(10);
+        pJog2 = new Entidades::Personagens::Jogador(5);
+        fase_um = new Fases::Fase_prim(pJog1, pJog2);
+        fase_seg = new Fases::Fase_seg(pJog1, pJog2);
     }
 
     Jogo::~Jogo() {
@@ -46,66 +47,21 @@ namespace Stalingrado {
             while (GG.getJanela()->pollEvent(evento)) {
                 if (evento.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                     executando = false;
-
-                if (faseAtual == 0)
-                    pMenu->processarEvento(evento);
             }
 
             tempoDecorrido = clock.restart();
             dt = tempoDecorrido.asSeconds();
+            
 
             GG.getJanela()->clear();
-
-            if (faseAtual == 0) {
-                GG.setAlvoCamera(pMenu);
-                pMenu->executar();
-                GG.atualizarCamera();
-            }
-            else if (faseAtual == 1 && fase_um) {
-                pMenu->set_inMenu(false);
-                if(pJog1->isAtivo())
-                    GG.setAlvoCamera(static_cast<Ente*>(pJog1));
-                else if(!(pJog1->isAtivo()) && pJog2->isAtivo())
-                    GG.setAlvoCamera(static_cast<Ente*>(pJog2));
-                else
-                    faseAtual = 0;
-                    pMenu->set_inMenu(true);
-                fase_um->executar();
-                GG.atualizarCamera();
-            }
-            else if (faseAtual == 2 && fase_seg) {
-                pMenu->set_inMenu(false);
-                if(pJog1->isAtivo())
-                    GG.setAlvoCamera(static_cast<Ente*>(pJog1));
-                else if(!(pJog1->isAtivo()) && pJog2->isAtivo())
-                    GG.setAlvoCamera(static_cast<Ente*>(pJog2));
-                else{
-                    faseAtual = 0;
-                    pMenu->set_inMenu(true);
-                }
-                fase_seg->executar();
-                GG.atualizarCamera();
-            }
-
+            if(pJog1->isAtivo())
+                GG.setAlvoCamera(static_cast<Ente*>(pJog1));
+            else if(!(pJog1->isAtivo()) && pJog2->isAtivo())
+                GG.setAlvoCamera(static_cast<Ente*>(pJog2));
+            fase_um->executar();
+            GG.atualizarCamera();
             GG.getJanela()->display();
         }
-    }
-
-    void Jogo::iniciarFase1() {
-
-        if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
-        if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-        if (!fase_um) fase_um = new Fases::Fase_prim(pJog1, pJog2);
-
-        faseAtual = 1;
-    }
-
-    void Jogo::iniciarFase2() {
-        if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
-        if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-        if (!fase_seg) fase_seg = new Fases::Fase_seg(pJog1, pJog2);
-
-        faseAtual = 2;
     }
 
     void Jogo::fecharJogo() {

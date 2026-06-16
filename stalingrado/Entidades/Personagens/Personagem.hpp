@@ -16,7 +16,7 @@ protected:
     float dt_dano;
 
 public:
-    Personagem(int vida, int nMaldade, float mSpeed, float dtMov, float dtDn, const std::string& nomeTextura);
+    Personagem(int vida, int nMaldade, float mSpeed, const std::string& nomeTextura);
     ~Personagem();
     void salvarDataBuffer();
     void operator-=(int dano); //sobrecarga de operador para tirar vida do personagem (perder vida).
