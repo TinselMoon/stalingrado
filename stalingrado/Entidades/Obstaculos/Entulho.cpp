@@ -9,7 +9,7 @@ namespace Obstaculos {
 
 Entulho::Entulho() : Obstaculo(false, false, "Entulho"){
 
-    altura = this->getRectangle().getPosition().y;
+    altura = this->getSprite()->getGlobalBounds().height;
 }
 
 Entulho::~Entulho(){
@@ -25,9 +25,7 @@ void Entulho::salvar(){
 
 void Entulho::obstaculizar(Personagens::Jogador* pJ){
 
-    if (pJ->getRectangle().getPosition().y > altura)
-        pJ->operator-=(1);
-
+    //se os jogadores colidirem lateralmente com o entulho eles serao levemente empurrados para tras
 }
 
 }
