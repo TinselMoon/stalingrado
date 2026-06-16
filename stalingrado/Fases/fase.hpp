@@ -23,7 +23,7 @@ protected:
     const int maxInimMedios;
     int comprimentoFase;
 
-    Entidades::Chao* pChao;
+    Entidades::Chao* chao;
     Listas::ListaEntidades lista_ents;
     Gerenciadores::Gerenciador_Colisoes GC;
     Entidades::Personagens::Jogador *pJog1;

@@ -17,7 +17,7 @@ namespace Stalingrado {
     namespace Fases {
 
         Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
-        Fase(pJogador1, pJogador2, "Cenario_fase_um", "Chao_fase_um"), maxInimFaceis(8), chao(NULL), maxEntulhos(20), maxArames(10)
+        Fase(pJogador1, pJogador2, "Cenario_fase_um", "Chao_fase_um"), maxInimFaceis(8), maxEntulhos(20), maxArames(10)
         {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;

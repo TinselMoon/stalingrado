@@ -19,7 +19,6 @@ private:
     const int maxInimFaceis; //IMPLEMENTAR VALOR MAXIMO
     const int maxEntulhos;
     const int maxArames;
-    Entidades::Chao *chao;
 protected:
     void criarInimFaceis(float x, float y);
     void criarArame_farp(float x1, float x2);
