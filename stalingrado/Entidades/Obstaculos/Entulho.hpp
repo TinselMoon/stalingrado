@@ -7,7 +7,7 @@ namespace Entidades {
 namespace Obstaculos {
 class Entulho : public Obstaculos::Obstaculo{
 private:
-    //COLOCAR ALGO AQUI SLA
+    float altura;
 public:
     Entulho();
     ~Entulho();
