@@ -1,0 +1,13 @@
+Especificações da execução do programa:
+
+-Sistema Operacional usado para executá-lo: 
+
+Ubuntu 24.04.4 LTS.
+
+-Compilador usado para executá-lo:
+
+G++ (GNU C++ Compiler) na versão 13.3.0 (build Ubuntu 13.3.0-6ubuntu2~24.04.1). Free Software Foundation, Inc. (2023).
+
+Biblioteca Gráfica utilizada:
+
+SFML (Simple and Fast Multimedia Library) na versão 2.6.1.
