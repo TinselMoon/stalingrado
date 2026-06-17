@@ -6,7 +6,8 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 class Inim_medio : public Inimigo{
-//
+private:
+    const int recover_life;
 public:
     Inim_medio(int vida = 10, int maldade = 2);
     ~Inim_medio();

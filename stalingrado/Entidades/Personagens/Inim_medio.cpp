@@ -11,7 +11,9 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 
-Inim_medio::Inim_medio(int vida, int maldade) : Inimigo(vida, maldade, "Inimigo_medio"){
+Inim_medio::Inim_medio(int vida, int maldade) : Inimigo(vida, maldade, "Inimigo_medio"),
+recover_life(rand() % 10 + 10)
+{
     max_speed = 350.f;
     isChefao = 0;
 }
@@ -46,7 +48,10 @@ void Inim_medio::danificar(Personagem* pPers) {
     if (dt_dano > 0.35f) {
         *pPers -= nivel_maldade;
         if(pPers->getVida() == 0){
-            pPers->eliminar();
+            if(rand() % 100 <= recover_life)
+                num_vidas = 10;
+            else
+                pPers->eliminar();
         }
         dt_dano = 0;
     }
