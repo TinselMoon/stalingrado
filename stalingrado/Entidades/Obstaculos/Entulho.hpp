@@ -7,7 +7,7 @@ namespace Entidades {
 namespace Obstaculos {
 class Entulho : public Obstaculos::Obstaculo{
 private:
-    float altura;
+    float mult_impulso;
 public:
     Entulho();
     ~Entulho();
