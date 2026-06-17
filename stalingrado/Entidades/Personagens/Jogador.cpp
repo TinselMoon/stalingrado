@@ -16,7 +16,7 @@ namespace Stalingrado {
             int Jogador::cont_jog(1);
 
             Jogador::Jogador(int vida) : Personagem(vida, cont_jog == 1 ? 4 : 2, 250.f, cont_jog == 1 ? "Soldado" : "Cachorro"),
-            WisPressed(false), multiplicador_vel(1.f), belicoso(false) {
+            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0) {
                 pontos = 0;
                 id_jog = cont_jog;
                 cont_jog++;
@@ -38,6 +38,9 @@ namespace Stalingrado {
                 belicoso = belico;
             }
 
+            void Jogador::setCoolDown(float cd){
+                cooldown_mov = cd;
+            }
             void Jogador::lerMovimentacao(){
 
                 sf::Keyboard::Key esquerda[2] = {sf::Keyboard::A , sf::Keyboard::Left};
@@ -49,33 +52,37 @@ namespace Stalingrado {
                     bool right = false;
                     float velAntiga = getVelX();
                     float velAtual = 0;
-                    setVelocidadeX(0.f);
 
                     if (sf::Keyboard::isKeyPressed(atacar[id_jog-1]))
                         belicoso = true;
-
-                    if (sf::Keyboard::isKeyPressed(esquerda[id_jog-1]))
-                    {
-                        setVelocidadeX(-400.f*multiplicador_vel);
-                        left = true;
+                    if(cooldown_mov > 0){
+                        cooldown_mov -= Jogo::getDt();
                     }
-                    if (sf::Keyboard::isKeyPressed(direita[id_jog-1]))
-                    {
-                        setVelocidadeX(400.f*multiplicador_vel);
-                        right = true;
-                    }
-                    if(left && right){
+                    else{
                         setVelocidadeX(0.f);
-                    }
-                    if(getVelY() == 0){
-                        if (sf::Keyboard::isKeyPressed(pular[id_jog-1]) && !WisPressed)
+                        if (sf::Keyboard::isKeyPressed(esquerda[id_jog-1]))
                         {
-                            //Negativo pq as coordenadas Y são invertidas na SFML
-                            setVelocidadeY(-800.f);
-                            WisPressed = true;
+                            setVelocidadeX(-400.f*multiplicador_vel);
+                            left = true;
                         }
-                        else{
-                            WisPressed = false;
+                        if (sf::Keyboard::isKeyPressed(direita[id_jog-1]))
+                        {
+                            setVelocidadeX(400.f*multiplicador_vel);
+                            right = true;
+                        }
+                        if(left && right){
+                            setVelocidadeX(0.f);
+                        }
+                        if(getVelY() == 0){
+                            if (sf::Keyboard::isKeyPressed(pular[id_jog-1]) && !WisPressed)
+                            {
+                                //Negativo pq as coordenadas Y são invertidas na SFML
+                                setVelocidadeY(-800.f);
+                                WisPressed = true;
+                            }
+                            else{
+                                WisPressed = false;
+                            }
                         }
                     }
                     velAtual = getVelX();

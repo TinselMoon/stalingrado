@@ -197,6 +197,10 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                 (*it)->obstaculizar(pJog1);
             }
             else{
+                sobreposicao sob = calcularSobreposicao(pJog1, *it);
+                bool horizontal = (sob.overlapX > 0.0f && sob.overlapY > 0.0f && sob.overlapX < sob.overlapY);
+                if(horizontal)
+                    (*it)->obstaculizar(pJog1);
                 resolverColisaoCinematica(pJog1, *it);
             }
         
@@ -215,6 +219,10 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                     (*it)->obstaculizar(pJog2);
                 }
                 else{
+                    sobreposicao sob = calcularSobreposicao(pJog2, *it);
+                    bool horizontal = (sob.overlapX > 0.0f && sob.overlapY > 0.0f && sob.overlapX < sob.overlapY);
+                    if(horizontal)
+                        (*it)->obstaculizar(pJog2);
                     resolverColisaoCinematica(pJog2, *it);
                 }
             }

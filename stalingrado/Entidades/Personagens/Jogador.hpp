@@ -14,6 +14,7 @@ namespace Stalingrado {
                 static int cont_jog;
                 int id_jog;
                 float multiplicador_vel;
+                float cooldown_mov;
             protected:
                 int pontos;
             public:
@@ -28,6 +29,7 @@ namespace Stalingrado {
                 void danificar (Personagem* pPers);
                 void setMultiplicadorVel(float mult);
                 const int getPontos() const{return pontos;}
+                void setCoolDown(float cd);
             };
         }
     }
