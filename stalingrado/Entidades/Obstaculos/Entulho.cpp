@@ -10,7 +10,7 @@ namespace Entidades {
 namespace Obstaculos {
 
 Entulho::Entulho() : Obstaculo(false, false, "Entulho"){
-    mult_impulso = ((float)rand()/RAND_MAX)*(0.9f - 0.4f) + 0.4f;
+    mult_impulso = ((float)rand()/RAND_MAX)*0.5f + 0.4f;
 }
 
 Entulho::~Entulho(){
