@@ -16,7 +16,7 @@ make
 
 -Operating System:
 
-Ubuntu 24.04.4 LTS and Arch Linux
+Linux 6.17 and higher (not guaranteed to run properly on older versions).
 
 -Compiler:
 

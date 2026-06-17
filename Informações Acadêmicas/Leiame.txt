@@ -1,10 +1,10 @@
-Especificações da execução do programa:
+Especificações de desenvolvimento do projeto:
 
--Sistema Operacional usado para executá-lo: 
+-Sistema Operacional usado no desenvolvimento: 
 
-Ubuntu 24.04.4 LTS e Arch Linux
+Linux 6.17 ou superior (não é garantido que funcione corretamente em versões mais antigas)
 
--Compilador usado para executá-lo:
+-Compilador usado:
 
 G++ (GNU C++ Compiler) na versão 13.3.0. Free Software Foundation, Inc. (2023).
 
