@@ -9,7 +9,7 @@ namespace Stalingrado {
 namespace Fases{
 
 Fase::Fase(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2, const std::string& texturaFundo, const std::string& texturaChao) :
-Ente(texturaFundo), chao(NULL), GC(pJogador1, pJogador2), lista_ents(), maxInimMedios(5), comprimentoFase(0), fase_concluida(false){
+Ente(texturaFundo), chao(NULL), GC(pJogador1, pJogador2), lista_ents(), maxInimMedios(10), comprimentoFase(0), fase_concluida(false){
     pJog1 = pJogador1;
     pJog2 = pJogador2;
 }

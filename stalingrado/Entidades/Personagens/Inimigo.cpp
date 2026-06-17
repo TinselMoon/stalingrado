@@ -21,9 +21,6 @@ namespace Stalingrado {
             }
             
             void Inimigo::executar(){
-                if(num_vidas == 0){
-                    
-                }
             }
             const bool Inimigo::getChefao() const{
                 return isChefao;

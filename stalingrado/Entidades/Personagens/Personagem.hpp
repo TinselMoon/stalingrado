@@ -5,6 +5,7 @@ namespace Stalingrado {
 
 namespace Entidades {
 namespace Personagens {
+class Jogador;
 class Personagem : public Entidade {
 protected:
     int num_vidas;
@@ -29,7 +30,7 @@ public:
     sf::Vector2f getPos();
     int getVida();
     virtual const int getPontos() const = 0;
-    void eliminar();
+    void eliminar(Jogador *pJ = NULL);
     void setMorto();
     virtual void danificar(Personagem* pPers) = 0;
     virtual void executar() = 0;

@@ -1,7 +1,6 @@
 #include "Personagem.hpp"
 #include "../../Jogo.hpp"
-
-#define MAX_VIDAS 100
+#include "Jogador.hpp"
 
 namespace Stalingrado {
     namespace Entidades {
@@ -33,7 +32,7 @@ namespace Stalingrado {
             }
 
             void Personagem::operator+=(int bonus) {
-                num_vidas + bonus <= MAX_VIDAS ? num_vidas+=bonus : num_vidas = MAX_VIDAS;
+                num_vidas+=bonus;
             }
 
             float Personagem::getVelX(){
@@ -62,7 +61,16 @@ namespace Stalingrado {
                 vel_y = vy;
             }
 
-            void Personagem::eliminar(){
+            void Personagem::eliminar(Jogador *pJ){
+                if(pJ != NULL){
+                    int checkpointsAntigos = pJ->getUltimoCheckpoint() / 100;
+                    int checkpointsNovos = pJ->getPontos() / 100;
+
+                    if(checkpointsNovos > checkpointsAntigos){
+                        *pJ += checkpointsNovos;
+                        pJ->setUltimoCheckpoint(pJ->getPontos());
+                    }
+                }
                 ativo = false;
                 personagem.setPosition(-1000.f, -1000.f);
             }

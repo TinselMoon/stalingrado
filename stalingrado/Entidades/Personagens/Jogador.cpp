@@ -129,7 +129,7 @@ namespace Stalingrado {
                     pPers->operator-=(nivel_maldade);
                     if(pPers->getVida() == 0){
                         pontos += pPers->getPontos();
-                        pPers->eliminar();
+                        pPers->eliminar(this);
                     }
                     dt_dano = 0;
                     belicoso=false;
