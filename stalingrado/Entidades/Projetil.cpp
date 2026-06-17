@@ -10,6 +10,7 @@ namespace Entidades{
 Projetil::Projetil() : Entidade("Projetil"), vel_x(0), vel_y(0), vel_projetil(500.f), dt_exist(0){
     ativo = false;
     personagem.setPosition(-100.f, -100.f);
+    mult_impulso = ((float)rand()/RAND_MAX)*0.5f + 0.4f;
 }
 
 Projetil::~Projetil(){
@@ -18,6 +19,8 @@ Projetil::~Projetil(){
 
 void Projetil::danificar(Personagens::Jogador *pJ){
     *pJ -= 5;
+    pJ->setVelocidadeX(400.f);
+    pJ->impulso(mult_impulso);
     if(pJ->getVida() == 0){
         pJ->eliminar();
     }

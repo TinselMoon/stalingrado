@@ -28,9 +28,7 @@ void Entulho::salvar(){
 void Entulho::obstaculizar(Personagens::Jogador* pJ){
 
     //se os jogadores colidirem lateralmente com o entulho eles serao levemente empurrados para tras
-    pJ->setCoolDown(0.5f);
-    pJ->setVelocidadeX(-(pJ->getVelX()*mult_impulso));
-    pJ->setVelocidadeY(-300.f);
+    pJ->impulso(mult_impulso);
 }
 
 }

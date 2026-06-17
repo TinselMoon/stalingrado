@@ -15,6 +15,7 @@ protected:
     const float vel_projetil;
     float dt_exist;
     Personagens::Inim_chefao *pChefao;
+    float mult_impulso;
 public:
     Projetil();
     ~Projetil();
