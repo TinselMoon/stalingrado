@@ -12,16 +12,16 @@ cd build
 cmake ..
 make
 ```
-### This program was originally executed in the following environment:
+### This program was originally developed in the following environments:
 
 -Operating System:
 
-Ubuntu 24.04.4 LTS.
+Ubuntu 24.04.4 LTS and Arch Linux
 
 -Compiler:
 
-G++ (GNU C++ Compiler) 13.3.0 (build Ubuntu 13.3.0-6ubuntu2~24.04.1). Free Software Foundation, Inc. (2023).
+G++ (GNU C++ Compiler) 13.3.0. Free Software Foundation, Inc. (2023).
 
 -Graphics Library:
 
-SFML (Simple and Fast Multimedia Library) 2.6.1.
+SFML (Simple and Fast Multimedia Library) 2.6.
