@@ -30,6 +30,7 @@ namespace Stalingrado {
                 void setMultiplicadorVel(float mult);
                 const int getPontos() const{return pontos;}
                 void impulso(float mult);
+                void setCooldown(float cd);
             };
         }
     }

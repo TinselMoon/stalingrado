@@ -14,7 +14,7 @@ namespace Personagens {
 Inim_facil::Inim_facil(int vida, int maldade) : Inimigo(vida, maldade, "Inimigo_facil"){
     max_speed = 250.f;
     isChefao = 0;
-    mult_impulso = ((float)rand()/RAND_MAX)*0.5f + 0.4f;
+    tempo_atordoar = ((float)rand()/RAND_MAX)*0.4f + 0.2f;
 }
 
 Inim_facil::~Inim_facil(){
@@ -44,14 +44,14 @@ void Inim_facil::danificar(Personagem* pPers) {
     if (pPers==NULL) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; exit(1);}
 
     dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
-    if (dt_dano > 0.25f) {
+    if (dt_dano > 1.f) {
         *pPers -= nivel_maldade;
         if(pPers->getVida() == 0){
             pPers->eliminar();
         }
         else{
             Jogador *pJ = dynamic_cast<Jogador*>(pPers);
-            pJ->impulso(mult_impulso);
+            pJ->setCooldown(tempo_atordoar);
         }
         dt_dano = 0;
     }

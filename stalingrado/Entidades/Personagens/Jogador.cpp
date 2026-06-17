@@ -37,6 +37,10 @@ namespace Stalingrado {
             void Jogador::setBelicoso(bool belico) {
                 belicoso = belico;
             }
+            
+            void Jogador::setCooldown(float cd){
+                cooldown_mov = cd;
+            }
 
             void Jogador::impulso(float mult){
                 cooldown_mov = 0.5f;

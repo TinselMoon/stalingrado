@@ -7,7 +7,7 @@ namespace Entidades {
 namespace Personagens {
 class Inim_facil : public Inimigo{
 private:
-    float mult_impulso;
+    float tempo_atordoar;
 public:
     Inim_facil(int vida, int maldade);
     ~Inim_facil();

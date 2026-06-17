@@ -108,9 +108,15 @@ void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE)
             } else {
                 //empurra para cima
                 pJ->movePos(0.0f, -sob.overlapY); 
-
+                
                 //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
-                pJ->setVelocidadeY(0.0f); 
+                Jogador *pJog = dynamic_cast<Jogador*>(pJ);
+                if(pJog == NULL){
+                    pJ->setVelocidadeY(0.0f);
+                }
+                else if(pJog->getVelY() > 0.0f){
+                        pJ->setVelocidadeY(0.0f); 
+                }
             }
         }
     }
@@ -255,12 +261,12 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
         }
         if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
             //Dano do Inimigo ao Jogador
-            (*it)->danificar(pJog1);
             if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
                 //Arrumar colisao
                 //resolverColisaoCinematica(pJog1, *it);
                 resolverColisaoJogInim(pJog1, *it);
             }
+            (*it)->danificar(pJog1);
         }
         Personagem *inim = static_cast<Personagem*>(*it);
         colisoesChao(inim);
@@ -276,12 +282,12 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
             }
             if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
                 //Dano do inimigo
-                (*it)->danificar(pJog2);
 
                 if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))) {
 
                     resolverColisaoJogInim(pJog2, *it);
                 }
+                (*it)->danificar(pJog2);
             }
         }
     }
