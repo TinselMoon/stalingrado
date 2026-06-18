@@ -9,7 +9,7 @@ namespace Stalingrado {
 namespace Fases{
 
 Fase::Fase(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2, const std::string& texturaFundo, const std::string& texturaChao) :
-Ente(texturaFundo), chao(NULL), GC(pJogador1, pJogador2), lista_ents(), maxInimMedios(10), comprimentoFase(0), fase_concluida(false){
+Ente(texturaFundo), chao(NULL), GC(pJogador1, pJogador2), lista_ents(), maxInimMediosAleatorios(5), comprimentoFase(0), fase_concluida(false){
     pJog1 = pJogador1;
     pJog2 = pJogador2;
 }
@@ -21,8 +21,7 @@ Fase::~Fase(){
 void Fase::criarInimMedios(float x, float y){
     Entidades::Personagens::Inim_medio *pEntidade = new Entidades::Personagens::Inim_medio(10, 2);
     GC.incluirInimigo(pEntidade);
-    float pos_aleatoria = (rand() % (comprimentoFase - (int)x)) + x;
-    pEntidade->movePos(pos_aleatoria, y);
+    pEntidade->movePos(x, y);
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 }
 

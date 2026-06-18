@@ -86,7 +86,7 @@ namespace Stalingrado {
                 // A posição x que será passada será a borda esquerda limite para geração de posição aleatoria do personagem
                 while (arquivo >> tipo >> x >> y) {
                     if (tipo == "INIM_MEDIO") {
-                        if(cont_inim_medios == maxInimMedios)
+                        if(cont_inim_medios == maxInimMediosAleatorios)
                             cout << "Máximo de inimigos médios atingido, ignorando os próximos" << endl;
                         else {
                             criarInimMedios(x, y);

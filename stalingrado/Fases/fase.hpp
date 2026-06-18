@@ -20,7 +20,7 @@ namespace Entidades{
 namespace Fases{
 class Fase : public Stalingrado::Ente{
 protected:
-    const int maxInimMedios;
+    const int maxInimMediosAleatorios;
     int comprimentoFase;
 
     bool fase_concluida;

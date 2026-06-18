@@ -27,17 +27,10 @@ void Inim_facil::executar(){
 void Inim_facil::salvar(){
 
 }
-void Inim_facil::mover(){
-    dt_movimento += Jogo::getDt();
-    if(dt_movimento > 1){
-        int new_direction = (rand() % 3) - 1;
-        setVelocidadeX(max_speed*new_direction);
-        if(rand() % 100 < 10 && getVelY() == 0)
-            setVelocidadeY(-400.f);
-        dt_movimento = 0;
-    }
+/*void Inim_facil::mover(){
+    Inimigo::mover();
     Personagem::mover();
-}
+}*/
 
 void Inim_facil::danificar(Personagem* pPers) {
 

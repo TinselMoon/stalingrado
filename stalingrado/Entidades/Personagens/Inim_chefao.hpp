@@ -18,7 +18,7 @@ namespace Stalingrado {
                 void danificar(Personagem *pPers);
                 void executar();
                 void salvar();
-                void mover();
+                //void mover();
                 void setProjetil(Projetil* pP);
                 int getIdChef();
             };

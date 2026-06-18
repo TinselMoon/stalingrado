@@ -28,7 +28,7 @@ void Inim_medio::executar(){
 void Inim_medio::salvar(){
 
 }
-void Inim_medio::mover(){
+/*void Inim_medio::mover(){
     dt_movimento += Jogo::getDt();
     if(dt_movimento > 1){
         int new_direction = (rand() % 3) - 1;
@@ -38,7 +38,7 @@ void Inim_medio::mover(){
         dt_movimento = 0;
     }
     Personagem::mover();
-}
+}*/
 
 void Inim_medio::danificar(Personagem* pPers) {
 

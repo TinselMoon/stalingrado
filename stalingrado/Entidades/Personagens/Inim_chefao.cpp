@@ -28,7 +28,7 @@ namespace Stalingrado {
             void Inim_chefao::salvar(){
 
             }
-            void Inim_chefao::mover(){
+            /*void Inim_chefao::mover(){
                 dt_movimento += Jogo::getDt();
                 if(dt_movimento > 1){
                     int new_direction = (rand() % 3) - 1;
@@ -36,7 +36,7 @@ namespace Stalingrado {
                     dt_movimento = 0;
                 }
                 Personagem::mover();
-            }
+            }*/
             void Inim_chefao::setProjetil(Projetil* pP){
                 proj_chefao = pP;
                 pP->setChefao(this);

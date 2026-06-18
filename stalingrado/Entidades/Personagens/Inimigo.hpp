@@ -21,7 +21,7 @@ public:
     void salvarDataBuffer();
     virtual void executar();
     const int getPontos() const;
-    virtual void mover();
+    void mover();
     virtual void salvar();
     const bool getChefao() const;
 };

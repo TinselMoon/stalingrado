@@ -17,7 +17,8 @@ namespace Stalingrado {
     namespace Fases {
 
         Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
-        Fase(pJogador1, pJogador2, "Cenario_fase_um", "Chao_fase_um"), maxInimFaceis(8), maxEntulhos(20), maxArames(10)
+        Fase(pJogador1, pJogador2, "Cenario_fase_um", "Chao_fase_um"), maxInimFaceisAleatorios(5), maxEntulhosAleatorios(8), 
+        maxAramesAleatorios(10)
         {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;
@@ -43,8 +44,7 @@ namespace Stalingrado {
 
             Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);
             GC.incluirInimigo(pEntidade);
-            float pos_aleatoria = (rand() % (comprimentoFase - (int)x)) + x;
-            pEntidade->movePos(pos_aleatoria, y);
+            pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
         }
         void Fase_prim::criarArame_farp(float x, float y){
@@ -68,29 +68,40 @@ namespace Stalingrado {
                 }
                 int cont_inim_faceis = 0;
                 int cont_inim_medios = 0;
-                std::string tipo;
+                std::string classe;
                 float x;
                 float y;
+                int tipo;
 
                 // Personagem, pos x, pos y
                 // A posição x que será passada será a borda esquerda limite para geração de posição aleatoria do personagem
-                while (arquivo >> tipo >> x >> y) {
-                    if (tipo == "INIM_FACIL") {
-                        if(cont_inim_faceis == maxInimFaceis){
-                            cout << "Máximo de inimigos fáceis atingido, ignorando os próximos" << endl;
+                while (arquivo >> tipo  >> classe >> x >> y) {
+                    if (classe == "INIM_FACIL") {
+                        if(tipo == 1){
+                            criarInimFaceis(x, y);
                         }
                         else{
-                            criarInimFaceis(x, y);
-                            cont_inim_faceis++;
+                            if(cont_inim_faceis == maxInimFaceisAleatorios){
+                                cout << "Máximo de inimigos fáceis atingido, ignorando os próximos" << endl;
+                            }
+                            else if(rand() % 2){
+                                criarInimFaceis(x, y);
+                                cont_inim_faceis++;
+                            }
                         }
                     }
-                    else if (tipo == "INIM_MEDIO") {
-                        if(cont_inim_medios == maxInimMedios){
-                            cout << "Máximo de inimigos médios atingido, ignorando os próximos" << endl;
+                    else if (classe == "INIM_MEDIO") {
+                        if(tipo == 1){
+                            criarInimMedios(x, y);
                         }
                         else{
-                            criarInimMedios(x, y);
-                            cont_inim_medios++;
+                            if(cont_inim_medios == maxInimMediosAleatorios){
+                                cout << "Máximo de inimigos médios atingido, ignorando os próximos" << endl;
+                            }
+                            else if(rand() % 2){
+                                criarInimMedios(x, y);
+                                cont_inim_medios++;
+                            }
                         }
                     }
                 }
@@ -125,7 +136,7 @@ namespace Stalingrado {
                             criarPlataformas(x, y);
                         }
                         else{
-                            if(cont_entulhos == maxEntulhos){
+                            if(cont_entulhos == maxEntulhosAleatorios){
                                 cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
                             }
                             else if(rand() % 2){
@@ -139,10 +150,10 @@ namespace Stalingrado {
                             criarArame_farp(x, y);
                         }
                         else{
-                            if(cont_arame == maxArames){
+                            if(cont_arame == maxAramesAleatorios){
                                 cout << "Máximo de arames farpados atingido, ignorando os próximos" << endl;
                             }
-                            else{
+                            else if(rand() % 2){
                                 criarArame_farp(x, y);
                                 cont_arame++;
                             }
