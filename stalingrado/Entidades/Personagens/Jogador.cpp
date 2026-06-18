@@ -16,7 +16,7 @@ namespace Stalingrado {
             int Jogador::cont_jog(1);
 
             Jogador::Jogador(int vida) : Personagem(vida, cont_jog == 1 ? "Soldado" : "Cachorro"),
-            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0), dt_dano(0)
+            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0)
             {
                 pontos = 0;
                 id_jog = cont_jog;

@@ -11,7 +11,7 @@ protected:
     int num_vidas;
     float vel_x;
     float vel_y;
-
+    float dt_dano;
 public:
     Personagem(int vida, const std::string& nomeTextura);
     ~Personagem();

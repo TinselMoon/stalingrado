@@ -17,7 +17,6 @@ namespace Stalingrado {
                 float cooldown_mov;
                 int checkpoint_pontos;
                 int dano;
-                float dt_dano;
             protected:
                 int pontos;
             public:

@@ -12,7 +12,6 @@ protected:
     int nivel_maldade;
     float max_speed;
     float dt_movimento;
-    float dt_dano;
     bool isChefao;
     const int pontos_por_kill;
     float dt_mudar_direcao;
