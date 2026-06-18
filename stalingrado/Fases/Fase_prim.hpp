@@ -21,7 +21,7 @@ private:
     const int maxArames;
 protected:
     void criarInimFaceis(float x, float y);
-    void criarArame_farp(float x1, float x2);
+    void criarArame_farp(float x, float y);
     void criarInimigos();
     void criarObstaculos();
 public:

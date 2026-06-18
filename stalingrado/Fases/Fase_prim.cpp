@@ -47,12 +47,11 @@ namespace Stalingrado {
             pEntidade->movePos(pos_aleatoria, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
         }
-        void Fase_prim::criarArame_farp(float x1, float x2){
+        void Fase_prim::criarArame_farp(float x, float y){
 
             Entidades::Obstaculos::Arame_farp *pEntidade = new Entidades::Obstaculos::Arame_farp();
             GC.incluirObstaculo(pEntidade);
-            float pos_aleatoria = (rand() % ((int)x2 - (int)x1)) + x1;
-            pEntidade->movePos(pos_aleatoria, 900.f);
+            pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 
         }
@@ -113,29 +112,40 @@ namespace Stalingrado {
                 }
                 int cont_entulhos = 0;
                 int cont_arame = 0;
-                std::string tipo;
-                float x1;
-                float x2;
+                int tipo;
+                std::string classe;
+                float x;
+                float y;
 
                 // Obstaculo, pos x min, pos x maxima
                 // As posições x min e x maxima delimitam o espaço em que será gerado aleatoriamente o entulho
-                while (arquivo >> tipo >> x1 >> x2) {
-                    if (tipo == "ENTULHO") {
-                        if(cont_entulhos == maxEntulhos){
-                            cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
+                while (arquivo >> tipo >> classe >> x >> y) {
+                    if (classe == "ENTULHO") {
+                        if(tipo == 1){
+                            criarPlataformas(x, y);
                         }
                         else{
-                            criarPlataformas(x1, x2);
-                            cont_entulhos++;
+                            if(cont_entulhos == maxEntulhos){
+                                cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
+                            }
+                            else{
+                                criarPlataformas(x, y);
+                                cont_entulhos++;
+                            }
                         }
                     }
-                    else if (tipo == "ARAME_FARP") {
-                        if(cont_arame == maxArames){
-                            cout << "Máximo de arames farpados atingido, ignorando os próximos" << endl;
+                    else if (classe == "ARAME_FARP") {
+                        if(tipo == 1){
+                            criarArame_farp(x, y);
                         }
                         else{
-                            criarArame_farp(x1, x2);
-                            cont_arame++;
+                            if(cont_arame == maxArames){
+                                cout << "Máximo de arames farpados atingido, ignorando os próximos" << endl;
+                            }
+                            else{
+                                criarArame_farp(x, y);
+                                cont_arame++;
+                            }
                         }
                     }
                 }

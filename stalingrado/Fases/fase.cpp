@@ -26,11 +26,10 @@ void Fase::criarInimMedios(float x, float y){
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 }
 
-void Fase::criarPlataformas(float x1, float x2){
+void Fase::criarPlataformas(float x, float y){
     Entidades::Obstaculos::Entulho *pEntidade = new Entidades::Obstaculos::Entulho();
     GC.incluirObstaculo(pEntidade);
-    float pos_aleatoria = (rand() % ((int)x2 - (int)x1)) + x1;
-    pEntidade->movePos(pos_aleatoria, 900.f);
+    pEntidade->movePos(x, y);
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 }
 
