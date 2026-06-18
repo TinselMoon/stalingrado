@@ -15,11 +15,13 @@ namespace Stalingrado {
 
             int Jogador::cont_jog(1);
 
-            Jogador::Jogador(int vida) : Personagem(vida, cont_jog == 1 ? 4 : 2, 250.f, cont_jog == 1 ? "Soldado" : "Cachorro"),
-            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0) {
+            Jogador::Jogador(int vida) : Personagem(vida, cont_jog == 1 ? "Soldado" : "Cachorro"),
+            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0), dt_dano(0)
+            {
                 pontos = 0;
                 id_jog = cont_jog;
                 cont_jog++;
+                dano = (cont_jog == 1 ? 4 : 2);
             }
 
             Jogador::~Jogador(){
@@ -126,7 +128,7 @@ namespace Stalingrado {
 
                 dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
                 if (dt_dano > 0.25f) {
-                    pPers->operator-=(nivel_maldade);
+                    pPers->operator-=(dano);
                     if(pPers->getVida() == 0){
                         pontos += pPers->getPontos();
                         pPers->eliminar(this);

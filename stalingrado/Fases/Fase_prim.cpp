@@ -128,7 +128,7 @@ namespace Stalingrado {
                             if(cont_entulhos == maxEntulhos){
                                 cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
                             }
-                            else{
+                            else if(rand() % 2){
                                 criarPlataformas(x, y);
                                 cont_entulhos++;
                             }

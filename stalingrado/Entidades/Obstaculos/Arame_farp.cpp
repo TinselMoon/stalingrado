@@ -32,7 +32,7 @@ void Arame_farp::obstaculizar(Personagens::Jogador* pJ){
 
     pJ->setMultiplicadorVel(fator_lentidao);
     if(pJ->getVelY() > 0)
-        pJ->setVelocidadeY(pJ->getVelY()*fator_lentidao);
+        pJ->setVelocidadeY(200*fator_lentidao);
 }
 
 }
