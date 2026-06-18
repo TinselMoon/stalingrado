@@ -1,22 +1,22 @@
-### Stalingrado
+## Stalingrado
 A 2D pixel-art style game inspired by the Battle of Stalingrad.
 
-### Requirements
+## Requirements
 - CMake 3.x or higher
 - C++ compiler (G++ or Clang++)
 - SFML 2.6 or higher
 
-### Installing SFML
-## Ubuntu:
+## Installing SFML
+### Ubuntu:
 ```bash
 sudo apt install libsfml-dev
 ```
-## Arch Linux:
+### Arch Linux:
 ```bash
 sudo pacman -S sfml
 ```
 
-### Build instructions
+## Build instructions
 ```bash
 mkdir build
 cd build
@@ -24,8 +24,8 @@ cmake ..
 make
 ```
 
-### Development Environment
-## This project was originally developed using:
+## Development Environment
+### This project was originally developed using:
 
 -Operating System: Linux 6.x
 
@@ -33,6 +33,6 @@ make
 
 -Graphics Library: SFML (Simple and Fast Multimedia Library) 2.6
 
-### Notes
+## Notes
 
 - The program may not run correctly on older systems or with outdated dependencies
