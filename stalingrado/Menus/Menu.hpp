@@ -16,6 +16,7 @@ namespace Stalingrado {
         private:
             Jogo* pJogo;
         protected:
+            int pos;
             list<Botao*> listaBotao;
             list<Botao*>::iterator it;
             const sf::Vector2f tamanhoBotao;
