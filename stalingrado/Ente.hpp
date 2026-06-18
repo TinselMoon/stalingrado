@@ -8,7 +8,7 @@ namespace Stalingrado{
         static int contId; //adicao do Gustavo, interpretacao
         static Gerenciadores::Gerenciador_Grafico* pGG;
         //A classe Sprite possui a posição do sprite também
-        sf::Sprite personagem; //Melhorar o nome para englobar
+        sf::Sprite corpo;
 
     public:
         Ente(const std::string& nomeTextura);

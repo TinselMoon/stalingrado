@@ -29,7 +29,7 @@ bool Obstaculo::getDanoso(){
 }
 
 void Obstaculo::movePos(float x, float y){
-    personagem.move(x, y);
+    corpo.move(x, y);
 }
 
 void Obstaculo::setVelocidadeY(float vy){

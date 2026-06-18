@@ -10,8 +10,8 @@ namespace Stalingrado {
             Personagem::Personagem(int vida, int nMaldade, float mSpeed, float dtMov, float dtDn, const std::string& nomeTextura) :
             Entidades::Entidade(nomeTextura), num_vidas(vida), nivel_maldade (nMaldade), max_speed(mSpeed), dt_movimento(dtMov), dt_dano(dtDn)
             {
-                sf::FloatRect rectangle = personagem.getLocalBounds();
-                personagem.setOrigin(rectangle.width/2.f, rectangle.height/2.f);
+                sf::FloatRect rectangle = corpo.getLocalBounds();
+                corpo.setOrigin(rectangle.width/2.f, rectangle.height/2.f);
                 vel_x = vel_y = 0.f;
             }
 
@@ -42,11 +42,11 @@ namespace Stalingrado {
             }
 
             sf::Vector2f Personagem::getPos(){
-                return personagem.getPosition();
+                return corpo.getPosition();
             }
 
             void Personagem::movePos(float x, float y){
-                personagem.move(x, y);
+                corpo.move(x, y);
             }
 
             void Personagem::setVelocidadeX(float vx){
@@ -62,7 +62,7 @@ namespace Stalingrado {
                 setVelocidadeY(getVelY() + 1200.f*dt);
                 dx = getVelX()*dt;
                 dy = getVelY()*dt;
-                personagem.move(dx, dy);
+                corpo.move(dx, dy);
             }
 
         }

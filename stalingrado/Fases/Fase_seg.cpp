@@ -152,8 +152,8 @@ namespace Stalingrado {
             lista_ents.incluir(static_cast<Entidades::Entidade*>(chao));
 
             //aqui configura o fundo
-            personagem.setPosition(0.f, 0.f);
-            personagem.setTextureRect(sf::IntRect(0, 0, comprimentoFase, 750));
+            corpo.setPosition(0.f, 0.f);
+            corpo.setTextureRect(sf::IntRect(0, 0, comprimentoFase, 750));
             criarObstaculos();
             GC.tratarColisoesObsObs();
         }

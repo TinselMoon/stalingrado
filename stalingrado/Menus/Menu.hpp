@@ -15,8 +15,17 @@ namespace Stalingrado {
         class Menu : public Ente {
         private:
             Jogo* pJogo;
-        protected:
             int pos;
+            bool apertou;
+            bool theselect;
+            sf::Vector2i pos_mouse;
+            sf::Vector2f mouse_coord;
+            vector<const char*> opcoes;
+            vector<sf::Vector2f> coords;
+            vector<sf::Text> textos;
+            vector<size_t> sizes;
+
+        protected:
             list<Botao*> listaBotao;
             list<Botao*>::iterator it;
             const sf::Vector2f tamanhoBotao;
@@ -24,6 +33,8 @@ namespace Stalingrado {
             sf::Text tituloJogo;
             const unsigned short int tamanhoTitulo;
             bool mouseAbove;
+
+            
         public:
             Menu(Jogo* pJ, const sf::Vector2f tamBotao, const unsigned short int tamTitulo, const string& nome);
             virtual ~Menu();

@@ -82,13 +82,13 @@ namespace Stalingrado {
                     velAtual = getVelX();
                     if(velAntiga != velAtual){
                         //Atualizar lado que o personagem esta olhando
-                        int larguraTextura = personagem.getTexture()->getSize().x;
-                        int alturaTextura = personagem.getTexture()->getSize().y;
+                        int larguraTextura = corpo.getTexture()->getSize().x;
+                        int alturaTextura = corpo.getTexture()->getSize().y;
                         if(velAtual > 0){
-                            personagem.setTextureRect(sf::IntRect(0, 0, larguraTextura, alturaTextura));
+                            corpo.setTextureRect(sf::IntRect(0, 0, larguraTextura, alturaTextura));
                         }
                         if(velAtual < 0){
-                            personagem.setTextureRect(sf::IntRect(larguraTextura, 0,-larguraTextura, alturaTextura));
+                            corpo.setTextureRect(sf::IntRect(larguraTextura, 0,-larguraTextura, alturaTextura));
                         }
                     }
                 multiplicador_vel = 1.0f;
