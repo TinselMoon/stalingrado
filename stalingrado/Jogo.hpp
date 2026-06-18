@@ -1,7 +1,7 @@
 #pragma once
 #include "Fases/Fase_prim.hpp"
 #include "Fases/Fase_seg.hpp"
-#include "Menu.hpp"
+#include "Menus/Menu.hpp"
 
 namespace Stalingrado {
 
@@ -20,7 +20,7 @@ namespace Stalingrado {
         sf::Time tempoDecorrido;
         static float dt;
 
-        Menu* pMenu;
+        Menus::Menu* pMenu;
         Entidades::Personagens::Jogador* pJog1;
         Entidades::Personagens::Jogador* pJog2;
         Fases::Fase_prim* fase_um;

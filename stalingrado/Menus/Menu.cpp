@@ -4,7 +4,8 @@
 namespace Stalingrado {
     namespace Menus {
         Menu::Menu(Jogo *pJ, const sf::Vector2f tamBotao, const unsigned short int tamTitulo, const string& nome) :
-        Ente(), pJogo(pJ), tamanhoBotao(tamBotao), tamanhoTitulo(tamTitulo), mouseAbove(false), tamanhoJanela((pGG->getJanela()->getSize()))
+        Ente(nome), pJogo(pJ), tamanhoBotao(tamBotao), tamanhoTitulo(tamTitulo), mouseAbove(false),
+        tamanhoJanela((pGG->getJanela()->getSize())), inMenu(true)
         {
         }
 
@@ -25,11 +26,8 @@ namespace Stalingrado {
         }
 
         void Menu::executar() {
-
-        }
-
-        void Menu::desenhar() {
-
+            if (inMenu)
+                desenhar();
         }
 
         void Menu::optAbove() {

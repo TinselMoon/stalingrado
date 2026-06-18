@@ -6,16 +6,16 @@
 naquelas dos ex-monitores Giovane Limas Salvi e Matheus Augusto Burda*/
 
 namespace Stalingrado {
+    class Jogo;
     namespace Menus {
         using namespace std;
-        /*Forward declarations*/
-        class Jogo;
         class Botao;
-        /*--------------------*/
+
         class Menu : public Ente {
         private:
             Jogo* pJogo;
             int pos;
+            bool inMenu;
             bool apertou;
             bool theselect;
             sf::Vector2i pos_mouse;
@@ -39,7 +39,7 @@ namespace Stalingrado {
             Menu(Jogo* pJ, const sf::Vector2f tamBotao, const unsigned short int tamTitulo, const string& nome);
             virtual ~Menu();
             void addBotao(const string info, const sf::Vector2f pos);
-            void desenhar();
+
             //----OBSERVER
             void optAbove();
             void optBelow();

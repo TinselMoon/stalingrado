@@ -17,7 +17,7 @@ namespace Stalingrado {
     {
         std::srand(static_cast<unsigned int>(std::time(0)));
         Ente::setGG(&GG); //set do gerenciador grafico para entes
-        pMenu = new Menu(this);
+        pMenu = new Menus::Menu(this, sf::Vector2f(100, 100), 50, "Menu");
     }
 
     Jogo::~Jogo() {
