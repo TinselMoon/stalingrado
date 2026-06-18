@@ -16,6 +16,7 @@ recover_life(rand() % 10 + 10)
 {
     max_speed = 350.f;
     isChefao = 0;
+    dt_mudar_direcao = 0.5f;
 }
 
 Inim_medio::~Inim_medio(){

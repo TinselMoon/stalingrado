@@ -15,6 +15,7 @@ Inim_facil::Inim_facil(int vida, int maldade) : Inimigo(vida, maldade, "Inimigo_
     max_speed = 250.f;
     isChefao = 0;
     tempo_atordoar = ((float)rand()/RAND_MAX)*0.4f + 0.4f;
+    dt_mudar_direcao = 1.f;
 }
 
 Inim_facil::~Inim_facil(){

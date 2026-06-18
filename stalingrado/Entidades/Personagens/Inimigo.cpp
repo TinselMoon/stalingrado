@@ -11,7 +11,8 @@ namespace Stalingrado {
         namespace Personagens {
 
             Inimigo::Inimigo(int vida, int maldade, const std::string& nomeTextura) : Personagem(vida, nomeTextura),
-            pontos_por_kill(10*maldade), nivel_maldade(maldade), max_speed(250.f), dt_movimento(0), dt_dano(1.f) // dano já vem engatilhado
+            pontos_por_kill(10*maldade), nivel_maldade(maldade), max_speed(250.f), dt_movimento(0), dt_mudar_direcao(0),
+            dt_dano(1.f) // dano já vem engatilhado
             {
             }
 
@@ -39,7 +40,7 @@ namespace Stalingrado {
                 float velAntiga = getVelX();
                 float velAtual = 0;
                 dt_movimento += Jogo::getDt();
-                if(dt_movimento > 1){
+                if(dt_movimento > dt_mudar_direcao){
                     int new_direction = (rand() % 3) - 1;
                     velAtual = max_speed*new_direction;
                     setVelocidadeX(velAtual);

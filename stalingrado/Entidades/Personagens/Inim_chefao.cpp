@@ -15,6 +15,7 @@ namespace Stalingrado {
             Inim_chefao::Inim_chefao(int vida, int maldade) : Inimigo(vida, maldade, "Inim_chefao"), id_chef(cont_chef++), proj_chefao(NULL){
                 max_speed = 050.f;
                 isChefao = 1;
+                dt_mudar_direcao = 2.f;
             }
             int Inim_chefao::cont_chef(0);
 

@@ -15,6 +15,7 @@ protected:
     float dt_dano;
     bool isChefao;
     const int pontos_por_kill;
+    float dt_mudar_direcao;
 public:
     Inimigo(int vida, int maldade, const std::string& nomeTextura);
     ~Inimigo();
