@@ -1,13 +1,40 @@
-Especificações de desenvolvimento do projeto:
+Stalingrado
 
--Sistema Operacional usado no desenvolvimento: 
+Um jogo 2D em estilo pixel art inspirado na Batalha de Stalingrado.
 
-Linux 6.17 ou superior (não é garantido que funcione corretamente em versões mais antigas)
+Requisitos
 
--Compilador usado:
+Certifique-se de ter instalado:
 
-G++ (GNU C++ Compiler) na versão 13.3.0. Free Software Foundation, Inc. (2023).
+CMake 3.x ou superior
+Compilador C++ (G++ ou Clang++)
+SFML 2.6 ou superior
 
-Biblioteca Gráfica utilizada:
+Instalação da SFML
 
-SFML (Simple and Fast Multimedia Library) na versão 2.6.
+Ubuntu:
+
+sudo apt install libsfml-dev
+
+Arch Linux:
+
+sudo pacman -S sfml
+
+Como compilar
+
+mkdir build
+cd build
+cmake ..
+make
+
+Ambiente de desenvolvimento
+
+Este projeto foi originalmente desenvolvido com:
+
+Sistema Operacional: Linux (kernel 6.x ou recente)
+Compilador: G++ 13.x
+Biblioteca gráfica: SFML 2.6
+
+Observações
+
+- O programa pode não funcionar corretamente em sistemas antigos ou com dependências desatualizadas.
