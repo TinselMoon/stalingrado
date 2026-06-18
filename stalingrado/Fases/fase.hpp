@@ -22,6 +22,7 @@ class Fase : public Stalingrado::Ente{
 protected:
     const int maxInimMediosAleatorios;
     int comprimentoFase;
+    int maxEntulhosAleatorios;
 
     bool fase_concluida;
     Entidades::Chao* chao;

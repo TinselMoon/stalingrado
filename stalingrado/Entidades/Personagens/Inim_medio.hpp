@@ -14,7 +14,6 @@ public:
     void danificar(Personagem* pPers);
     void executar();
     void salvar();
-    //void mover();
 };
 
 }

@@ -19,7 +19,6 @@ public:
     virtual void executar() = 0;
     virtual void salvar() = 0;
     virtual void obstaculizar(Personagens::Jogador* pJ) = 0;
-    const bool getVivo() const {return false;}
     void movePos(float x, float y);
     void setVelocidadeY(float vy);
     bool getLentidao();

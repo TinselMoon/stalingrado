@@ -16,7 +16,7 @@ namespace Stalingrado {
     namespace Fases {
 
         Fase_seg::Fase_seg(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
-        Fase(pJogador1, pJogador2, "Cenario_fase_dois", "Chao_fase_dois"), maxInimChefoes(10), maxEntulhos(20), maxExplosivos(10)
+        Fase(pJogador1, pJogador2, "Cenario_fase_dois", "Chao_fase_dois"), maxInimChefoesAleatorios(3), maxExplosivosAleatorios(5)
         {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;
@@ -39,12 +39,11 @@ namespace Stalingrado {
             }
         }
 
-        void Fase_seg::criarExplosivos(float x1, float x2){
+        void Fase_seg::criarExplosivos(float x, float y){
 
             Entidades::Obstaculos::Explosivo *pEntidade = new Entidades::Obstaculos::Explosivo();
             GC.incluirObstaculo(pEntidade);
-            float pos_aleatoria = (rand() % ((int)x2 - (int)x1)) + x1;
-            pEntidade->movePos(pos_aleatoria, 900.f);
+            pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
         }
 
@@ -59,7 +58,7 @@ namespace Stalingrado {
         }
         
         void Fase_seg::criarProjeteis() {
-            for(int i = 0; i < maxInimChefoes; i++){
+            for(int i = 0; i < maxInimChefoesAleatorios; i++){
                 Entidades::Projetil *pProjetil = new Entidades::Projetil();
                 GC.incluirProjetil(pProjetil);
                 lista_ents.incluir(static_cast<Entidades::Entidade*>(pProjetil));
@@ -78,27 +77,38 @@ namespace Stalingrado {
                 }
                 int cont_inim_medios = 0;
                 int cont_inim_chefoes = 0;
-                std::string tipo;
+                std::string classe;
+                int tipo;
                 float x;
                 float y;
 
                 // Personagem, pos x, pos y
                 // A posição x que será passada será a borda esquerda limite para geração de posição aleatoria do personagem
-                while (arquivo >> tipo >> x >> y) {
-                    if (tipo == "INIM_MEDIO") {
-                        if(cont_inim_medios == maxInimMediosAleatorios)
-                            cout << "Máximo de inimigos médios atingido, ignorando os próximos" << endl;
-                        else {
+                while (arquivo >> tipo >> classe >> x >> y) {
+                    if (classe == "INIM_MEDIO") {
+                        if(tipo == 1){
                             criarInimMedios(x, y);
-                            cont_inim_medios++;
+                        }
+                        else{
+                            if(cont_inim_medios == maxInimMediosAleatorios)
+                                cout << "Máximo de inimigos médios atingido, ignorando os próximos" << endl;
+                            else if(rand() % 2){
+                                criarInimMedios(x, y);
+                                cont_inim_medios++;
+                            }
                         }
                     }
-                    else if (tipo == "INIM_CHEFAO") {
-                        if (cont_inim_chefoes == maxInimChefoes)
-                            cout << "Máximo de inimigos do tipo chefão atingido, ignorando os próximos" << endl;
-                        else {
+                    else if (classe == "INIM_CHEFAO") {
+                        if(tipo == 1){
                             criarChefoes(x, y);
-                            cont_inim_chefoes++;
+                        }
+                        else{
+                            if (cont_inim_chefoes == maxInimChefoesAleatorios)
+                                cout << "Máximo de inimigos do classe chefão atingido, ignorando os próximos" << endl;
+                            else if(rand() % 2){
+                                criarChefoes(x, y);
+                                cont_inim_chefoes++;
+                            }
                         }
                     }
                 }
@@ -128,7 +138,7 @@ namespace Stalingrado {
                 // As posições x min e x maxima delimitam o espaço em que será gerado aleatoriamente o entulho
                 while (arquivo >> tipo >> x1 >> x2) {
                     if (tipo == "ENTULHO") {
-                        if(cont_entulhos == maxEntulhos){
+                        if(cont_entulhos == maxEntulhosAleatorios){
                             cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
                         }
                         else{
@@ -138,7 +148,7 @@ namespace Stalingrado {
                     }
                     else if (tipo == "EXPLOSIVO") {
 
-                        if (cont_explosivos == maxExplosivos)
+                        if (cont_explosivos == maxExplosivosAleatorios)
                             cout << "Maximo de explosivos atingido, ignorando os proximos" << endl;
                         else {
                             criarExplosivos(x1, x2);

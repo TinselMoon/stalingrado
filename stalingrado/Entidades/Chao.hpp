@@ -6,7 +6,7 @@ namespace Entidades{
 class Chao : public Entidade{
 private:
     const int comprimento;
-    float altura;
+    const int altura;
 public:
     Chao(const int comp, const std::string& textura);
     ~Chao();
@@ -16,7 +16,6 @@ public:
     void salvar();
     void movePos(float x, float y){}
     void setVelocidadeY(float vy){}
-    const bool getVivo() const{return false;}
 };
 }
 }

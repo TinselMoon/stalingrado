@@ -7,15 +7,13 @@ namespace Entidades {
 namespace Personagens {
 class Inim_facil : public Inimigo{
 private:
-    float tempo_atordoar;
+    const float tempo_atordoar;
 public:
-    Inim_facil(int vida, int maldade);
+    Inim_facil(int vida = 5, int maldade = 1);
     ~Inim_facil();
     void danificar(Personagem* pPers);
     void executar();
     void salvar();
-    //void mover();
-    //void desenhar();
 };
 
 }

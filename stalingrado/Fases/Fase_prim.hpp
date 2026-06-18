@@ -17,7 +17,6 @@ namespace Fases{
 class Fase_prim : public Fase{
 private:
     const int maxInimFaceisAleatorios; //IMPLEMENTAR VALOR MAXIMO
-    const int maxEntulhosAleatorios;
     const int maxAramesAleatorios;
 protected:
     void criarInimFaceis(float x, float y);

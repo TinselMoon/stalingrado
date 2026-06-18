@@ -30,11 +30,11 @@ namespace Stalingrado {
                 void mover();
                 void danificar (Personagem* pPers);
                 void setMultiplicadorVel(float mult);
-                const int getPontos() const{return pontos;}
+                const int getPontos() const;
                 void impulso(float mult);
                 void setCooldown(float cd);
-                int getUltimoCheckpoint(){return checkpoint_pontos;}
-                void setUltimoCheckpoint(int pontos){checkpoint_pontos = pontos;}
+                int getUltimoCheckpoint();
+                void setUltimoCheckpoint(int pontos);
             };
         }
     }

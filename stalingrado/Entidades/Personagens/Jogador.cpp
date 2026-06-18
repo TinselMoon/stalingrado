@@ -49,6 +49,17 @@ namespace Stalingrado {
                 vel_x = -vel_x*mult;
                 vel_y = -300.f;
             }
+            const int Jogador::getPontos() const{
+                return pontos;
+            }
+
+            int Jogador::getUltimoCheckpoint(){
+                return checkpoint_pontos;
+            }
+            void Jogador::setUltimoCheckpoint(int pontos){
+                checkpoint_pontos = pontos;
+            }
+
             void Jogador::lerMovimentacao(){
 
                 sf::Keyboard::Key esquerda[2] = {sf::Keyboard::A , sf::Keyboard::Left};
