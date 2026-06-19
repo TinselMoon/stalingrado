@@ -49,10 +49,9 @@ namespace Stalingrado {
 
         void Fase_seg::criarChefoes(float x, float y) {
 
-            Entidades::Personagens::Inim_chefao *pEntidade = new Entidades::Personagens::Inim_chefao(15, 5);
+            Entidades::Personagens::Inim_chefao *pEntidade = new Entidades::Personagens::Inim_chefao(20, 5);
             GC.incluirInimigo(pEntidade);
-            float pos_aleatoria = (rand() % (comprimentoFase - (int)x)) + x;
-            pEntidade->movePos(pos_aleatoria, y);
+            pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
             pEntidade->setProjetil(GC.getProjetil(pEntidade->getIdChef()));
         }

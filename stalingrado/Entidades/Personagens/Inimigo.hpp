@@ -21,7 +21,7 @@ public:
     void salvarDataBuffer();
     virtual void executar();
     const int getPontos() const;
-    void mover();
+    virtual void mover();
     virtual void salvar(std::ofstream& arquivo);
     const bool getChefao() const;
 };

@@ -31,15 +31,15 @@ namespace Stalingrado {
                         << " " << getPos().x
                         << " " << getPos().y << "\n";
             }
-            /*void Inim_chefao::mover(){
+            void Inim_chefao::mover(){
                 dt_movimento += Jogo::getDt();
-                if(dt_movimento > 1){
+                if(dt_movimento > dt_mudar_direcao){
                     int new_direction = (rand() % 3) - 1;
                     setVelocidadeX(max_speed*new_direction);
                     dt_movimento = 0;
                 }
                 Personagem::mover();
-            }*/
+            }
             void Inim_chefao::setProjetil(Projetil* pP){
                 proj_chefao = pP;
                 pP->setChefao(this);
