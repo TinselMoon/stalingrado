@@ -62,7 +62,7 @@ namespace Stalingrado {
                 GG.setAlvoCamera(static_cast<Ente*>(pJog1));
             else if(!(pJog1->isAtivo()) && pJog2->isAtivo())
                 GG.setAlvoCamera(static_cast<Ente*>(pJog2));
-            fase_seg->executar();
+            fase_um->executar();
             GG.atualizarCamera();
             GG.getJanela()->display();
         }
