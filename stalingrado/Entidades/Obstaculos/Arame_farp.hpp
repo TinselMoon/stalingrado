@@ -13,7 +13,7 @@ public:
     Arame_farp();
     ~Arame_farp();
     void executar();
-    void salvar();
+    void salvar(std::ofstream& arquivo);
     void obstaculizar(Personagens::Jogador* pJ);
 };
 }

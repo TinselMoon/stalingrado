@@ -20,7 +20,9 @@ void Arame_farp::executar(){
 
 }
 
-void Arame_farp::salvar(){
+void Arame_farp::salvar(std::ofstream& arquivo){
+    arquivo << id << " ARAME_FARP " << personagem.getPosition().x
+            << " " << personagem.getPosition().y << "\n";
 }
 
 void Arame_farp::obstaculizar(Personagens::Jogador* pJ){

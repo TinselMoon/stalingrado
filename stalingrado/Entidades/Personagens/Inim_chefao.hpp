@@ -17,7 +17,7 @@ namespace Stalingrado {
                 ~Inim_chefao();
                 void danificar(Personagem *pPers);
                 void executar();
-                void salvar();
+                void salvar(std::ofstream& arquivo);
                 void setProjetil(Projetil* pP);
                 int getIdChef();
             };

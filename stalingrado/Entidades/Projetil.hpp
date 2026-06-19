@@ -21,7 +21,7 @@ public:
     ~Projetil();
     void danificar(Personagens::Jogador *pJ);
     void executar();
-    void salvar();
+    void salvar(std::ofstream& arquivo);
     void movePos(float x, float y);
     void setDir(float x,float y);
     void setPosition(float x, float y);

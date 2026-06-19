@@ -24,7 +24,7 @@ namespace Stalingrado {
                 ~Jogador();
                 void lerMovimentacao();
                 void executar();
-                void salvar();
+                void salvar(std::ofstream& arquivo);
                 bool getBelicoso() const;
                 void setBelicoso(bool belico);
                 void mover();

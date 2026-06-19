@@ -13,7 +13,7 @@ public:
     ~Inim_facil();
     void danificar(Personagem* pPers);
     void executar();
-    void salvar();
+    void salvar(std::ofstream& arquivo);
 };
 
 }

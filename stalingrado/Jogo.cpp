@@ -3,6 +3,8 @@
 #include "Entidades/Personagens/Jogador.hpp"
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include <iostream>
 
 namespace Stalingrado {
 
@@ -45,8 +47,10 @@ namespace Stalingrado {
         while (GG.getJanela()->isOpen() && executando) {
             sf::Event evento;
             while (GG.getJanela()->pollEvent(evento)) {
-                if (evento.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                if (evento.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
                     executando = false;
+                    salvarJogo("save.txt");
+                }
             }
 
             tempoDecorrido = clock.restart();
@@ -66,6 +70,18 @@ namespace Stalingrado {
 
     void Jogo::fecharJogo() {
         executando = false;
+    }
+    //Eu coloquei pensando na fase 1 pq é a q eu to testando, dps precisa adaptar tudo
+    void Jogo::salvarJogo(const std::string& caminho) {
+        std::ofstream arquivo(caminho.c_str());
+        if (!arquivo.is_open()) {
+            std::cerr << "Não foi possível criar o arquivo de save: " << caminho << std::endl;
+            return;
+        }
+        arquivo << "FASE 1\n";
+        fase_um->salvarFase(arquivo);
+        arquivo.close();
+        std::cout << "Jogo salvo em " << caminho << std::endl;
     }
 
 }

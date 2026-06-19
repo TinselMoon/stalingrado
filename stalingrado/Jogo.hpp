@@ -2,6 +2,7 @@
 #include "Fases/Fase_prim.hpp"
 #include "Fases/Fase_seg.hpp"
 #include "Menu.hpp"
+#include <string>
 
 namespace Stalingrado {
 
@@ -40,5 +41,7 @@ namespace Stalingrado {
         void iniciarFase1();
         void iniciarFase2();
         void fecharJogo();
+        void salvarJogo(const std::string& caminho = "save.txt");
+
     };
 }

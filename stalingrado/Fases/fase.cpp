@@ -1,6 +1,7 @@
 #include "fase.hpp"
 #include "../Entidades/Personagens/Inim_medio.hpp"
 #include "../Entidades/Obstaculos/Entulho.hpp"
+#include "../Entidades/Personagens/Jogador.hpp"
 #include <string>
 using namespace std;
 
@@ -40,6 +41,11 @@ const bool Fase::inimigosMortos() const{
 const bool Fase::faseConcluida() const{
     return fase_concluida;
 }
+
+void Fase::salvarFase(std::ofstream& arquivo){
+    lista_ents.salvar(arquivo);
+}
+
 }
 
 } // Fim do namespace Stalingrado

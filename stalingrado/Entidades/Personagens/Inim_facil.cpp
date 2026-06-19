@@ -26,8 +26,10 @@ Inim_facil::~Inim_facil(){
 void Inim_facil::executar(){
     mover();
 }
-void Inim_facil::salvar(){
-
+void Inim_facil::salvar(std::ofstream& arquivo){
+    arquivo << id << " INIM_FACIL " << getVida()
+            << " " << getPos().x
+            << " " << getPos().y << "\n";
 }
 /*void Inim_facil::mover(){
     Inimigo::mover();

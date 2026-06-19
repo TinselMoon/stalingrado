@@ -129,8 +129,12 @@ namespace Stalingrado {
                 mover();
             }
 
-            void Jogador::salvar(){
-
+            void Jogador::salvar(std::ofstream& arquivo){
+                arquivo << id << " JOGADOR " << id_jog
+                    << " " << getVida()
+                    << " " << pontos
+                    << " " << getPos().x
+                    << " " << getPos().y << "\n";
             }
 
             void Jogador::danificar(Personagem *pPers) {

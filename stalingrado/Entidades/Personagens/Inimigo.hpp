@@ -22,7 +22,7 @@ public:
     virtual void executar();
     const int getPontos() const;
     void mover();
-    virtual void salvar();
+    virtual void salvar(std::ofstream& arquivo);
     const bool getChefao() const;
 };
 }

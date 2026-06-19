@@ -30,7 +30,7 @@ public:
     void setMorto();
     virtual void danificar(Personagem* pPers) = 0;
     virtual void executar() = 0;
-    virtual void salvar() = 0;
+    virtual void salvar(std::ofstream& arquivo) = 0;
     virtual void mover();
 };
 }

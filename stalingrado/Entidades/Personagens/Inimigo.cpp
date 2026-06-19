@@ -31,7 +31,7 @@ namespace Stalingrado {
             const int Inimigo::getPontos() const{
                 return pontos_por_kill;
             }
-            void Inimigo::salvar(){
+            void Inimigo::salvar(std::ofstream& arquivo){
 
             }
 

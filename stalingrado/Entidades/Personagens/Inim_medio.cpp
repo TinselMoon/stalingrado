@@ -26,8 +26,10 @@ Inim_medio::~Inim_medio(){
 void Inim_medio::executar(){
     mover();
 }
-void Inim_medio::salvar(){
-
+void Inim_medio::salvar(std::ofstream& arquivo){
+    arquivo << id << " INIM_MEDIO " << getVida()
+            << " " << getPos().x
+            << " " << getPos().y << "\n";
 }
 /*void Inim_medio::mover(){
     dt_movimento += Jogo::getDt();

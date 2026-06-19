@@ -13,7 +13,7 @@ public:
     ~Inim_medio();
     void danificar(Personagem* pPers);
     void executar();
-    void salvar();
+    void salvar(std::ofstream& arquivo);
 };
 
 }

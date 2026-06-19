@@ -23,7 +23,7 @@ void Chao::executar(){
 
 }
 
-void Chao::salvar(){
+void Chao::salvar(std::ofstream& arquivo){
 
 }
 

@@ -43,6 +43,7 @@ public:
     virtual void executar() = 0;
     const bool inimigosMortos() const;
     const bool faseConcluida() const;
+    void salvarFase(std::ofstream& arquivo);
 };
 
 }

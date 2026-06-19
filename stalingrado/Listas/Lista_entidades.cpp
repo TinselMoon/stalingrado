@@ -74,6 +74,19 @@ void ListaEntidades::remover(Entidades::Entidade *pE){
 void ListaEntidades::limpar(){
     LEs.limpar();
 }
+void ListaEntidades::salvar(std::ofstream& arquivo){
+    Lista<Entidades::Entidade>::Elemento* pAux = LEs.getPrimeiro();
+
+    while(pAux != NULL){
+        Entidades::Entidade* pEntidade = pAux->getInfo();
+
+        if(pEntidade != NULL && pEntidade->isAtivo()){
+            pEntidade->salvar(arquivo);
+        }
+
+        pAux = pAux->getProx();
+    }
+}
 
 }
 

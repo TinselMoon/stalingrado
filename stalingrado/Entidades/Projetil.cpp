@@ -53,7 +53,7 @@ void Projetil::executar(){
         destruir();
     }
 }
-void Projetil::salvar(){
+void Projetil::salvar(std::ofstream& arquivo){
 
 }
 void Projetil::movePos(float x, float y){
