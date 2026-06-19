@@ -2,12 +2,12 @@
 #include "Gerenciadores/Gerenciador_grafico.hpp"
 
 namespace Stalingrado{
+
     class Ente {
     protected:
         int id;
         static int contId; //adicao do Gustavo, interpretacao
         static Gerenciadores::Gerenciador_Grafico* pGG;
-        //A classe Sprite possui a posição do sprite também
         sf::Sprite corpo;
 
     public:
@@ -17,7 +17,9 @@ namespace Stalingrado{
         virtual void executar() = 0;
         void desenhar();
         static void setGG(Gerenciadores::Gerenciador_Grafico* pG);
+        Gerenciadores::Gerenciador_Grafico* getGG () const;
         sf::FloatRect getRectangle();
         const sf::Sprite* getSprite();
     };
+
 }

@@ -13,11 +13,11 @@ public:
         Elemento* pProx;
         TL *pInfo;
     public:
-        Elemento() : pProx(NULL), pInfo(NULL){}
-        ~Elemento(){pProx = NULL;
+        Elemento() : pProx(nullptr), pInfo(nullptr){}
+        ~Elemento(){pProx = nullptr;
         //Talvez liberar a memoria do pInfo
             //delete pInfo;
-            //pInfo = NULL;
+            //pInfo = nullptr;
         }
         void incluir(TL *pI){pInfo = pI;}
         void setProx(Elemento* pElem){pProx = pElem;}
@@ -29,36 +29,36 @@ private:
     Elemento* Primeiro;
     Elemento* Ultimo;
 public:
-    Lista() : Primeiro(NULL), Ultimo(NULL){}
+    Lista() : Primeiro(nullptr), Ultimo(nullptr){}
     ~Lista(){
-        Ultimo = NULL;
+        Ultimo = nullptr;
 
         Elemento *t;
-        while(Primeiro != NULL){
+        while(Primeiro != nullptr){
             t = Primeiro;
             Primeiro = Primeiro->getProx();
             delete t;
         }
-        t = NULL;
+        t = nullptr;
     }
     Elemento* getPrimeiro() const { return Primeiro; }
     void limpar(){
-        Ultimo = NULL;
+        Ultimo = nullptr;
 
         Elemento *t;
-        while(Primeiro != NULL){
+        while(Primeiro != nullptr){
             t = Primeiro;
             Primeiro = Primeiro->getProx();
             delete t;
         }
-        t = NULL;
+        t = nullptr;
     }
 
     void incluir(TL* p){
-        Elemento* paux = NULL;
+        Elemento* paux = nullptr;
         paux = new Elemento;
         paux->incluir(p);
-        if(Primeiro == NULL){
+        if(Primeiro == nullptr){
             Primeiro = paux;
             Ultimo = paux;
             return;
@@ -68,19 +68,19 @@ public:
     }
     void remover(TL *p){
         Elemento* paux = Primeiro;
-        if(paux == NULL) return;
+        if(paux == nullptr) return;
         if(paux->getInfo() == p){
             Primeiro = paux->getProx();
-            if(Primeiro == NULL){
-                Ultimo = NULL;
+            if(Primeiro == nullptr){
+                Ultimo = nullptr;
             }
             delete paux;
             return;
         }
-        while(paux->getProx() != NULL && paux->getProx()->getInfo() != p){
+        while(paux->getProx() != nullptr && paux->getProx()->getInfo() != p){
             paux = paux->getProx();
         }
-        if(paux->getProx() == NULL) return; // elemento não encontrado
+        if(paux->getProx() == nullptr) return; // elemento não encontrado
         Elemento* t = paux->getProx();
         paux->setProx(t->getProx());
         if(t == Ultimo) Ultimo = paux;

@@ -50,7 +50,7 @@ private:
     void colisaoBorda(Entidades::Personagens::Personagem *pP);
 
 public:
-    Gerenciador_Colisoes(Entidades::Personagens::Jogador *pJ1 = NULL, Entidades::Personagens::Jogador *pJ2 = NULL);
+    Gerenciador_Colisoes(Entidades::Personagens::Jogador *pJ1 = nullptr, Entidades::Personagens::Jogador *pJ2 = nullptr);
     ~Gerenciador_Colisoes();
     void setChao(Entidades::Chao *pC);
     void incluirInimigo(Entidades::Personagens::Inimigo *pi);

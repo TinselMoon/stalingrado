@@ -25,7 +25,7 @@ void Arame_farp::salvar(){
 
 void Arame_farp::obstaculizar(Personagens::Jogador* pJ){
 
-    if (pJ == NULL) {
+    if (pJ == nullptr) {
         std::cerr << "Ponteiro do jogador nulo" << std::endl;
         exit(1);
     }

@@ -1,9 +1,9 @@
 #include "Jogador.hpp"
-
 #include <iostream>
-
-#include "../../Jogo.hpp"
+#include "../../States/Jogo.hpp"
 #include <SFML/Graphics/Rect.hpp>
+
+using namespace std;
 
 #define VEL_JOG 1.0f //Velocidade do Jogador
 #define PODER_JOG1 4 //Quantidade de dano que o Jogador 1 pode infligir nos inimigos
@@ -12,7 +12,6 @@
 namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
-            using namespace std;
 
             int Jogador::cont_jog(1);
 
@@ -110,9 +109,9 @@ namespace Stalingrado {
 
             void Jogador::danificar(Personagem *pPers) {
 
-                if (pPers==NULL) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; exit(1);}
+                if (pPers==nullptr) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; exit(1);}
 
-                dt_dano += Jogo::getDt(); //tempo de contato para dar dano
+                dt_dano += States::Jogo::getDt(); //tempo de contato para dar dano
                 if (dt_dano > 0.25f) {
                     pPers->operator-=(nivel_maldade);
                     dt_dano = 0;

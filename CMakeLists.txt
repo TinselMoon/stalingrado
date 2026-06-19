@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 project(stalingrado)
 
-set(CMAKE_CXX_STANDARD 98)
+set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -12,7 +12,10 @@ file(GLOB_RECURSE SOURCES
     "main.cpp"
 )
 
-add_executable(stalingrado ${SOURCES})
+add_executable(stalingrado ${SOURCES}
+        stalingrado/States/Jogo.hpp
+        stalingrado/Menus/MenuInicial.hpp
+)
 
 target_include_directories(stalingrado PRIVATE
   Gerenciadores

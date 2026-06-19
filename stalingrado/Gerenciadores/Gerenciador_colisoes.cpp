@@ -26,7 +26,7 @@ LIs(), LOs(), LPs(), pJog1(pJ1), pJog2(pJ2){
 
 Gerenciador_Colisoes::~Gerenciador_Colisoes(){
     //Limpa os vetores, listas e aterra os ponteiros. A memoria deve ser desalocada na fase
-    pJog1 = pJog2 = NULL;
+    pJog1 = pJog2 = nullptr;
     LIs.clear();
     LOs.clear();
     LPs.clear();
@@ -37,14 +37,14 @@ void Gerenciador_Colisoes::setChao(Entidades::Chao* pC){
 }
 
 const bool Gerenciador_Colisoes::verificarColisao(Entidade *pe1, Entidade *pe2) const {
-    if (pe1 == NULL || pe2 == NULL) {
+    if (pe1 == nullptr || pe2 == nullptr) {
         return false;
     }
     return pe1->getRectangle().intersects(pe2->getRectangle());
 }
 
 const bool Gerenciador_Colisoes::verificarColisaoDano(Entidades::Entidade *pe1, Entidades::Entidade *pe2, float margemExtra) const{
-    if (pe1 == NULL || pe2 == NULL) {
+    if (pe1 == nullptr || pe2 == nullptr) {
         return false;
     }
     

@@ -2,7 +2,7 @@
 
 #include "Personagem.hpp"
 #include "Jogador.hpp"
-#include "../../Jogo.hpp"
+#include "../../States/Jogo.hpp"
 #include <cstdlib>
 #include <ctime>
 

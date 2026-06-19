@@ -20,12 +20,12 @@ void ListaEntidades::percorrer(){
     Lista<Entidades::Entidade>::Elemento* pAux = LEs.getPrimeiro();
 
     // 2. Loop para navegar nó por nó até o fim da lista
-    while(pAux != NULL){
+    while(pAux != nullptr){
         // 3. Pega a entidade que está guardada dentro do nó
         Entidades::Entidade* pEntidade = pAux->getInfo();
 
         // 4. Se o ponteiro for válido, executa
-        if(pEntidade != NULL){
+        if(pEntidade != nullptr){
             pEntidade->executar();
         }
 
@@ -38,12 +38,12 @@ void ListaEntidades::desenhar(){
     Lista<Entidades::Entidade>::Elemento* pAux = LEs.getPrimeiro();
 
     // 2. Loop para navegar nó por nó até o fim da lista
-    while(pAux != NULL){
+    while(pAux != nullptr){
         // 3. Pega a entidade que está guardada dentro do nó
         Entidades::Entidade* pEntidade = pAux->getInfo();
 
         // 4. Se o ponteiro for válido, executa
-        if(pEntidade != NULL){
+        if(pEntidade != nullptr){
             pEntidade->desenhar();
         }
 
@@ -55,10 +55,10 @@ void ListaEntidades::desenhar(){
 void ListaEntidades::destruirEntidades() {
     Lista<Entidades::Entidade>::Elemento* pAux = LEs.getPrimeiro();
 
-    while(pAux != NULL){
+    while(pAux != nullptr){
         Entidades::Entidade* pEntidade = pAux->getInfo();
 
-        if(pEntidade != NULL){
+        if(pEntidade != nullptr){
             delete pEntidade;
         }
 

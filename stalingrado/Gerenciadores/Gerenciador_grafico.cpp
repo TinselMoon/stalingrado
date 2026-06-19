@@ -13,7 +13,7 @@ namespace Stalingrado {
     using namespace Gerenciadores;
 
     Gerenciador_Grafico::Gerenciador_Grafico(): janela(sf::VideoMode(1920, 1080), "Stalingrado", sf::Style::Fullscreen) {
-            janela.setFramerateLimit(144);
+            janela.setFramerateLimit(600);
             camera.setSize(sf::Vector2f(1920.f, 1080.f));
             janela.setView(camera);
             lerTexturas("../stalingrado/assets/texturas.txt");
@@ -22,6 +22,10 @@ namespace Stalingrado {
     }
 
     Gerenciador_Grafico::~Gerenciador_Grafico(){
+    }
+
+    sf::Font Gerenciador_Grafico::getFont() {
+        return font;
     }
 
     void Gerenciador_Grafico::carregarTextura(const std::string& nome, const std::string& caminhoTextura, const sf::Vector2f tamanho, const bool isRepeated) {
@@ -58,7 +62,7 @@ namespace Stalingrado {
     }
 
     void Gerenciador_Grafico::atualizarCamera() {
-        if (alvoCamera != NULL) {
+        if (alvoCamera != nullptr) {
                 sf::Vector2f posAlvo = alvoCamera->getSprite()->getPosition();
 
             if(posAlvo.x < 1920.f/2){
@@ -110,7 +114,7 @@ namespace Stalingrado {
     }
 
     void Gerenciador_Grafico::desenharEnte(Ente *pE){
-        if(pE != NULL)
+        if(pE != nullptr)
             janela.draw(*(pE->getSprite()));
     }
 

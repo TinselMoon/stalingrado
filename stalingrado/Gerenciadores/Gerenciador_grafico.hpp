@@ -32,9 +32,12 @@ public:
     const sf::Vector2f getTamanhoTextura(const std::string& nome);
 
     void desenharEnte (Stalingrado::Ente *pE);
+
+    sf::Font getFont();
     void desenharTextoCoordAbs(const std::string& texto, int tam, float x, float y);
     void desenharTextoCamera(const std::string& texto, int tam, float x, float y);
-    sf::RenderWindow* getJanela();   
+    sf::RenderWindow* getJanela();
+    Gerenciador_Grafico* getInstanciaGG () const;
     void executar(); //interpretacao Gustavo
     void setAlvoCamera(Stalingrado::Ente* pAlvo);
     void atualizarCamera();

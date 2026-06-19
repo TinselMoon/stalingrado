@@ -4,7 +4,7 @@
 namespace Stalingrado {
 using namespace Gerenciadores;
 
-Gerenciador_Grafico* Ente::pGG(NULL);
+Gerenciador_Grafico* Ente::pGG(nullptr);
 //INICIO ENTE 
 Ente::Ente(const std::string& nomeTextura) : id(contId++), corpo(pGG->getTextura(nomeTextura))
 {
@@ -50,6 +50,11 @@ void Ente::setGG (Gerenciador_Grafico* pG) {
 const sf::Sprite* Ente::getSprite(){
     return &corpo;
 }
+
+Gerenciador_Grafico *Ente::getGG() const {
+    return pGG;
+}
+
 
 int Ente::contId(0);
 

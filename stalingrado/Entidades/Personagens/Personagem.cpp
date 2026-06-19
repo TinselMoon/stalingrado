@@ -1,5 +1,5 @@
 #include "Personagem.hpp"
-#include "../../Jogo.hpp"
+#include "../../States/Jogo.hpp"
 
 #define MAX_VIDAS 100
 
@@ -58,7 +58,7 @@ namespace Stalingrado {
 
             void Personagem::mover(){
                 float dx = 0, dy = 0, dt = 0;
-                dt = Jogo::getDt();
+                dt = States::Jogo::getDt();
                 setVelocidadeY(getVelY() + 1200.f*dt);
                 dx = getVelX()*dt;
                 dy = getVelY()*dt;

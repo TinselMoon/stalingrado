@@ -1,49 +1,63 @@
 #include "Menu.hpp"
-#include "../Jogo.hpp"
+#include "../Gerenciadores/Gerenciador_grafico.hpp"
 
 namespace Stalingrado {
     namespace Menus {
-        Menu::Menu(Jogo *pJ, const sf::Vector2f tamBotao, const unsigned short int tamTitulo, const string& nome) :
-        Ente(nome), pJogo(pJ), tamanhoBotao(tamBotao), tamanhoTitulo(tamTitulo), mouseAbove(false),
-        tamanhoJanela((pGG->getJanela()->getSize())), inMenu(true)
-        {
+
+        Menu::Menu() : Ente(), inMenu(true) {
+            setValuesBotoes();
         }
 
         Menu::~Menu() {
 
+            Graficos::Botao* bt = nullptr;
+            while (!botoes.empty()) {
+
+                bt = botoes.back();
+                if (bt != nullptr) delete bt;
+                botoes.pop_back();
+            }
+
+            botoes.clear();
         }
 
-        const int Menu::getChosenButton_ID() {
+        void Menu::selectUp() {
 
+            if (inMenu) {
+                botoes[selected]->select(false);
+                selected--;
+                if (selected < min)
+                    selected = max;
+                botoes[selected]->select(true);
+            }
         }
 
-        const bool Menu::getMouseAbove() const {
-            return mouseAbove;
+        void Menu::selectDown() {
+            if (inMenu) {
+                botoes[selected]->select(false);
+                selected++;
+                if (selected > max)
+                    selected = min;
+                botoes[selected]->select(true);
+            }
         }
 
-        void Menu::addBotao(const string info, const sf::Vector2f pos) {
+        void Menu::setValuesBotoes () {
+            selected = 0;
+            min = 0;
+            max = 3;
+        }
 
+        bool Menu::getInMenu() {
+            return inMenu;
+        }
+
+        void Menu::setInMenu(bool iM) {
+            inMenu = iM;
         }
 
         void Menu::executar() {
-            if (inMenu)
-                desenhar();
-        }
-
-        void Menu::optAbove() {
-
-        }
-
-        void Menu::optBelow() {
-
-        }
-
-        void Menu::processarEvento(const sf::Event &e) {
-
-        }
-
-        void Menu::set_inMenu(bool noMenu) {
-            //testeeeee
+            desenhar();
         }
     }
 }
