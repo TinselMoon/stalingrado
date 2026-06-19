@@ -1,8 +1,9 @@
 #include "Ente.hpp"
 #include <cstdlib>
+using namespace Stalingrado::Gerenciadores;
 
 namespace Stalingrado {
-using namespace Gerenciadores;
+
 
 Gerenciador_Grafico* Ente::pGG(nullptr);
 //INICIO ENTE 

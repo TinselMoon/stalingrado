@@ -27,8 +27,8 @@ namespace Stalingrado {
             void changeState(stateID id);
             stateID getID() const;
             virtual void update(const float dt) = 0;
-            virtual void desenhar() = 0;
             virtual void resetState() = 0;
+            virtual void desenharState() = 0;
         };
 
     }

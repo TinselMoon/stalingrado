@@ -7,6 +7,7 @@ namespace Stalingrado {
         namespace Personagens {
 
             class Inimigo;
+
             class Jogador : public Personagem {
             private:
                 bool WisPressed;
@@ -28,6 +29,7 @@ namespace Stalingrado {
                 void danificar (Personagem* pPers);
                 void setMultiplicadorVel(float mult);
             };
+
         }
     }
 }

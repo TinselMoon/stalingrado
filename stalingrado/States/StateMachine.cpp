@@ -7,11 +7,12 @@ namespace Stalingrado {
     namespace States {
 
         StateMachine::StateMachine() {
-            lastStateID = stateID::indefinido;
-            currentStateID = stateID::indefinido;
+            lastStateID = indefinido;
+            currentStateID = indefinido;
         }
 
         StateMachine::~StateMachine() {
+
             std::map<stateID, State*>::iterator it;
 
             for (it = mapOfStates.begin(); it != mapOfStates.end(); ++it) {
@@ -20,6 +21,7 @@ namespace Stalingrado {
         }
 
         void StateMachine::changeCurrentState(States::stateID id) {
+
             lastStateID = currentStateID;
             currentStateID = id;
             mapOfStates[currentStateID]->resetState();
@@ -30,7 +32,7 @@ namespace Stalingrado {
         }
 
         void StateMachine::desenharCurrentState() {
-            mapOfStates[currentStateID]->desenhar();
+            mapOfStates[currentStateID]->desenharState();
         }
 
         stateID StateMachine::getCurrentStateID() const {

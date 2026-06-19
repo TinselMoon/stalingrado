@@ -5,6 +5,7 @@
 
 namespace Stalingrado {
     namespace Menus {
+        using namespace std;
 
         class Menu : public Ente {
         private:
@@ -16,7 +17,7 @@ namespace Stalingrado {
             std::vector<Graficos::Botao*> botoes;
             std::vector<Graficos::Botao*>::iterator it;
         public:
-            Menu();
+            Menu(const string& nomeText);
             virtual ~Menu();
             virtual void executar() = 0;
             bool getInMenu();

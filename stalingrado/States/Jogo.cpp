@@ -1,6 +1,8 @@
 #include "Jogo.hpp"
 #include "Fases/Fase_prim.hpp"
+#include "../Ente.hpp"
 #include "../Entidades/Personagens/Jogador.hpp"
+#include "../Menus/MenuInicial.hpp"
 #include <cstdlib>
 #include <ctime>
 
@@ -13,12 +15,12 @@ namespace Stalingrado {
         Jogo* Jogo::instanciaJogo = nullptr;
         float Jogo::dt = 0.0f;
 
-        Jogo::Jogo() : GG(), pMenu(nullptr), pJog1(nullptr), pJog2(nullptr), fase_um(nullptr), fase_seg(nullptr),
+        Jogo::Jogo() : GG(), pMenuI(nullptr), pJog1(nullptr), pJog2(nullptr), fase_um(nullptr), fase_seg(nullptr),
         clock(), tempoDecorrido(), executando(true), faseAtual(0)
         {
             std::srand(static_cast<unsigned int>(std::time(0)));
             Ente::setGG(&GG); //set do gerenciador grafico para entes
-            pMenu = new Menus::Menu(this, sf::Vector2f(100, 100), 50, "Menu");
+            pMenuI = new Menus::MenuInicial(this);
         }
 
         Jogo::~Jogo() {
@@ -27,7 +29,7 @@ namespace Stalingrado {
             if (fase_seg)   delete fase_seg;
             if (pJog1)      delete pJog1;
             if (pJog2)      delete pJog2;
-            if (pMenu)      delete pMenu;
+            if (pMenuI)      delete pMenuI;
         }
 
         Jogo* Jogo::getInstanciaJogo() {
@@ -41,6 +43,7 @@ namespace Stalingrado {
         }
 
         void Jogo::executar() {
+
             clock.restart();
 
             while (GG.getJanela()->isOpen() && executando) {
@@ -48,9 +51,6 @@ namespace Stalingrado {
                 while (GG.getJanela()->pollEvent(evento)) {
                     if (evento.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                         executando = false;
-
-                    if (faseAtual == 0)
-                        //pMenu->processarEvento(evento);
                 }
 
                 tempoDecorrido = clock.restart();
@@ -59,18 +59,18 @@ namespace Stalingrado {
                 GG.getJanela()->clear();
 
                 if (faseAtual == 0) {
-                    GG.setAlvoCamera(pMenu);
-                    pMenu->executar();
+                    GG.setAlvoCamera(pMenuI);
+                    pMenuI->executar();
                     GG.atualizarCamera();
                 }
                 else if (faseAtual == 1 && fase_um) {
-                    pMenu->set_inMenu(false);
+                    pMenuI->setInMenu(false);
                     GG.setAlvoCamera(static_cast<Ente*>(pJog1));
                     fase_um->executar();
                     GG.atualizarCamera();
                 }
                 else if (faseAtual == 2 && fase_seg) {
-                    pMenu->set_inMenu(false);
+                    pMenuI->setInMenu(false);
                     GG.setAlvoCamera(static_cast<Ente*>(pJog1));
                     fase_seg->executar();
                     GG.atualizarCamera();
@@ -100,7 +100,6 @@ namespace Stalingrado {
         void Jogo::fecharJogo() {
             executando = false;
         }
-
 
     }
 }

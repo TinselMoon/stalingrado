@@ -4,7 +4,7 @@
 namespace Stalingrado {
     namespace Menus {
 
-        Menu::Menu() : Ente(), inMenu(true) {
+        Menu::Menu(const string& nomeText) : Ente(nomeText), inMenu(true) {
             setValuesBotoes();
         }
 

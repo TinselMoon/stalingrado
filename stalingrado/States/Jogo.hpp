@@ -5,12 +5,6 @@
 
 namespace Stalingrado {
     namespace States {
-        namespace Entidades {
-            namespace Personagens {
-                class Jogador;
-                class Inim_facil;
-            }
-        }
         //Aqui esta implementado o SINGLETON
         class Jogo {
         private:
@@ -20,7 +14,7 @@ namespace Stalingrado {
             sf::Time tempoDecorrido;
             static float dt;
 
-            Menus::Menu* pMenu;
+            Menus::Menu* pMenuI;
             Entidades::Personagens::Jogador* pJog1;
             Entidades::Personagens::Jogador* pJog2;
             Fases::Fase_prim* fase_um;

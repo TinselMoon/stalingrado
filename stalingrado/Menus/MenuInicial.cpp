@@ -1,5 +1,6 @@
 #include "MenuInicial.hpp"
 #include "../States/Jogo.hpp"
+#include "../States/StateMachine.hpp"
 
 #define POS_BOTAO_0 sf::Vector2f(100, 600)
 #define POS_BOTAO_1 sf::Vector2f(100, 500)
@@ -12,7 +13,7 @@ namespace Stalingrado {
         using namespace States;
         using namespace Graficos;
 
-        MenuInicial::MenuInicial(Jogo* pJ) : Menu(), pJogo(pJ), State(static_cast<StateMachine*>(pJ), stateID::menuInicial) {
+        MenuInicial::MenuInicial(Jogo* pJ) : Menu(), pJogo(pJ), State(nullptr, menuInicial) {
 
             Botao* bt = nullptr;
 
@@ -48,16 +49,16 @@ namespace Stalingrado {
 
                     case 0:
                         setInMenu(false);
-                        changeState(faseUm);
+                        pJogo->iniciarFase1();
                         break;
 
                     case 1:
                         setInMenu(false);
-                        changeState(faseDois);
+                        pJogo->iniciarFase2();
                         break;
 
                     case 2:
-                        changeState(ranking);
+                        //ranking ainda nao implementado
                         break;
 
                     case 3:
@@ -76,6 +77,14 @@ namespace Stalingrado {
             botoes[selected]->select(false);
             selected = 0;
             botoes[selected]->select(true);
+        }
+
+        void MenuInicial::desenharState() {
+            desenhar();
+        }
+
+        void MenuInicial::update(const float dt) {
+            setInMenu(true);
         }
 
     }
