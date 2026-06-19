@@ -21,6 +21,7 @@ namespace Stalingrado {
             ~MenuInicial();
             void resetState();
             void executar();
+            void confirmar();
             void update(const float dt);
             void desenharState();
         };

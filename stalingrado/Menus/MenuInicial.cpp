@@ -44,6 +44,9 @@ namespace Stalingrado {
 
             for (it = botoes.begin(); it != botoes.end(); ++it)
                 (*it)->executar();
+        }
+
+        void MenuInicial::confirmar() {
 
             if (getInMenu()) {
 
@@ -81,12 +84,12 @@ namespace Stalingrado {
             botoes[selected]->select(true);
         }
 
-        void MenuInicial::desenharState() {
-            desenhar();
-        }
-
         void MenuInicial::update(const float dt) {
             setInMenu(true);
+        }
+
+        void MenuInicial::desenharState() {
+            desenhar();
         }
 
     }

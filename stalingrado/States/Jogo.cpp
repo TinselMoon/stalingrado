@@ -51,6 +51,15 @@ namespace Stalingrado {
                 while (GG.getJanela()->pollEvent(evento)) {
                     if (evento.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                         executando = false;
+
+                    if (faseAtual == 0 && evento.type == sf::Event::KeyPressed) {
+                        if (evento.key.code == sf::Keyboard::Up)
+                            pMenuI->selectUp();
+                        else if (evento.key.code == sf::Keyboard::Down)
+                            pMenuI->selectDown();
+                        else if (evento.key.code == sf::Keyboard::Enter || evento.key.code == sf::Keyboard::Space)
+                            static_cast<Menus::MenuInicial*>(pMenuI)->confirmar();
+                    }
                 }
 
                 tempoDecorrido = clock.restart();

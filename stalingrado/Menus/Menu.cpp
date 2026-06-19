@@ -56,8 +56,5 @@ namespace Stalingrado {
             inMenu = iM;
         }
 
-        void Menu::executar() {
-            desenhar();
-        }
     }
 }
