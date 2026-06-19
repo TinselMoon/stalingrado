@@ -23,10 +23,10 @@ void ListaEntidades::percorrer(){
     while(pAux != nullptr){
         // 3. Pega a entidade que está guardada dentro do nó
         Entidades::Entidade* pEntidade = pAux->getInfo();
-
+        
         // 4. Se o ponteiro for válido, executa
         if(pEntidade != nullptr){
-            pEntidade->executar();
+            if(pEntidade->isAtivo()) pEntidade->executar();
         }
 
         // 5. Passa para o próximo nó

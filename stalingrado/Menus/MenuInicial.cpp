@@ -13,7 +13,7 @@ namespace Stalingrado {
         using namespace States;
         using namespace Graficos;
 
-        MenuInicial::MenuInicial(Jogo* pJ) : Menu(), pJogo(pJ), State(nullptr, menuInicial) {
+        MenuInicial::MenuInicial(Jogo* pJ) : Menu("Menu"), pJogo(pJ), State(nullptr, menuInicial) {
 
             Botao* bt = nullptr;
 
@@ -39,6 +39,8 @@ namespace Stalingrado {
         }
 
         void MenuInicial::executar() {
+
+            desenhar();
 
             for (it = botoes.begin(); it != botoes.end(); ++it)
                 (*it)->executar();

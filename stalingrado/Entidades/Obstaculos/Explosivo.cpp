@@ -30,6 +30,9 @@ void Explosivo::obstaculizar(Personagens::Jogador* pJ){
         exit(1);
     }
     pJ->operator-=(danosidade ? danosidade : pJ->getVida());
+    pJ->eliminar();
+    ativo = false;
+    corpo.setPosition(-100.f, -100.f);
 }
 
 }

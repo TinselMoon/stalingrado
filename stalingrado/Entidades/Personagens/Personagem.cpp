@@ -1,5 +1,6 @@
 #include "Personagem.hpp"
 #include "../../States/Jogo.hpp"
+#include "Jogador.hpp"
 
 #define MAX_VIDAS 100
 
@@ -7,14 +8,18 @@ namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
 
-            Personagem::Personagem(int vida, int nMaldade, float mSpeed, float dtMov, float dtDn, const std::string& nomeTextura) :
-            Entidades::Entidade(nomeTextura), num_vidas(vida), nivel_maldade (nMaldade), max_speed(mSpeed), dt_movimento(dtMov), dt_dano(dtDn)
+            Personagem::Personagem(int vida, const std::string& nomeTextura) :
+            Entidade(nomeTextura), num_vidas(vida)
             {
                 sf::FloatRect rectangle = corpo.getLocalBounds();
                 corpo.setOrigin(rectangle.width/2.f, rectangle.height/2.f);
                 vel_x = vel_y = 0.f;
+                ativo = true;
             }
 
+            void Personagem::setMorto(){
+                ativo = false;
+            }
             Personagem::~Personagem(){
                 num_vidas = -1;
             }
@@ -27,7 +32,7 @@ namespace Stalingrado {
             }
 
             void Personagem::operator+=(int bonus) {
-                num_vidas + bonus <= MAX_VIDAS ? num_vidas+=bonus : num_vidas = MAX_VIDAS;
+                num_vidas+=bonus;
             }
 
             float Personagem::getVelX(){
@@ -56,6 +61,19 @@ namespace Stalingrado {
                 vel_y = vy;
             }
 
+            void Personagem::eliminar(Jogador *pJ){
+                if(pJ != NULL){
+                    int checkpointsAntigos = pJ->getUltimoCheckpoint() / 100;
+                    int checkpointsNovos = pJ->getPontos() / 100;
+
+                    if(checkpointsNovos > checkpointsAntigos){
+                        *pJ += checkpointsNovos;
+                        pJ->setUltimoCheckpoint(pJ->getPontos());
+                    }
+                }
+                ativo = false;
+                corpo.setPosition(-1000.f, -1000.f);
+            }
             void Personagem::mover(){
                 float dx = 0, dy = 0, dt = 0;
                 dt = States::Jogo::getDt();

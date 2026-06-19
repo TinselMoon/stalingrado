@@ -6,14 +6,15 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 class Inim_facil : public Personagens::Inimigo{
-    Jogador* pJog;
+private:
+    float tempo_atordoar;
 public:
     Inim_facil(int vida, int maldade);
     ~Inim_facil();
     void danificar(Personagem* pPers);
     void executar();
     void salvar();
-    void mover();
+    //void mover();
     //void desenhar();
 };
 

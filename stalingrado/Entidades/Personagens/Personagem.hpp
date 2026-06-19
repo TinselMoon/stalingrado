@@ -5,18 +5,15 @@ namespace Stalingrado {
 
 namespace Entidades {
 namespace Personagens {
-class Personagem : public Entidades::Entidade {
+class Jogador;
+class Personagem : public Entidade {
 protected:
     int num_vidas;
     float vel_x;
     float vel_y;
-    int nivel_maldade;
-    float max_speed;
-    float dt_movimento;
-    float dt_dano;
 
 public:
-    Personagem(int vida, int nMaldade, float mSpeed, float dtMov, float dtDn, const std::string& nomeTextura);
+    Personagem(int vida, const std::string& nomeTextura);
     ~Personagem();
     void salvarDataBuffer();
     void operator-=(int dano); //sobrecarga de operador para tirar vida do personagem (perder vida).
@@ -28,6 +25,9 @@ public:
     float getVelY();
     sf::Vector2f getPos();
     int getVida();
+    virtual const int getPontos() const = 0;
+    void eliminar(Jogador *pJ = NULL);
+    void setMorto();
     virtual void danificar(Personagem* pPers) = 0;
     virtual void executar() = 0;
     virtual void salvar() = 0;

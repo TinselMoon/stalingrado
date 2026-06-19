@@ -65,13 +65,19 @@ namespace Stalingrado {
                 }
                 else if (faseAtual == 1 && fase_um) {
                     pMenuI->setInMenu(false);
-                    GG.setAlvoCamera(static_cast<Ente*>(pJog1));
+                    if (pJog1->isAtivo())
+                        GG.setAlvoCamera(static_cast<Ente*>(pJog1));
+                    else if (pJog2->isAtivo())
+                        GG.setAlvoCamera(static_cast<Ente*>(pJog2));
                     fase_um->executar();
                     GG.atualizarCamera();
                 }
                 else if (faseAtual == 2 && fase_seg) {
                     pMenuI->setInMenu(false);
-                    GG.setAlvoCamera(static_cast<Ente*>(pJog1));
+                    if (pJog1->isAtivo())
+                        GG.setAlvoCamera(static_cast<Ente*>(pJog1));
+                    else if (pJog2->isAtivo())
+                        GG.setAlvoCamera(static_cast<Ente*>(pJog2));
                     fase_seg->executar();
                     GG.atualizarCamera();
                 }

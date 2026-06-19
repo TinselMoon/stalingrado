@@ -18,10 +18,11 @@ namespace Stalingrado {
 
         class Fase : public Ente {
         protected:
-            const int maxInimMedios;
+            const int maxInimMediosAleatorios;
             int comprimentoFase;
 
-            Entidades::Chao* pChao;
+            bool fase_concluida;
+            Entidades::Chao* chao;
             Listas::ListaEntidades lista_ents;
             Gerenciadores::Gerenciador_Colisoes GC;
             Entidades::Personagens::Jogador *pJog1;
@@ -32,12 +33,13 @@ namespace Stalingrado {
             virtual void criarObstaculos() = 0;
             virtual void criarCenario() = 0;
             void criarInimMedios(float x, float y);
-            void criarPlataformas(float x1, float x2); // As plataformas são os entulhos
+            void criarPlataformas(float x, float y); // As plataformas são os entulhos
         public:
             Fase(Entidades::Personagens::Jogador *pJogador1 = nullptr, Entidades::Personagens::Jogador *pJogador2 = nullptr, const std::string& texturaFundo = nullptr, const std::string& texturaChao = nullptr);
             ~Fase();
             virtual void executar() = 0;
-
+            const bool inimigosMortos() const;
+            const bool faseConcluida() const;
         };
 
     }

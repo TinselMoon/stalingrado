@@ -58,3 +58,6 @@ target_include_directories(stalingrado PRIVATE
 )
 
 target_link_libraries(stalingrado sfml-graphics sfml-window sfml-system)
+
+message(STATUS "Compilador CXX em uso: ${CMAKE_CXX_COMPILER}")
+

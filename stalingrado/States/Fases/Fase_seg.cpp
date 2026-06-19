@@ -4,7 +4,7 @@
 #include "../../Entidades/Personagens/Inim_chefao.hpp"
 #include "../../Entidades/Personagens/Jogador.hpp"
 #include "../../Entidades/Chao.hpp"
-#include "../../Entidades/Obstaculos/Entulho.hpp"
+#include "../../Entidades/Projetil.hpp"
 #include "../../Entidades/Obstaculos/Explosivo.hpp"
 #include <sstream>
 #include <fstream>
@@ -16,11 +16,12 @@ namespace Stalingrado {
     namespace Fases {
 
         Fase_seg::Fase_seg(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
-        Fase(pJogador1, pJogador2, "Cenario_fase_dois", "Chao_fase_dois"), maxInimChefoes(10), chao(nullptr), maxEntulhos(20), maxExplosivos(10)
+        Fase(pJogador1, pJogador2, "Cenario_fase_dois", "Chao_fase_dois"), maxInimChefoes(10), maxEntulhos(20), maxExplosivos(10)
         {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;
             criarCenario();
+            criarProjeteis();
             criarInimigos();
             //Inclui os jogadores na fase
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
@@ -54,6 +55,15 @@ namespace Stalingrado {
             float pos_aleatoria = (rand() % (comprimentoFase - (int)x)) + x;
             pEntidade->movePos(pos_aleatoria, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
+            pEntidade->setProjetil(GC.getProjetil(pEntidade->getIdChef()));
+        }
+        
+        void Fase_seg::criarProjeteis() {
+            for(int i = 0; i < maxInimChefoes; i++){
+                Entidades::Projetil *pProjetil = new Entidades::Projetil();
+                GC.incluirProjetil(pProjetil);
+                lista_ents.incluir(static_cast<Entidades::Entidade*>(pProjetil));
+            }
         }
 
         void Fase_seg::criarInimigos(){
@@ -76,7 +86,7 @@ namespace Stalingrado {
                 // A posição x que será passada será a borda esquerda limite para geração de posição aleatoria do personagem
                 while (arquivo >> tipo >> x >> y) {
                     if (tipo == "INIM_MEDIO") {
-                        if(cont_inim_medios == maxInimMedios)
+                        if(cont_inim_medios == maxInimMediosAleatorios)
                             cout << "Máximo de inimigos médios atingido, ignorando os próximos" << endl;
                         else {
                             criarInimMedios(x, y);

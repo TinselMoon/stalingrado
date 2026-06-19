@@ -7,19 +7,22 @@ using namespace std;
 
 #define VEL_JOG 1.0f //Velocidade do Jogador
 #define PODER_JOG1 4 //Quantidade de dano que o Jogador 1 pode infligir nos inimigos
-#define PODER_JOG2 1 //Quantidade de dano que o Jogador 2 pode infligir nos inimigos
+#define PODER_JOG2 2 //Quantidade de dano que o Jogador 2 pode infligir nos inimigos
 
 namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
+            using namespace States;
 
             int Jogador::cont_jog(1);
 
-            Jogador::Jogador(int vida) : Personagem(vida,cont_jog==1 ? PODER_JOG1 : PODER_JOG2, 0, 0, 0, cont_jog==1 ? "Soldado" : "Cachorro"),
-            WisPressed(false), multiplicador_vel(VEL_JOG), belicoso(false) {
+            Jogador::Jogador(int vida) : Personagem(vida, cont_jog == 1 ? "Soldado" : "Cachorro"),
+            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0), dt_dano(0)
+            {
                 pontos = 0;
                 id_jog = cont_jog;
                 cont_jog++;
+                dano = (cont_jog == 1 ? 4 : 2);
             }
 
             Jogador::~Jogador(){
@@ -37,7 +40,16 @@ namespace Stalingrado {
             void Jogador::setBelicoso(bool belico) {
                 belicoso = belico;
             }
+            
+            void Jogador::setCooldown(float cd){
+                cooldown_mov = cd;
+            }
 
+            void Jogador::impulso(float mult){
+                cooldown_mov = 0.5f;
+                vel_x = -vel_x*mult;
+                vel_y = -300.f;
+            }
             void Jogador::lerMovimentacao(){
 
                 sf::Keyboard::Key esquerda[2] = {sf::Keyboard::A , sf::Keyboard::Left};
@@ -49,33 +61,37 @@ namespace Stalingrado {
                     bool right = false;
                     float velAntiga = getVelX();
                     float velAtual = 0;
-                    setVelocidadeX(0.f);
 
                     if (sf::Keyboard::isKeyPressed(atacar[id_jog-1]))
                         belicoso = true;
-
-                    if (sf::Keyboard::isKeyPressed(esquerda[id_jog-1]))
-                    {
-                        setVelocidadeX(-400.f*multiplicador_vel);
-                        left = true;
+                    if(cooldown_mov > 0){
+                        cooldown_mov -= Jogo::getDt();
                     }
-                    if (sf::Keyboard::isKeyPressed(direita[id_jog-1]))
-                    {
-                        setVelocidadeX(400.f*multiplicador_vel);
-                        right = true;
-                    }
-                    if(left && right){
+                    else{
                         setVelocidadeX(0.f);
-                    }
-                    if(getVelY() == 0){
-                        if (sf::Keyboard::isKeyPressed(pular[id_jog-1]) && !WisPressed)
+                        if (sf::Keyboard::isKeyPressed(esquerda[id_jog-1]))
                         {
-                            //Negativo pq as coordenadas Y são invertidas na SFML
-                            setVelocidadeY(-800.f);
-                            WisPressed = true;
+                            setVelocidadeX(-400.f*multiplicador_vel);
+                            left = true;
                         }
-                        else{
-                            WisPressed = false;
+                        if (sf::Keyboard::isKeyPressed(direita[id_jog-1]))
+                        {
+                            setVelocidadeX(400.f*multiplicador_vel);
+                            right = true;
+                        }
+                        if(left && right){
+                            setVelocidadeX(0.f);
+                        }
+                        if(getVelY() == 0){
+                            if (sf::Keyboard::isKeyPressed(pular[id_jog-1]) && !WisPressed)
+                            {
+                                //Negativo pq as coordenadas Y são invertidas na SFML
+                                setVelocidadeY(-800.f);
+                                WisPressed = true;
+                            }
+                            else{
+                                WisPressed = false;
+                            }
                         }
                     }
                     velAtual = getVelX();
@@ -109,11 +125,15 @@ namespace Stalingrado {
 
             void Jogador::danificar(Personagem *pPers) {
 
-                if (pPers==nullptr) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; exit(1);}
+                if (pPers==nullptr) {cerr << "Erro no Personagem(ponteiro nulo)" << endl; return;}
 
                 dt_dano += States::Jogo::getDt(); //tempo de contato para dar dano
                 if (dt_dano > 0.25f) {
-                    pPers->operator-=(nivel_maldade);
+                    pPers->operator-=(dano);
+                    if(pPers->getVida() == 0){
+                        pontos += pPers->getPontos();
+                        pPers->eliminar(this);
+                    }
                     dt_dano = 0;
                     belicoso=false; //volta ao modo nao belicoso
                 }

@@ -1,8 +1,11 @@
 #include "Inim_chefao.hpp"
 #include "../../States/Jogo.hpp"
 #include "Jogador.hpp"
+#include "../Projetil.hpp"
+#include <SFML/System/Vector2.hpp>
 #include <cstdlib>
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -11,9 +14,12 @@ namespace Stalingrado {
         namespace Personagens {
             using namespace States;
 
-            Inim_chefao::Inim_chefao(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inim_chefao"){
+            Inim_chefao::Inim_chefao(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inim_chefao"), id_chef(cont_chef++), proj_chefao(nullptr){
                 max_speed = 050.f;
+                isChefao = 1;
+                dt_mudar_direcao = 2.f;
             }
+            int Inim_chefao::cont_chef(0);
 
             Inim_chefao::~Inim_chefao(){
 
@@ -25,25 +31,41 @@ namespace Stalingrado {
             void Inim_chefao::salvar(){
 
             }
-            void Inim_chefao::mover(){
+            /*void Inim_chefao::mover(){
                 dt_movimento += Jogo::getDt();
                 if(dt_movimento > 1){
                     int new_direction = (rand() % 3) - 1;
                     setVelocidadeX(max_speed*new_direction);
-                    //if(rand() % 100 < 10 && getVelY() == 0)
-                    //setVelocidadeY(-800.f);
                     dt_movimento = 0;
                 }
                 Personagem::mover();
+            }*/
+            void Inim_chefao::setProjetil(Projetil* pP){
+                proj_chefao = pP;
+                pP->setChefao(this);
             }
-
-            void Inim_chefao::danificar(Personagem* pPers) {
-                if (pPers==nullptr) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; exit(1);} //erro se so tiver o Jog1?
-
+            int Inim_chefao::getIdChef(){
+                return id_chef;
+            }
+            void Inim_chefao::danificar(Personagem *pPers) {
+                if (pPers==nullptr) {cerr << "Erro no Jogador(ponteiro nulo)" << endl; return;} //erro se o ponteiro for nulo
                 dt_dano += Jogo::getDt(); //tempo de contato para tomar dano
-                if (dt_dano > 0.2f) {
-                    pPers->operator-=(nivel_maldade);
-                    dt_dano = 0;
+                if (dt_dano > 5.0f) {
+                    if(!(proj_chefao->isAtivo())){
+                        sf::Vector2f posi_ini = corpo.getPosition();
+                        posi_ini.x = posi_ini.x - 678.f;
+                        posi_ini.y = posi_ini.y - 150.f;
+                        proj_chefao->setPosition(posi_ini.x, posi_ini.y);
+                        sf::Vector2f posi_fin = pPers->getPos();
+                        sf::Vector2f dist(posi_fin.x - posi_ini.x, posi_fin.y - posi_ini.y);
+                        float module = sqrtf(dist.x*dist.x + dist.y*dist.y);
+                        dist.x = dist.x/module;
+                        dist.y = dist.y/module;
+                        proj_chefao->setDir(dist.x, dist.y);
+                        proj_chefao->ativar();
+
+                        dt_dano = 0;
+                    }
                 }
             }
         }

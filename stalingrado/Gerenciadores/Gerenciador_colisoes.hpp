@@ -58,6 +58,8 @@ public:
     void incluirProjetil(Entidades::Projetil *pj);
     void tratarColisoesObsObs();
     void executar();
+    Entidades::Projetil* getProjetil(int id_chefao) const;
+    const bool inimigosMortos() const;
 };
 
 }

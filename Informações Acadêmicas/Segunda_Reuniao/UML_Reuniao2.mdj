@@ -932,7 +932,7 @@
 									},
 									"name": "pJ1",
 									"type": "*Jogador",
-									"defaultValue": "nullptr"
+									"defaultValue": "NULL"
 								},
 								{
 									"_type": "UMLParameter",
@@ -942,7 +942,7 @@
 									},
 									"name": "pJ2",
 									"type": "*Jogador",
-									"defaultValue": "nullptr"
+									"defaultValue": "NULL"
 								}
 							]
 						},
@@ -18250,7 +18250,7 @@
 											"top": 173,
 											"width": 448.56787109375,
 											"height": 11,
-											"text": "«create»+Gerenciador_Colisoes(pJ1: *Jogador = nullptr, pJ2: *Jogador = nullptr)",
+											"text": "«create»+Gerenciador_Colisoes(pJ1: *Jogador = NULL, pJ2: *Jogador = NULL)",
 											"horizontalAlignment": 0
 										},
 										{

@@ -14,6 +14,7 @@ using namespace Personagens;
 using namespace Obstaculos;
 using namespace Gerenciadores;
 
+#define MARGEM_ATAQUE 125.0f
 
 namespace Stalingrado {
     
@@ -82,14 +83,6 @@ void Gerenciador_Colisoes::tratarColisoesObsObs(){
             }
         }
     }
-    /*for(list<Obstaculo*>::reverse_iterator it = LOs.rbegin(); it != LOs.rend(); it++){
-        for(list<Obstaculo*>::reverse_iterator it_j = it; it_j != LOs.rend(); it_j++){
-            if (*it == *it_j) continue;
-            if(verificarColisao(static_cast<Entidade*>(*it_j), static_cast<Entidade*>(*it))){
-                resolverColisaoCinematica(*it_j, *it);
-            }
-        }
-    }*/
 }
 
 void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE){
@@ -115,9 +108,15 @@ void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE)
             } else {
                 //empurra para cima
                 pJ->movePos(0.0f, -sob.overlapY); 
-
+                
                 //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
-                pJ->setVelocidadeY(0.0f); 
+                Jogador *pJog = dynamic_cast<Jogador*>(pJ);
+                if(pJog == NULL){
+                    pJ->setVelocidadeY(0.0f);
+                }
+                else if(pJog->getVelY() > 0.0f){
+                        pJ->setVelocidadeY(0.0f); 
+                }
             }
         }
     }
@@ -204,6 +203,10 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                 (*it)->obstaculizar(pJog1);
             }
             else{
+                sobreposicao sob = calcularSobreposicao(pJog1, *it);
+                bool horizontal = (sob.overlapX > 0.0f && sob.overlapY > 0.0f && sob.overlapX < sob.overlapY);
+                if(horizontal)
+                    (*it)->obstaculizar(pJog1);
                 resolverColisaoCinematica(pJog1, *it);
             }
         
@@ -222,6 +225,10 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                     (*it)->obstaculizar(pJog2);
                 }
                 else{
+                    sobreposicao sob = calcularSobreposicao(pJog2, *it);
+                    bool horizontal = (sob.overlapX > 0.0f && sob.overlapY > 0.0f && sob.overlapX < sob.overlapY);
+                    if(horizontal)
+                        (*it)->obstaculizar(pJog2);
                     resolverColisaoCinematica(pJog2, *it);
                 }
             }
@@ -234,48 +241,52 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
     //Chama a verificarColisao, se for true arruma a pos
     Personagem *jog1 = static_cast<Personagem*>(pJog1);
     Personagem *jog2 = static_cast<Personagem*>(pJog2);
-    colisoesChao(jog1);
-    colisaoBorda(jog1);
-    if(pJog2) {
+    float rangeDano[2] = {15.f, 1500.f}; // primeiro valor p inimigo comum, segundo p chefao (range para atirar projetil)
+    if(jog1->isAtivo()){
+        colisoesChao(jog1);
+        colisaoBorda(jog1);
+    }
+    if(jog2->isAtivo()) {
         colisoesChao(jog2);
         colisaoBorda(jog2);
     }
-    for (vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it) {
-
-        if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))) {
-
-            resolverColisaoJogInim(pJog1, *it);
+    for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it){
+        if((*it)->isAtivo() == false) continue;
+        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), MARGEM_ATAQUE)){
+            //Dano do Jogador ao inimigo
+            if(pJog1->getBelicoso()){
+                pJog1->danificar(*it);
+            }
+            //cout << (*it)->getVida() << endl; debugger de pobre pra verificar se o jogador ta tirando vida dos inimigos
         }
-
-        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 45.0f) && pJog1->getBelicoso()){
-            //Jogador ataca Inimigo
-            pJog1->danificar(*it);
-            cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inimigos
-        }
-
-        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), 15.0f)){
-            //Inimigo ataca Jogador
+        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
+            //Dano do Inimigo ao Jogador
+            if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
+                //Arrumar colisao
+                //resolverColisaoCinematica(pJog1, *it);
+                resolverColisaoJogInim(pJog1, *it);
+            }
             (*it)->danificar(pJog1);
         }
-
         Personagem *inim = static_cast<Personagem*>(*it);
         colisoesChao(inim);
         colisaoBorda(inim);
 
         if(pJog2){
-
-            if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it)))
-                resolverColisaoJogInim(pJog2, *it);
-
-
-            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 45.0f) && pJog2->getBelicoso()){
+            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), MARGEM_ATAQUE)){
                 //Dano do Jogador ao inimigo
-                pJog2->danificar(*it);
-                cout << (*it)->getVida() << endl; //debugger de pobre pra verificar se o jogador ta tirando vida dos inim
+                if(pJog2->getBelicoso()){
+                    pJog2->danificar(*it);
+                }
+                //cout << (*it)->getVida() << endl; debugger de pobre pra verificar se o jogador ta tirando vida dos inim
             }
+            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
+                //Dano do inimigo
 
-            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), 15.0f)){
-                //Dano do Inimigo ao Jogador
+                if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))) {
+
+                    resolverColisaoJogInim(pJog2, *it);
+                }
                 (*it)->danificar(pJog2);
             }
         }
@@ -300,16 +311,22 @@ void Gerenciador_Colisoes::colisaoBorda(Personagem *pP){
 void Gerenciador_Colisoes::tratarColisoesJogsProjeteis(){
     //Chama a verificarColisao, se for true arruma a pos
     for(set<Projetil*>::iterator it = LPs.begin(); it != LPs.end(); it++){
+        //verificar colisao com chao
+        if(verificarColisao(static_cast<Entidades::Entidade*>(*it), static_cast<Entidades::Entidade*>(chao))){
+            (*it)->destruir();
+        }
         if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
             //Se colidir, dá dano ao jogador e destroi o projetil
-            resolverColisaoCinematica(pJog1, *it);
+            //resolverColisaoCinematica(pJog1, *it);
             //Precisa executar o projetil, dar dano ao jogador e destruir o projetil
+            (*it)->danificar(pJog1);
         }
         if(pJog2){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
                 //Se colidir, dá dano ao jogador e destroi o projetil
-                resolverColisaoCinematica(pJog2, *it);
+                //resolverColisaoCinematica(pJog2, *it);
                 //Precisa executar o projetil, dar dano ao jogador e destruir o projetil
+                (*it)->danificar(pJog2);
             }
         }
     }
@@ -351,6 +368,12 @@ void Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil *pj){
     LPs.insert(pj);
 }
 
+Projetil* Gerenciador_Colisoes::getProjetil(int id_chefao) const{
+    set<Projetil*>::iterator it = LPs.begin();
+    std::advance(it, id_chefao);
+    return (*it);
+}
+
 void Gerenciador_Colisoes::executar(){
     //Chama todas as funções de tratarcolisoes
     tratarColisoesJogsInimigos();
@@ -358,6 +381,9 @@ void Gerenciador_Colisoes::executar(){
     tratarColisoesJogsObstaculos();
 }
 
+const bool Gerenciador_Colisoes::inimigosMortos() const{
+    return LIs.empty();
+}
 
 } //Fim namespace Gerenciadores
 

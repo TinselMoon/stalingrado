@@ -1,0 +1,40 @@
+Stalingrado
+
+Um jogo 2D em estilo pixel art inspirado na Batalha de Stalingrado.
+
+Requisitos
+
+Certifique-se de ter instalado:
+
+CMake 3.x ou superior
+Compilador C++ (G++ ou Clang++)
+SFML 2.6 ou superior
+
+Instalação da SFML
+
+Ubuntu:
+
+sudo apt install libsfml-dev
+
+Arch Linux:
+
+sudo pacman -S sfml
+
+Como compilar
+
+mkdir build
+cd build
+cmake ..
+make
+
+Ambiente de desenvolvimento
+
+Este projeto foi originalmente desenvolvido com:
+
+Sistema Operacional: Linux (kernel 6.x ou recente)
+Compilador: G++ 13.x
+Biblioteca gráfica: SFML 2.6
+
+Observações
+
+- O programa pode não funcionar corretamente em sistemas antigos ou com dependências desatualizadas.

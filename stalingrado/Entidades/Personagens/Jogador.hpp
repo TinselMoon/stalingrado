@@ -15,6 +15,10 @@ namespace Stalingrado {
                 static int cont_jog;
                 int id_jog;
                 float multiplicador_vel;
+                float cooldown_mov;
+                int checkpoint_pontos;
+                int dano;
+                float dt_dano;
             protected:
                 int pontos;
             public:
@@ -28,6 +32,11 @@ namespace Stalingrado {
                 void mover();
                 void danificar (Personagem* pPers);
                 void setMultiplicadorVel(float mult);
+                const int getPontos() const{return pontos;}
+                void impulso(float mult);
+                void setCooldown(float cd);
+                int getUltimoCheckpoint(){return checkpoint_pontos;}
+                void setUltimoCheckpoint(int pontos){checkpoint_pontos = pontos;}
             };
 
         }
