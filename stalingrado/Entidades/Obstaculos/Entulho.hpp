@@ -7,12 +7,12 @@ namespace Entidades {
 namespace Obstaculos {
 class Entulho : public Obstaculos::Obstaculo{
 private:
-    //COLOCAR ALGO AQUI SLA
+    const float mult_impulso;
 public:
     Entulho();
     ~Entulho();
     void executar();
-    void salvar();
+    void salvar(std::ofstream& arquivo);
     void obstaculizar(Personagens::Jogador* pJ);
 };
 }

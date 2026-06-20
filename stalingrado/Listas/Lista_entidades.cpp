@@ -23,10 +23,10 @@ void ListaEntidades::percorrer(){
     while(pAux != NULL){
         // 3. Pega a entidade que está guardada dentro do nó
         Entidades::Entidade* pEntidade = pAux->getInfo();
-
+        
         // 4. Se o ponteiro for válido, executa
         if(pEntidade != NULL){
-            pEntidade->executar();
+            if(pEntidade->isAtivo()) pEntidade->executar();
         }
 
         // 5. Passa para o próximo nó
@@ -73,6 +73,19 @@ void ListaEntidades::remover(Entidades::Entidade *pE){
 
 void ListaEntidades::limpar(){
     LEs.limpar();
+}
+void ListaEntidades::salvar(std::ofstream& arquivo){
+    Lista<Entidades::Entidade>::Elemento* pAux = LEs.getPrimeiro();
+
+    while(pAux != NULL){
+        Entidades::Entidade* pEntidade = pAux->getInfo();
+
+        if(pEntidade != NULL && pEntidade->isAtivo()){
+            pEntidade->salvar(arquivo);
+        }
+
+        pAux = pAux->getProx();
+    }
 }
 
 }

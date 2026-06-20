@@ -1,69 +1,86 @@
 #include "Personagem.hpp"
 #include "../../Jogo.hpp"
+#include "Jogador.hpp"
 
 namespace Stalingrado {
+    namespace Entidades {
+        namespace Personagens {
 
-namespace Entidades {
-namespace Personagens {
+            Personagem::Personagem(int vida, const std::string& nomeTextura) :
+            Entidade(nomeTextura), num_vidas(vida), dt_dano(1.f)
+            {
+                sf::FloatRect rectangle = personagem.getLocalBounds();
+                personagem.setOrigin(rectangle.width/2.f, rectangle.height/2.f);
+                vel_x = vel_y = 0.f;
+                ativo = true;
+            }
 
-Personagem::Personagem(int vida, const std::string& nomeTextura) : Entidades::Entidade(nomeTextura){
-    num_vidas = vida;
-    sf::FloatRect rectangle = personagem.getLocalBounds();
-    personagem.setOrigin(rectangle.width/2.f, rectangle.height/2.f);
-    vel_x = vel_y = 0.f;
+            void Personagem::setMorto(){
+                ativo = false;
+            }
+            Personagem::~Personagem(){
+                num_vidas = -1;
+            }
+            void Personagem::salvarDataBuffer(){
+
+            }
+
+            void Personagem::operator-=(int dano) {
+                num_vidas - dano >= 0 ? num_vidas-=dano : num_vidas=0;
+            }
+
+            void Personagem::operator+=(int bonus) {
+                num_vidas+=bonus;
+            }
+
+            float Personagem::getVelX(){
+                return vel_x;
+            }
+            float Personagem::getVelY(){
+                return vel_y;
+            }
+
+            int Personagem::getVida(){
+                return num_vidas;
+            }
+
+            sf::Vector2f Personagem::getPos(){
+                return personagem.getPosition();
+            }
+
+            void Personagem::movePos(float x, float y){
+                personagem.move(x, y);
+            }
+
+            void Personagem::setVelocidadeX(float vx){
+                vel_x = vx;
+            }
+            void Personagem::setVelocidadeY(float vy){
+                vel_y = vy;
+            }
+
+            void Personagem::eliminar(Jogador *pJ){
+                if(pJ != NULL){
+                    int checkpointsAntigos = pJ->getUltimoCheckpoint() / 100;
+                    int checkpointsNovos = pJ->getPontos() / 100;
+
+                    if(checkpointsNovos > checkpointsAntigos){
+                        *pJ += checkpointsNovos;
+                        pJ->setUltimoCheckpoint(pJ->getPontos());
+                    }
+                }
+                ativo = false;
+                personagem.setPosition(-1000.f, -1000.f);
+            }
+            void Personagem::mover(){
+                float dx = 0, dy = 0, dt = 0;
+                dt = Jogo::getDt();
+                setVelocidadeY(getVelY() + 1200.f*dt);
+                dx = getVelX()*dt;
+                dy = getVelY()*dt;
+                personagem.move(dx, dy);
+            }
+
+        }
+    }
 }
-
-Personagem::~Personagem(){
-    num_vidas = -1;
-}
-void Personagem::salvarDataBuffer(){
-
-}
-
-void Personagem::operator-=(int dano) {
-    num_vidas - dano >= 0 ? num_vidas-=dano : num_vidas=0;
-}
-
-float Personagem::getVelX(){
-    return vel_x;
-}
-float Personagem::getVelY(){
-    return vel_y;
-}
-
-int Personagem::getVida(){
-    return num_vidas;
-}
-
-sf::Vector2f Personagem::getPos(){
-    return personagem.getPosition();
-}
-
-/*void Personagem::tomarDano(int dano){
-    num_vidas -= dano;
-}*/
-
-void Personagem::movePos(float x, float y){
-    personagem.move(x, y);
-}
-
-void Personagem::setVelocidadeX(float vx){
-    vel_x = vx;
-}
-void Personagem::setVelocidadeY(float vy){
-    vel_y = vy;
-}
-
-void Personagem::mover(){
-    float dx = 0, dy = 0, dt = 0;
-    dt = Jogo::getDt();
-    setVelocidadeY(getVelY() + 1200.f*dt);
-    dx = getVelX()*dt;
-    dy = getVelY()*dt;
-    personagem.move(dx, dy);
-}
-
-}
-} // Fim dos namespaces
-
-} // Fim do namespace Stalingrado

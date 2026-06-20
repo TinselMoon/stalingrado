@@ -2,15 +2,20 @@
 
 namespace Stalingrado {
 
-Entidades::Entidade::Entidade(const std::string& nomeTextura) : Ente(nomeTextura){
+namespace Entidades{
+
+Entidade::Entidade(const std::string& nomeTextura) : Ente(nomeTextura){
 }
 
-Entidades::Entidade::~Entidade(){
+Entidade::~Entidade(){
 
 }
-
-void Entidades::Entidade::salvarDataBuffer(){
-
+const bool Entidade::isAtivo() const {
+    return ativo;
 }
 
+void Entidade::salvarDataBuffer(){
+
+}
+}
 } // Fim do namespace Stalingrado

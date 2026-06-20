@@ -7,21 +7,22 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Personagens {
 class Jogador;
-class Inimigo : public Personagens::Personagem{
+class Inimigo : public Personagem{
 protected:
     int nivel_maldade;
     float max_speed;
     float dt_movimento;
-    float dt_dano;
     bool isChefao;
+    const int pontos_por_kill;
+    float dt_mudar_direcao;
 public:
     Inimigo(int vida, int maldade, const std::string& nomeTextura);
     ~Inimigo();
     void salvarDataBuffer();
-    virtual void executar() = 0;
-    virtual void danificar(Jogador* pJ) = 0;
+    virtual void executar();
+    const int getPontos() const;
     virtual void mover();
-    virtual void salvar();
+    virtual void salvar(std::ofstream& arquivo);
     const bool getChefao() const;
 };
 }

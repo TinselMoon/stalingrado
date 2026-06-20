@@ -3,32 +3,39 @@
 #include <SFML/Graphics.hpp>
 
 namespace Stalingrado {
+    namespace Entidades {
+        namespace Personagens {
 
-
-namespace Entidades {
-namespace Personagens {
-class Inimigo;
-class Jogador : public Personagens::Personagem{
-private:
-    bool WisPressed;
-    static int cont_jog;
-    int id_jog;
-    float multiplicador_vel;
-protected:
-    int pontos;
-public:
-    Jogador(int vida = 0);
-    ~Jogador();
-    void colidir(Inimigo* pIn);
-    void lerMovimentacao();
-    void executar();
-    void salvar();
-    void mover();
-    void setMultiplicadorVel(float mult);
-    //void desenhar();
-};
+            class Inimigo;
+            class Jogador : public Personagem {
+            private:
+                bool WisPressed;
+                bool belicoso;
+                static int cont_jog;
+                int id_jog;
+                float multiplicador_vel;
+                float cooldown_mov;
+                int checkpoint_pontos;
+                int dano;
+            protected:
+                int pontos;
+            public:
+                Jogador(int vida = 0);
+                ~Jogador();
+                void lerMovimentacao();
+                void executar();
+                void salvar(std::ofstream& arquivo);
+                bool getBelicoso() const;
+                void setBelicoso(bool belico);
+                void mover();
+                void danificar (Personagem* pPers);
+                void setMultiplicadorVel(float mult);
+                const int getPontos() const;
+                void impulso(float mult);
+                void setCooldown(float cd);
+                int getUltimoCheckpoint();
+                void setUltimoCheckpoint(int pontos);
+            };
+        }
+    }
 }
-
-} // Fim do namespace Entidades
-
-} // Fim do namespace Stalingrado

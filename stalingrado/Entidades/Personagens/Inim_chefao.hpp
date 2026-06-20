@@ -6,21 +6,21 @@ namespace Stalingrado {
     class Projetil;
         namespace Personagens {
 
-            class Inim_chefao : public Personagens::Inimigo {
+            class Inim_chefao : public Inimigo {
             private: 
                 //
                 static int cont_chef;
                 int id_chef;
                 Projetil* proj_chefao;
             public:
-                Inim_chefao(int vida, int maldade);
+                Inim_chefao(int vida = 20, int maldade = 5);
                 ~Inim_chefao();
-                void danificar(Jogador *pJ);
+                void danificar(Personagem *pPers);
                 void executar();
-                void salvar();
-                void mover();
+                void salvar(std::ofstream& arquivo);
                 void setProjetil(Projetil* pP);
                 int getIdChef();
+                void mover();
             };
         }
     }

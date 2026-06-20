@@ -6,6 +6,7 @@
 #include "../Entidades/Chao.hpp"
 #include <SFML/System/Vector2.hpp>
 #include <cstdio>
+#include <iostream>
 using namespace std;
 using namespace Stalingrado;
 using namespace Entidades;
@@ -13,6 +14,7 @@ using namespace Personagens;
 using namespace Obstaculos;
 using namespace Gerenciadores;
 
+#define MARGEM_ATAQUE 125.0f
 
 namespace Stalingrado {
     
@@ -42,7 +44,7 @@ const bool Gerenciador_Colisoes::verificarColisao(Entidade *pe1, Entidade *pe2) 
     return pe1->getRectangle().intersects(pe2->getRectangle());
 }
 
-const bool Gerenciador_Colisoes::verificarColisaoDano(Entidades::Entidade *pe1, Entidades::Entidade *pe2, float margemExtra) const{
+const bool Gerenciador_Colisoes::verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2, float margemExtra) const{
     if (pe1 == NULL || pe2 == NULL) {
         return false;
     }
@@ -106,9 +108,15 @@ void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE)
             } else {
                 //empurra para cima
                 pJ->movePos(0.0f, -sob.overlapY); 
-
+                
                 //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
-                pJ->setVelocidadeY(0.0f); 
+                Jogador *pJog = dynamic_cast<Jogador*>(pJ);
+                if(pJog == NULL){
+                    pJ->setVelocidadeY(0.0f);
+                }
+                else if(pJog->getVelY() > 0.0f){
+                        pJ->setVelocidadeY(0.0f); 
+                }
             }
         }
     }
@@ -195,6 +203,10 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                 (*it)->obstaculizar(pJog1);
             }
             else{
+                sobreposicao sob = calcularSobreposicao(pJog1, *it);
+                bool horizontal = (sob.overlapX > 0.0f && sob.overlapY > 0.0f && sob.overlapX < sob.overlapY);
+                if(horizontal)
+                    (*it)->obstaculizar(pJog1);
                 resolverColisaoCinematica(pJog1, *it);
             }
         
@@ -213,6 +225,10 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
                     (*it)->obstaculizar(pJog2);
                 }
                 else{
+                    sobreposicao sob = calcularSobreposicao(pJog2, *it);
+                    bool horizontal = (sob.overlapX > 0.0f && sob.overlapY > 0.0f && sob.overlapX < sob.overlapY);
+                    if(horizontal)
+                        (*it)->obstaculizar(pJog2);
                     resolverColisaoCinematica(pJog2, *it);
                 }
             }
@@ -220,39 +236,58 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
     }
 }
 
-void Gerenciador_Colisoes::tratarColisoesJogsInimigos(){
+void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
+
     //Chama a verificarColisao, se for true arruma a pos
     Personagem *jog1 = static_cast<Personagem*>(pJog1);
     Personagem *jog2 = static_cast<Personagem*>(pJog2);
     float rangeDano[2] = {15.f, 1500.f}; // primeiro valor p inimigo comum, segundo p chefao (range para atirar projetil)
-    colisoesChao(jog1);
-    colisaoBorda(jog1);
-    if(pJog2){
+    if(jog1->isAtivo()){
+        colisoesChao(jog1);
+        colisaoBorda(jog1);
+    }
+    if(jog2->isAtivo()) {
         colisoesChao(jog2);
         colisaoBorda(jog2);
     }
     for(vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it){
-        if(verificarColisaoDano(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
-            //Dano do inimigo
-            (*it)->danificar(pJog1);
+        if((*it)->isAtivo() == false) continue;
+        if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), MARGEM_ATAQUE)){
+            //Dano do Jogador ao inimigo
+            if(pJog1->getBelicoso()){
+                pJog1->danificar(*it);
+            }
+            //cout << (*it)->getVida() << endl; debugger de pobre pra verificar se o jogador ta tirando vida dos inimigos
+        }
+        if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
+            //Dano do Inimigo ao Jogador
             if(verificarColisao(static_cast<Entidade*>(pJog1), static_cast<Entidade*>(*it))){
                 //Arrumar colisao
                 //resolverColisaoCinematica(pJog1, *it);
                 resolverColisaoJogInim(pJog1, *it);
             }
+            (*it)->danificar(pJog1);
         }
         Personagem *inim = static_cast<Personagem*>(*it);
         colisoesChao(inim);
         colisaoBorda(inim);
+
         if(pJog2){
-            if(verificarColisaoDano(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
+            if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), MARGEM_ATAQUE)){
+                //Dano do Jogador ao inimigo
+                if(pJog2->getBelicoso()){
+                    pJog2->danificar(*it);
+                }
+                //cout << (*it)->getVida() << endl; debugger de pobre pra verificar se o jogador ta tirando vida dos inim
+            }
+            if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), rangeDano[(*it)->getChefao()])){
                 //Dano do inimigo
-                (*it)->danificar(pJog2);
-                if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
-                    //Arrumar colisao
-                    //resolverColisaoCinematica(pJog2, *it);
+
+                if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))) {
+
                     resolverColisaoJogInim(pJog2, *it);
                 }
+                (*it)->danificar(pJog2);
             }
         }
     }
@@ -346,6 +381,9 @@ void Gerenciador_Colisoes::executar(){
     tratarColisoesJogsObstaculos();
 }
 
+const bool Gerenciador_Colisoes::inimigosMortos() const{
+    return LIs.empty();
+}
 
 } //Fim namespace Gerenciadores
 

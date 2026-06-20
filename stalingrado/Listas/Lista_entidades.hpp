@@ -1,6 +1,7 @@
 #pragma once
 #include "listas.hpp"
 #include "../Entidades/Entidade.hpp"
+#include <fstream>
 
 namespace Stalingrado {
 
@@ -18,7 +19,7 @@ public:
     void remover(Entidades::Entidade *pE);
     void destruirEntidades();
     void limpar();
-    //Adicionar mais funções conforme necessário
+    void salvar(std::ofstream& arquivo);
 };
 
 }

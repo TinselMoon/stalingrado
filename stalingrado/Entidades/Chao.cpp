@@ -3,7 +3,7 @@
 namespace Stalingrado{
 namespace Entidades{
 
-Chao::Chao(const int comp) : Entidade("Chao_fase_um"), comprimento(comp), altura(900){
+Chao::Chao(const int comp, const std::string& textura) : Entidade(textura), comprimento(comp), altura(900){
     personagem.setTextureRect(sf::IntRect(0, 0, comprimento, altura));
 }
 
@@ -23,7 +23,7 @@ void Chao::executar(){
 
 }
 
-void Chao::salvar(){
+void Chao::salvar(std::ofstream& arquivo){
 
 }
 

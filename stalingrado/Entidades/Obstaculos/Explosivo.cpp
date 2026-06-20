@@ -20,7 +20,9 @@ void Explosivo::executar(){
 
 }
 
-void Explosivo::salvar(){
+void Explosivo::salvar(std::ofstream& arquivo){
+    arquivo << id << " EXPLOSIVO " << personagem.getPosition().x
+            << " " << personagem.getPosition().y << "\n";
 }
 
 void Explosivo::obstaculizar(Personagens::Jogador* pJ){
@@ -30,6 +32,9 @@ void Explosivo::obstaculizar(Personagens::Jogador* pJ){
         exit(1);
     }
     pJ->operator-=(danosidade ? danosidade : pJ->getVida());
+    pJ->eliminar();
+    ativo = false;
+    personagem.setPosition(-100.f, -100.f);
 }
 
 }

@@ -3,9 +3,8 @@
 #include "Entidades/Personagens/Jogador.hpp"
 #include <cstdlib>
 #include <ctime>
-
-#define VIDA_JOG1 10
-#define VIDA_JOG2 5
+#include <fstream>
+#include <iostream>
 
 namespace Stalingrado {
 
@@ -18,10 +17,13 @@ namespace Stalingrado {
         std::srand(static_cast<unsigned int>(std::time(0)));
         Ente::setGG(&GG); //set do gerenciador grafico para entes
         pMenu = new Menu(this);
+        pJog1 = new Entidades::Personagens::Jogador(10);
+        pJog2 = new Entidades::Personagens::Jogador(5);
+        fase_um = new Fases::Fase_prim(pJog1, pJog2);
+        fase_seg = new Fases::Fase_seg(pJog1, pJog2);
     }
 
     Jogo::~Jogo() {
-
         if (fase_um)    delete fase_um;
         if (fase_seg)   delete fase_seg;
         if (pJog1)      delete pJog1;
@@ -45,59 +47,41 @@ namespace Stalingrado {
         while (GG.getJanela()->isOpen() && executando) {
             sf::Event evento;
             while (GG.getJanela()->pollEvent(evento)) {
-                if (evento.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                if (evento.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
                     executando = false;
-
-                if (faseAtual == 0)
-                    pMenu->processarEvento(evento);
+                    salvarJogo("save.txt");
+                }
             }
 
             tempoDecorrido = clock.restart();
             dt = tempoDecorrido.asSeconds();
+            
 
             GG.getJanela()->clear();
-
-            if (faseAtual == 0) {
-                GG.setAlvoCamera(pMenu);
-                pMenu->executar();
-                GG.atualizarCamera();
-            }
-            else if (faseAtual == 1 && fase_um) {
-                pMenu->set_inMenu(false);
+            if(pJog1->isAtivo())
                 GG.setAlvoCamera(static_cast<Ente*>(pJog1));
-                fase_um->executar();
-                GG.atualizarCamera();
-            }
-            else if (faseAtual == 2 && fase_seg) {
-                pMenu->set_inMenu(false);
-                GG.setAlvoCamera(static_cast<Ente*>(pJog1));
-                fase_seg->executar();
-                GG.atualizarCamera();
-            }
-
+            else if(!(pJog1->isAtivo()) && pJog2->isAtivo())
+                GG.setAlvoCamera(static_cast<Ente*>(pJog2));
+            fase_um->executar();
+            GG.atualizarCamera();
             GG.getJanela()->display();
         }
     }
 
-    void Jogo::iniciarFase1() {
-
-        if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
-        if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-        if (!fase_um) fase_um = new Fases::Fase_prim(pJog1, pJog2);
-
-        faseAtual = 1;
-    }
-
-    void Jogo::iniciarFase2() {
-        if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
-        if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-        if (!fase_seg) fase_seg = new Fases::Fase_seg(pJog1, pJog2);
-
-        faseAtual = 2;
-    }
-
     void Jogo::fecharJogo() {
         executando = false;
+    }
+    //Eu coloquei pensando na fase 1 pq é a q eu to testando, dps precisa adaptar tudo
+    void Jogo::salvarJogo(const std::string& caminho) {
+        std::ofstream arquivo(caminho.c_str());
+        if (!arquivo.is_open()) {
+            std::cerr << "Não foi possível criar o arquivo de save: " << caminho << std::endl;
+            return;
+        }
+        arquivo << "FASE 1\n";
+        fase_um->salvarFase(arquivo);
+        arquivo.close();
+        std::cout << "Jogo salvo em " << caminho << std::endl;
     }
 
 }

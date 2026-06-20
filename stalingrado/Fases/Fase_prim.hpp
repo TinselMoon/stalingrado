@@ -16,13 +16,11 @@ namespace Fases{
 //CLASSE FASE PRIMEIRA
 class Fase_prim : public Fase{
 private:
-    const int maxInimFaceis; //IMPLEMENTAR VALOR MAXIMO
-    const int maxEntulhos;
-    const int maxArames;
-    Entidades::Chao *chao;
+    const int maxInimFaceisAleatorios; //IMPLEMENTAR VALOR MAXIMO
+    const int maxAramesAleatorios;
 protected:
     void criarInimFaceis(float x, float y);
-    void criarArame_farp(float x1, float x2);
+    void criarArame_farp(float x, float y);
     void criarInimigos();
     void criarObstaculos();
 public:
