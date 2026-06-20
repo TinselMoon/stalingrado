@@ -16,12 +16,9 @@ namespace Stalingrado {
 
         public:
             ~Gerenciador_eventos();
-
             static Gerenciador_eventos* getInstance();
-
             void setGraphicManager();
             void setInput(Input* pIM);
-
             void pollEvents();
         };
 

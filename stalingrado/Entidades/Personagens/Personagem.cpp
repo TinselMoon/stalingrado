@@ -3,6 +3,7 @@
 #include "Jogador.hpp"
 
 #define MAX_VIDAS 100
+#define DURACAO_FLASH_DANO 0.15f
 
 namespace Stalingrado {
     namespace Entidades {
@@ -14,6 +15,7 @@ namespace Stalingrado {
                 sf::FloatRect rectangle = corpo.getLocalBounds();
                 corpo.setOrigin(rectangle.width/2.f, rectangle.height/2.f);
                 vel_x = vel_y = 0.f;
+                dt_flash = 0.f;
                 ativo = true;
             }
 
@@ -29,6 +31,8 @@ namespace Stalingrado {
 
             void Personagem::operator-=(int dano) {
                 num_vidas - dano >= 0 ? num_vidas-=dano : num_vidas=0;
+                dt_flash = DURACAO_FLASH_DANO;
+                corpo.setColor(sf::Color::Red);
             }
 
             void Personagem::operator+=(int bonus) {
@@ -81,6 +85,14 @@ namespace Stalingrado {
                 dx = getVelX()*dt;
                 dy = getVelY()*dt;
                 corpo.move(dx, dy);
+
+                if (dt_flash > 0.f) {
+                    dt_flash -= dt;
+                    if (dt_flash <= 0.f) {
+                        dt_flash = 0.f;
+                        corpo.setColor(sf::Color::White);
+                    }
+                }
             }
 
         }

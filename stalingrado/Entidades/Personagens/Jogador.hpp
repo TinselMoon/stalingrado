@@ -19,6 +19,12 @@ namespace Stalingrado {
                 int checkpoint_pontos;
                 int dano;
                 float dt_dano;
+                bool olhandoEsquerda;
+                const sf::Texture* texturaIdle;
+                const sf::Texture* texturaAtaque;
+                sf::Vector2f tamanhoIdle;
+                sf::Vector2f tamanhoAtaque;
+                void aplicarTexturaAtaque();
             protected:
                 int pontos;
             public:

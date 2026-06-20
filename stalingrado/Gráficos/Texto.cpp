@@ -44,7 +44,7 @@ namespace Stalingrado {
         }
 
         void Texto::executar() {
-            desenhar();
+            getGG()->desenharTexto(text);
         }
 
         std::string Texto::getInfo() const {

@@ -14,13 +14,9 @@ namespace Stalingrado::Controles {
 
     public:
         ControleMenu(Menus::Menu* pM = nullptr);
-
         ~ControleMenu();
-
         void notifyPressed(std::string key);
-        
         void notifyReleased(std::string key);
-
         void setMenu(Menus::Menu* p);
     };
 

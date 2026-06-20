@@ -1,32 +1,32 @@
 #include "Botao.hpp"
 
-#define BUTTON_PATH_DEFAULT "./assets/Botao/Selected_light.png"
-#define BUTTON_PATH_SELECTED "./assets/Botao/Selected.png"
-#define BUTTON_HEIGHT 80
-#define BUTTON_WIDTH 300
-#define BUTTON_TEXT_COLOR 77.6, 68.2, 44.3 // R, G, B
+#define BUTTON_TEXTURE_IDLE "BotaoIdle"
+#define BUTTON_TEXTURE_HOVER "BotaoHover"
+#define BUTTON_TEXT_COLOR 230, 200, 130 // R, G, B
 #define FONT_SIZE 30
+#define BUTTON_SCALE 0.55f
 
 namespace Stalingrado {
     namespace Graficos {
 
-        Botao::Botao(sf::Vector2f position, std::string info) : Ente("Botao"),
-        textInfo(position, info),defaultTexture(nullptr), selectedTexture(nullptr)
+        Botao::Botao(sf::Vector2f position, std::string info) : Ente(BUTTON_TEXTURE_IDLE),
+        textInfo(position, info), defaultTexture(nullptr), selectedTexture(nullptr)
         {
-            defaultTexture = &(pGG->getTextura(BUTTON_PATH_DEFAULT));
-            selectedTexture = &(pGG->getTextura(BUTTON_PATH_SELECTED));
+            defaultTexture = &(pGG->getTextura(BUTTON_TEXTURE_IDLE));
+            selectedTexture = &(pGG->getTextura(BUTTON_TEXTURE_HOVER));
 
-            corpo.setOrigin(sf::Vector2f(BUTTON_WIDTH / 2, BUTTON_HEIGHT / 2));
+            sf::Vector2u tamanhoTextura = corpo.getTexture()->getSize();
+            corpo.setOrigin(tamanhoTextura.x / 2.f, tamanhoTextura.y / 2.f);
 
             corpo.setPosition(sf::Vector2f(position.x, position.y));
-
-            corpo.setTexture(*defaultTexture);
+            corpo.scale(BUTTON_SCALE, BUTTON_SCALE);
 
             textInfo.setFontSize(FONT_SIZE);
 
             textInfo.setTextColor(BUTTON_TEXT_COLOR);
 
-            textInfo.setPosition(sf::Vector2f(position.x, position.y));
+            sf::Vector2f textSize = textInfo.getSize();
+            textInfo.setPosition(sf::Vector2f(position.x - textSize.x / 2.f, position.y - textSize.y / 2.f));
         }
 
         Botao::~Botao() { }
@@ -40,6 +40,7 @@ namespace Stalingrado {
 
         void Botao::executar() {
             desenhar();
+            textInfo.executar();
         }
 
     }

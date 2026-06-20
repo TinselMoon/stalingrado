@@ -2,10 +2,10 @@
 #include "../States/Jogo.hpp"
 #include "../States/StateMachine.hpp"
 
-#define POS_BOTAO_0 sf::Vector2f(100, 600)
-#define POS_BOTAO_1 sf::Vector2f(100, 500)
-#define POS_BOTAO_2 sf::Vector2f(100, 400)
-#define POS_BOTAO_3 sf::Vector2f(100, 300)
+#define POS_BOTAO_0 sf::Vector2f(310, 180)
+#define POS_BOTAO_1 sf::Vector2f(310, 440)
+#define POS_BOTAO_2 sf::Vector2f(310, 700)
+#define POS_BOTAO_3 sf::Vector2f(310, 960)
 
 
 namespace Stalingrado {

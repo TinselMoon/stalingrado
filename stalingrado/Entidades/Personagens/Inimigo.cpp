@@ -37,33 +37,6 @@ namespace Stalingrado {
 
             }
 
-            void Inimigo::mover(){
-                float velAntiga = getVelX();
-                float velAtual = 0;
-                dt_movimento += Jogo::getDt();
-                if(dt_movimento > dt_mudar_direcao){
-                    int new_direction = (rand() % 3) - 1;
-                    velAtual = max_speed*new_direction;
-                    setVelocidadeX(velAtual);
-                    if(rand() % 100 < 10 && getVelY() == 0)
-                        setVelocidadeY(-400.f);
-                    dt_movimento = 0;
-                    if(velAtual != 0 && velAntiga != velAtual){
-                        //Atualizar lado que o personagem esta olhando
-                        int larguraTextura = corpo.getTexture()->getSize().x;
-                        int alturaTextura = corpo.getTexture()->getSize().y;
-                        if(velAtual > 0){
-                            corpo.setTextureRect(sf::IntRect(0, 0, larguraTextura, alturaTextura));
-                        }
-                        if(velAtual < 0){
-                            corpo.setTextureRect(sf::IntRect(larguraTextura, 0,-larguraTextura, alturaTextura));
-                        }
-                    }
-                }
-                Personagem::mover();
-            }
-
-        } // Fim dos namespaces
-
-    } // Fim do namespace Stalingrado
+        }
+    }
 }

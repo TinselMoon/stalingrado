@@ -24,7 +24,7 @@ namespace Stalingrado {
     Gerenciador_Grafico::~Gerenciador_Grafico(){
     }
 
-    sf::Font Gerenciador_Grafico::getFont() {
+    const sf::Font& Gerenciador_Grafico::getFont() {
         return font;
     }
 
@@ -116,6 +116,10 @@ namespace Stalingrado {
     void Gerenciador_Grafico::desenharEnte(Ente *pE){
         if(pE != nullptr)
             janela.draw(*(pE->getSprite()));
+    }
+
+    void Gerenciador_Grafico::desenharTexto(const sf::Text& texto){
+        janela.draw(texto);
     }
 
     sf::RenderWindow* Gerenciador_Grafico::getJanela(){

@@ -16,6 +16,7 @@ namespace Stalingrado {
 
         private:
             Jogo* pJogo;
+            static const int qtdBotoes;
         public:
             MenuInicial(Jogo* pJ=nullptr);
             ~MenuInicial();

@@ -9,6 +9,9 @@ using namespace std;
 #define PODER_JOG1 4 //Quantidade de dano que o Jogador 1 pode infligir nos inimigos
 #define PODER_JOG2 2 //Quantidade de dano que o Jogador 2 pode infligir nos inimigos
 
+#define TEXTURA_ATAQUE_JOG1 "SoldadoAtaca"
+#define TEXTURA_ATAQUE_JOG2 "CachorroAtaca"
+
 namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
@@ -17,12 +20,18 @@ namespace Stalingrado {
             int Jogador::cont_jog(1);
 
             Jogador::Jogador(int vida) : Personagem(vida, cont_jog == 1 ? "Soldado" : "Cachorro"),
-            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0), dt_dano(0)
+            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0), dt_dano(0),
+            olhandoEsquerda(false)
             {
                 pontos = 0;
                 id_jog = cont_jog;
                 cont_jog++;
                 dano = (cont_jog == 1 ? 4 : 2);
+
+                texturaIdle = corpo.getTexture();
+                tamanhoIdle = pGG->getTamanhoTextura(id_jog == 1 ? "Soldado" : "Cachorro");
+                texturaAtaque = &(pGG->getTextura(id_jog == 1 ? TEXTURA_ATAQUE_JOG1 : TEXTURA_ATAQUE_JOG2));
+                tamanhoAtaque = pGG->getTamanhoTextura(id_jog == 1 ? TEXTURA_ATAQUE_JOG1 : TEXTURA_ATAQUE_JOG2);
             }
 
             Jogador::~Jogador(){
@@ -64,6 +73,8 @@ namespace Stalingrado {
 
                     if (sf::Keyboard::isKeyPressed(atacar[id_jog-1]))
                         belicoso = true;
+                    else
+                        belicoso = false;
                     if(cooldown_mov > 0){
                         cooldown_mov -= Jogo::getDt();
                     }
@@ -86,7 +97,7 @@ namespace Stalingrado {
                             if (sf::Keyboard::isKeyPressed(pular[id_jog-1]) && !WisPressed)
                             {
                                 //Negativo pq as coordenadas Y são invertidas na SFML
-                                setVelocidadeY(-800.f);
+                                setVelocidadeY(-900.f);
                                 WisPressed = true;
                             }
                             else{
@@ -101,12 +112,32 @@ namespace Stalingrado {
                         int alturaTextura = corpo.getTexture()->getSize().y;
                         if(velAtual > 0){
                             corpo.setTextureRect(sf::IntRect(0, 0, larguraTextura, alturaTextura));
+                            olhandoEsquerda = false;
                         }
                         if(velAtual < 0){
                             corpo.setTextureRect(sf::IntRect(larguraTextura, 0,-larguraTextura, alturaTextura));
+                            olhandoEsquerda = true;
                         }
                     }
                 multiplicador_vel = 1.0f;
+
+                aplicarTexturaAtaque();
+            }
+
+            void Jogador::aplicarTexturaAtaque(){
+                const sf::Texture* texturaAlvo = belicoso ? texturaAtaque : texturaIdle;
+
+                if (corpo.getTexture() == texturaAlvo) return;
+
+                sf::Vector2f tamanhoAlvo = belicoso ? tamanhoAtaque : tamanhoIdle;
+                sf::Vector2u tamanhoOriginal = texturaAlvo->getSize();
+
+                corpo.setTexture(*texturaAlvo, true);
+                corpo.setOrigin(tamanhoOriginal.x / 2.f, tamanhoOriginal.y / 2.f);
+                corpo.setScale(tamanhoAlvo.x / tamanhoOriginal.x, tamanhoAlvo.y / tamanhoOriginal.y);
+
+                if (olhandoEsquerda)
+                    corpo.setTextureRect(sf::IntRect(tamanhoOriginal.x, 0, -(int)tamanhoOriginal.x, tamanhoOriginal.y));
             }
 
             void Jogador::mover(){

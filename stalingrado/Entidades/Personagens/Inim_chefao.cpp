@@ -9,6 +9,12 @@
 
 using namespace std;
 
+// Offset do bico do canhao em relacao ao centro do sprite do tanque, calculado a
+// partir do pixel da ponta do cano em tanque.png (0, 313.5 de um total de 2886x1203)
+// e da escala de exibicao registrada em texturas.txt (738.2x324.2).
+#define GUN_OFFSET_X -369.3f
+#define GUN_OFFSET_Y -77.6f
+
 namespace Stalingrado {
     namespace Entidades {
         namespace Personagens {
@@ -31,15 +37,17 @@ namespace Stalingrado {
             void Inim_chefao::salvar(){
 
             }
-            /*void Inim_chefao::mover(){
+            void Inim_chefao::mover(){
                 dt_movimento += Jogo::getDt();
                 if(dt_movimento > 1){
                     int new_direction = (rand() % 3) - 1;
                     setVelocidadeX(max_speed*new_direction);
+                    //if(rand() % 100 < 10 && getVelY() == 0)
+                    //setVelocidadeY(-800.f);
                     dt_movimento = 0;
                 }
                 Personagem::mover();
-            }*/
+            }
             void Inim_chefao::setProjetil(Projetil* pP){
                 proj_chefao = pP;
                 pP->setChefao(this);
@@ -53,8 +61,8 @@ namespace Stalingrado {
                 if (dt_dano > 5.0f) {
                     if(!(proj_chefao->isAtivo())){
                         sf::Vector2f posi_ini = corpo.getPosition();
-                        posi_ini.x = posi_ini.x - 678.f;
-                        posi_ini.y = posi_ini.y - 150.f;
+                        posi_ini.x = posi_ini.x + GUN_OFFSET_X;
+                        posi_ini.y = posi_ini.y + GUN_OFFSET_Y;
                         proj_chefao->setPosition(posi_ini.x, posi_ini.y);
                         sf::Vector2f posi_fin = pPers->getPos();
                         sf::Vector2f dist(posi_fin.x - posi_ini.x, posi_fin.y - posi_ini.y);

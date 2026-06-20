@@ -22,7 +22,7 @@ public:
     void salvarDataBuffer();
     virtual void executar();
     const int getPontos() const;
-    void mover();
+    virtual void mover()=0;
     virtual void salvar();
     const bool getChefao() const;
 };

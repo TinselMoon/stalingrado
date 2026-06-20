@@ -32,8 +32,9 @@ public:
     const sf::Vector2f getTamanhoTextura(const std::string& nome);
 
     void desenharEnte (Stalingrado::Ente *pE);
+    void desenharTexto (const sf::Text& texto);
 
-    sf::Font getFont();
+    const sf::Font& getFont();
     void desenharTextoCoordAbs(const std::string& texto, int tam, float x, float y);
     void desenharTextoCamera(const std::string& texto, int tam, float x, float y);
     sf::RenderWindow* getJanela();
