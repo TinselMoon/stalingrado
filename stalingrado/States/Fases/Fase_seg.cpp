@@ -193,7 +193,7 @@ namespace Stalingrado {
             std::stringstream vida1, vida2;
             vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida() << "\t PONTOS:\t" << pJog1->getPontos();
             pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 10.f);
-            if(pJog2 != nullptr){
+            if(pJog2->isAtivo()){
                 vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida() << "\t PONTOS:\t" << pJog2->getPontos();
                 pGG->desenharTextoCamera(vida2.str(), 20, 50.f, 50.f);
             }

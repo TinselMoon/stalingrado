@@ -20,6 +20,10 @@ namespace Stalingrado {
             std::srand(static_cast<unsigned int>(std::time(0)));
             Ente::setGG(&GG); //set do gerenciador grafico para entes
             pMenuI = new Menus::MenuInicial(this);
+
+            musica.openFromFile("../stalingrado/assets/audios/menuInicial.mp3");
+            musica.setLoop(true);
+            musica.play();
         }
 
         Jogo::~Jogo() {
@@ -85,6 +89,9 @@ namespace Stalingrado {
                 }
                 else if (faseAtual == 2 && fase_seg) {
                     pMenuI->setInMenu(false);
+
+                    pMenuI->getTwoPlayers() ? pJog2->setAtivo(true) : pJog2->setAtivo(false);
+
                     if (pJog1->isAtivo())
                         GG.setAlvoCamera(static_cast<Ente*>(pJog1));
                     else if (pJog2->isAtivo())
