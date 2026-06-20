@@ -18,7 +18,6 @@ namespace Stalingrado {
                 float cooldown_mov;
                 int checkpoint_pontos;
                 int dano;
-                float dt_dano;
                 bool olhandoEsquerda;
                 const sf::Texture* texturaIdle;
                 const sf::Texture* texturaAtaque;
@@ -32,17 +31,17 @@ namespace Stalingrado {
                 ~Jogador();
                 void lerMovimentacao();
                 void executar();
-                void salvar();
+                void salvar(std::ofstream& arquivo);
                 bool getBelicoso() const;
                 void setBelicoso(bool belico);
                 void mover();
                 void danificar (Personagem* pPers);
                 void setMultiplicadorVel(float mult);
-                const int getPontos() const{return pontos;}
+                const int getPontos() const;
                 void impulso(float mult);
                 void setCooldown(float cd);
-                int getUltimoCheckpoint(){return checkpoint_pontos;}
-                void setUltimoCheckpoint(int pontos){checkpoint_pontos = pontos;}
+                int getUltimoCheckpoint();
+                void setUltimoCheckpoint(int pontos);
             };
 
         }

@@ -9,7 +9,9 @@ namespace Stalingrado {
 namespace Fases{
 
 Fase::Fase(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2, const std::string& texturaFundo, const std::string& texturaChao) :
-Ente(texturaFundo), chao(nullptr), GC(pJogador1, pJogador2), lista_ents(), maxInimMediosAleatorios(5), comprimentoFase(0), fase_concluida(false){
+Ente(texturaFundo), chao(nullptr), GC(pJogador1, pJogador2), lista_ents(), maxInimMediosAleatorios(5), comprimentoFase(0), fase_concluida(false),
+maxEntulhosAleatorios(8)
+{
     pJog1 = pJogador1;
     pJog2 = pJogador2;
 }
@@ -38,6 +40,11 @@ const bool Fase::inimigosMortos() const{
 const bool Fase::faseConcluida() const{
     return fase_concluida;
 }
+
+void Fase::salvarFase(std::ofstream& arquivo){
+    lista_ents.salvar(arquivo);
+}
+
 }
 
 } // Fim do namespace Stalingrado

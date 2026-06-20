@@ -12,14 +12,14 @@ namespace Stalingrado {
                 int id_chef;
                 Projetil* proj_chefao;
             public:
-                Inim_chefao(int vida, int maldade);
+                Inim_chefao(int vida = 20, int maldade = 5);
                 ~Inim_chefao();
                 void danificar(Personagem *pPers);
                 void executar();
-                void salvar();
-                void mover();
+                void salvar(std::ofstream& arquivo);
                 void setProjetil(Projetil* pP);
                 int getIdChef();
+                void mover();
             };
         }
     }

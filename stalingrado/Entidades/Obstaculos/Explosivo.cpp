@@ -20,7 +20,9 @@ void Explosivo::executar(){
 
 }
 
-void Explosivo::salvar(){
+void Explosivo::salvar(std::ofstream& arquivo){
+    arquivo << id << " EXPLOSIVO " << corpo.getPosition().x
+            << " " << corpo.getPosition().y << "\n";
 }
 
 void Explosivo::obstaculizar(Personagens::Jogador* pJ){

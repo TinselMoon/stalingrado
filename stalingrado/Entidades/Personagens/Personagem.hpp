@@ -12,7 +12,7 @@ protected:
     float vel_x;
     float vel_y;
     float dt_flash;
-
+    float dt_dano;
 public:
     Personagem(int vida, const std::string& nomeTextura);
     ~Personagem();
@@ -31,7 +31,7 @@ public:
     void setMorto();
     virtual void danificar(Personagem* pPers) = 0;
     virtual void executar() = 0;
-    virtual void salvar() = 0;
+    virtual void salvar(std::ofstream& arquivo) = 0;
     virtual void mover();
 };
 }

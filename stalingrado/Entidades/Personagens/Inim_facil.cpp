@@ -11,10 +11,11 @@ namespace Stalingrado {
         namespace Personagens {
             using namespace States;
 
-            Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inimigo_facil"){
+            Inim_facil::Inim_facil(int vida, int maldade) : Personagens::Inimigo(vida, maldade, "Inimigo_facil"),
+            tempo_atordoar((float)(rand() % 41)/100 + 0.4f)
+            {
                 max_speed = 250.f;
                 isChefao = 0;
-                tempo_atordoar = ((float)rand()/RAND_MAX)*0.4f + 0.4f;
                 dt_mudar_direcao = 1.f;
             }
 
@@ -25,8 +26,10 @@ namespace Stalingrado {
             void Inim_facil::executar(){
                 mover();
             }
-            void Inim_facil::salvar(){
-
+            void Inim_facil::salvar(std::ofstream& arquivo){
+                arquivo << id << " INIM_FACIL " << getVida()
+                        << " " << getPos().x
+                        << " " << getPos().y << "\n";
             }
 
             void Inim_facil::mover(){

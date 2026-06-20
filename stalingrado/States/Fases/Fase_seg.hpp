@@ -18,12 +18,11 @@ namespace Fases{
 //CLASSE FASE SEGUNDA
 class Fase_seg : public Fase{
 private:
-    const int maxInimChefoes;
-    const int maxExplosivos;
-    const int maxEntulhos;
+    const int maxInimChefoesAleatorios;
+    const int maxExplosivosAleatorios;
 protected:
     void criarChefoes(float x, float y);
-    void criarExplosivos(float x1, float x2);
+    void criarExplosivos(float x, float y);
     void criarProjeteis();
     void criarInimigos();
     void criarObstaculos();

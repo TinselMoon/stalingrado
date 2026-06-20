@@ -20,7 +20,7 @@ namespace Stalingrado {
             int Jogador::cont_jog(1);
 
             Jogador::Jogador(int vida) : Personagem(vida, cont_jog == 1 ? "Soldado" : "Cachorro"),
-            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0), dt_dano(0),
+            WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0),
             olhandoEsquerda(false)
             {
                 pontos = 0;
@@ -59,6 +59,17 @@ namespace Stalingrado {
                 vel_x = -vel_x*mult;
                 vel_y = -300.f;
             }
+            const int Jogador::getPontos() const{
+                return pontos;
+            }
+
+            int Jogador::getUltimoCheckpoint(){
+                return checkpoint_pontos;
+            }
+            void Jogador::setUltimoCheckpoint(int pontos){
+                checkpoint_pontos = pontos;
+            }
+
             void Jogador::lerMovimentacao(){
 
                 sf::Keyboard::Key esquerda[2] = {sf::Keyboard::A , sf::Keyboard::Left};
@@ -150,8 +161,12 @@ namespace Stalingrado {
                 mover();
             }
 
-            void Jogador::salvar(){
-
+            void Jogador::salvar(std::ofstream& arquivo){
+                arquivo << id << " JOGADOR " << id_jog
+                    << " " << getVida()
+                    << " " << pontos
+                    << " " << getPos().x
+                    << " " << getPos().y << "\n";
             }
 
             void Jogador::danificar(Personagem *pPers) {

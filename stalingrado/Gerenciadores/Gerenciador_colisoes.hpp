@@ -31,6 +31,9 @@ private:
     Entidades::Personagens::Jogador* pJog1;
     Entidades::Personagens::Jogador* pJog2;
     Entidades::Chao *chao;
+
+    //Estrutura retornada pelo metodo que calcula sobreposicao
+    //apenas usada internamente por outro métodos
     struct sobreposicao{
         float distX;
         float distY;
@@ -42,7 +45,7 @@ private:
     struct sobreposicao calcularSobreposicao(Entidades::Entidade *pJ, Entidades::Entidade *pE);
     void resolverColisaoJogInim(Entidades::Entidade *pJ, Entidades::Entidade *pE);
     const bool verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2) const;
-    const bool verificarColisaoDano(Entidades::Entidade *pe1, Entidades::Entidade *pe2, float margemExtra) const;
+    const bool verificarColisao(Entidades::Entidade *pe1, Entidades::Entidade *pe2, float margemExtra) const;
     void tratarColisoesJogsObstaculos();
     void tratarColisoesJogsInimigos();
     void tratarColisoesJogsProjeteis();

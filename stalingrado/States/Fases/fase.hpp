@@ -19,6 +19,7 @@ namespace Stalingrado {
         class Fase : public Ente {
         protected:
             const int maxInimMediosAleatorios;
+            int maxEntulhosAleatorios;
             int comprimentoFase;
 
             bool fase_concluida;
@@ -40,6 +41,7 @@ namespace Stalingrado {
             virtual void executar() = 0;
             const bool inimigosMortos() const;
             const bool faseConcluida() const;
+            void salvarFase(std::ofstream& arquivo);
         };
 
     }

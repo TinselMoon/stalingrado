@@ -11,7 +11,7 @@ Inim_chefao ../stalingrado/assets/tanque.png 738.2 324.2 0
 Chao_fase_um ../stalingrado/assets/chao_fase_um.png 1920.0 900.0 1
 Chao_fase_dois ../stalingrado/assets/chao_fase_dois.png 1920.0 900.0 1
 Cenario_fase_um ../stalingrado/assets/cenario_fase_um.png 2172.0 750.0 1
-Cenario_fase_dois ../stalingrado/assets/cenario_fase_dois.png 1920.0 800.0 1
+Cenario_fase_dois ../stalingrado/assets/cenario_fase_dois.png 1920.0 1000.0 1
 Entulho ../stalingrado/assets/entulho.png 125.0 100.0 0
 Arame_farp ../stalingrado/assets/arame_farpado.png 125.0 100.0 0
 Explosivo ../stalingrado/assets/explosivo.png 125.0 100.0 0

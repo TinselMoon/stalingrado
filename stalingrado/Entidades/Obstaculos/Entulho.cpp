@@ -9,8 +9,10 @@ namespace Stalingrado {
 namespace Entidades {
 namespace Obstaculos {
 
-Entulho::Entulho() : Obstaculo(false, false, "Entulho"){
-    mult_impulso = ((float)rand()/RAND_MAX)*0.5f + 0.4f;
+Entulho::Entulho() : Obstaculo(false, false, "Entulho"),
+mult_impulso((float)(rand() % 51)/100 + 0.4f)
+{
+
 }
 
 Entulho::~Entulho(){
@@ -21,8 +23,9 @@ void Entulho::executar(){
 
 }
 
-void Entulho::salvar(){
-
+void Entulho::salvar(std::ofstream& arquivo){
+    arquivo << id << " ENTULHO " << corpo.getPosition().x
+            << " " << corpo.getPosition().y << "\n";
 }
 
 void Entulho::obstaculizar(Personagens::Jogador* pJ){

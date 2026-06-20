@@ -12,7 +12,7 @@ public:
     Explosivo();
     ~Explosivo();
     void executar();
-    void salvar();
+    void salvar(std::ofstream& arquivo);
     void obstaculizar(Personagens::Jogador* pJ);
 };
 }

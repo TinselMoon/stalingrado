@@ -38,8 +38,7 @@ public:
     void desenharTextoCoordAbs(const std::string& texto, int tam, float x, float y);
     void desenharTextoCamera(const std::string& texto, int tam, float x, float y);
     sf::RenderWindow* getJanela();
-    Gerenciador_Grafico* getInstanciaGG () const;
-    void executar(); //interpretacao Gustavo
+    void executar();
     void setAlvoCamera(Stalingrado::Ente* pAlvo);
     void atualizarCamera();
 };

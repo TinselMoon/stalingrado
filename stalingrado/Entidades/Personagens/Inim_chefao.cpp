@@ -34,12 +34,14 @@ namespace Stalingrado {
             void Inim_chefao::executar(){
                 mover();
             }
-            void Inim_chefao::salvar(){
-
+            void Inim_chefao::salvar(std::ofstream& arquivo){
+                arquivo << id << " INIM_CHEFAO " << getVida()
+                        << " " << getPos().x
+                        << " " << getPos().y << "\n";
             }
             void Inim_chefao::mover(){
                 dt_movimento += Jogo::getDt();
-                if(dt_movimento > 1){
+                if(dt_movimento > dt_mudar_direcao){
                     int new_direction = (rand() % 3) - 1;
                     setVelocidadeX(max_speed*new_direction);
                     //if(rand() % 100 < 10 && getVelY() == 0)
