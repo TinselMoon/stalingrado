@@ -6,8 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#define VIDA_JOG1 10
-#define VIDA_JOG2 5
+#include "../Defines.txt"
 
 namespace Stalingrado {
     namespace States {
@@ -74,6 +73,9 @@ namespace Stalingrado {
                 }
                 else if (faseAtual == 1 && fase_um) {
                     pMenuI->setInMenu(false);
+
+                    pMenuI->getTwoPlayers() ? pJog2->setAtivo(true) : pJog2->setAtivo(false);
+
                     if (pJog1->isAtivo())
                         GG.setAlvoCamera(static_cast<Ente*>(pJog1));
                     else if (pJog2->isAtivo())
@@ -99,7 +101,12 @@ namespace Stalingrado {
 
             if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
             if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-            if (!fase_um) fase_um = new Fases::Fase_prim(pJog1, pJog2);
+            if (!fase_um) {
+                fase_um = new Fases::Fase_prim(pJog1, pJog2);
+                musica.openFromFile("../stalingrado/assets/audios/fase1.mp3");
+                musica.setLoop(true);
+                musica.play();
+            }
 
             faseAtual = 1;
         }
@@ -107,7 +114,12 @@ namespace Stalingrado {
         void Jogo::iniciarFase2() {
             if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
             if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-            if (!fase_seg) fase_seg = new Fases::Fase_seg(pJog1, pJog2);
+            if (!fase_seg) {
+                fase_seg = new Fases::Fase_seg(pJog1, pJog2);
+                musica.openFromFile("../stalingrado/assets/audios/fase2.mp3");
+                musica.setLoop(true);
+                musica.play();
+            }
 
             faseAtual = 2;
         }

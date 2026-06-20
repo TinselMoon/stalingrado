@@ -16,7 +16,8 @@ namespace Stalingrado {
 
         private:
             Jogo* pJogo;
-            static const int qtdBotoes;
+            bool two_players;
+
         public:
             MenuInicial(Jogo* pJ=nullptr);
             ~MenuInicial();
@@ -25,6 +26,8 @@ namespace Stalingrado {
             void confirmar();
             void update(const float dt);
             void desenharState();
+            void carregarBotoes();
+            bool getTwoPlayers() const;
         };
 
     }

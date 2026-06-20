@@ -14,7 +14,7 @@ using namespace Personagens;
 using namespace Obstaculos;
 using namespace Gerenciadores;
 
-#define MARGEM_ATAQUE 180.0f
+#include "../Defines.txt"
 
 namespace Stalingrado {
     

@@ -44,7 +44,7 @@ void ListaEntidades::desenhar(){
 
         // 4. Se o ponteiro for válido, executa
         if(pEntidade != nullptr){
-            pEntidade->desenhar();
+            if(pEntidade->isAtivo()) pEntidade->desenhar();
         }
 
         // 5. Passa para o próximo nó

@@ -9,11 +9,7 @@
 
 using namespace std;
 
-// Offset do bico do canhao em relacao ao centro do sprite do tanque, calculado a
-// partir do pixel da ponta do cano em tanque.png (0, 313.5 de um total de 2886x1203)
-// e da escala de exibicao registrada em texturas.txt (738.2x324.2).
-#define GUN_OFFSET_X -369.3f
-#define GUN_OFFSET_Y -77.6f
+#include "../../Defines.txt"
 
 namespace Stalingrado {
     namespace Entidades {

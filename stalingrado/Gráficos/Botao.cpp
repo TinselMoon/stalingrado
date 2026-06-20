@@ -1,10 +1,6 @@
 #include "Botao.hpp"
 
-#define BUTTON_TEXTURE_IDLE "BotaoIdle"
-#define BUTTON_TEXTURE_HOVER "BotaoHover"
-#define BUTTON_TEXT_COLOR 230, 200, 130 // R, G, B
-#define FONT_SIZE 30
-#define BUTTON_SCALE 0.55f
+#include "../Defines.txt"
 
 namespace Stalingrado {
     namespace Graficos {
@@ -19,7 +15,7 @@ namespace Stalingrado {
             corpo.setOrigin(tamanhoTextura.x / 2.f, tamanhoTextura.y / 2.f);
 
             corpo.setPosition(sf::Vector2f(position.x, position.y));
-            corpo.scale(BUTTON_SCALE, BUTTON_SCALE);
+            corpo.scale(BUTTON_SCALE_X, BUTTON_SCALE_Y);
 
             textInfo.setFontSize(FONT_SIZE);
 

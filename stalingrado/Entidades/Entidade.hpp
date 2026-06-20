@@ -19,6 +19,7 @@ public:
     virtual void movePos(float x, float y) = 0;
     virtual void setVelocidadeY(float vy) = 0;
     const bool isAtivo() const;
+    void setAtivo(bool at);
 };
 
 

@@ -2,10 +2,7 @@
 #include "../States/Jogo.hpp"
 #include "../States/StateMachine.hpp"
 
-#define POS_BOTAO_0 sf::Vector2f(310, 180)
-#define POS_BOTAO_1 sf::Vector2f(310, 440)
-#define POS_BOTAO_2 sf::Vector2f(310, 700)
-#define POS_BOTAO_3 sf::Vector2f(310, 960)
+#include "../Defines.txt"
 
 
 namespace Stalingrado {
@@ -13,29 +10,16 @@ namespace Stalingrado {
         using namespace States;
         using namespace Graficos;
 
-        MenuInicial::MenuInicial(Jogo* pJ) : Menu("Menu"), pJogo(pJ), State(nullptr, menuInicial) {
-
-            Botao* bt = nullptr;
-
-            //BOTAO 0: JOGAR FASE 1
-            bt = new Botao(POS_BOTAO_0, "JOGAR FASE 1"); bt->select(true);
-            botoes.push_back(bt);
-
-            //BOTAO 1: JOGAR FASE 2
-            bt = new Botao(POS_BOTAO_1, "JOGAR FASE 2");
-            botoes.push_back(bt);
-
-            //BOTAO 2: VER RANKING
-            bt = new Botao(POS_BOTAO_2, "VER RANKING");
-            botoes.push_back(bt);
-
-            //BOTAO 3: SAIR DO JOGO
-            bt = new Botao(POS_BOTAO_3, "SAIR DO JOGO");
-            botoes.push_back(bt);
+        MenuInicial::MenuInicial(Jogo* pJ) : Menu("Menu"), pJogo(pJ), two_players(false), State(nullptr, menuInicial) {
+            resetState();
         }
 
         MenuInicial::~MenuInicial() {
-            //deletar td
+
+        }
+
+        bool MenuInicial::getTwoPlayers() const {
+            return two_players;
         }
 
         void MenuInicial::executar() {
@@ -59,14 +43,29 @@ namespace Stalingrado {
 
                     case 1:
                         setInMenu(false);
-                        pJogo->iniciarFase2();
+                        //implementar reload fase1
                         break;
 
                     case 2:
-                        //ranking ainda nao implementado
+                        setInMenu(false);
+                        pJogo->iniciarFase2();
                         break;
 
                     case 3:
+                        setInMenu(false);
+                        //implementar reload fase2
+                        break;
+
+                    case 4:
+                        two_players = !two_players;
+                        resetState();
+                        break;
+
+                    case 5:
+                        //ranking ainda nao implementado
+                        break;
+
+                    case 6:
                         setInMenu(false);
                         pJogo->fecharJogo();
                         break;
@@ -78,10 +77,49 @@ namespace Stalingrado {
             }
         }
 
+        void MenuInicial::carregarBotoes() {
+
+            Botao* bt = nullptr;
+
+            while (!botoes.empty()) {
+                bt = botoes.back();
+                if (bt != nullptr) delete bt;
+                botoes.pop_back();
+            }
+
+            //BOTAO 0: JOGAR NOVA FASE 1
+            bt = new Botao(POS_BOTAO_0, "NOVA  FASE  1"); bt->select(true);
+            botoes.push_back(bt);
+
+            //BOTAO 1: RETOMAR FASE 1
+            bt = new Botao(POS_BOTAO_1, "RETOMAR  FASE  1");
+            botoes.push_back(bt);
+
+            //BOTAO 2: JOGAR NOVA FASE 2
+            bt = new Botao(POS_BOTAO_2, "NOVA  FASE  2");
+            botoes.push_back(bt);
+
+            //BOTAO 3: RETOMAR FASE 2
+            bt = new Botao(POS_BOTAO_3, "RETOMAR  FASE  2");
+            botoes.push_back(bt);
+
+            //BOTAO 4: NUMERO DE JOGADORES
+            bt = new Botao(POS_BOTAO_4, two_players ? "2  JOGADORES" : "1  JOGADOR");
+            botoes.push_back(bt);
+
+            //BOTAO 5: VER RANKING
+            bt = new Botao(POS_BOTAO_5, "VER  RANKING");
+            botoes.push_back(bt);
+
+            //BOTAO 6: SAIR DO JOGO
+            bt = new Botao(POS_BOTAO_6, "SAIR  DO  JOGO");
+            botoes.push_back(bt);
+
+        }
+
         void MenuInicial::resetState() {
-            botoes[selected]->select(false);
-            selected = 0;
-            botoes[selected]->select(true);
+            carregarBotoes();
+            setValuesBotoes();
         }
 
         void MenuInicial::update(const float dt) {

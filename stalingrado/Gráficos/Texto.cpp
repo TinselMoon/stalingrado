@@ -1,6 +1,6 @@
 #include "Texto.hpp"
 
-#define TEXT_SIZE 24
+#include "../Defines.txt"
 
 namespace Stalingrado {
     namespace Graficos {

@@ -4,7 +4,7 @@
 #include "../Gerenciadores/Gerenciador_grafico.hpp"
 #include "../Ente.hpp"
 
-#define FONT_PATH "./assets/font.ttf"
+#include "../Defines.txt"
 
 namespace Stalingrado {
     namespace Graficos {

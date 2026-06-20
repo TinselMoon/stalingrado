@@ -26,6 +26,7 @@ namespace Stalingrado {
             void selectDown();
             void selectUp();
             void setValuesBotoes();
+            virtual bool getTwoPlayers() const = 0;
         };
 
     }

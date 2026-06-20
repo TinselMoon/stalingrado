@@ -2,8 +2,7 @@
 #include "../../States/Jogo.hpp"
 #include "Jogador.hpp"
 
-#define MAX_VIDAS 100
-#define DURACAO_FLASH_DANO 0.15f
+#include "../../Defines.txt"
 
 namespace Stalingrado {
     namespace Entidades {

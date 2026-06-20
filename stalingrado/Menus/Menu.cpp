@@ -45,7 +45,7 @@ namespace Stalingrado {
         void Menu::setValuesBotoes () {
             selected = 0;
             min = 0;
-            max = 3;
+            max = botoes.empty() ? 0 : static_cast<int>(botoes.size()) - 1;
         }
 
         bool Menu::getInMenu() {

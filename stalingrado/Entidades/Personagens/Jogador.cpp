@@ -5,12 +5,7 @@
 
 using namespace std;
 
-#define VEL_JOG 1.0f //Velocidade do Jogador
-#define PODER_JOG1 4 //Quantidade de dano que o Jogador 1 pode infligir nos inimigos
-#define PODER_JOG2 2 //Quantidade de dano que o Jogador 2 pode infligir nos inimigos
-
-#define TEXTURA_ATAQUE_JOG1 "SoldadoAtaca"
-#define TEXTURA_ATAQUE_JOG2 "CachorroAtaca"
+#include "../../Defines.txt"
 
 namespace Stalingrado {
     namespace Entidades {
