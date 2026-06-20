@@ -23,7 +23,6 @@ namespace Stalingrado {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;
             criarCenario();
-            criarProjeteis();
             criarInimigos();
             //Inclui os jogadores na fase
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
@@ -55,17 +54,13 @@ namespace Stalingrado {
             GC.incluirInimigo(pEntidade);
             pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
-            pEntidade->setProjetil(GC.getProjetil(pEntidade->getIdChef()));
+
+            Entidades::Projetil *pProjetil = new Entidades::Projetil();
+            GC.incluirProjetil(pProjetil);
+            lista_ents.incluir(static_cast<Entidades::Entidade*>(pProjetil));
+            pEntidade->setProjetil(pProjetil);
         }
         
-        void Fase_seg::criarProjeteis() {
-            for(int i = 0; i < maxInimChefoesAleatorios; i++){
-                Entidades::Projetil *pProjetil = new Entidades::Projetil();
-                GC.incluirProjetil(pProjetil);
-                lista_ents.incluir(static_cast<Entidades::Entidade*>(pProjetil));
-            }
-        }
-
         void Fase_seg::criarInimigos(){
             const char* caminhoArquivo = "../stalingrado/assets/fase2/Inimigos.txt";
             try{
@@ -131,29 +126,39 @@ namespace Stalingrado {
                 }
                 int cont_entulhos = 0;
                 int cont_explosivos = 0;
-                std::string tipo;
-                float x1;
-                float x2;
+                int tipo;
+                std::string classe;
+                float x;
+                float y;
 
                 // Obstaculo, pos x min, pos x maxima
                 // As posições x min e x maxima delimitam o espaço em que será gerado aleatoriamente o entulho
-                while (arquivo >> tipo >> x1 >> x2) {
-                    if (tipo == "ENTULHO") {
-                        if(cont_entulhos == maxEntulhosAleatorios){
-                            cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
+                while (arquivo >> tipo >> classe >> x >> y) {
+                    if (classe == "ENTULHO") {
+                        if(tipo == 1){
+                            criarPlataformas(x, y);
                         }
-                        else{
-                            criarPlataformas(x1, x2);
-                            cont_entulhos++;
+                        else if(rand() % 2){
+                            if(cont_entulhos == maxEntulhosAleatorios){
+                                cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
+                            }
+                            else{
+                                criarPlataformas(x, y);
+                                cont_entulhos++;
+                            }
                         }
                     }
-                    else if (tipo == "EXPLOSIVO") {
-
-                        if (cont_explosivos == maxExplosivosAleatorios)
-                            cout << "Maximo de explosivos atingido, ignorando os proximos" << endl;
-                        else {
-                            criarExplosivos(x1, x2);
-                            cont_explosivos++;
+                    else if (classe == "EXPLOSIVO") {
+                        if(tipo == 1){
+                            criarExplosivos(x, y);
+                        }
+                        else if(rand() % 2){
+                            if (cont_explosivos == maxExplosivosAleatorios)
+                                cout << "Maximo de explosivos atingido, ignorando os proximos" << endl;
+                            else {
+                                criarExplosivos(x, y);
+                                cont_explosivos++;
+                            }
                         }
                     }
                 }
