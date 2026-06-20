@@ -129,29 +129,39 @@ namespace Stalingrado {
                 }
                 int cont_entulhos = 0;
                 int cont_explosivos = 0;
-                std::string tipo;
-                float x1;
-                float x2;
+                int tipo;
+                std::string classe;
+                float x;
+                float y;
 
                 // Obstaculo, pos x min, pos x maxima
                 // As posições x min e x maxima delimitam o espaço em que será gerado aleatoriamente o entulho
-                while (arquivo >> tipo >> x1 >> x2) {
-                    if (tipo == "ENTULHO") {
-                        if(cont_entulhos == maxEntulhosAleatorios){
-                            cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
+                while (arquivo >> tipo >> classe >> x >> y) {
+                    if (classe == "ENTULHO") {
+                        if(tipo == 1){
+                            criarPlataformas(x, y);
                         }
-                        else{
-                            criarPlataformas(x1, x2);
-                            cont_entulhos++;
+                        else if(rand() % 2){
+                            if(cont_entulhos == maxEntulhosAleatorios){
+                                cout << "Máximo de entulhos atingido, ignorando os próximos" << endl;
+                            }
+                            else{
+                                criarPlataformas(x, y);
+                                cont_entulhos++;
+                            }
                         }
                     }
-                    else if (tipo == "EXPLOSIVO") {
-
-                        if (cont_explosivos == maxExplosivosAleatorios)
-                            cout << "Maximo de explosivos atingido, ignorando os proximos" << endl;
-                        else {
-                            criarExplosivos(x1, x2);
-                            cont_explosivos++;
+                    else if (classe == "EXPLOSIVO") {
+                        if(tipo == 1){
+                            criarExplosivos(x, y);
+                        }
+                        else if(rand() % 2){
+                            if (cont_explosivos == maxExplosivosAleatorios)
+                                cout << "Maximo de explosivos atingido, ignorando os proximos" << endl;
+                            else {
+                                criarExplosivos(x, y);
+                                cont_explosivos++;
+                            }
                         }
                     }
                 }
@@ -184,10 +194,10 @@ namespace Stalingrado {
             lista_ents.desenhar();
             pGG->desenharTextoCoordAbs("Fase 2:\t Rattenkrieg\t", 50, 100.f, 100.f);
             std::stringstream vida1, vida2;
-            vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida();
+            vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida() << "Pontos:\t" << pJog1->getPontos();
             pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 10.f);
             if(pJog2 != nullptr){
-                vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida();
+                vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida() << "Pontos:\t" << pJog2->getPontos();
                 pGG->desenharTextoCamera(vida2.str(), 20, 50.f, 50.f);
             }
         }
