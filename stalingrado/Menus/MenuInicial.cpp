@@ -81,6 +81,7 @@ namespace Stalingrado {
 
             Botao* bt = nullptr;
 
+            //recarregar os botoes toda vez
             while (!botoes.empty()) {
                 bt = botoes.back();
                 if (bt != nullptr) delete bt;

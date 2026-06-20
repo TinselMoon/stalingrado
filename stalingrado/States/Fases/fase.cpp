@@ -2,6 +2,9 @@
 #include "../../Entidades/Personagens/Inim_medio.hpp"
 #include "../../Entidades/Obstaculos/Entulho.hpp"
 #include <string>
+
+#include "../../Defines.txt"
+
 using namespace std;
 
 namespace Stalingrado {
@@ -21,7 +24,7 @@ Fase::~Fase(){
 }
 
 void Fase::criarInimMedios(float x, float y){
-    Entidades::Personagens::Inim_medio *pEntidade = new Entidades::Personagens::Inim_medio(10, 2);
+    Entidades::Personagens::Inim_medio *pEntidade = new Entidades::Personagens::Inim_medio(VIDA_MEDIOS,MALDADE_MEDIOS);
     GC.incluirInimigo(pEntidade);
     pEntidade->movePos(x, y);
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));

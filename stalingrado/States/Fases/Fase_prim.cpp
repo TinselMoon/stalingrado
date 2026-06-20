@@ -10,6 +10,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "../../Defines.txt"
+
 using namespace std;
 
 namespace Stalingrado {
@@ -42,7 +44,7 @@ namespace Stalingrado {
 
         void Fase_prim::criarInimFaceis(float x, float y){
 
-            Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(5, 1);
+            Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(VIDA_FACEIS, MALDADE_FACEIS);
             GC.incluirInimigo(pEntidade);
             pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));

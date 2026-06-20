@@ -10,6 +10,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "../../Defines.txt"
+
 using namespace std;
 
 namespace Stalingrado {
@@ -49,7 +51,7 @@ namespace Stalingrado {
 
         void Fase_seg::criarChefoes(float x, float y) {
 
-            Entidades::Personagens::Inim_chefao *pEntidade = new Entidades::Personagens::Inim_chefao(20, 5);
+            Entidades::Personagens::Inim_chefao *pEntidade = new Entidades::Personagens::Inim_chefao(VIDA_CHEFAO, MALDADE_CHEFAO);
             GC.incluirInimigo(pEntidade);
             pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
