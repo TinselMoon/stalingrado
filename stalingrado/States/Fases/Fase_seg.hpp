@@ -23,7 +23,6 @@ private:
 protected:
     void criarChefoes(float x, float y);
     void criarExplosivos(float x, float y);
-    void criarProjeteis();
     void criarInimigos();
     void criarObstaculos();
 public:

@@ -21,7 +21,6 @@ namespace Stalingrado {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;
             criarCenario();
-            criarProjeteis();
             criarInimigos();
             //Inclui os jogadores na fase
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
@@ -53,17 +52,13 @@ namespace Stalingrado {
             GC.incluirInimigo(pEntidade);
             pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
-            pEntidade->setProjetil(GC.getProjetil(pEntidade->getIdChef()));
+
+            Entidades::Projetil *pProjetil = new Entidades::Projetil();
+            GC.incluirProjetil(pProjetil);
+            lista_ents.incluir(static_cast<Entidades::Entidade*>(pProjetil));
+            pEntidade->setProjetil(pProjetil);
         }
         
-        void Fase_seg::criarProjeteis() {
-            for(int i = 0; i < maxInimChefoesAleatorios; i++){
-                Entidades::Projetil *pProjetil = new Entidades::Projetil();
-                GC.incluirProjetil(pProjetil);
-                lista_ents.incluir(static_cast<Entidades::Entidade*>(pProjetil));
-            }
-        }
-
         void Fase_seg::criarInimigos(){
             const char* caminhoArquivo = "../stalingrado/assets/fase2/Inimigos.txt";
             try{
@@ -194,10 +189,10 @@ namespace Stalingrado {
             lista_ents.desenhar();
             pGG->desenharTextoCoordAbs("Fase 2:\t Rattenkrieg\t", 50, 100.f, 100.f);
             std::stringstream vida1, vida2;
-            vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida() << "Pontos:\t" << pJog1->getPontos();
+            vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida() << "\t PONTOS:\t" << pJog1->getPontos();
             pGG->desenharTextoCamera(vida1.str(), 20, 50.f, 10.f);
             if(pJog2 != nullptr){
-                vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida() << "Pontos:\t" << pJog2->getPontos();
+                vida1 << "Vida \tJogador \t1:\t " << pJog1->getVida() << "\t PONTOS:\t" << pJog1->getPontos();
                 pGG->desenharTextoCamera(vida2.str(), 20, 50.f, 50.f);
             }
         }
