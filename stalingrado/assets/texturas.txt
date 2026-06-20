@@ -4,9 +4,9 @@ BotaoHover ../stalingrado/assets/botao_hover.png 500.0 500.0 0
 Inimigo_facil ../stalingrado/assets/inimigo_facil.png 170.0 235.0 0
 Inimigo_medio ../stalingrado/assets/inimigo_medio.png 92.5 251.0 0
 Soldado ../stalingrado/assets/jogador1_idle.png 100.2 170.0 0
-SoldadoAtaca ../stalingrado/assets/jogador1_attack.png 150.2 180.0 0
+SoldadoAtaca ../stalingrado/assets/jogador1_attack.png 155.2 180.0 0
 Cachorro ../stalingrado/assets/jogador2_idle.png 100.0 100.0 0
-CachorroAtaca ../stalingrado/assets/jogador2_attack.png 100.0 100.0 0
+CachorroAtaca ../stalingrado/assets/jogador2_attack.png 104.0 100.5 0
 Inim_chefao ../stalingrado/assets/tanque.png 738.2 324.2 0
 Chao_fase_um ../stalingrado/assets/chao_fase_um.png 1920.0 900.0 1
 Chao_fase_dois ../stalingrado/assets/chao_fase_dois.png 1920.0 900.0 1

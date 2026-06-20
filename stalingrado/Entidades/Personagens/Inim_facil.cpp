@@ -66,7 +66,7 @@ namespace Stalingrado {
                         pPers->eliminar();
                     }
                     else{
-                        Jogador *pJ = dynamic_cast<Jogador*>(pPers);
+                        Jogador *pJ = static_cast<Jogador*>(pPers);
                         pJ->setVelocidadeX(0.f);
                         pJ->setCooldown(tempo_atordoar);
                     }

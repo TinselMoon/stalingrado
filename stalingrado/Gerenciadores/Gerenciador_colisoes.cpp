@@ -14,7 +14,7 @@ using namespace Personagens;
 using namespace Obstaculos;
 using namespace Gerenciadores;
 
-#define MARGEM_ATAQUE 125.0f
+#define MARGEM_ATAQUE 180.0f
 
 namespace Stalingrado {
     
@@ -110,7 +110,7 @@ void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE)
                 pJ->movePos(0.0f, -sob.overlapY); 
                 
                 //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
-                Jogador *pJog = dynamic_cast<Jogador*>(pJ);
+                Jogador *pJog = static_cast<Jogador*>(pJ);
                 if(pJog == NULL){
                     pJ->setVelocidadeY(0.0f);
                 }
