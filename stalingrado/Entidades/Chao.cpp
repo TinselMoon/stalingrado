@@ -4,7 +4,9 @@ namespace Stalingrado{
 namespace Entidades{
 
 Chao::Chao(const int comp, const std::string& textura) : Entidade(textura), comprimento(comp), altura(900){
-    corpo.setTextureRect(sf::IntRect(0, 0, comprimento, altura));
+    const int largura = static_cast<int>(comprimento / corpo.getScale().x) + corpo.getTexture()->getSize().x;
+    const int alturaPx = static_cast<int>(altura / corpo.getScale().y);
+    corpo.setTextureRect(sf::IntRect(0, 0, largura, alturaPx));
 }
 
 Chao::~Chao(){

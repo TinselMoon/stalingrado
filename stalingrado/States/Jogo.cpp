@@ -125,7 +125,7 @@ namespace Stalingrado {
                 fase_seg = new Fases::Fase_seg(pJog1, pJog2);
                 musica.openFromFile("../stalingrado/assets/audios/fase2.mp3");
                 musica.setLoop(true);
-                musica.setVolume(70.f);
+                musica.setVolume(16);
                 musica.play();
             }
 

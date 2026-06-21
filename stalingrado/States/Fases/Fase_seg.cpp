@@ -179,7 +179,7 @@ namespace Stalingrado {
 
             //aqui configura o fundo
             corpo.setPosition(0.f, 0.f);
-            corpo.setTextureRect(sf::IntRect(0, 0, comprimentoFase, 882));
+            corpo.setTextureRect(sf::IntRect(0, 0, 43400, 3255));
             criarObstaculos();
             GC.tratarColisoesObsObs();
         }
