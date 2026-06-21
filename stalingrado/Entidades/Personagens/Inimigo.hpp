@@ -23,6 +23,7 @@ public:
     const int getPontos() const;
     virtual void mover()=0;
     virtual void salvar(std::ofstream& arquivo);
+    virtual void aplicarVelocidadeSalva(float vx)=0;
     const bool getChefao() const;
 };
 }

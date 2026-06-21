@@ -41,6 +41,8 @@ public:
     void executar();
     void setAlvoCamera(Stalingrado::Ente* pAlvo);
     void atualizarCamera();
+    void usarCameraJogo();
+    void usarViewPadrao();
 };
 }
 }

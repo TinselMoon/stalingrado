@@ -1,10 +1,12 @@
 #include "Menu.hpp"
 #include "../Gerenciadores/Gerenciador_grafico.hpp"
 
+//Inspirado na implementação do ex-monitor Matheus Augusto Burda, conforme este mostra nos seus vídeos tutoriais.
+
 namespace Stalingrado {
     namespace Menus {
 
-        Menu::Menu(const string& nomeText) : Ente(nomeText), inMenu(true) {
+        Menu::Menu(const string& nomeText, States::Jogo* pJ) : Ente(nomeText), inMenu(true), pJogo(pJ) {
             setValuesBotoes();
         }
 

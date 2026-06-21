@@ -1,7 +1,6 @@
 #include "Jogo.hpp"
 
 #include <chrono>
-
 #include "Fases/Fase_prim.hpp"
 #include "../Ente.hpp"
 #include "../Entidades/Personagens/Jogador.hpp"
@@ -35,7 +34,7 @@ namespace Stalingrado {
             musica.openFromFile("../stalingrado/assets/audios/menuInicial.mp3");
             musica.setLoop(true);
             musica.play();
-            musica.setPlayingOffset(sf::seconds(6.50f));
+            musica.setPlayingOffset(sf::seconds(6.50f)); //a musica que peguei so comeca aos 7 segundos, entao ja comeca tocando aos 7s.
 
         }
 
@@ -69,7 +68,7 @@ namespace Stalingrado {
                 sf::Event evento;
                 while (GG.getJanela()->pollEvent(evento)) {
 
-                    if (evento.type == sf::Event::Closed)
+                    if (evento.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::End))
                         executando = false;
 
                     if (faseAtual == 0 && evento.type == sf::Event::KeyPressed) {
@@ -123,9 +122,11 @@ namespace Stalingrado {
                     GG.atualizarCamera();
                 }
                 else if (faseAtual == 3) {
-                    GG.setAlvoCamera(pMenuRanking);
-                    pMenuRanking->executar();
+                    GG.setAlvoCamera(pMenuI);
                     GG.atualizarCamera();
+                    pMenuI->desenhar();
+                    GG.usarViewPadrao();
+                    pMenuRanking->executar();
                 }
                 else if (faseAtual == 1 && fase_um != nullptr) {
 
@@ -135,9 +136,10 @@ namespace Stalingrado {
                         GG.atualizarCamera();
                     }
                     else if (emPausa) {
-                        GG.setAlvoCamera(pMenuPausa);
+                        GG.usarCameraJogo();
+                        fase_um->desenharFase();
+                        GG.usarViewPadrao();
                         pMenuPausa->executar();
-                        GG.atualizarCamera();
                     }
                     else {
                         pJog2->setAtivo(pMenuI->getTwoPlayers() && pJog2->getVida() > 0);
@@ -165,9 +167,10 @@ namespace Stalingrado {
                         GG.atualizarCamera();
                     }
                     else if (emPausa) {
-                        GG.setAlvoCamera(pMenuPausa);
+                        GG.usarCameraJogo();
+                        fase_seg->desenharFase();
+                        GG.usarViewPadrao();
                         pMenuPausa->executar();
-                        GG.atualizarCamera();
                     }
                     else {
                         pJog2->setAtivo(pMenuI->getTwoPlayers() && pJog2->getVida() > 0);

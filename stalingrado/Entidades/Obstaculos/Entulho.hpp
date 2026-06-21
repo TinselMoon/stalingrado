@@ -5,7 +5,7 @@ namespace Stalingrado {
 
 namespace Entidades {
 namespace Obstaculos {
-class Entulho : public Obstaculos::Obstaculo{
+class Entulho : public Obstaculos::Obstaculo {
 private:
     const float mult_impulso;
 public:

@@ -1,9 +1,13 @@
 #pragma once
 #include <cstddef>
 
+//Inicialmente deveria ter implementado o Padrão de Projeto State completo, mas não deu tempo. Ainda assim, usei algumas ideias --Gustavo
+//Inspirado na implementação do ex-monitor Matheus Augusto Burda, conforme este mostra nos seus vídeos tutoriais.
+
 namespace Stalingrado {
     namespace States {
 
+        //os principais 'estados' q o jogo pode estar
         enum stateID {
             menuInicial=0,
             faseUm=1,
@@ -11,6 +15,7 @@ namespace Stalingrado {
             ranking=3,
             indefinido=-1
         };
+
 
         class State {
 

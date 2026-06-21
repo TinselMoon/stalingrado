@@ -29,6 +29,11 @@ public:
     void destruir();
     void setVelocidadeY(float vy){}
     void setChefao(Personagens::Inim_chefao *pInim);
+    sf::Vector2f getPosition() const;
+    float getVelX() const;
+    float getVelY() const;
+    float getDtExist() const;
+    void restaurarEstado(bool ativo, float x, float y, float vx, float vy, float dtExist);
 };
 }
 

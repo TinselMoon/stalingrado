@@ -57,6 +57,25 @@ void Projetil::executar(){
 void Projetil::salvar(std::ofstream& arquivo){
 
 }
+sf::Vector2f Projetil::getPosition() const{
+    return corpo.getPosition();
+}
+float Projetil::getVelX() const{
+    return vel_x;
+}
+float Projetil::getVelY() const{
+    return vel_y;
+}
+float Projetil::getDtExist() const{
+    return dt_exist;
+}
+void Projetil::restaurarEstado(bool ativoSalvo, float x, float y, float vx, float vy, float dtExist){
+    ativo = ativoSalvo;
+    corpo.setPosition(x, y);
+    vel_x = vx;
+    vel_y = vy;
+    dt_exist = dtExist;
+}
 void Projetil::movePos(float x, float y){
     corpo.move(x, y);
 }

@@ -79,6 +79,14 @@ namespace Stalingrado {
         }
     }
 
+    void Gerenciador_Grafico::usarCameraJogo() {
+        janela.setView(camera);
+    }
+
+    void Gerenciador_Grafico::usarViewPadrao() {
+        janela.setView(janela.getDefaultView());
+    }
+
     void Gerenciador_Grafico::desenharTextoCoordAbs(const std::string& texto, int tam, float x, float y){
         sf::Text text;
         text.setFont(font);

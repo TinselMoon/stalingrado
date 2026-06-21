@@ -61,12 +61,13 @@ namespace Stalingrado {
             pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
         }
-        void Fase_prim::criarInimFaceis(float x, float y, int vida){
+        Entidades::Personagens::Inim_facil* Fase_prim::criarInimFaceis(float x, float y, int vida){
 
             Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(vida, MALDADE_FACEIS);
             GC.incluirInimigo(pEntidade);
             pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
+            return pEntidade;
         }
         void Fase_prim::criarArame_farp(float x, float y){
 
@@ -232,14 +233,14 @@ namespace Stalingrado {
                     }
                 }
                 else if (classe == "INIM_FACIL") {
-                    int vida; float x, y;
-                    arquivo >> vida >> x >> y;
-                    criarInimFaceis(x, y, vida);
+                    int vida; float x, y, vx;
+                    arquivo >> vida >> x >> y >> vx;
+                    criarInimFaceis(x, y, vida)->aplicarVelocidadeSalva(vx);
                 }
                 else if (classe == "INIM_MEDIO") {
-                    int vida; float x, y;
-                    arquivo >> vida >> x >> y;
-                    criarInimMedios(x, y, vida);
+                    int vida; float x, y, vx;
+                    arquivo >> vida >> x >> y >> vx;
+                    criarInimMedios(x, y, vida)->aplicarVelocidadeSalva(vx);
                 }
                 else if (classe == "ENTULHO") {
                     float x, y;

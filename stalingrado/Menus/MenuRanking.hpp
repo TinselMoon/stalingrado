@@ -4,17 +4,14 @@
 #include "../Gráficos/Texto.hpp"
 #include <vector>
 
-namespace Stalingrado {
-    namespace States {
-        class Jogo;
-    }
+//Inspirado na implementação do ex-monitor Matheus Augusto Burda, conforme este mostra nos seus vídeos tutoriais.
 
+namespace Stalingrado {
     namespace Menus {
 
         class MenuRanking : public Menu {
 
         private:
-            States::Jogo* pJogo;
             std::vector<Graficos::Texto*> entradas;
             std::vector<Graficos::Texto*>::iterator itTexto;
 

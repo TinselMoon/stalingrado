@@ -39,11 +39,11 @@ Ente::~Ente() {
 
 }
 
-void Ente::desenhar(){
+void Ente::desenhar() {
 
-    pGG->desenharEnte(static_cast<Ente*>(this));
-
+    pGG->desenharEnte(this);
 }
+
 void Ente::setGG (Gerenciador_Grafico* pG) {
     pGG = pG;
 }

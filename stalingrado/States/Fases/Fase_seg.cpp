@@ -73,7 +73,7 @@ namespace Stalingrado {
             pEntidade->setProjetil(pProjetil);
         }
 
-        void Fase_seg::criarChefoes(float x, float y, int vida) {
+        Entidades::Personagens::Inim_chefao* Fase_seg::criarChefoes(float x, float y, int vida) {
 
             Entidades::Personagens::Inim_chefao *pEntidade = new Entidades::Personagens::Inim_chefao(vida, MALDADE_CHEFAO);
             GC.incluirInimigo(pEntidade);
@@ -84,6 +84,7 @@ namespace Stalingrado {
             GC.incluirProjetil(pProjetil);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pProjetil));
             pEntidade->setProjetil(pProjetil);
+            return pEntidade;
         }
 
         void Fase_seg::criarInimigos(){
@@ -238,14 +239,17 @@ namespace Stalingrado {
                     }
                 }
                 else if (classe == "INIM_MEDIO") {
-                    int vida; float x, y;
-                    arquivo >> vida >> x >> y;
-                    criarInimMedios(x, y, vida);
+                    int vida; float x, y, vx;
+                    arquivo >> vida >> x >> y >> vx;
+                    criarInimMedios(x, y, vida)->aplicarVelocidadeSalva(vx);
                 }
                 else if (classe == "INIM_CHEFAO") {
-                    int vida; float x, y;
-                    arquivo >> vida >> x >> y;
-                    criarChefoes(x, y, vida);
+                    int vida; float x, y, vx;
+                    bool projAtivo; float projX, projY, projVx, projVy, projDt;
+                    arquivo >> vida >> x >> y >> vx >> projAtivo >> projX >> projY >> projVx >> projVy >> projDt;
+                    Entidades::Personagens::Inim_chefao* pChefao = criarChefoes(x, y, vida);
+                    pChefao->aplicarVelocidadeSalva(vx);
+                    pChefao->restaurarProjetil(projAtivo, projX, projY, projVx, projVy, projDt);
                 }
                 else if (classe == "ENTULHO") {
                     float x, y;
