@@ -12,3 +12,4 @@ pro.player. 130
 pior.player 20
 naoaguentomais 250
 .-. 0
+a 270
