@@ -20,12 +20,10 @@ Arch Linux:
 
 sudo pacman -S sfml
 
-Como compilar
+Para compilar e executar o jogo, execute esse comando na pasta do jogo:
 
-mkdir build
-cd build
-cmake ..
-make
+./run_game.sh
+
 
 Ambiente de desenvolvimento
 

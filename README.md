@@ -16,12 +16,9 @@ sudo apt install libsfml-dev
 sudo pacman -S sfml
 ```
 
-## Build instructions
+## Compile and Run game
 ```bash
-mkdir build
-cd build
-cmake ..
-make
+./run_game.sh
 ```
 
 ## Development Environment
