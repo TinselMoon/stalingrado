@@ -17,7 +17,9 @@ namespace Stalingrado {
                 void danificar(Personagem *pPers);
                 void executar();
                 void salvar(std::ofstream& arquivo);
+                void aplicarVelocidadeSalva(float vx);
                 void setProjetil(Projetil* pP);
+                void restaurarProjetil(bool ativo, float x, float y, float vx, float vy, float dtExist);
                 int getIdChef();
                 void mover();
             };

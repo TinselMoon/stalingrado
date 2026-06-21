@@ -7,7 +7,7 @@ namespace Stalingrado {
     namespace Menus {
         using namespace Graficos;
 
-        MenuPausa::MenuPausa(States::Jogo* pJ) : Menu("Menu"), pJogo(pJ) {
+        MenuPausa::MenuPausa(States::Jogo* pJ) : Menu("FiltroPreto", pJ), taPausado(false) {
             resetMenu();
         }
 
@@ -18,6 +18,8 @@ namespace Stalingrado {
         }
 
         void MenuPausa::executar() {
+
+            taPausado=true;
 
             desenhar();
 
@@ -73,5 +75,8 @@ namespace Stalingrado {
             setInMenu(true);
         }
 
+        bool MenuPausa::getTaPausado() const {
+            return taPausado;
+        }
     }
 }

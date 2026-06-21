@@ -33,7 +33,28 @@ namespace Stalingrado {
             void Inim_chefao::salvar(std::ofstream& arquivo){
                 arquivo << id << " INIM_CHEFAO " << getVida()
                         << " " << getPos().x
-                        << " " << getPos().y << "\n";
+                        << " " << getPos().y
+                        << " " << getVelX();
+                if(proj_chefao != nullptr){
+                    arquivo << " " << proj_chefao->isAtivo()
+                            << " " << proj_chefao->getPosition().x
+                            << " " << proj_chefao->getPosition().y
+                            << " " << proj_chefao->getVelX()
+                            << " " << proj_chefao->getVelY()
+                            << " " << proj_chefao->getDtExist();
+                }
+                else{
+                    arquivo << " 0 -100 -100 0 0 0";
+                }
+                arquivo << "\n";
+            }
+            void Inim_chefao::aplicarVelocidadeSalva(float vx){
+                setVelocidadeX(vx);
+            }
+            void Inim_chefao::restaurarProjetil(bool ativo, float x, float y, float vx, float vy, float dtExist){
+                if(proj_chefao != nullptr){
+                    proj_chefao->restaurarEstado(ativo, x, y, vx, vy, dtExist);
+                }
             }
             void Inim_chefao::mover(){
                 dt_movimento += Jogo::getDt();

@@ -6,6 +6,8 @@
 
 #include "../Defines.hpp"
 
+//Inspirado na implementação do ex-monitor Matheus Augusto Burda, conforme este mostra nos seus vídeos tutoriais.
+
 namespace Stalingrado {
     namespace Menus {
         using namespace Graficos;
@@ -14,7 +16,7 @@ namespace Stalingrado {
             return a.first > b.first;
         }
 
-        MenuRanking::MenuRanking(States::Jogo* pJ) : Menu("Menu"), pJogo(pJ) {
+        MenuRanking::MenuRanking(States::Jogo* pJ) : Menu("FiltroPreto", pJ) {
             resetMenu();
         }
 

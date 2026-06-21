@@ -3,13 +3,14 @@
 
 #include "../Defines.hpp"
 
+//Inspirado na implementação do ex-monitor Matheus Augusto Burda, conforme este mostra nos seus vídeos tutoriais.
 
 namespace Stalingrado {
     namespace Menus {
         using namespace States;
         using namespace Graficos;
 
-        MenuInicial::MenuInicial(Jogo* pJ) : Menu("Menu"), pJogo(pJ), two_players(false), State(menuInicial) {
+        MenuInicial::MenuInicial(Jogo* pJ) : Menu("Menu", pJ), two_players(false), State(menuInicial) {
             resetState();
         }
 

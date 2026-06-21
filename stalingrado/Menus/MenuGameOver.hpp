@@ -3,16 +3,11 @@
 #include "Menu.hpp"
 
 namespace Stalingrado {
-    namespace States {
-        class Jogo;
-    }
-
     namespace Menus {
 
         class MenuGameOver : public Menu {
 
         private:
-            States::Jogo* pJogo;
             bool vitoria;
             int pontuacaoFinal;
             std::string nomeDigitado;

@@ -2,17 +2,16 @@
 
 #include "Menu.hpp"
 
-namespace Stalingrado {
-    namespace States {
-        class Jogo;
-    }
+//Pedi ajuda para IAs (Gemini e Claude) com o fim de elaborar um fundo transparente para enegrecer a fase no final e para me ajudar
+//a ajudar a desenvolver uma lógica para renderizar a fase ao fundo enquanto o menu aparece na frente. --Gustavo
 
+namespace Stalingrado {
     namespace Menus {
 
         class MenuPausa : public Menu {
 
         private:
-            States::Jogo* pJogo;
+            bool taPausado;
 
         public:
             MenuPausa(States::Jogo* pJ = nullptr);
@@ -22,6 +21,7 @@ namespace Stalingrado {
             void resetMenu();
             void carregarBotoes();
             bool getTwoPlayers() const;
+            bool getTaPausado() const;
         };
 
     }

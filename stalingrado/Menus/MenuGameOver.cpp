@@ -8,7 +8,7 @@
 namespace Stalingrado {
     namespace Menus {
 
-        MenuGameOver::MenuGameOver(States::Jogo* pJ) : Menu("Menu"), pJogo(pJ), vitoria(false), pontuacaoFinal(0) {
+        MenuGameOver::MenuGameOver(States::Jogo* pJ) : Menu("Menu", pJ), vitoria(false), pontuacaoFinal(0) {
 
         }
 

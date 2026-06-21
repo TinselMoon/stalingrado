@@ -29,7 +29,21 @@ namespace Stalingrado {
             void Inim_facil::salvar(std::ofstream& arquivo){
                 arquivo << id << " INIM_FACIL " << getVida()
                         << " " << getPos().x
-                        << " " << getPos().y << "\n";
+                        << " " << getPos().y
+                        << " " << getVelX() << "\n";
+            }
+            void Inim_facil::aplicarVelocidadeSalva(float vx){
+                setVelocidadeX(vx);
+                if(vx != 0){
+                    int larguraTextura = corpo.getTexture()->getSize().x;
+                    int alturaTextura = corpo.getTexture()->getSize().y;
+                    if(vx > 0){
+                        corpo.setTextureRect(sf::IntRect(0, 0, larguraTextura, alturaTextura));
+                    }
+                    else{
+                        corpo.setTextureRect(sf::IntRect(larguraTextura, 0, -larguraTextura, alturaTextura));
+                    }
+                }
             }
 
             void Inim_facil::mover(){

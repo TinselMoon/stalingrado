@@ -9,6 +9,7 @@ namespace Entidades{
     namespace Personagens{
         class Jogador;
         class Inimigo;
+        class Inim_facil;
     }
 }
 
@@ -22,7 +23,7 @@ protected:
     void criarCenarioBase();
     void carregarSalvo(const char* caminhoArquivo);
     void criarInimFaceis(float x, float y);
-    void criarInimFaceis(float x, float y, int vida);
+    Entidades::Personagens::Inim_facil* criarInimFaceis(float x, float y, int vida);
     void criarArame_farp(float x, float y);
     void criarInimigos();
     void criarObstaculos();

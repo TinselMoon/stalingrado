@@ -9,6 +9,7 @@ namespace Entidades{
     namespace Personagens{
         class Jogador;
         class Inimigo;
+        class Inim_chefao;
     }
 }
 
@@ -24,7 +25,7 @@ protected:
     void criarCenarioBase();
     void carregarSalvo(const char* caminhoArquivo);
     void criarChefoes(float x, float y);
-    void criarChefoes(float x, float y, int vida);
+    Entidades::Personagens::Inim_chefao* criarChefoes(float x, float y, int vida);
     void criarExplosivos(float x, float y);
     void criarInimigos();
     void criarObstaculos();
