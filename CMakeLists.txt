@@ -12,38 +12,8 @@ file(GLOB_RECURSE SOURCES
     "main.cpp"
 )
 
-add_executable(stalingrado ${SOURCES}
-        stalingrado/States/Jogo.hpp
-        stalingrado/Menus/MenuInicial.hpp
-        stalingrado/Gráficos/Texto.hpp
-        stalingrado/Gráficos/Botao.hpp
-        stalingrado/Gerenciadores/Gerenciador_grafico.hpp
-        stalingrado/Gerenciadores/Gerenciador_colisoes.hpp
-        stalingrado/Entidades/Projetil.hpp
-        stalingrado/Entidades/Obstaculos/Arame_farp.hpp
-        stalingrado/Entidades/Obstaculos/Entulho.hpp
-        stalingrado/Entidades/Obstaculos/Explosivo.hpp
-        stalingrado/Entidades/Obstaculos/Obstaculo.hpp
-        stalingrado/Entidades/Personagens/Inim_chefao.hpp
-        stalingrado/Entidades/Personagens/Inim_facil.hpp
-        stalingrado/Entidades/Personagens/Inim_medio.hpp
-        stalingrado/Entidades/Personagens/Inimigo.hpp
-        stalingrado/Entidades/Personagens/Jogador.hpp
-        stalingrado/Entidades/Personagens/Personagem.hpp
-        stalingrado/Entidades/Chao.hpp
-        stalingrado/Entidades/Entidade.hpp
-        stalingrado/Ente.hpp
-        stalingrado/States/State.hpp
-        stalingrado/States/Fases/fase.hpp
-        stalingrado/States/Fases/Fase_prim.hpp
-        stalingrado/States/Fases/Fase_seg.hpp
-        stalingrado/Listas/Lista_entidades.hpp
-        stalingrado/Listas/listas.hpp
-        stalingrado/Menus/Menu.hpp
-        stalingrado/Menus/MenuGameOver.hpp
-        stalingrado/Menus/MenuPausa.hpp
-        stalingrado/Menus/MenuRanking.hpp
-)
+#add_executable(stalingrado ${SOURCES}
+#)
 
 target_include_directories(stalingrado PRIVATE
   Gerenciadores

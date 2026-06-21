@@ -17,7 +17,6 @@ namespace Stalingrado{
         virtual void executar() = 0;
         void desenhar();
         static void setGG(Gerenciadores::Gerenciador_Grafico* pG);
-        Gerenciadores::Gerenciador_Grafico* getGG () const;
         sf::FloatRect getRectangle();
         const sf::Sprite* getSprite();
     };

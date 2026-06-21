@@ -52,11 +52,6 @@ const sf::Sprite* Ente::getSprite(){
     return &corpo;
 }
 
-Gerenciador_Grafico *Ente::getGG() const {
-    return pGG;
-}
-
-
 int Ente::contId(0);
 
 }
