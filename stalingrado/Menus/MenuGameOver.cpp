@@ -3,7 +3,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "../Defines.txt"
+#include "../Defines.hpp"
 
 namespace Stalingrado {
     namespace Menus {

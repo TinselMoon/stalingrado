@@ -4,7 +4,7 @@
 #include "../Gerenciadores/Gerenciador_grafico.hpp"
 #include "../Ente.hpp"
 
-#include "../Defines.txt"
+#include "../Defines.hpp"
 
 namespace Stalingrado {
     namespace Graficos {

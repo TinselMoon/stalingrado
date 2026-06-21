@@ -2,7 +2,7 @@
 #include "../../States/Jogo.hpp"
 #include "Jogador.hpp"
 
-#include "../../Defines.txt"
+#include "../../Defines.hpp"
 
 namespace Stalingrado {
     namespace Entidades {

@@ -13,7 +13,7 @@
 #include <ctime>
 #include <fstream>
 
-#include "../Defines.txt"
+#include "../Defines.hpp"
 
 namespace Stalingrado {
     namespace States {

@@ -1,7 +1,7 @@
 #include "MenuInicial.hpp"
 #include "../States/Jogo.hpp"
 
-#include "../Defines.txt"
+#include "../Defines.hpp"
 
 
 namespace Stalingrado {

@@ -9,7 +9,7 @@
 
 using namespace std;
 
-#include "../../Defines.txt"
+#include "../../Defines.hpp"
 
 namespace Stalingrado {
     namespace Entidades {

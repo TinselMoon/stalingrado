@@ -10,7 +10,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "../../Defines.txt"
+#include "../../Defines.hpp"
 
 using namespace std;
 

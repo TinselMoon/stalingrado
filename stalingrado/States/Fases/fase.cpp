@@ -3,7 +3,7 @@
 #include "../../Entidades/Obstaculos/Entulho.hpp"
 #include <string>
 
-#include "../../Defines.txt"
+#include "../../Defines.hpp"
 
 using namespace std;
 

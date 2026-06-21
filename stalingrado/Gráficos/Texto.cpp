@@ -1,6 +1,6 @@
 #include "Texto.hpp"
 
-#include "../Defines.txt"
+#include "../Defines.hpp"
 
 namespace Stalingrado {
     namespace Graficos {

@@ -14,7 +14,7 @@ using namespace Personagens;
 using namespace Obstaculos;
 using namespace Gerenciadores;
 
-#include "../Defines.txt"
+#include "../Defines.hpp"
 
 namespace Stalingrado {
     

@@ -4,7 +4,7 @@
 #include <sstream>
 #include <algorithm>
 
-#include "../Defines.txt"
+#include "../Defines.hpp"
 
 namespace Stalingrado {
     namespace Menus {
