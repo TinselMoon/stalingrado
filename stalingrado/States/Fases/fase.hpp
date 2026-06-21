@@ -34,6 +34,7 @@ namespace Stalingrado {
             virtual void criarObstaculos() = 0;
             virtual void criarCenario() = 0;
             void criarInimMedios(float x, float y);
+            void criarInimMedios(float x, float y, int vida);
             void criarPlataformas(float x, float y); // As plataformas são os entulhos
         public:
             Fase(Entidades::Personagens::Jogador *pJogador1 = nullptr, Entidades::Personagens::Jogador *pJogador2 = nullptr, const std::string& texturaFundo = nullptr, const std::string& texturaChao = nullptr);

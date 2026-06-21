@@ -30,6 +30,13 @@ void Fase::criarInimMedios(float x, float y){
     lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
 }
 
+void Fase::criarInimMedios(float x, float y, int vida){
+    Entidades::Personagens::Inim_medio *pEntidade = new Entidades::Personagens::Inim_medio(vida,MALDADE_MEDIOS);
+    GC.incluirInimigo(pEntidade);
+    pEntidade->movePos(x, y);
+    lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
+}
+
 void Fase::criarPlataformas(float x, float y){
     Entidades::Obstaculos::Entulho *pEntidade = new Entidades::Obstaculos::Entulho();
     GC.incluirObstaculo(pEntidade);

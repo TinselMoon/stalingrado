@@ -12,16 +12,13 @@ namespace Stalingrado {
         namespace Personagens {
             using namespace States;
 
-            int Jogador::cont_jog(1);
-
-            Jogador::Jogador(int vida) : Personagem(vida, cont_jog == 1 ? "Soldado" : "Cachorro"),
+            Jogador::Jogador(int vida, int numeroJogador) : Personagem(vida, numeroJogador == 1 ? "Soldado" : "Cachorro"),
             WisPressed(false), multiplicador_vel(1.f), belicoso(false), cooldown_mov(0),
             olhandoEsquerda(false)
             {
                 pontos = 0;
-                id_jog = cont_jog;
-                cont_jog++;
-                dano = (cont_jog == 1 ? 4 : 2);
+                id_jog = numeroJogador;
+                dano = (id_jog == 1 ? 4 : 2);
 
                 texturaIdle = corpo.getTexture();
                 tamanhoIdle = pGG->getTamanhoTextura(id_jog == 1 ? "Soldado" : "Cachorro");
@@ -56,6 +53,10 @@ namespace Stalingrado {
             }
             const int Jogador::getPontos() const{
                 return pontos;
+            }
+
+            void Jogador::setPontos(int pontos){
+                this->pontos = pontos;
             }
 
             int Jogador::getUltimoCheckpoint(){

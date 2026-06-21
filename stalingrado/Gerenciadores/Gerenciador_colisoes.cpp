@@ -382,7 +382,10 @@ void Gerenciador_Colisoes::executar(){
 }
 
 const bool Gerenciador_Colisoes::inimigosMortos() const{
-    return LIs.empty();
+    for(vector<Inimigo*>::const_iterator it = LIs.begin(); it != LIs.end(); ++it){
+        if((*it)->isAtivo()) return false;
+    }
+    return true;
 }
 
 } //Fim namespace Gerenciadores

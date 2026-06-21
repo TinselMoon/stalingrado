@@ -57,6 +57,14 @@ namespace Stalingrado {
                 corpo.move(x, y);
             }
 
+            void Personagem::setPos(float x, float y){
+                corpo.setPosition(x, y);
+            }
+
+            void Personagem::setVida(int vida){
+                num_vidas = vida;
+            }
+
             void Personagem::setVelocidadeX(float vx){
                 vel_x = vx;
             }

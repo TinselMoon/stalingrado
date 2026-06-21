@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Controle/ControleMenu.hpp"
 #include "../Gráficos/Botao.hpp"
 
 namespace Stalingrado {
@@ -22,7 +21,6 @@ namespace Stalingrado {
             virtual void executar() = 0;
             bool getInMenu();
             void setInMenu(bool iM);
-            //observer
             void selectDown();
             void selectUp();
             void setValuesBotoes();

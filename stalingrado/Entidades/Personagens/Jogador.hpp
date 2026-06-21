@@ -12,7 +12,6 @@ namespace Stalingrado {
             private:
                 bool WisPressed;
                 bool belicoso;
-                static int cont_jog;
                 int id_jog;
                 float multiplicador_vel;
                 float cooldown_mov;
@@ -27,7 +26,7 @@ namespace Stalingrado {
             protected:
                 int pontos;
             public:
-                Jogador(int vida = 0);
+                Jogador(int vida = 0, int numeroJogador = 1);
                 ~Jogador();
                 void lerMovimentacao();
                 void executar();
@@ -38,6 +37,7 @@ namespace Stalingrado {
                 void danificar (Personagem* pPers);
                 void setMultiplicadorVel(float mult);
                 const int getPontos() const;
+                void setPontos(int pontos);
                 void impulso(float mult);
                 void setCooldown(float cd);
                 int getUltimoCheckpoint();

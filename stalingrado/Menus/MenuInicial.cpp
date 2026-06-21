@@ -1,6 +1,5 @@
 #include "MenuInicial.hpp"
 #include "../States/Jogo.hpp"
-#include "../States/StateMachine.hpp"
 
 #include "../Defines.txt"
 
@@ -10,7 +9,7 @@ namespace Stalingrado {
         using namespace States;
         using namespace Graficos;
 
-        MenuInicial::MenuInicial(Jogo* pJ) : Menu("Menu"), pJogo(pJ), two_players(false), State(nullptr, menuInicial) {
+        MenuInicial::MenuInicial(Jogo* pJ) : Menu("Menu"), pJogo(pJ), two_players(false), State(menuInicial) {
             resetState();
         }
 
@@ -43,7 +42,7 @@ namespace Stalingrado {
 
                     case 1:
                         setInMenu(false);
-                        //implementar reload fase1
+                        pJogo->retomarFase1();
                         break;
 
                     case 2:
@@ -53,7 +52,7 @@ namespace Stalingrado {
 
                     case 3:
                         setInMenu(false);
-                        //implementar reload fase2
+                        pJogo->retomarFase2();
                         break;
 
                     case 4:
@@ -62,7 +61,8 @@ namespace Stalingrado {
                         break;
 
                     case 5:
-                        //ranking ainda nao implementado
+                        setInMenu(false);
+                        pJogo->abrirRanking();
                         break;
 
                     case 6:
@@ -121,6 +121,7 @@ namespace Stalingrado {
         void MenuInicial::resetState() {
             carregarBotoes();
             setValuesBotoes();
+            setInMenu(true);
         }
 
         void MenuInicial::update(const float dt) {

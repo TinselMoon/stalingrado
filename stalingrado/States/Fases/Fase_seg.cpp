@@ -17,18 +17,30 @@ using namespace std;
 namespace Stalingrado {
     namespace Fases {
 
-        Fase_seg::Fase_seg(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
+        Fase_seg::Fase_seg(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2, bool carregarSave) :
         Fase(pJogador1, pJogador2, "Cenario_fase_dois", "Chao_fase_dois"), maxInimChefoesAleatorios(3), maxExplosivosAleatorios(5)
         {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;
-            criarCenario();
-            criarInimigos();
+            criarCenarioBase();
+
+            if (carregarSave) {
+                carregarSalvo(SAVE_PATH);
+            }
+            else {
+                criarObstaculos();
+                criarInimigos();
+            }
+            GC.tratarColisoesObsObs();
+
             //Inclui os jogadores na fase
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador2));
-            if (pJogador1 != nullptr) pJogador1->movePos(300.0f, 500.0f);
-            if (pJogador2 != nullptr) pJogador2->movePos(350.0f, 500.0f);
+
+            if (!carregarSave) {
+                if (pJogador1 != nullptr) pJogador1->movePos(300.0f, 500.0f);
+                if (pJogador2 != nullptr) pJogador2->movePos(350.0f, 500.0f);
+            }
         }
 
         Fase_seg::~Fase_seg(){
@@ -60,7 +72,20 @@ namespace Stalingrado {
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pProjetil));
             pEntidade->setProjetil(pProjetil);
         }
-        
+
+        void Fase_seg::criarChefoes(float x, float y, int vida) {
+
+            Entidades::Personagens::Inim_chefao *pEntidade = new Entidades::Personagens::Inim_chefao(vida, MALDADE_CHEFAO);
+            GC.incluirInimigo(pEntidade);
+            pEntidade->movePos(x, y);
+            lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
+
+            Entidades::Projetil *pProjetil = new Entidades::Projetil();
+            GC.incluirProjetil(pProjetil);
+            lista_ents.incluir(static_cast<Entidades::Entidade*>(pProjetil));
+            pEntidade->setProjetil(pProjetil);
+        }
+
         void Fase_seg::criarInimigos(){
             const char* caminhoArquivo = "../stalingrado/assets/fase2/Inimigos.txt";
             try{
@@ -170,7 +195,7 @@ namespace Stalingrado {
 
         }
 
-        void Fase_seg::criarCenario(){
+        void Fase_seg::criarCenarioBase(){
             //aqui cria o chao e posiciona ele
             chao = new Entidades::Chao(comprimentoFase, "Chao_fase_dois");
             chao->setPosicao(0.f, 750.f);
@@ -180,8 +205,60 @@ namespace Stalingrado {
             //aqui configura o fundo
             corpo.setPosition(0.f, 0.f);
             corpo.setTextureRect(sf::IntRect(0, 0, 43400, 3255));
+        }
+
+        void Fase_seg::criarCenario(){
+            criarCenarioBase();
             criarObstaculos();
             GC.tratarColisoesObsObs();
+        }
+
+        void Fase_seg::carregarSalvo(const char* caminhoArquivo){
+
+            std::ifstream arquivo(caminhoArquivo);
+            if (!arquivo.is_open()) return;
+
+            std::string tagFase;
+            int numeroFase;
+            arquivo >> tagFase >> numeroFase; //consome o cabecalho "FASE N"
+
+            int id;
+            std::string classe;
+            while (arquivo >> id >> classe) {
+
+                if (classe == "JOGADOR") {
+                    int id_jog, vida, pontos;
+                    float x, y;
+                    arquivo >> id_jog >> vida >> pontos >> x >> y;
+                    Entidades::Personagens::Jogador* pAlvo = (id_jog == 1) ? pJog1 : pJog2;
+                    if (pAlvo != nullptr) {
+                        pAlvo->setVida(vida);
+                        pAlvo->setPontos(pontos);
+                        pAlvo->setPos(x, y);
+                    }
+                }
+                else if (classe == "INIM_MEDIO") {
+                    int vida; float x, y;
+                    arquivo >> vida >> x >> y;
+                    criarInimMedios(x, y, vida);
+                }
+                else if (classe == "INIM_CHEFAO") {
+                    int vida; float x, y;
+                    arquivo >> vida >> x >> y;
+                    criarChefoes(x, y, vida);
+                }
+                else if (classe == "ENTULHO") {
+                    float x, y;
+                    arquivo >> x >> y;
+                    criarPlataformas(x, y);
+                }
+                else if (classe == "EXPLOSIVO") {
+                    float x, y;
+                    arquivo >> x >> y;
+                    criarExplosivos(x, y);
+                }
+            }
+            arquivo.close();
         }
 
         void Fase_seg::executar(){
@@ -196,6 +273,11 @@ namespace Stalingrado {
             if(pJog2->isAtivo()){
                 vida2 << "Vida \tJogador \t2:\t " << pJog2->getVida() << "\t PONTOS:\t" << pJog2->getPontos();
                 pGG->desenharTextoCamera(vida2.str(), 20, 50.f, 50.f);
+            }
+            if(inimigosMortos()){
+                if(pJog1->getPos().x > 9750 || pJog2->getPos().x > 9750){
+                    fase_concluida = true;
+                }
             }
         }
 

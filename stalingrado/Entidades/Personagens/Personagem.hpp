@@ -20,6 +20,8 @@ public:
     void operator-=(int dano); //sobrecarga de operador para tirar vida do personagem (perder vida).
     void operator+=(int bonus); //sobrecarga de operador para adicionar vida ao personagem (ganhar vida).
     void movePos(float x, float y);
+    void setPos(float x, float y);
+    void setVida(int vida);
     void setVelocidadeX(float vx);
     void setVelocidadeY(float vy);
     float getVelX();

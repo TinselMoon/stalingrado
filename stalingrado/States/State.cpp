@@ -1,24 +1,12 @@
 #include "State.hpp"
-#include "StateMachine.hpp"
 
 namespace Stalingrado {
     namespace States {
 
-        State::State(StateMachine* pSM, States::stateID id) :
-        pSM(pSM),
+        State::State(States::stateID id) :
         id(id) { }
 
-        State::~State() {
-            pSM = nullptr;
-        }
-
-        void State::setStateMachine(StateMachine* pSM) {
-            this->pSM = pSM;
-        }
-
-        void State::changeState(States::stateID id) {
-            pSM->changeCurrentState(id);
-        }
+        State::~State() { }
 
         States::stateID State::getID() const {
             return id;

@@ -19,12 +19,15 @@ private:
     const int maxInimFaceisAleatorios; //IMPLEMENTAR VALOR MAXIMO
     const int maxAramesAleatorios;
 protected:
+    void criarCenarioBase();
+    void carregarSalvo(const char* caminhoArquivo);
     void criarInimFaceis(float x, float y);
+    void criarInimFaceis(float x, float y, int vida);
     void criarArame_farp(float x, float y);
     void criarInimigos();
     void criarObstaculos();
 public:
-    Fase_prim(Entidades::Personagens::Jogador *pJogador1 = nullptr, Entidades::Personagens::Jogador *pJogador2 = nullptr);
+    Fase_prim(Entidades::Personagens::Jogador *pJogador1 = nullptr, Entidades::Personagens::Jogador *pJogador2 = nullptr, bool carregarSave = false);
     ~Fase_prim();
     void criarCenario();
     void executar();

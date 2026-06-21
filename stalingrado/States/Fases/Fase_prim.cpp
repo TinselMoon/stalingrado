@@ -18,19 +18,31 @@ namespace Stalingrado {
 
     namespace Fases {
 
-        Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2) :
+        Fase_prim::Fase_prim(Entidades::Personagens::Jogador *pJogador1, Entidades::Personagens::Jogador *pJogador2, bool carregarSave) :
         Fase(pJogador1, pJogador2, "Cenario_fase_um", "Chao_fase_um"), maxInimFaceisAleatorios(5),
         maxAramesAleatorios(8)
         {
             //Aqui eu devo criar a fase, configurar a posição de cada inimigo, jogador e obstáculo
             comprimentoFase = 10000;
-            criarCenario();
-            criarInimigos();
+            criarCenarioBase();
+
+            if (carregarSave) {
+                carregarSalvo(SAVE_PATH);
+            }
+            else {
+                criarObstaculos();
+                criarInimigos();
+            }
+            GC.tratarColisoesObsObs();
+
             //Inclui os jogadores na fase
             if (pJogador1!=nullptr) {lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));}
             if (pJogador2!=nullptr) {lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador2));}
-            if (pJogador1!=nullptr) pJogador1->movePos(300.0f, 500.0f);
-            if (pJogador2!=nullptr) pJogador2->movePos(350.0f, 500.0f);
+
+            if (!carregarSave) {
+                if (pJogador1!=nullptr) pJogador1->movePos(300.0f, 500.0f);
+                if (pJogador2!=nullptr) pJogador2->movePos(350.0f, 500.0f);
+            }
         }
 
         Fase_prim::~Fase_prim(){
@@ -45,6 +57,13 @@ namespace Stalingrado {
         void Fase_prim::criarInimFaceis(float x, float y){
 
             Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(VIDA_FACEIS, MALDADE_FACEIS);
+            GC.incluirInimigo(pEntidade);
+            pEntidade->movePos(x, y);
+            lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
+        }
+        void Fase_prim::criarInimFaceis(float x, float y, int vida){
+
+            Entidades::Personagens::Inim_facil *pEntidade = new Entidades::Personagens::Inim_facil(vida, MALDADE_FACEIS);
             GC.incluirInimigo(pEntidade);
             pEntidade->movePos(x, y);
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pEntidade));
@@ -170,7 +189,7 @@ namespace Stalingrado {
 
         }
 
-        void Fase_prim::criarCenario(){
+        void Fase_prim::criarCenarioBase(){
             //aqui cria o chao e posiciona ele
             chao = new Entidades::Chao(comprimentoFase, "Chao_fase_um");
             chao->setPosicao(0.f, 750.f);
@@ -180,8 +199,60 @@ namespace Stalingrado {
             //aqui configura o fundo
             corpo.setPosition(0.f, 0.f);
             corpo.setTextureRect(sf::IntRect(0, 0, comprimentoFase, 750));
+        }
+
+        void Fase_prim::criarCenario(){
+            criarCenarioBase();
             criarObstaculos();
             GC.tratarColisoesObsObs();
+        }
+
+        void Fase_prim::carregarSalvo(const char* caminhoArquivo){
+
+            std::ifstream arquivo(caminhoArquivo);
+            if (!arquivo.is_open()) return;
+
+            std::string tagFase;
+            int numeroFase;
+            arquivo >> tagFase >> numeroFase; //consome o cabecalho "FASE N"
+
+            int id;
+            std::string classe;
+            while (arquivo >> id >> classe) {
+
+                if (classe == "JOGADOR") {
+                    int id_jog, vida, pontos;
+                    float x, y;
+                    arquivo >> id_jog >> vida >> pontos >> x >> y;
+                    Entidades::Personagens::Jogador* pAlvo = (id_jog == 1) ? pJog1 : pJog2;
+                    if (pAlvo != nullptr) {
+                        pAlvo->setVida(vida);
+                        pAlvo->setPontos(pontos);
+                        pAlvo->setPos(x, y);
+                    }
+                }
+                else if (classe == "INIM_FACIL") {
+                    int vida; float x, y;
+                    arquivo >> vida >> x >> y;
+                    criarInimFaceis(x, y, vida);
+                }
+                else if (classe == "INIM_MEDIO") {
+                    int vida; float x, y;
+                    arquivo >> vida >> x >> y;
+                    criarInimMedios(x, y, vida);
+                }
+                else if (classe == "ENTULHO") {
+                    float x, y;
+                    arquivo >> x >> y;
+                    criarPlataformas(x, y);
+                }
+                else if (classe == "ARAME_FARP") {
+                    float x, y;
+                    arquivo >> x >> y;
+                    criarArame_farp(x, y);
+                }
+            }
+            arquivo.close();
         }
 
         void Fase_prim::executar(){
