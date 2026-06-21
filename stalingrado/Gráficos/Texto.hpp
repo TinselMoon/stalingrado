@@ -17,7 +17,7 @@ namespace Stalingrado {
         public:
             Texto(sf::Vector2f position = sf::Vector2f(0, 0), std::string info = "", const char* path = FONT_PATH);
             ~Texto();
-            void setTextInfo(std::string info);
+            void setTextInfo(std::string inf);
             void setPosition(sf::Vector2f position);
             void setTextColor(const unsigned int R, const unsigned int G, const unsigned int B);
             void setFontSize(const unsigned int size);
@@ -25,6 +25,7 @@ namespace Stalingrado {
             void executar();
             std::string getInfo() const;
             sf::Vector2f getPosition() const;
+            void setOutline(float thickness);
         };
 
     }

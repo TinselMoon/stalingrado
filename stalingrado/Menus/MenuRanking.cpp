@@ -10,7 +10,7 @@ namespace Stalingrado {
     namespace Menus {
         using namespace Graficos;
 
-        static bool compararPontuacao(const std::pair<int, std::string>& a, const std::pair<int, std::string>& b) {
+        bool MenuRanking::compararPontuacao(const std::pair<int, std::string>& a, const std::pair<int, std::string>& b) {
             return a.first > b.first;
         }
 
@@ -45,16 +45,17 @@ namespace Stalingrado {
 
             arquivo.close();
 
-            std::sort(pontuacoes.begin(), pontuacoes.end(), compararPontuacao);
+            std::sort(pontuacoes.begin(), pontuacoes.end(), MenuRanking::compararPontuacao);
 
             float posY = POS_TEXTO_RANKING_INICIAL.y;
             int max = (int)pontuacoes.size() < MAX_ENTRADAS_RANKING ? (int)pontuacoes.size() : MAX_ENTRADAS_RANKING;
 
             for (int i = 0; i < max; i++) {
                 std::stringstream linha;
-                linha << (i + 1) << "o   " << pontuacoes[i].second << "   " << pontuacoes[i].first;
+                linha << (i + 1) << "  -  " << pontuacoes[i].second << "   " << pontuacoes[i].first;
                 Texto* txt = new Texto(sf::Vector2f(POS_TEXTO_RANKING_INICIAL.x, posY), linha.str());
                 txt->setFontSize(28);
+                txt->setOutline(3.f);
                 entradas.push_back(txt);
                 posY += ESPACAMENTO_RANKING;
             }

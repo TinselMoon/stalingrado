@@ -18,6 +18,7 @@ namespace Stalingrado {
             std::vector<Graficos::Texto*> entradas;
             std::vector<Graficos::Texto*>::iterator itTexto;
 
+            static bool compararPontuacao(const std::pair<int, std::string>& a, const std::pair<int, std::string>& b);
             void limparEntradas();
             void carregarPontuacoes();
 

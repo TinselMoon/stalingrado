@@ -21,10 +21,15 @@ namespace Stalingrado {
 
         Texto::~Texto() { }
 
-        void Texto::setTextInfo(std::string info) {
-            this->info = info;
-            text.setString(this->info);
+        void Texto::setTextInfo(std::string inf) {
+            info = inf;
+            text.setString(info);
         }
+
+        void Texto::setOutline(float thickness) {
+            text.setOutlineThickness(thickness);
+        }
+
 
         void Texto::setPosition(sf::Vector2f position) {
             text.setPosition(sf::Vector2f(position.x, position.y));
