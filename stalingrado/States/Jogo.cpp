@@ -28,15 +28,15 @@ namespace Stalingrado {
 
         Jogo::~Jogo() {
 
-            if (fase_um)    delete fase_um;
-            if (fase_seg)   delete fase_seg;
-            if (pJog1)      delete pJog1;
-            if (pJog2)      delete pJog2;
-            if (pMenuI)      delete pMenuI;
+            if (fase_um != nullptr)    delete fase_um;
+            if (fase_seg != nullptr)   delete fase_seg;
+            if (pJog1 != nullptr)      delete pJog1;
+            if (pJog2 != nullptr)      delete pJog2;
+            if (pMenuI != nullptr)      delete pMenuI;
         }
 
         Jogo* Jogo::getInstanciaJogo() {
-            if (!instanciaJogo)
+            if (instanciaJogo == nullptr)
                 instanciaJogo = new Jogo();
             return instanciaJogo;
         }
@@ -75,7 +75,7 @@ namespace Stalingrado {
                     pMenuI->executar();
                     GG.atualizarCamera();
                 }
-                else if (faseAtual == 1 && fase_um) {
+                else if (faseAtual == 1 && fase_um != nullptr) {
                     pMenuI->setInMenu(false);
 
                     pMenuI->getTwoPlayers() ? pJog2->setAtivo(true) : pJog2->setAtivo(false);
@@ -87,7 +87,7 @@ namespace Stalingrado {
                     fase_um->executar();
                     GG.atualizarCamera();
                 }
-                else if (faseAtual == 2 && fase_seg) {
+                else if (faseAtual == 2 && fase_seg != nullptr) {
                     pMenuI->setInMenu(false);
 
                     pMenuI->getTwoPlayers() ? pJog2->setAtivo(true) : pJog2->setAtivo(false);
@@ -106,9 +106,9 @@ namespace Stalingrado {
 
         void Jogo::iniciarFase1() {
 
-            if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
-            if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-            if (!fase_um) {
+            if (pJog1 == nullptr)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
+            if (pJog2 == nullptr)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
+            if (fase_um == nullptr) {
                 fase_um = new Fases::Fase_prim(pJog1, pJog2);
                 musica.openFromFile("../stalingrado/assets/audios/fase1.mp3");
                 musica.setLoop(true);
@@ -119,9 +119,9 @@ namespace Stalingrado {
         }
 
         void Jogo::iniciarFase2() {
-            if (!pJog1)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
-            if (!pJog2)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
-            if (!fase_seg) {
+            if (pJog1 == nullptr)  pJog1 = new Entidades::Personagens::Jogador(VIDA_JOG1);
+            if (pJog2 == nullptr)  pJog2 = new Entidades::Personagens::Jogador(VIDA_JOG2);
+            if (fase_seg == nullptr) {
                 fase_seg = new Fases::Fase_seg(pJog1, pJog2);
                 musica.openFromFile("../stalingrado/assets/audios/fase2.mp3");
                 musica.setLoop(true);

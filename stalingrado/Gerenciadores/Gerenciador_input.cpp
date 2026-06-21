@@ -24,7 +24,7 @@ namespace Stalingrado {
         }
 
         Gerenciador_input* Gerenciador_input::getInstancia() {
-            if (!instancia)
+            if (instancia == nullptr)
                 instancia = new Gerenciador_input();
             return instancia;
         }

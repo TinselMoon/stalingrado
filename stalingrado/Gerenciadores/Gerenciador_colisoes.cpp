@@ -111,7 +111,7 @@ void Gerenciador_Colisoes::resolverColisaoCinematica(Entidade *pJ, Entidade *pE)
                 
                 //Zerar velocidade do jogador para ele não ficar caindo sobre o obstáculo
                 Jogador *pJog = static_cast<Jogador*>(pJ);
-                if(pJog == NULL){
+                if(pJog == nullptr){
                     pJ->setVelocidadeY(0.0f);
                 }
                 else if(pJog->getVelY() > 0.0f){
@@ -211,7 +211,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstaculos(){
             }
         
         }
-        if(pJog2){
+        if(pJog2 != nullptr){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
                 //Se colidir, arruma a posição do persongem e executa o obstáculo
                 //
@@ -272,7 +272,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimigos() {
         colisoesChao(inim);
         colisaoBorda(inim);
 
-        if(pJog2){
+        if(pJog2 != nullptr){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it), MARGEM_ATAQUE)){
                 //Dano do Jogador ao inimigo
                 if(pJog2->getBelicoso()){
@@ -321,7 +321,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsProjeteis(){
             //Precisa executar o projetil, dar dano ao jogador e destruir o projetil
             (*it)->danificar(pJog1);
         }
-        if(pJog2){
+        if(pJog2 != nullptr){
             if(verificarColisao(static_cast<Entidade*>(pJog2), static_cast<Entidade*>(*it))){
                 //Se colidir, dá dano ao jogador e destroi o projetil
                 //resolverColisaoCinematica(pJog2, *it);

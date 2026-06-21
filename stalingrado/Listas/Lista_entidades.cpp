@@ -77,10 +77,10 @@ void ListaEntidades::limpar(){
 void ListaEntidades::salvar(std::ofstream& arquivo){
     Lista<Entidades::Entidade>::Elemento* pAux = LEs.getPrimeiro();
 
-    while(pAux != NULL){
+    while(pAux != nullptr){
         Entidades::Entidade* pEntidade = pAux->getInfo();
 
-        if(pEntidade != NULL && pEntidade->isAtivo()){
+        if(pEntidade != nullptr && pEntidade->isAtivo()){
             pEntidade->salvar(arquivo);
         }
 

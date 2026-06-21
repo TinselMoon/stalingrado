@@ -27,8 +27,8 @@ namespace Stalingrado {
             //Inclui os jogadores na fase
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador1));
             lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador2));
-            if (pJogador1) pJogador1->movePos(300.0f, 500.0f);
-            if (pJogador2) pJogador2->movePos(350.0f, 500.0f);
+            if (pJogador1 != nullptr) pJogador1->movePos(300.0f, 500.0f);
+            if (pJogador2 != nullptr) pJogador2->movePos(350.0f, 500.0f);
         }
 
         Fase_seg::~Fase_seg(){

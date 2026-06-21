@@ -65,7 +65,7 @@ namespace Stalingrado {
             }
 
             void Personagem::eliminar(Jogador *pJ){
-                if(pJ != NULL){
+                if(pJ != nullptr){
                     int checkpointsAntigos = pJ->getUltimoCheckpoint() / 100;
                     int checkpointsNovos = pJ->getPontos() / 100;
 

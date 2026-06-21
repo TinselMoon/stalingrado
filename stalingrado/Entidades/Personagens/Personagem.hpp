@@ -27,7 +27,7 @@ public:
     sf::Vector2f getPos();
     int getVida();
     virtual const int getPontos() const = 0;
-    void eliminar(Jogador *pJ = NULL);
+    void eliminar(Jogador *pJ = nullptr);
     void setMorto();
     virtual void danificar(Personagem* pPers) = 0;
     virtual void executar() = 0;
