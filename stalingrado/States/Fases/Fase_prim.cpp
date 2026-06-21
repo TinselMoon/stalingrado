@@ -40,8 +40,8 @@ namespace Stalingrado {
             if (pJogador2!=nullptr) {lista_ents.incluir(static_cast<Entidades::Entidade*>(pJogador2));}
 
             if (!carregarSave) {
-                if (pJogador1!=nullptr) pJogador1->movePos(300.0f, 500.0f);
-                if (pJogador2!=nullptr) pJogador2->movePos(350.0f, 500.0f);
+                if (pJogador1!=nullptr) pJogador1->setPos(300.0f, 500.0f);
+                if (pJogador2!=nullptr) pJogador2->setPos(350.0f, 500.0f);
             }
         }
 

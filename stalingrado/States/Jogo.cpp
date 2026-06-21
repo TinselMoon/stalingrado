@@ -153,6 +153,8 @@ namespace Stalingrado {
                         bool jog2Morto = (!pMenuI->getTwoPlayers() || pJog2->getVida() <= 0);
                         if (jog1Morto && jog2Morto)
                             irParaGameOver(false);
+                        else if (fase_um->faseConcluida())
+                            iniciarFase2();
                     }
                 }
                 else if (faseAtual == 2 && fase_seg != nullptr) {
