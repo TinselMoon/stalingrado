@@ -6,7 +6,7 @@
 namespace Stalingrado {
     namespace Menus {
 
-        Menu::Menu(const string& nomeText, States::Jogo* pJ) : Ente(nomeText), inMenu(true), pJogo(pJ) {
+        Menu::Menu(const std::string& nomeText, States::Jogo* pJ) : Ente(nomeText), inMenu(true), pJogo(pJ) {
             setValuesBotoes();
         }
 
