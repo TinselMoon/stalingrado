@@ -12,8 +12,8 @@ file(GLOB_RECURSE SOURCES
     "main.cpp"
 )
 
-#add_executable(stalingrado ${SOURCES}
-#)
+add_executable(stalingrado ${SOURCES}
+)
 
 target_include_directories(stalingrado PRIVATE
   Gerenciadores

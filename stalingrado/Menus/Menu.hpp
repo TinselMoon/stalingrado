@@ -1,8 +1,6 @@
 #pragma once
 
-#include "../Gráficos/Botao.hpp"
-
-//Inspirado na implementação do ex-monitor Matheus Augusto Burda, conforme este mostra nos seus vídeos tutoriais.
+#include "../Graficos/Botao.hpp"
 
 namespace Stalingrado {
     namespace States {
@@ -10,7 +8,6 @@ namespace Stalingrado {
     }
 
     namespace Menus {
-        using namespace std;
 
         class Menu : public Ente {
         private:
@@ -23,7 +20,7 @@ namespace Stalingrado {
             std::vector<Graficos::Botao*>::iterator it;
             States::Jogo* pJogo;
         public:
-            Menu(const string& nomeText, States::Jogo* pJ = nullptr);
+            Menu(const std::string& nomeText, States::Jogo* pJ = nullptr);
             virtual ~Menu();
             virtual void executar() = 0;
             bool getInMenu();

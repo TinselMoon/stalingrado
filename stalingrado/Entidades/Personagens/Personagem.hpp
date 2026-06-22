@@ -16,7 +16,6 @@ protected:
 public:
     Personagem(int vida, const std::string& nomeTextura);
     ~Personagem();
-    void salvarDataBuffer();
     void operator-=(int dano); //sobrecarga de operador para tirar vida do personagem (perder vida).
     void operator+=(int bonus); //sobrecarga de operador para adicionar vida ao personagem (ganhar vida).
     void movePos(float x, float y);

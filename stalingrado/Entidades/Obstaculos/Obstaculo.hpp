@@ -14,8 +14,7 @@ protected:
     bool lentidao;
 public:
     Obstaculo(bool dano, bool lento, const std::string& nomeTextura);
-    ~Obstaculo();
-    void salvarDataBuffer();
+    virtual ~Obstaculo();
     virtual void executar() = 0;
     virtual void salvar(std::ofstream& arquivo) = 0;
     virtual void obstaculizar(Personagens::Jogador* pJ) = 0;

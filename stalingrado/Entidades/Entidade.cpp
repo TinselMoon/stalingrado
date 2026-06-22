@@ -17,9 +17,5 @@ const bool Entidade::isAtivo() const {
 void Entidade::setAtivo(bool at) {
     ativo = at;
 }
-
-void Entidade::salvarDataBuffer(){
-
-}
 }
 } // Fim do namespace Stalingrado

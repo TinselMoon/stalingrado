@@ -1,10 +1,9 @@
 #pragma once
 
 #include "Menu.hpp"
-#include "../Gráficos/Texto.hpp"
+#include "../Graficos/Texto.hpp"
 #include <vector>
 
-//Inspirado na implementação do ex-monitor Matheus Augusto Burda, conforme este mostra nos seus vídeos tutoriais.
 
 namespace Stalingrado {
     namespace Menus {

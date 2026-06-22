@@ -8,7 +8,6 @@ namespace Entidades{
 class Projetil;
 class Entidade : public Ente{
 protected:
-    virtual void salvarDataBuffer();
     bool ativo;
 public:
     Entidade(const std::string& nomeTextura);

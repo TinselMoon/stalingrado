@@ -14,9 +14,6 @@ namespace Stalingrado {
                 lentidao = false;
             }
 
-            void Obstaculo::salvarDataBuffer(){
-
-            }
 
             bool Obstaculo::getLentidao(){
                 return lentidao;

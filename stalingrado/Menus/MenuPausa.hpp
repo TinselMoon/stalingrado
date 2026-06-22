@@ -2,9 +2,6 @@
 
 #include "Menu.hpp"
 
-//Pedi ajuda para IAs (Gemini e Claude) com o fim de elaborar um fundo transparente para enegrecer a fase no final e para me ajudar
-//a ajudar a desenvolver uma lógica para renderizar a fase ao fundo enquanto o menu aparece na frente. --Gustavo
-
 namespace Stalingrado {
     namespace Menus {
 

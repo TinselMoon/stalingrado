@@ -18,12 +18,11 @@ protected:
 public:
     Inimigo(int vida, int maldade, const std::string& nomeTextura);
     ~Inimigo();
-    void salvarDataBuffer();
     virtual void executar();
     const int getPontos() const;
-    virtual void mover()=0;
+    virtual void mover();
     virtual void salvar(std::ofstream& arquivo);
-    virtual void aplicarVelocidadeSalva(float vx)=0;
+    virtual void aplicarVelocidadeSalva(float vx);
     const bool getChefao() const;
 };
 }
