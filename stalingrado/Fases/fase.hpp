@@ -1,9 +1,9 @@
 #pragma once
-#include "../../Ente.hpp"
-#include "../../Gerenciadores/Gerenciador_grafico.hpp"
-#include "../../Gerenciadores/Gerenciador_colisoes.hpp"
-#include "../../Listas/Lista_entidades.hpp"
-#include "../../Entidades/Chao.hpp"
+#include "../Ente.hpp"
+#include "../Gerenciadores/Gerenciador_grafico.hpp"
+#include "../Gerenciadores/Gerenciador_colisoes.hpp"
+#include "../Listas/Lista_entidades.hpp"
+#include "../Entidades/Chao.hpp"
 
 namespace Stalingrado {
     //AQUI VAMOS FAZER UMA DECLARAÇÃO ANTECIPADA DAS CLASSES USADAS NAS FASES

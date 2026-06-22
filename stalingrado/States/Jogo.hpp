@@ -1,6 +1,6 @@
 #pragma once
-#include "Fases/Fase_prim.hpp"
-#include "Fases/Fase_seg.hpp"
+#include "../Fases/Fase_prim.hpp"
+#include "../Fases/Fase_seg.hpp"
 #include "../Menus/MenuInicial.hpp"
 #include "../Menus/MenuPausa.hpp"
 #include "../Menus/MenuGameOver.hpp"

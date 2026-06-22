@@ -1,16 +1,16 @@
 #include "Fase_seg.hpp"
-#include "../../Entidades/Entidade.hpp"
-#include "../../Entidades/Personagens/Inim_medio.hpp"
-#include "../../Entidades/Personagens/Inim_chefao.hpp"
-#include "../../Entidades/Personagens/Jogador.hpp"
-#include "../../Entidades/Chao.hpp"
-#include "../../Entidades/Projetil.hpp"
-#include "../../Entidades/Obstaculos/Explosivo.hpp"
+#include "../Entidades/Entidade.hpp"
+#include "../Entidades/Personagens/Inim_medio.hpp"
+#include "../Entidades/Personagens/Inim_chefao.hpp"
+#include "../Entidades/Personagens/Jogador.hpp"
+#include "../Entidades/Chao.hpp"
+#include "../Entidades/Projetil.hpp"
+#include "../Entidades/Obstaculos/Explosivo.hpp"
 #include <sstream>
 #include <fstream>
 #include <iostream>
 
-#include "../../Defines.hpp"
+#include "../Defines.hpp"
 
 using namespace std;
 

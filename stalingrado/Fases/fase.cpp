@@ -1,9 +1,9 @@
 #include "fase.hpp"
-#include "../../Entidades/Personagens/Inim_medio.hpp"
-#include "../../Entidades/Obstaculos/Entulho.hpp"
+#include "../Entidades/Personagens/Inim_medio.hpp"
+#include "../Entidades/Obstaculos/Entulho.hpp"
 #include <string>
 
-#include "../../Defines.hpp"
+#include "../Defines.hpp"
 
 using namespace std;
 

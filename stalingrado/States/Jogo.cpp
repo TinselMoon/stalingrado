@@ -1,7 +1,7 @@
 #include "Jogo.hpp"
 
 #include <chrono>
-#include "Fases/Fase_prim.hpp"
+#include "../Fases/Fase_prim.hpp"
 #include "../Ente.hpp"
 #include "../Entidades/Personagens/Jogador.hpp"
 #include "../Menus/MenuInicial.hpp"
