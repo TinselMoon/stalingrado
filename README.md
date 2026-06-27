@@ -4,7 +4,7 @@ A 2D pixel-art style game inspired by the Battle of Stalingrad.
 ## Requirements
 - CMake 3.x or higher
 - C++ compiler (G++ or Clang++)
-- SFML 2.6.x
+- SFML 2.6 or higher
 
 ## Installing SFML
 ### Ubuntu:
@@ -12,9 +12,8 @@ A 2D pixel-art style game inspired by the Battle of Stalingrad.
 sudo apt install libsfml-dev
 ```
 ### Arch Linux:
-Using yay:
 ```bash
-yay -S sfml2
+sudo pacman -S sfml
 ```
 
 ## Compile and Run game

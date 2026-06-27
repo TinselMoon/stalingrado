@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 
 //Inicialmente deveria ter implementado o Padrão de Projeto State completo, mas não deu tempo. Ainda assim, usei algumas ideias --Gustavo
 //Inspirado na implementação do ex-monitor Matheus Augusto Burda, conforme este mostra nos seus vídeos tutoriais.
